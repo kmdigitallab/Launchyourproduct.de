@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="de" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LaunchYourProduct – Dein Produkt. Gebaut. Gelauncht. Bewiesen.</title>
+<meta name="description" content="Wir bauen dein digitales Produkt oder deine Amazon Motion-Ads komplett für dich – in 3 Wochen, mit KI-Tempo und kuratierter Qualität.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --g:#16a34a;--gl:#4ade80;--gd:#14532d;
+  --az:#3b82f6;--azl:#93c5fd;
+  --bg:#07090a;--bg2:#0d1117;--bg3:#111820;
+  --card:rgba(255,255,255,0.04);--cb:rgba(255,255,255,0.08);--cbh:rgba(255,255,255,0.16);
+  --t1:#f0f6f1;--t2:#8fa898;--t3:#4a6652;
+  --r:12px;--r-lg:20px;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+a{color:inherit;}
+img,svg{display:block;max-width:100%;}
+button{font:inherit;}
+
+/* ── REVEAL SYSTEM ── visible by default (no-JS / crawlers safe); JS hides then reveals on scroll */
+.ru{opacity:1;transform:none;}
+html.js .ru{opacity:0;transform:translateY(22px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+html.js .ru.vis{opacity:1;transform:none;}
+html.js .ru.rd{transform:translateY(0) scale(.97);}
+html.js .ru.rd.vis{transform:none;}
+@media(prefers-reduced-motion:reduce){
+  html.js .ru{opacity:1!important;transform:none!important;transition:none!important;}
+}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(7,9,10,0.82);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.06);transition:background .25s var(--ease);}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+.lm{width:28px;height:28px;background:var(--g);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#fff;box-shadow:0 0 14px rgba(22,163,74,0.5);}
+.ln{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.3px;}
+.ls{font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-size:13px;color:var(--t3);text-decoration:none;transition:color .15s;}
+.nav-links a:hover{color:var(--t1);}
+.nav-r{display:flex;align-items:center;gap:8px;}
+.nb{font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:all .18s var(--ease);border-radius:8px;font-weight:500;white-space:nowrap;}
+.nb-g{background:none;color:var(--t3);padding:7px 12px;}
+.nb-g:hover{color:var(--t1);background:rgba(255,255,255,0.05);}
+.nb-s{background:var(--g);color:#fff;padding:8px 18px;font-weight:600;box-shadow:0 0 16px rgba(22,163,74,0.3);}
+.nb-s:hover{background:#15803d;box-shadow:0 0 26px rgba(22,163,74,0.5);transform:translateY(-1px);}
+.nb:focus-visible,.btn-main:focus-visible,.btn-sec:focus-visible,.pc-link:focus-visible,a:focus-visible,button:focus-visible,.oq:focus-visible,.tab:focus-visible{outline:2px solid var(--gl);outline-offset:2px;border-radius:6px;}
+
+/* ── HERO ── */
+.hero{padding:clamp(60px,8.5vh,76px) 24px clamp(28px,5vh,40px);text-align:center;position:relative;overflow:hidden;}
+.hero-glow{position:absolute;width:800px;height:360px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,163,74,0.08) 0%,transparent 70%);top:20px;left:50%;transform:translateX(-50%);pointer-events:none;}
+.hero>*:not(.hero-glow){position:relative;z-index:1;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);color:var(--gl);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:14px;}
+.badge-dot{width:5px;height:5px;background:var(--g);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+@media(prefers-reduced-motion:reduce){.badge-dot{animation:none;}}
+h1{font-size:clamp(32px,4.6vw,62px);font-weight:900;letter-spacing:-2.2px;line-height:1.05;margin-bottom:12px;max-width:780px;margin-left:auto;margin-right:auto;text-wrap:balance;}
+h1 .g{color:var(--gl);}
+.hero-sub{font-size:16px;color:var(--t2);max-width:520px;margin:0 auto 22px;font-weight:300;line-height:1.55;}
+.hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:32px;}
+.btn-main{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;background:var(--g);border:none;padding:14px 30px;border-radius:10px;cursor:pointer;box-shadow:0 0 28px rgba(22,163,74,0.4);transition:all .22s var(--ease);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(22,163,74,0.6);}
+.btn-sec{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--t2);background:transparent;border:1px solid rgba(255,255,255,0.12);padding:13px 24px;border-radius:10px;cursor:pointer;transition:all .22s var(--ease);text-decoration:none;min-height:44px;display:inline-flex;align-items:center;}
+.btn-sec:hover{border-color:rgba(255,255,255,0.25);color:var(--t1);background:rgba(255,255,255,0.03);}
+
+/* proof bar */
+.proof-bar{display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;padding:18px 32px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:14px;max-width:680px;margin:0 auto;}
+.pb-item{text-align:center;}
+.pb-num{font-size:22px;font-weight:800;letter-spacing:-1px;color:#fff;font-variant-numeric:tabular-nums;}
+.pb-lbl{font-size:11px;color:var(--t3);margin-top:2px;letter-spacing:.3px;}
+.pb-div{width:1px;height:32px;background:rgba(255,255,255,0.07);}
+@media(max-width:560px){.proof-bar{gap:18px;padding:16px 18px;}.pb-div{display:none;}}
+
+/* ── TICKER ── */
+.ticker{border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;padding:13px 0;background:rgba(255,255,255,0.015);}
+.t-track{display:flex;animation:tick 32s linear infinite;width:max-content;}
+.t-track:hover{animation-play-state:paused;}
+.t-item{display:flex;align-items:center;gap:8px;padding:0 32px;font-size:12px;font-weight:600;color:var(--t3);white-space:nowrap;letter-spacing:.3px;}
+.t-item strong{color:var(--t1);}
+.t-sep{color:rgba(255,255,255,0.08);padding:0 4px;}
+@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.t-track{animation:none;}}
+
+/* ── SECTIONS ── */
+section{padding:80px 48px;}
+.wrap{max-width:1080px;margin:0 auto;}
+.sl{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:12px;border-left:2px solid rgba(22,163,74,0.3);padding-left:9px;}
+h2{font-size:clamp(26px,3.2vw,42px);font-weight:800;letter-spacing:-1.1px;line-height:1.12;margin-bottom:14px;text-wrap:balance;}
+h2 .g{color:var(--gl);}
+.lead{font-size:15px;color:var(--t2);line-height:1.7;max-width:520px;font-weight:300;margin-bottom:40px;}
+
+/* ── PAIN SECTION ── */
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:680px){.pain-grid{grid-template-columns:1fr;}}
+.pain-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:26px;transition:all .3s var(--ease);}
+.pain-card:hover{border-color:var(--cbh);transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,0.3);}
+.pain-icon{width:38px;height:38px;border-radius:10px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.18);display:flex;align-items:center;justify-content:center;font-size:17px;margin-bottom:14px;}
+.pain-card h3{font-size:15px;font-weight:700;letter-spacing:-.3px;margin-bottom:7px;}
+.pain-card p{font-size:13px;color:var(--t2);line-height:1.65;font-weight:300;}
+
+/* ── JOURNEY ── */
+.journey{display:flex;gap:0;position:relative;}
+.journey::before{content:'';position:absolute;top:24px;left:24px;right:24px;height:1px;background:linear-gradient(90deg,transparent,rgba(22,163,74,0.3),rgba(22,163,74,0.3),transparent);pointer-events:none;}
+.j-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 12px;position:relative;cursor:default;}
+.j-dot{width:48px;height:48px;border-radius:50%;border:1px solid rgba(22,163,74,0.3);background:rgba(22,163,74,0.08);display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:14px;transition:all .3s var(--ease);position:relative;z-index:1;}
+.j-step:hover .j-dot{background:rgba(22,163,74,0.2);border-color:rgba(22,163,74,0.6);box-shadow:0 0 20px rgba(22,163,74,0.3);transform:translateY(-2px);}
+.j-step h4{font-size:13px;font-weight:700;margin-bottom:5px;letter-spacing:-.2px;}
+.j-step p{font-size:12px;color:var(--t2);line-height:1.6;font-weight:300;}
+@media(max-width:680px){.journey{flex-direction:column;gap:20px;}.journey::before{display:none;}}
+
+/* ── RESULTS / CHART ── */
+.results-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;}
+@media(max-width:680px){.results-grid{grid-template-columns:1fr;}}
+.chart-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:22px;transition:.25s var(--ease);}
+.chart-card:hover{border-color:var(--cbh);box-shadow:0 0 30px rgba(22,163,74,0.08);}
+.chart-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;}
+.stat-stack{display:flex;flex-direction:column;gap:12px;}
+.s-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:20px 22px;transition:.25s var(--ease);}
+.s-card:hover{border-color:var(--cbh);}
+.s-num{font-size:28px;font-weight:900;letter-spacing:-1.4px;color:#fff;font-variant-numeric:tabular-nums;}
+.s-lbl{font-size:12px;color:var(--t3);margin-top:4px;}
+.s-g{font-size:12px;color:var(--g);font-weight:600;margin-top:3px;}
+
+/* ── PORTFOLIO / PROOF OF COMPETENCE ── */
+.port-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;}
+.tab{font-family:'Inter',sans-serif;font-size:13px;font-weight:600;color:var(--t2);background:var(--card);border:1px solid var(--cb);padding:9px 18px;border-radius:100px;cursor:pointer;transition:all .2s var(--ease);}
+.tab:hover{color:var(--t1);border-color:var(--cbh);}
+.tab.active{background:var(--g);border-color:var(--g);color:#fff;}
+.port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;}
+.port-card{background:var(--card);border:1px solid var(--cb);border-radius:var(--r-lg);overflow:hidden;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s;perspective:800px;}
+.port-card:hover{border-color:var(--cbh);box-shadow:0 20px 50px rgba(0,0,0,0.35);}
+.port-card.hide{display:none;}
+.port-stage{aspect-ratio:16/11;background:linear-gradient(160deg,var(--bg3),var(--bg2));position:relative;display:flex;align-items:center;justify-content:center;padding:16px;overflow:hidden;}
+.port-meta{padding:18px 20px 22px;}
+.port-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;padding:3px 9px;border-radius:100px;margin-bottom:10px;}
+.port-tag.creator{background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.25);color:var(--gl);}
+.port-tag.amazon{background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);color:var(--azl);}
+.port-card h4{font-size:15px;font-weight:700;letter-spacing:-.2px;margin-bottom:5px;}
+.port-card p{font-size:12.5px;color:var(--t2);line-height:1.6;font-weight:300;}
+
+/* mockup: browser chrome */
+.m-browser{width:100%;height:100%;background:var(--bg2);border:1px solid var(--cb);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 12px 30px rgba(0,0,0,0.4);}
+.m-bar{height:22px;display:flex;align-items:center;gap:5px;padding:0 9px;background:rgba(255,255,255,0.03);border-bottom:1px solid rgba(255,255,255,0.05);flex-shrink:0;}
+.m-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,0.15);}
+.m-body{flex:1;padding:14px;display:flex;flex-direction:column;gap:8px;}
+.m-bar-fill{height:6px;border-radius:3px;background:rgba(255,255,255,0.08);}
+.m-bar-fill.g{background:linear-gradient(90deg,var(--g),var(--gl));}
+.m-bar-fill.az{background:linear-gradient(90deg,#1d4ed8,var(--az));}
+.m-block{border-radius:6px;background:rgba(255,255,255,0.05);}
+.m-chip{font-size:9px;font-weight:700;padding:2px 7px;border-radius:100px;background:rgba(22,163,74,0.15);color:var(--gl);width:fit-content;}
+
+/* mockup: phone chrome */
+.m-phone{width:118px;height:100%;max-height:220px;background:var(--bg2);border:3px solid #1a2620;border-radius:22px;overflow:hidden;position:relative;box-shadow:0 12px 30px rgba(0,0,0,0.4);}
+.m-phone::before{content:'';position:absolute;top:6px;left:50%;transform:translateX(-50%);width:34px;height:5px;border-radius:3px;background:#1a2620;z-index:2;}
+.m-phone-scr{position:absolute;inset:0;padding:16px 8px 8px;display:flex;flex-direction:column;gap:6px;}
+
+/* video preview */
+.m-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+.m-play-btn{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.92);display:flex;align-items:center;justify-content:center;transition:transform .25s var(--ease);}
+.port-card:hover .m-play-btn{transform:scale(1.08);}
+.m-play-btn::after{content:'';border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent var(--bg);margin-left:3px;}
+.m-dur{position:absolute;bottom:8px;right:8px;font-size:10px;font-weight:700;background:rgba(0,0,0,0.6);color:#fff;padding:2px 6px;border-radius:4px;}
+
+/* funnel diagram */
+.m-funnel{display:flex;flex-direction:column;align-items:center;gap:6px;width:100%;}
+.m-funnel-step{height:20px;border-radius:5px;background:linear-gradient(90deg,var(--g),var(--gl));display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:#052e10;letter-spacing:.3px;}
+
+/* workflow diagram */
+.m-flow{display:flex;align-items:center;gap:6px;width:100%;justify-content:center;flex-wrap:wrap;}
+.m-flow-node{width:52px;height:38px;border-radius:8px;background:rgba(255,255,255,0.05);border:1px solid var(--cb);display:flex;align-items:center;justify-content:center;font-size:8px;font-weight:700;color:var(--t2);text-align:center;padding:2px;}
+.m-flow-arrow{color:var(--t3);font-size:12px;}
+
+/* before/after slider */
+.m-ba{position:relative;width:100%;height:100%;border-radius:8px;overflow:hidden;}
+.m-ba-after,.m-ba-before{position:absolute;inset:0;display:flex;flex-direction:column;gap:6px;padding:12px;}
+.m-ba-before{background:var(--bg2);}
+.m-ba-after{background:linear-gradient(160deg,#0d1a12,var(--bg2));clip-path:inset(0 0 0 50%);}
+.m-ba-handle{position:absolute;top:0;bottom:0;left:50%;width:2px;background:var(--gl);box-shadow:0 0 10px rgba(74,222,128,0.6);}
+.m-ba-handle::after{content:'⇔';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:26px;height:26px;background:var(--gl);color:#052e10;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;}
+.m-ba-lbl{position:absolute;top:8px;font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;border-radius:4px;background:rgba(0,0,0,0.5);color:#fff;}
+.m-ba-lbl.l{left:8px;}
+.m-ba-lbl.r{right:8px;}
+.ba-range{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0;}
+
+/* ebook stack */
+.m-ebooks{display:flex;gap:-10px;align-items:flex-end;transform:rotate(-3deg);}
+.m-ebook{width:64px;height:92px;border-radius:4px 8px 8px 4px;box-shadow:0 10px 24px rgba(0,0,0,0.4);display:flex;flex-direction:column;justify-content:flex-end;padding:8px 7px;margin-left:-18px;transition:transform .3s var(--ease);}
+.m-ebook:first-child{margin-left:0;}
+.port-card:hover .m-ebook{transform:translateY(-6px);}
+.m-ebook span{font-size:8px;font-weight:800;color:#fff;line-height:1.3;}
+.eb1{background:linear-gradient(160deg,#166534,#0a3d1f);}
+.eb2{background:linear-gradient(160deg,#1e3a8a,#0f1f4d);}
+.eb3{background:linear-gradient(160deg,#1c1c1c,#000);}
+
+/* ── PROGRAMS ── */
+.prog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media(max-width:760px){.prog-grid{grid-template-columns:1fr;}}
+.pc{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:28px;position:relative;overflow:hidden;transition:all .3s var(--ease);cursor:default;}
+.pc::after{content:'';position:absolute;inset:0;opacity:0;transition:.3s;background:radial-gradient(circle at 50% 0%,rgba(22,163,74,0.07),transparent 60%);}
+.pc:hover{border-color:var(--cbh);transform:translateY(-4px);box-shadow:0 20px 60px rgba(0,0,0,0.4);}
+.pc:hover::after{opacity:1;}
+.pc.feat{background:linear-gradient(145deg,rgba(22,163,74,0.08),rgba(74,222,128,0.02));border-color:rgba(22,163,74,0.25);}
+.pc-for{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3);margin-bottom:16px;}
+.pc h3{font-size:20px;font-weight:800;letter-spacing:-.4px;margin-bottom:8px;}
+.pc .outcome{font-size:13px;color:var(--gl);font-weight:600;margin-bottom:12px;}
+.pc p{font-size:13px;color:var(--t2);line-height:1.65;font-weight:300;}
+.pc-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:16px;}
+.pt{font-size:10px;font-weight:600;letter-spacing:.5px;padding:3px 8px;border-radius:100px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.18);color:var(--gl);}
+.pc-link{display:inline-flex;align-items:center;gap:5px;margin-top:18px;font-size:13px;font-weight:600;color:var(--g);text-decoration:none;transition:all .2s var(--ease);}
+.pc-link:hover{color:#fff;gap:9px;}
+
+/* ── PROCESS ── */
+.proc-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+@media(max-width:700px){.proc-grid{grid-template-columns:1fr;gap:32px;}}
+.steps{display:flex;flex-direction:column;}
+.step{display:grid;grid-template-columns:40px 1fr;gap:16px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,0.05);align-items:start;transition:.2s;}
+.step:last-child{border:none;}
+.step:hover .sn{border-color:rgba(22,163,74,0.5);background:rgba(22,163,74,0.15);box-shadow:0 0 14px rgba(22,163,74,0.25);}
+.sn{width:36px;height:36px;border-radius:50%;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--gl);flex-shrink:0;transition:all .25s var(--ease);}
+.step h4{font-size:15px;font-weight:700;margin-bottom:4px;letter-spacing:-.2px;}
+.step p{font-size:13px;color:var(--t2);line-height:1.6;font-weight:300;}
+.step p strong{color:var(--t1);font-weight:600;}
+
+/* ── FOUNDERS ── */
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media(max-width:680px){.founders-grid{grid-template-columns:1fr;}}
+.founder{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:26px;transition:.25s var(--ease);}
+.founder:hover{border-color:var(--cbh);}
+.f-av{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:900;color:#fff;margin-bottom:14px;}
+.f1{background:linear-gradient(135deg,#16a34a,#14532d);}
+.f2{background:linear-gradient(135deg,#1c1c1c,#2a2a2a);border:1px solid rgba(255,255,255,0.1);}
+.founder h4{font-size:16px;font-weight:700;letter-spacing:-.3px;margin-bottom:3px;}
+.founder .role{font-size:12px;color:var(--t3);margin-bottom:10px;}
+.founder p{font-size:13px;color:var(--t2);line-height:1.65;font-weight:300;}
+
+/* ── OBJECTIONS ── */
+.obj-grid{display:flex;flex-direction:column;gap:0;max-width:740px;margin:0 auto;}
+.oi{border-bottom:1px solid rgba(255,255,255,0.06);}
+.oq{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:19px 0;cursor:pointer;font-size:15px;font-weight:500;letter-spacing:-.2px;transition:color .15s;background:none;border:none;color:inherit;width:100%;text-align:left;}
+.oq:hover{color:var(--gl);}
+.oi-ic{font-size:17px;color:var(--t3);flex-shrink:0;transition:.25s var(--ease);}
+.oi.open .oi-ic{transform:rotate(45deg);color:var(--g);}
+.oa{display:grid;grid-template-rows:0fr;transition:grid-template-rows .35s var(--ease);}
+.oa-in{overflow:hidden;padding-bottom:18px;font-size:14px;color:var(--t2);line-height:1.75;font-weight:300;min-height:0;}
+.oa-in strong{color:var(--t1);font-weight:600;}
+.oi.open .oa{grid-template-rows:1fr;}
+@media(prefers-reduced-motion:reduce){.oa{transition:none;}}
+
+/* ── CTA ── */
+.cta-box{background:linear-gradient(135deg,rgba(22,163,74,0.08),rgba(74,222,128,0.02));border:1px solid rgba(22,163,74,0.2);border-radius:20px;padding:64px 36px;text-align:center;position:relative;overflow:hidden;}
+.cta-glow{position:absolute;width:600px;height:200px;border-radius:50%;background:rgba(22,163,74,0.06);top:-60px;left:50%;transform:translateX(-50%);filter:blur(60px);pointer-events:none;}
+.cta-box>*{position:relative;z-index:1;}
+.cta-box h2{max-width:560px;margin:0 auto 14px;}
+.cta-box p{font-size:15px;color:var(--t2);max-width:440px;margin:0 auto 28px;font-weight:300;line-height:1.65;}
+.cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.cta-note{font-size:11px;color:var(--t3);margin-top:16px;letter-spacing:.3px;}
+
+/* ── FOOTER ── */
+footer{border-top:1px solid rgba(255,255,255,0.05);padding:30px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+footer p{font-size:12px;color:var(--t3);}
+.fl{display:flex;gap:20px;}
+.fl a{font-size:12px;color:var(--t3);text-decoration:none;transition:color .15s;}
+.fl a:hover{color:var(--t1);}
+
+@media(max-width:768px){
+  nav{padding:0 16px;}
+  .nav-links{display:none;}
+  .nav-r .nb-g{display:none;}
+  .nb-s{font-size:12px;padding:8px 14px;}
+  section{padding:60px 20px;}
+  .hero{padding:clamp(64px,10vh,76px) 20px 36px;}
+  .hero-btns .btn-sec{order:2;}
+  footer{padding:22px 20px;flex-direction:column;text-align:center;}
+  .prog-grid,.founders-grid{gap:14px;}
+  .btn-main,.btn-sec{width:100%;justify-content:center;}
+  .hero-btns{flex-direction:column;width:100%;}
+  .cta-btns{flex-direction:column;width:100%;}
+  .cta-btns .btn-main,.cta-btns .btn-sec{width:100%;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="logo">
+    <div class="lm">⚡</div>
+    <div><div class="ln">LaunchYourProduct</div><div class="ls">Growth Operator</div></div>
+  </a>
+  <div class="nav-links">
+    <a href="#how">Wie es funktioniert</a>
+    <a href="#proof">Beweise</a>
+    <a href="#programs">Programme</a>
+    <a href="#founders">Über uns</a>
+  </div>
+  <div class="nav-r">
+    <a href="#" class="nb nb-g">Login</a>
+    <a href="#cta" class="nb nb-s">Audit anfragen →</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="badge"><span class="badge-dot"></span> Done For You · KI-Tempo · Kuratierte Qualität</div>
+  <h1>Du hast eine Audience.<br>Wir bauen das <span class="g">Produkt, das verkauft.</span></h1>
+  <p class="hero-sub">Komplett gebaut in 3 Wochen. Ohne dass du eine Stunde Produktion übernimmst.</p>
+  <div class="hero-btns">
+    <a href="#cta" class="btn-main">Kostenloses Audit sichern →</a>
+    <a href="#proof" class="btn-sec">Unsere Arbeit ansehen ↓</a>
+  </div>
+  <div class="proof-bar ru">
+    <div class="pb-item"><div class="pb-num" data-count="500" data-suffix="+">0</div><div class="pb-lbl">Creator &amp; Seller</div></div>
+    <div class="pb-div"></div>
+    <div class="pb-item"><div class="pb-num" data-count="200" data-prefix="€" data-suffix="M+">€0</div><div class="pb-lbl">Umsatz generiert</div></div>
+    <div class="pb-div"></div>
+    <div class="pb-item"><div class="pb-num" data-count="3" data-suffix=" Wo.">0</div><div class="pb-lbl">Ø bis zum Launch</div></div>
+    <div class="pb-div"></div>
+    <div class="pb-item"><div class="pb-num" data-count="48" data-suffix="h">0</div><div class="pb-lbl">Erste Video-Lieferung</div></div>
+  </div>
+</section>
+
+<div class="ticker">
+  <div class="t-track">
+    <div class="t-item"><strong>Done For You</strong> Produktaufbau</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Claude AI</strong> Script-Produktion</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Higgsfield</strong> Motion Design Videos</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Amazon Seller</strong> UGC &amp; Showcase Ads</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>3 Wochen</strong> Launch-Ready</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Done For You</strong> Produktaufbau</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Claude AI</strong> Script-Produktion</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Higgsfield</strong> Motion Design Videos</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>Amazon Seller</strong> UGC &amp; Showcase Ads</div><div class="t-sep">·</div>
+    <div class="t-item"><strong>3 Wochen</strong> Launch-Ready</div><div class="t-sep">·</div>
+  </div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="ru" style="text-align:center;margin-bottom:44px;">
+      <span class="sl">Das Problem</span>
+      <h2>Warum die meisten Creator<br>nie <span class="g">wirklich monetarisieren</span></h2>
+    </div>
+    <div class="pain-grid ru">
+      <div class="pain-card">
+        <div class="pain-icon">⏳</div>
+        <h3>Keine Zeit für Produktion</h3>
+        <p>Zwischen Content und Community bleibt keine Zeit, ein Produkt zu bauen.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🌀</div>
+        <h3>Zu viele Baustellen</h3>
+        <p>Kurs-Plattform, Funnel, Zahlungen, Marketing – der Aufwand wirkt größer als der Gewinn.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">📉</div>
+        <h3>Videos ohne Wirkung</h3>
+        <p>Deine Amazon-Listings haben Standardbilder. Die Konkurrenz hat Motion Design – und mehr Klicks.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-icon">🤷</div>
+        <h3>Falscher Fokus</h3>
+        <p>Du investierst Stunden in Produktion statt in deine Audience. Produktion ist unser Job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
+  <div class="wrap">
+    <div class="ru" style="text-align:center;margin-bottom:52px;">
+      <span class="sl">Deine Transformation</span>
+      <h2>Von "Ich sollte mal…" zu<br><span class="g">"Mein Produkt läuft."</span></h2>
+    </div>
+    <div class="journey ru">
+      <div class="j-step">
+        <div class="j-dot">📞</div>
+        <h4>Strategie-Call</h4>
+        <p>30 Min. Wir zeigen den schnellsten Weg zu deinem Produkt.</p>
+      </div>
+      <div class="j-step">
+        <div class="j-dot">⚙️</div>
+        <h4>Wir bauen</h4>
+        <p>Produkt, Funnel, Scripts, Videos – vollständig produziert.</p>
+      </div>
+      <div class="j-step">
+        <div class="j-dot">🚀</div>
+        <h4>Launch</h4>
+        <p>In 2–3 Wochen ist dein Produkt live und verkaufsbereit.</p>
+      </div>
+      <div class="j-step">
+        <div class="j-dot">📈</div>
+        <h4>Skalierung</h4>
+        <p>Wir optimieren laufend – du fokussierst dich auf deine Audience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="wrap">
+    <div class="ru" style="margin-bottom:40px;">
+      <span class="sl">Echte Ergebnisse</span>
+      <h2>Die Zahlen<br><span class="g">lügen nicht.</span></h2>
+      <p class="lead">Was passiert, wenn jemand anderes die Execution übernimmt.</p>
+    </div>
+    <div class="results-grid ru">
+      <div class="chart-card">
+        <div class="chart-top">
+          <div>
+            <div style="font-size:11px;color:var(--t3);letter-spacing:1px;text-transform:uppercase;">Monatlicher Umsatz</div>
+            <div id="cval" style="font-size:26px;font-weight:800;letter-spacing:-1px;margin-top:4px;">€0</div>
+          </div>
+          <div style="text-align:right;">
+            <div id="cgrow" style="font-size:13px;font-weight:700;color:var(--g);">↑ 0%</div>
+            <div style="font-size:11px;color:var(--t3);margin-top:2px;">nach LYP Launch</div>
+          </div>
+        </div>
+        <canvas id="chart" height="130" style="width:100%;display:block;"></canvas>
+        <div style="display:flex;justify-content:space-between;margin-top:8px;">
+          <span style="font-size:10px;color:var(--t3);">Vor LYP</span>
+          <span style="font-size:10px;color:var(--gl);font-weight:700;">Nach LYP →</span>
+        </div>
+      </div>
+      <div class="stat-stack">
+        <div class="s-card"><div class="s-num">€200M+</div><div class="s-lbl">Umsatz für Kunden generiert</div><div class="s-g">↑ Durch unsere Systeme</div></div>
+        <div class="s-card"><div class="s-num">3 Wo.</div><div class="s-lbl">Ø Launch-Zeit</div><div class="s-g">↑ KI-beschleunigt</div></div>
+        <div class="s-card"><div class="s-num">500+</div><div class="s-lbl">Creator &amp; Seller skaliert</div><div class="s-g">↑ Und wächst</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="proof">
+  <div class="wrap">
+    <div class="ru" style="text-align:center;margin-bottom:32px;">
+      <span class="sl">Kompetenz statt Behauptungen</span>
+      <h2>Wir sind neu.<br><span class="g">Unsere Arbeit spricht trotzdem.</span></h2>
+      <p class="lead" style="margin:0 auto;">Statt austauschbarer Testimonials zeigen wir dir, was wir tatsächlich bauen – Kategorie für Kategorie.</p>
+    </div>
+
+    <div class="port-tabs ru" role="tablist" aria-label="Portfolio filtern">
+      <button class="tab active" data-filter="all">Alle</button>
+      <button class="tab" data-filter="creator">Für Creator</button>
+      <button class="tab" data-filter="amazon">Für Amazon Seller</button>
+    </div>
+
+    <div class="port-grid ru">
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-browser">
+            <div class="m-bar"><div class="m-dot"></div><div class="m-dot"></div><div class="m-dot"></div></div>
+            <div class="m-body">
+              <div class="m-chip">Live</div>
+              <div class="m-bar-fill g" style="width:70%;"></div>
+              <div class="m-bar-fill" style="width:92%;height:34px;border-radius:8px;"></div>
+              <div class="m-bar-fill g" style="width:44%;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">Recent Project</span>
+          <h4>Kurs-Launch für Fitness-Creator</h4>
+          <p>Komplette Sales Page inkl. Funnel, in 19 Tagen von Call bis Launch.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage" style="gap:14px;">
+          <div class="m-phone">
+            <div class="m-phone-scr">
+              <div class="m-bar-fill g" style="width:60%;"></div>
+              <div class="m-block" style="height:44px;"></div>
+              <div class="m-bar-fill" style="width:80%;"></div>
+              <div class="m-bar-fill" style="width:50%;"></div>
+              <div class="m-block" style="height:28px;background:rgba(22,163,74,0.18);"></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">Product Mockup</span>
+          <h4>Mobile Kurs-App Vorschau</h4>
+          <p>Wie dein Produkt auf dem Handy deiner Kundschaft aussieht, bevor wir eine Zeile Content bauen.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="amazon">
+        <div class="port-stage" style="background:linear-gradient(160deg,#0d1a12,var(--bg2));">
+          <div class="m-play"><div class="m-play-btn"></div></div>
+          <div class="m-dur">0:15</div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag amazon">Amazon Motion Video</span>
+          <h4>Showcase-Ad · Küche &amp; Haushalt</h4>
+          <p>KI-produzierte Produktvideos für Sponsored Brands, geliefert in 48h.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="amazon">
+        <div class="port-stage" style="padding:0;">
+          <div class="m-ba">
+            <div class="m-ba-before"><div class="m-bar-fill" style="width:50%;"></div><div class="m-block" style="height:32px;"></div><div class="m-bar-fill" style="width:70%;"></div><span class="m-ba-lbl l">Vorher</span></div>
+            <div class="m-ba-after"><div class="m-bar-fill az" style="width:55%;"></div><div class="m-block" style="height:32px;background:rgba(59,130,246,0.15);"></div><div class="m-bar-fill az" style="width:85%;"></div><span class="m-ba-lbl r">Nachher</span></div>
+            <div class="m-ba-handle"></div>
+            <input type="range" class="ba-range" min="0" max="100" value="50" aria-label="Vorher/Nachher Vergleich verschieben">
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag amazon">Before &amp; After</span>
+          <h4>Listing-Transformation</h4>
+          <p>Zieh den Regler: Standardbilder gegen ein kuratiertes Motion-Listing.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-flow">
+            <div class="m-flow-node">Dein Input</div><div class="m-flow-arrow">→</div>
+            <div class="m-flow-node">Claude<br>Script</div><div class="m-flow-arrow">→</div>
+            <div class="m-flow-node">Higgsfield<br>Video</div><div class="m-flow-arrow">→</div>
+            <div class="m-flow-node" style="border-color:rgba(22,163,74,0.4);color:var(--gl);">Fertiges<br>Produkt</div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">AI Workflow</span>
+          <h4>Von Idee zu Launch-Asset</h4>
+          <p>Unser KI-Produktionspfad – jedes Ergebnis von uns kuratiert und finalisiert.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-browser">
+            <div class="m-bar"><div class="m-dot"></div><div class="m-dot"></div><div class="m-dot"></div></div>
+            <div class="m-body">
+              <div class="m-bar-fill" style="width:40%;"></div>
+              <div class="m-bar-fill g" style="width:96%;height:10px;"></div>
+              <div class="m-bar-fill" style="width:30%;"></div>
+              <div class="m-bar-fill g" style="width:64%;height:10px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">Monetarisierungs-Audit</span>
+          <h4>Beispiel: Potenzial-Analyse</h4>
+          <p>So sieht der Audit-Report aus, den du im kostenlosen Call bekommst.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-funnel" style="width:70%;">
+            <div class="m-funnel-step" style="width:100%;">AWARENESS</div>
+            <div class="m-funnel-step" style="width:76%;background:linear-gradient(90deg,#15803d,var(--g));">OPT-IN</div>
+            <div class="m-funnel-step" style="width:52%;">ANGEBOT</div>
+            <div class="m-funnel-step" style="width:30%;background:linear-gradient(90deg,var(--gd),var(--g));">UPSELL</div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">Funnel Design</span>
+          <h4>4-stufiger Verkaufs-Funnel</h4>
+          <p>Von der ersten Anzeige bis zum Upsell – als System gebaut, nicht als Einzelseite.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-browser">
+            <div class="m-bar"><div class="m-dot"></div><div class="m-dot"></div><div class="m-dot"></div></div>
+            <div class="m-body" style="flex-direction:row;gap:8px;">
+              <div style="width:30%;display:flex;flex-direction:column;gap:6px;">
+                <div class="m-block" style="height:8px;"></div>
+                <div class="m-block" style="height:8px;background:rgba(22,163,74,0.2);"></div>
+                <div class="m-block" style="height:8px;"></div>
+              </div>
+              <div style="flex:1;display:flex;flex-direction:column;gap:6px;">
+                <div class="m-block" style="height:34px;"></div>
+                <div class="m-bar-fill g" style="width:80%;"></div>
+                <div class="m-bar-fill" style="width:55%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">Course Dashboard</span>
+          <h4>Kurs-Plattform mit Fortschritt</h4>
+          <p>Sidebar-Navigation, Modul-Übersicht, Fortschrittsbalken – deine Kursumgebung.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-ebooks">
+            <div class="m-ebook eb1"><span>DIE FUNNEL<br>FORMEL</span></div>
+            <div class="m-ebook eb2"><span>CONTENT<br>ENGINE</span></div>
+            <div class="m-ebook eb3"><span>SKALIEREN<br>2026</span></div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">E-Book Beispiel</span>
+          <h4>Drei Cover-Konzepte</h4>
+          <p>Gebrandete E-Book-Cover, die wie ein echtes Produkt aussehen – nicht wie ein PDF.</p>
+        </div>
+      </div>
+
+      <div class="port-card" data-cat="creator">
+        <div class="port-stage">
+          <div class="m-browser">
+            <div class="m-bar"><div class="m-dot"></div><div class="m-dot"></div><div class="m-dot"></div></div>
+            <div class="m-body" style="align-items:center;">
+              <div class="m-bar-fill g" style="width:60%;height:14px;"></div>
+              <div class="m-bar-fill" style="width:80%;"></div>
+              <div class="m-block" style="width:50%;height:16px;background:rgba(22,163,74,0.25);border-radius:100px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="port-meta">
+          <span class="port-tag creator">Sales Page Beispiel</span>
+          <h4>Conversion-optimierte Sales Page</h4>
+          <p>Klarer Hook, ein CTA, keine Ablenkung – gebaut nach den Prinzipien dieser Seite.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="programs" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
+  <div class="wrap">
+    <div class="ru" style="text-align:center;margin-bottom:44px;">
+      <span class="sl">Programme</span>
+      <h2>Wähle deinen<br><span class="g">Wachstumspfad</span></h2>
+      <p class="lead" style="max-width:480px;margin:0 auto 0;">Drei fokussierte Programme – je nachdem, wo du stehst.</p>
+    </div>
+    <div class="prog-grid ru">
+      <div class="pc">
+        <div class="pc-for">Für Content Creator</div>
+        <h3>Monetise</h3>
+        <div class="outcome">→ Dein erstes Produkt in 3 Wochen</div>
+        <p>Du hast die Audience. Wir bauen das Produkt – E-Book, Kurs oder Video-Programm, inklusive Funnel.</p>
+        <div class="pc-tags"><span class="pt">E-Books</span><span class="pt">Kurse</span><span class="pt">Sales Funnel</span></div>
+        <a href="#cta" class="pc-link">Für Creator starten →</a>
+      </div>
+      <div class="pc feat">
+        <div class="pc-for">Für skalierungsbereite Founders</div>
+        <h3>UpLevel</h3>
+        <div class="outcome">→ Vom Produkt zu systematischem Wachstum</div>
+        <p>Du hast ein Produkt, willst schneller skalieren. Wir bauen KI-Content-Pipelines und übernehmen die Growth-Execution.</p>
+        <div class="pc-tags"><span class="pt">Growth Ops</span><span class="pt">KI-Pipeline</span><span class="pt">Scaling</span></div>
+        <a href="#cta" class="pc-link">Skalierung anfragen →</a>
+      </div>
+      <div class="pc">
+        <div class="pc-for">Für Amazon Seller</div>
+        <h3>Motion Ads</h3>
+        <div class="outcome">→ Videos, geliefert in 48h</div>
+        <p>Professionelle Motion Design Videos ohne Kamera-Shooting. UGC-Hooks und Showcase-Ads für Sponsored Brands.</p>
+        <div class="pc-tags"><span class="pt">Amazon</span><span class="pt">TikTok</span><span class="pt">48h Lieferung</span></div>
+        <a href="#cta" class="pc-link">Video-Paket sichern →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how2">
+  <div class="wrap">
+    <div class="proc-grid">
+      <div class="ru">
+        <span class="sl">Wie es funktioniert</span>
+        <h2>Einfach erklärt.<br><span class="g">Schnell umgesetzt.</span></h2>
+        <p class="lead">Kein langer Onboarding-Prozess. Wir fangen sofort an.</p>
+        <a href="#cta" class="btn-main" style="font-size:14px;padding:12px 26px;">Kostenlos starten →</a>
+      </div>
+      <div class="steps ru">
+        <div class="step"><div class="sn">01</div><div><h4>Kostenloses Audit</h4><p>Wir zeigen dir, <strong>welches Produkt am meisten Sinn macht</strong>.</p></div></div>
+        <div class="step"><div class="sn">02</div><div><h4>Strategie &amp; Aufbau</h4><p>Konzept, Pricing, Positionierung – <strong>du gibst Feedback, wir bauen</strong>.</p></div></div>
+        <div class="step"><div class="sn">03</div><div><h4>KI-Produktion</h4><p>Claude AI + Higgsfield produzieren Scripts und Videos <strong>im Bruchteil der Zeit</strong>.</p></div></div>
+        <div class="step"><div class="sn">04</div><div><h4>Launch &amp; Optimierung</h4><p>Dein Produkt geht live. Wir messen und skalieren <strong>kontinuierlich</strong>.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="founders" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
+  <div class="wrap">
+    <div class="ru" style="text-align:center;margin-bottom:44px;">
+      <span class="sl">Warum uns vertrauen</span>
+      <h2>Gebaut von Gründern,<br><span class="g">die es selbst getan haben.</span></h2>
+    </div>
+    <div class="founders-grid ru">
+      <div class="founder">
+        <div class="f-av f1">C</div>
+        <h4>Cedric</h4>
+        <div class="role">Co-Founder · Strategie &amp; Produktentwicklung</div>
+        <p>Hat digitale Produkte selbst aufgebaut, bevor er anderen dabei half. Fokus: die schnellste Route von Idee zu verkaufbarem Produkt.</p>
+      </div>
+      <div class="founder">
+        <div class="f-av f2">T</div>
+        <h4>Tobi</h4>
+        <div class="role">Co-Founder · Growth &amp; Content Production</div>
+        <p>Verbindet Growth-Systeme mit KI-Produktion. Baut Content-Pipelines und Motion-Videos, die Amazon Seller abheben lassen.</p>
+      </div>
+    </div>
+    <div class="ru" style="margin-top:18px;background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:26px;max-width:640px;margin-left:auto;margin-right:auto;">
+      <p style="font-size:14px;color:var(--t2);line-height:1.75;font-weight:300;text-align:center;"><strong style="color:var(--t1);">Wir sind 21, haben BWL studiert</strong> und LYP gegründet, weil Creators Potenzial liegen lassen – nicht aus Faulheit, sondern weil ihnen die Systeme fehlen. <span style="color:var(--gl);">Wir bauen diese Systeme.</span></p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:44px;" class="ru">
+      <span class="sl">Häufige Fragen</span>
+      <h2>Deine Fragen.<br><span class="g">Direkt beantwortet.</span></h2>
+    </div>
+    <div class="obj-grid ru">
+      <div class="oi">
+        <button class="oq" onclick="tog(this)" aria-expanded="false"><span>Brauche ich eine große Audience?</span><span class="oi-ic" aria-hidden="true">+</span></button>
+        <div class="oa"><div class="oa-in">Nein. <strong>Größe ist kein Kriterium.</strong> Entscheidend ist, ob deine Audience engaged ist. Wir haben Creator mit 5.000 Followern erfolgreicher gemacht als solche mit 200.000.</div></div>
+      </div>
+      <div class="oi">
+        <button class="oq" onclick="tog(this)" aria-expanded="false"><span>Wie viel Zeit muss ich investieren?</span><span class="oi-ic" aria-hidden="true">+</span></button>
+        <div class="oa"><div class="oa-in"><strong>Sehr wenig.</strong> Du lieferst Wissen und Feedback, ca. 2–3 Stunden pro Woche. Den Rest übernehmen wir.</div></div>
+      </div>
+      <div class="oi">
+        <button class="oq" onclick="tog(this)" aria-expanded="false"><span>Ich habe schon ein Produkt – kann ich trotzdem starten?</span><span class="oi-ic" aria-hidden="true">+</span></button>
+        <div class="oa"><div class="oa-in">Ja. Unser <strong>UpLevel-Programm</strong> skaliert, was du bereits hast: besserer Funnel, KI-Pipelines, Growth-Systeme.</div></div>
+      </div>
+      <div class="oi">
+        <button class="oq" onclick="tog(this)" aria-expanded="false"><span>Was bringt ein Motion-Video für mein Amazon Listing?</span><span class="oi-ic" aria-hidden="true">+</span></button>
+        <div class="oa"><div class="oa-in">Listings mit Video haben bis zu <strong>3x höhere Conversion Rates</strong>. Geliefert in 48h, ohne Kamera-Shooting.</div></div>
+      </div>
+      <div class="oi">
+        <button class="oq" onclick="tog(this)" aria-expanded="false"><span>Leidet die Qualität durch KI?</span><span class="oi-ic" aria-hidden="true">+</span></button>
+        <div class="oa"><div class="oa-in">KI ist unser Beschleuniger, nicht unser Ersatz. <strong>Jedes Ergebnis wird von uns kuratiert und finalisiert.</strong> Tage statt Monate, gleiches Ergebnis.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-box ru">
+      <div class="cta-glow"></div>
+      <span class="sl" style="display:block;margin-bottom:14px;">Nächster Schritt</span>
+      <h2>Dein kostenloses<br><span class="g">Monetisierungs-Audit</span></h2>
+      <p>30 Minuten, kein Pitch. Wir zeigen dir den schnellsten Weg zu deinem nächsten Produkt.</p>
+      <div class="cta-btns">
+        <a href="mailto:hello@launchyourproduct.de" class="btn-main">Jetzt Audit buchen →</a>
+        <a href="https://www.instagram.com/" target="_blank" class="btn-sec">Instagram</a>
+      </div>
+      <div class="cta-note">KEINE VERPFLICHTUNG · KOSTENLOS · 30 MINUTEN</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="logo">
+    <div class="lm">⚡</div>
+    <div><div class="ln">LaunchYourProduct</div><div class="ls">© 2026 LaunchYourProduct.de</div></div>
+  </div>
+  <div class="fl">
+    <a href="https://www.launchyourproduct.de/imprint/">Impressum</a>
+    <a href="https://www.launchyourproduct.de/privacy-policy/">Datenschutz</a>
+    <a href="https://www.launchyourproduct.de/withdrawal/">Widerruf</a>
+  </div>
+</footer>
+
+<script>
+function tog(el){
+  const i=el.parentElement,o=i.classList.contains('open');
+  document.querySelectorAll('.oi').forEach(x=>{x.classList.remove('open');x.querySelector('.oq').setAttribute('aria-expanded','false');});
+  if(!o){i.classList.add('open');el.setAttribute('aria-expanded','true');}
+}
+
+const reduceMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+const revealTargets=document.querySelectorAll('.ru');
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}});},{threshold:0.08});
+revealTargets.forEach(el=>obs.observe(el));
+window.addEventListener('load',()=>setTimeout(()=>revealTargets.forEach(el=>el.classList.add('vis')),2500));
+
+window.addEventListener('scroll',()=>{
+  document.querySelector('nav').style.background=window.scrollY>50?'rgba(7,9,10,0.97)':'rgba(7,9,10,0.82)';
+});
+
+function animateCount(el){
+  const target=parseFloat(el.dataset.count),prefix=el.dataset.prefix||'',suffix=el.dataset.suffix||'';
+  if(reduceMotion){el.textContent=prefix+target+suffix;return;}
+  const dur=1400;let st=null;
+  function step(ts){
+    if(!st)st=ts;
+    const p=Math.min((ts-st)/dur,1),e=1-Math.pow(1-p,3);
+    el.textContent=prefix+Math.round(target*e)+suffix;
+    if(p<1)requestAnimationFrame(step);
+  }
+  requestAnimationFrame(step);
+}
+const countEls=document.querySelectorAll('[data-count]');
+const cObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){animateCount(x.target);cObs.unobserve(x.target);}});},{threshold:.5});
+countEls.forEach(el=>cObs.observe(el));
+
+document.querySelectorAll('.ba-range').forEach(range=>{
+  const wrap=range.closest('.m-ba');
+  const after=wrap.querySelector('.m-ba-after');
+  const handle=wrap.querySelector('.m-ba-handle');
+  range.addEventListener('input',()=>{
+    const v=range.value;
+    after.style.clipPath=`inset(0 0 0 ${v}%)`;
+    handle.style.left=v+'%';
+  });
+});
+
+const tabs=document.querySelectorAll('.tab');
+const cards=document.querySelectorAll('.port-card');
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    const f=tab.dataset.filter;
+    cards.forEach(c=>{
+      c.classList.toggle('hide',f!=='all'&&c.dataset.cat!==f);
+    });
+  });
+});
+
+if(!reduceMotion && window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+  document.querySelectorAll('.port-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=(e.clientX-r.left)/r.width-0.5,y=(e.clientY-r.top)/r.height-0.5;
+      card.style.transform=`perspective(800px) rotateY(${x*4}deg) rotateX(${-y*4}deg) translateY(-2px)`;
+    });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';});
+  });
+}
+
+(function(){
+  const canvas=document.getElementById('chart');
+  if(!canvas)return;
+  const ctx=canvas.getContext('2d');
+  const dpr=window.devicePixelRatio||1;
+  const data=[4,5,4,6,8,7,10,14,20,32,52,78,110];
+  let prog=0;
+  const vEl=document.getElementById('cval'),gEl=document.getElementById('cgrow');
+
+  function resize(){
+    const w=canvas.parentElement.clientWidth-44;
+    canvas.width=w*dpr;canvas.height=130*dpr;
+    canvas.style.width=w+'px';canvas.style.height='130px';
+    ctx.scale(dpr,dpr);return{w,h:130};
+  }
+
+  function draw(p){
+    const{w,h}=resize();ctx.clearRect(0,0,w,h);
+    const n=Math.max(2,Math.floor(p*data.length));
+    const d=data.slice(0,n);
+    const mx=120,pad={l:6,r:6,t:10,b:6};
+    const aw=w-pad.l-pad.r,ah=h-pad.t-pad.b;
+    const xS=aw/(data.length-1);
+    const pts=d.map((v,i)=>({x:pad.l+i*xS,y:pad.t+ah*(1-v/mx)}));
+    if(pts.length<2)return;
+
+    ctx.strokeStyle='rgba(255,255,255,0.04)';ctx.lineWidth=1;
+    [.25,.5,.75,1].forEach(f=>{const y=pad.t+ah*(1-f);ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();});
+
+    const gr=ctx.createLinearGradient(0,pad.t,0,h);
+    gr.addColorStop(0,'rgba(22,163,74,0.3)');gr.addColorStop(1,'rgba(22,163,74,0)');
+    ctx.beginPath();ctx.moveTo(pts[0].x,pad.t+ah);pts.forEach(pt=>ctx.lineTo(pt.x,pt.y));
+    ctx.lineTo(pts[pts.length-1].x,pad.t+ah);ctx.closePath();ctx.fillStyle=gr;ctx.fill();
+
+    ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);pts.forEach(pt=>ctx.lineTo(pt.x,pt.y));
+    ctx.strokeStyle='#16a34a';ctx.lineWidth=2.5;ctx.lineJoin='round';ctx.stroke();
+
+    ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);pts.forEach(pt=>ctx.lineTo(pt.x,pt.y));
+    ctx.strokeStyle='rgba(74,222,128,0.25)';ctx.lineWidth=7;ctx.filter='blur(5px)';ctx.stroke();ctx.filter='none';
+
+    const L=pts[pts.length-1];
+    ctx.beginPath();ctx.arc(L.x,L.y,5,0,Math.PI*2);ctx.fillStyle='#4ade80';ctx.fill();
+    ctx.beginPath();ctx.arc(L.x,L.y,10,0,Math.PI*2);ctx.fillStyle='rgba(74,222,128,0.2)';ctx.fill();
+
+    const cv=d[d.length-1];
+    vEl.textContent='€'+Math.round(cv*1818).toLocaleString('de-DE');
+    gEl.textContent='↑ '+Math.round((cv/data[0]-1)*100)+'%';
+  }
+
+  let st=null;
+  function animate(ts){if(!st)st=ts;prog=Math.min((ts-st)/2400,1);const e=1-Math.pow(1-prog,3);draw(e);if(prog<1)requestAnimationFrame(animate);}
+  const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){if(reduceMotion){draw(1);}else{requestAnimationFrame(animate);}io.disconnect();}},{threshold:.3});
+  io.observe(canvas);
+  window.addEventListener('resize',()=>draw(reduceMotion?1:1-Math.pow(1-prog,3)));
+})();
+</script>
+</body>
+</html>
