@@ -203,14 +203,15 @@ h2 .g{color:var(--gl);}
 /* ── CONTENT WRAPPER (hebt sich beim Scrollen ueber den Footer) ── */
 .content{position:relative;z-index:10;background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.1);border-bottom-left-radius:32px;border-bottom-right-radius:32px;box-shadow:0 40px 90px rgba(0,0,0,0.55);margin-bottom:460px;overflow:hidden;}
 
-/* ── ROTER FADEN (Scroll-Thread durch alle Folien) ── */
-.page-thread{position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;z-index:0;pointer-events:none;
-  background:linear-gradient(180deg,transparent,rgba(255,255,255,0.045) 5%,rgba(255,255,255,0.045) 95%,transparent);}
-.thread-fill{position:absolute;top:0;left:0;width:100%;height:0;will-change:height;
-  background:linear-gradient(180deg,rgba(22,163,74,0),rgba(22,163,74,0.45) 12%,var(--g) 78%,var(--gl));
-  box-shadow:0 0 14px rgba(22,163,74,0.55);}
-.thread-fill::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--gl);
-  box-shadow:0 0 18px 5px rgba(74,222,128,0.6),0 0 46px 10px rgba(22,163,74,0.35);}
+/* ── ROTER FADEN — geschwungene Connector-Boegen zwischen den Folien ── */
+.link-thread{position:relative;z-index:1;width:100%;max-width:520px;height:130px;margin:-34px auto -34px;pointer-events:none;}
+.link-thread svg{width:100%;height:100%;display:block;overflow:visible;}
+.link-thread path{fill:none;stroke:var(--gl);stroke-width:2.4;stroke-linecap:round;
+  filter:drop-shadow(0 0 5px rgba(74,222,128,.75)) drop-shadow(0 0 14px rgba(22,163,74,.45));}
+.link-thread .tip{fill:#eafff0;opacity:0;transition:opacity .5s ease .9s;
+  filter:drop-shadow(0 0 6px rgba(74,222,128,.95)) drop-shadow(0 0 16px rgba(22,163,74,.6));}
+.link-thread.drawn .tip{opacity:1;animation:tipPulse 2s ease-in-out infinite 1.3s;}
+@keyframes tipPulse{0%,100%{opacity:1}50%{opacity:.45}}
 
 /* ── CINEMATIC FOOTER (wird beim Scrollen enthuellt) ── */
 .cine-footer{position:fixed;left:0;bottom:0;width:100%;height:460px;z-index:0;overflow:hidden;
@@ -264,9 +265,8 @@ h2 .g{color:var(--gl);}
   </div>
 </nav>
 
-<!-- CONTENT — der rote Faden laeuft hier zentral durch alle Folien -->
+<!-- CONTENT — der rote Faden webt zwischen den Folien -->
 <div class="content" id="content">
-  <div class="page-thread"><div class="thread-fill" id="threadFill"></div></div>
 
 <!-- HERO (interaktiv, 3D-Roboter folgt der Maus) -->
 <section class="hero" id="hero">
@@ -351,6 +351,9 @@ h2 .g{color:var(--gl);}
   </div>
 </section>
 
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+
 <!-- JOURNEY / HOW -->
 <section id="how" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
   <div class="wrap">
@@ -382,6 +385,9 @@ h2 .g{color:var(--gl);}
     </div>
   </div>
 </section>
+
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 240 66, 960 132, 600 190"/><circle class="tip" r="5"/></svg></div>
 
 <!-- RESULTS -->
 <section id="results">
@@ -462,6 +468,9 @@ h2 .g{color:var(--gl);}
   </div>
 </section>
 
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+
 <!-- PROGRAMS -->
 <section id="programs" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
   <div class="wrap">
@@ -499,6 +508,9 @@ h2 .g{color:var(--gl);}
   </div>
 </section>
 
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 240 66, 960 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+
 <!-- PROCESS -->
 <section id="how2">
   <div class="wrap">
@@ -518,6 +530,9 @@ h2 .g{color:var(--gl);}
     </div>
   </div>
 </section>
+
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
 
 <!-- FOUNDERS -->
 <section id="founders" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
@@ -545,6 +560,9 @@ h2 .g{color:var(--gl);}
     </div>
   </div>
 </section>
+
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 240 66, 960 132, 600 190"/><circle class="tip" r="5"/></svg></div>
 
 <!-- OBJECTIONS -->
 <section>
@@ -577,6 +595,9 @@ h2 .g{color:var(--gl);}
     </div>
   </div>
 </section>
+
+<!-- Faden-Connector -->
+<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
 
 <!-- CTA -->
 <section id="cta">
@@ -659,22 +680,31 @@ h2 .g{color:var(--gl);}
   if(sv&&ld){sv.addEventListener('load',()=>{ld.style.opacity='0';ld.style.transition='opacity .4s';setTimeout(()=>ld.remove(),400);});}
 })();
 
-// Roter Faden — waechst beim Scrollen mit, Kopf bleibt auf Bildschirmmitte
+// Roter Faden — geschwungene Connector-Boegen zeichnen sich beim Reinscrollen
 (function(){
-  const content=document.getElementById('content'),fill=document.getElementById('threadFill');
-  if(!content||!fill)return;
-  let ticking=false;
-  function upd(){
-    const cH=content.offsetHeight;
-    const cTop=content.getBoundingClientRect().top+window.scrollY;
-    const head=(window.scrollY+window.innerHeight*0.5)-cTop;
-    fill.style.height=Math.max(0,Math.min(head,cH))+'px';
-    ticking=false;
-  }
-  function onScroll(){if(!ticking){requestAnimationFrame(upd);ticking=true;}}
-  window.addEventListener('scroll',onScroll,{passive:true});
-  window.addEventListener('resize',upd);
-  upd();
+  const threads=document.querySelectorAll('.link-thread');
+  if(!threads.length)return;
+  threads.forEach(el=>{
+    const path=el.querySelector('path');
+    const len=path.getTotalLength();
+    path.style.strokeDasharray=len;
+    path.style.strokeDashoffset=len;
+    // Endpunkt-Leuchtdot ans Pfadende setzen
+    const tip=el.querySelector('.tip');
+    if(tip){const pt=path.getPointAtLength(len);tip.setAttribute('cx',pt.x);tip.setAttribute('cy',pt.y);}
+  });
+  const tObs=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(e.isIntersecting){
+        const path=e.target.querySelector('path');
+        path.style.transition='stroke-dashoffset 1.5s cubic-bezier(.45,.05,.2,1)';
+        path.style.strokeDashoffset='0';
+        e.target.classList.add('drawn');
+        tObs.unobserve(e.target);
+      }
+    });
+  },{threshold:.35});
+  threads.forEach(el=>tObs.observe(el));
 })();
 
 // FAQ
