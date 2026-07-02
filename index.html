@@ -200,15 +200,45 @@ h2 .g{color:var(--gl);}
 .cta-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 .cta-note{font-size:11px;color:var(--t3);margin-top:16px;letter-spacing:.3px;}
 
-/* ── FOOTER ── */
-footer{border-top:1px solid rgba(255,255,255,0.05);padding:32px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
-footer p{font-size:12px;color:var(--t3);}
-.fl{display:flex;gap:20px;}
-.fl a{font-size:12px;color:var(--t3);text-decoration:none;transition:color .15s;}
-.fl a:hover{color:var(--t1);}
+/* ── CONTENT WRAPPER (hebt sich beim Scrollen ueber den Footer) ── */
+.content{position:relative;z-index:10;background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.1);border-bottom-left-radius:32px;border-bottom-right-radius:32px;box-shadow:0 40px 90px rgba(0,0,0,0.55);margin-bottom:460px;overflow:hidden;}
 
-/* ── ANIMATIONS ── */
-.ru{opacity:0;transform:translateY(20px);transition:opacity .5s,transform .5s;}
+/* ── ROTER FADEN (Scroll-Thread durch alle Folien) ── */
+.page-thread{position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:100%;z-index:0;pointer-events:none;
+  background:linear-gradient(180deg,transparent,rgba(255,255,255,0.045) 5%,rgba(255,255,255,0.045) 95%,transparent);}
+.thread-fill{position:absolute;top:0;left:0;width:100%;height:0;will-change:height;
+  background:linear-gradient(180deg,rgba(22,163,74,0),rgba(22,163,74,0.45) 12%,var(--g) 78%,var(--gl));
+  box-shadow:0 0 14px rgba(22,163,74,0.55);}
+.thread-fill::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);width:10px;height:10px;border-radius:50%;background:var(--gl);
+  box-shadow:0 0 18px 5px rgba(74,222,128,0.6),0 0 46px 10px rgba(22,163,74,0.35);}
+
+/* ── CINEMATIC FOOTER (wird beim Scrollen enthuellt) ── */
+.cine-footer{position:fixed;left:0;bottom:0;width:100%;height:460px;z-index:0;overflow:hidden;
+  background:linear-gradient(180deg,#0b0f0d,#050706);display:flex;flex-direction:column;flex-wrap:nowrap;gap:0;align-items:center;justify-content:space-between;padding:60px 48px 26px;}
+.cf-glow{position:absolute;top:-45%;left:50%;transform:translateX(-50%);width:1000px;height:560px;pointer-events:none;
+  background:radial-gradient(ellipse,rgba(22,163,74,0.13),transparent 70%);}
+.cf-top{position:relative;z-index:2;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;max-width:1240px;width:100%;}
+.cf-brand{max-width:340px;}
+.cf-logo{display:flex;align-items:center;gap:9px;margin-bottom:16px;}
+.cf-tag{font-size:14px;color:var(--t2);line-height:1.7;font-weight:300;}
+.cf-cols{display:flex;gap:56px;flex-wrap:wrap;}
+.cf-col h5{font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--t3);margin-bottom:14px;font-weight:700;}
+.cf-col a{display:block;font-size:14px;color:var(--t2);text-decoration:none;margin-bottom:10px;transition:color .15s;}
+.cf-col a:hover{color:var(--gl);}
+.cf-word{position:relative;z-index:1;text-align:center;font-size:clamp(56px,13vw,190px);font-weight:900;letter-spacing:-5px;line-height:.8;user-select:none;pointer-events:none;
+  background:linear-gradient(180deg,rgba(255,255,255,0.09),rgba(255,255,255,0));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;}
+.cf-bottom{position:relative;z-index:2;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;max-width:1240px;width:100%;border-top:1px solid rgba(255,255,255,0.06);padding-top:20px;}
+.cf-bottom p{font-size:12px;color:var(--t3);}
+.cf-bottom a{font-size:12px;color:var(--t3);text-decoration:none;transition:color .15s;}
+.cf-bottom a:hover{color:var(--t1);}
+@media(max-width:768px){
+  .content{margin-bottom:580px;border-bottom-left-radius:22px;border-bottom-right-radius:22px;}
+  .cine-footer{height:580px;padding:44px 20px 22px;}
+  .cf-top{gap:28px;}
+}
+
+/* ── ANIMATIONS (Folien tauchen beim Scrollen auf) ── */
+.ru{opacity:0;transform:translateY(46px);transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1);}
 .ru.vis{opacity:1;transform:translateY(0);}
 
 @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}section{padding:64px 20px;}.hero{padding:82px 20px 48px;}footer{padding:24px 20px;flex-direction:column;text-align:center;}}
@@ -233,6 +263,10 @@ footer p{font-size:12px;color:var(--t3);}
     <a href="#cta" class="nb nb-s">Kostenloses Audit →</a>
   </div>
 </nav>
+
+<!-- CONTENT — der rote Faden laeuft hier zentral durch alle Folien -->
+<div class="content" id="content">
+  <div class="page-thread"><div class="thread-fill" id="threadFill"></div></div>
 
 <!-- HERO (interaktiv, 3D-Roboter folgt der Maus) -->
 <section class="hero" id="hero">
@@ -561,16 +595,51 @@ footer p{font-size:12px;color:var(--t3);}
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="logo">
-    <div class="lm">⚡</div>
-    <div><div class="ln">LaunchYourProduct</div><div class="ls">© 2025 LaunchYourProduct.de</div></div>
+</div><!-- /.content -->
+
+<!-- CINEMATIC FOOTER — wird beim Scrollen unter dem Content enthuellt -->
+<footer class="cine-footer">
+  <div class="cf-glow"></div>
+
+  <div class="cf-top">
+    <div class="cf-brand">
+      <div class="cf-logo">
+        <div class="lm">⚡</div>
+        <div><div class="ln">LaunchYourProduct</div><div class="ls">Growth Operator</div></div>
+      </div>
+      <p class="cf-tag">Wir bauen, launchen und skalieren dein digitales Produkt – mit KI-Geschwindigkeit, ohne dass du Stunden investierst.</p>
+      <a href="#cta" class="btn-main" style="font-size:14px;padding:12px 24px;margin-top:22px;display:inline-block;">Kostenloses Audit →</a>
+    </div>
+    <div class="cf-cols">
+      <div class="cf-col">
+        <h5>Programme</h5>
+        <a href="#programs">Monetise</a>
+        <a href="#programs">UpLevel</a>
+        <a href="#programs">Motion Ads</a>
+      </div>
+      <div class="cf-col">
+        <h5>Firma</h5>
+        <a href="#founders">Über uns</a>
+        <a href="#results">Ergebnisse</a>
+        <a href="#how">Wie es funktioniert</a>
+      </div>
+      <div class="cf-col">
+        <h5>Rechtliches</h5>
+        <a href="https://www.launchyourproduct.de/imprint/">Impressum</a>
+        <a href="https://www.launchyourproduct.de/privacy-policy/">Datenschutz</a>
+        <a href="https://www.launchyourproduct.de/withdrawal/">Widerruf</a>
+      </div>
+    </div>
   </div>
-  <div class="fl">
-    <a href="https://www.launchyourproduct.de/imprint/">Impressum</a>
-    <a href="https://www.launchyourproduct.de/privacy-policy/">Datenschutz</a>
-    <a href="https://www.launchyourproduct.de/withdrawal/">Widerruf</a>
+
+  <div class="cf-word">LAUNCH</div>
+
+  <div class="cf-bottom">
+    <p>© 2025 LaunchYourProduct.de – Alle Rechte vorbehalten.</p>
+    <div style="display:flex;gap:18px;">
+      <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+      <a href="mailto:hello@launchyourproduct.de">hello@launchyourproduct.de</a>
+    </div>
   </div>
 </footer>
 
@@ -588,6 +657,24 @@ footer p{font-size:12px;color:var(--t3);}
   // Loader ausblenden, sobald Spline geladen ist
   const sv=document.querySelector('.hero-3d spline-viewer'),ld=document.querySelector('.hero-3d .loader');
   if(sv&&ld){sv.addEventListener('load',()=>{ld.style.opacity='0';ld.style.transition='opacity .4s';setTimeout(()=>ld.remove(),400);});}
+})();
+
+// Roter Faden — waechst beim Scrollen mit, Kopf bleibt auf Bildschirmmitte
+(function(){
+  const content=document.getElementById('content'),fill=document.getElementById('threadFill');
+  if(!content||!fill)return;
+  let ticking=false;
+  function upd(){
+    const cH=content.offsetHeight;
+    const cTop=content.getBoundingClientRect().top+window.scrollY;
+    const head=(window.scrollY+window.innerHeight*0.5)-cTop;
+    fill.style.height=Math.max(0,Math.min(head,cH))+'px';
+    ticking=false;
+  }
+  function onScroll(){if(!ticking){requestAnimationFrame(upd);ticking=true;}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
 })();
 
 // FAQ
