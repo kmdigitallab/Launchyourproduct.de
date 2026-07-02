@@ -259,6 +259,136 @@ damit beendet. Zusammenfassung des gesamten Bild-Pools:
 diesen Inhalten zu starten (Bilder müssen dafür noch als Dateien bereitgestellt werden,
 Namen der Kolleg:innen sollten vor Veröffentlichung bestätigt werden).
 
+## Batch 6 — Vollständiges Team + weitere Seiteninhalte (Text, von echter Website)
+
+### ECHTES TEAM MIT NAMEN (löst alle bisherigen Platzhalter/Vermutungen ab!)
+
+Wichtig: **"Kornes" aus Batch 4 war falsch gelesen** — der echte Name ist **Caroline Profitlich**.
+
+| Name | Rolle | Seit |
+|---|---|---|
+| **Dr. Johannes Schinz** | Zahnarzt, Inhaber | 01.08.2000 |
+| **Caroline Profitlich** | Zahnärztin | 02.05.2023 |
+| **Angela Tielking** | ZFA – Behandlungsassistenz, Materialverwaltung, Röntgenbeauftragte | 01.08.1976 (!) |
+| **Ilka Wolff** | ZMV – Empfang, Verwaltung, Abrechnung | 01.08.2013 |
+| **Tanja Schinz** | Empfang, Qualitätsmanagement, Datenschutzbeauftragte | 01.05.2006 |
+| **Alita Krumm** | ZMP – Prophylaxeassistentin für Kinder und Erwachsene | 15.03.2012 |
+| **Silvia Knoche** | ZFA – Behandlungsassistenz | 01.03.2024 |
+| **Luba Trofimenko-Seifert** | ZFA – Behandlungsassistenz | 01.01.2018 |
+| **Anna-Lena Meli** | ZFA – Behandlungsassistenz | 01.08.2017 |
+| **Ludmila Haas** | ZFA – Behandlungsassistenz | 01.06.2016 |
+| **Sarah Mohammed** | Auszubildende zur ZFA | 20.01.2025 |
+| **Petra Frey** | Zahntechnikerin im Praxislabor | 01.05.1992 |
+
+→ 12 Personen insgesamt. Angela Tielking ist seit **1976** dabei (49 Jahre!) — bestätigt/übertrifft
+  die bisherige "45+ Jahre"-Zahl deutlich, sollte hervorgehoben werden. **Tanja Schinz** ist
+  vermutlich die Ehefrau von Dr. Johannes Schinz (gleicher Nachname, Empfang/QM) — nicht
+  unterstellen, aber als "echte Familienpraxis" (mehrere Schinz im Team) erwähnenswert falls
+  bestätigt.
+→ Bild-Zuordnung jetzt möglich: Der "grauhaarige Zahnarzt" (Batch 2/3, Bilder 9,13,14,15,16)
+  = **Dr. Johannes Schinz**. Die rotbraunhaarige Zahnärztin bei Kinderbehandlungen (Bilder 11,12)
+  ist vermutlich **Caroline Profitlich** (einzige weitere "Zahnärztin" im Team) — nicht 100% sicher,
+  bitte bei Bedarf bestätigen.
+
+### Leistungs-Struktur präzisiert (3 Hauptkategorien statt 9 Einzelpunkte)
+
+Die echte Leistungen-Seite gliedert sich in 3 Oberkategorien (bisheriger Entwurf hatte 9 flache
+Karten — sollte umstrukturiert werden):
+1. **Zahnerhalt** — "Den natürlichen Zahn in seiner Form und Funktion vorbeugend zu erhalten oder
+   durch therapeutische Maßnahmen wiederherzustellen hat oberste Priorität."
+2. **Zahnerneuerung** — "Neben medizinischen Aspekten und der Herstellung der vollen Funktionen
+   der Zähne immer auch die Ästhetik im Vordergrund."
+3. **Zahnersatz** — "Sind Zähne verloren gegangen oder stark zerstört, ist in den meisten Fällen
+   Zahnersatz erforderlich. Er sollte so natürlich sein, dass man ihn kaum bemerkt."
+
+Einleitungstext ("Ganzheitliche Zahnheilkunde"):
+> Gesunde Zähne – gesunder Körper. Eine ganzheitliche Sichtweise ist die Basis unserer
+> Behandlung. Nur so lassen sich Symptome besser erkennen und Ursachen besser erforschen und
+> Sie profitieren von einer maßgeschneiderten Versorgung.
+> Informieren Sie sich auf den folgenden Seiten über unser vielfältiges Leistungsspektrum aus
+> Prophylaxe, Parodontologie und Prothetik. Erfahren Sie mehr über unsere kosmetischen
+> Korrekturen sowie über das weltweit einzigartige CEREC®-System, das wir anbieten – die
+> bequemste Methode für Füllungen. Und seien Sie sicher: Wir finden für jeden Patienten die
+> passende Behandlung.
+
+Prophylaxe-Sonderangebot (neu, bisher nicht erfasst):
+> Vergünstigter Tarif für Studenten, Auszubildende und Schüler bei der professionellen
+> Zahnreinigung — auf Nachfrage.
+
+### Weiteres echtes Patiententestimonial
+> „Das freundliche Team zaubert einem schon vor der Behandlung ein Lächeln ins Gesicht. Da
+> macht der Zahnarztbesuch fast schon Spaß.“ — Guido M. (24)
+
+→ Zusammen mit "Birgit A. (53)" aus Batch-1-Notizen jetzt **2 echte, namentliche Zitate**
+  verfügbar (ersetzen die bisherigen paraphrasierten Platzhalter-Reviews vollständig).
+
+### Recall-System (neue Service-Seite, bisher nicht erfasst)
+> Wir erinnern Sie gerne an Ihre Termine. Viele Behandlungen erfordern ein Wiederkehren nach
+> individuellem Zeitintervall (z.B. einem halben Jahr) — wir erinnern auf Wunsch an
+> Prophylaxetermine, Vorsorgeuntersuchungen und weitere Behandlungen. Bitte dem Team Bescheid
+> geben, wer diesen Service nutzen möchte.
+
+Anamnesebogen-Hinweis:
+> "Sind Sie das erste Mal bei uns? Dann füllen Sie vorab bequem den Anamnesebogen aus und
+> bringen diesen bitte zu Ihrem ersten Termin mit." (→ es gibt einen Download/PDF-Anamnesebogen
+> auf der echten Seite, URL nicht erfasst — bei Bedarf nachfragen)
+
+### Videosprechstunde für Angstpatienten (WICHTIGES neues Feature, bisher komplett gefehlt!)
+> Vertrauensvorsprung für Angstpatienten: Der Zahnarztbesuch ist nicht immer mit positiven
+> Gefühlen verbunden. Manche Menschen haben regelrecht Angst davor. Um Angstpatienten eine
+> stress- und angstfreie Behandlung zu ermöglichen, bieten wir das erste Gespräch als
+> **Videosprechstunde** an. So können Sie sich in Ruhe informieren, Fragen stellen, Bedenken
+> äußern und uns kennenlernen.
+
+→ Das ist ein STARKES, einzigartiges Trust-/Angstpatienten-Feature, das im bisherigen
+  Website-Entwurf komplett fehlt und laut Nutzerbrief ("Vertrauensvorsprung für
+  Angstpatienten", "reduce anxiety", "no fear") absolut zentral in die neue Seite gehört —
+  eigener Abschnitt oder prominent in "Warum uns vertrauen".
+
+### Notfallbereitschaft — echter Rotations-Notdienstplan (ersetzt bisherige Pauschalangabe!)
+> Notfallsprechstunde jeweils samstags und sonntags nach telefonischer Anmeldung zwischen
+> 10:00 und 11:00 Uhr. In dringenden Notfällen außerhalb der Sprechzeiten: **0151-12908794**
+> (bestätigt bisherige Nummer).
+
+Rotierender Notdienst mit anderen Praxen der Region (Beispieltermine Mai–Juli 2026, wechselt
+laufend — sollte auf der Website als "aktueller Stand, siehe Aushang/Anruf" behandelt werden,
+nicht als statische Liste einfrieren):
+- Praxis Beyaz u. Großmann, Bückeburg, 05722/966760
+- Praxis Mittrach, Rinteln, 05751/2503
+- Praxis Denz, Rinteln, 05751/44450 · Praxis Godek, Rinteln, 05751/42622
+- Praxis Simoneit, Bad Eilsen, 05722/85510
+- Praxis Raßmann, Lindhorst, 05725/7445
+- Praxis Wrobel, Lauenau, 05043/5333
+- Praxis Goldbach, Obernkirchen, 05724/1630
+
+→ Für die neue Website: **nicht** die konkreten Daten fest einbauen (werden schnell veraltet),
+  sondern auf die Notfallnummer + Hinweis "aktueller Notdienstplan telefonisch/vor Ort" setzen.
+
+### Gesunde Luft (neues Trust-/Hygiene-Feature)
+> Unsere Räume sind mit zertifizierten Filteranlagen der Firma bioclimatic ausgestattet. Die
+> mobilen Luftreiniger reduzieren – ähnlich wie beim Lüften – die virushaltigen Aerosole und
+> schaffen eine reine und gesunde Raumluft.
+
+→ Passt zum Miscea-Hygiene-Wasserhahn-Bild (Batch 2) — beides zusammen ergibt eine gute
+  "Hygiene & Sicherheit"-Unterpunkt in der Technologie-Sektion.
+
+### Stellenanzeige (aktuell, Karriere-Seite)
+> Wir suchen ab sofort: 1) Eine ZMF (m/w/d) Voll- oder Teilzeit. 2) Eine Auszubildende zur ZMF
+> (m/w/d). Auch Wechsler werden genommen!
+
+→ Optionale kleine "Karriere"-Sektion/Seite, niedrige Priorität ggü. Patienten-Conversion,
+  aber leicht ergänzbar (Footer-Link genügt vermutlich).
+
+### Kontaktdaten (final bestätigt, Fax mit "–" statt "-")
+Zahnarztpraxis Dr. Johannes Schinz & Kollegen, Gesundheitszentrum Wincklerbad,
+Bahnhofstraße 14, 31542 Bad Nenndorf · Tel (0)5723–4878 · Fax (0)5723–2884 ·
+kontakt@schinz.net · www.schinz.net
+
+### Social Media
+> "Lernen Sie uns näher kennen, und folgen Sie uns auf:" — Social-Icons auf der Originalseite
+  vorhanden, aber welche Plattformen/Links nicht extrahierbar (kein Text/URL sichtbar). Bei
+  Bedarf beim Nutzer nachfragen (Facebook/Instagram vermutlich).
+
 ## Offene Punkte für die Überarbeitung (später)
 - [ ] Bilder als echte Dateien erhalten (aktuell nur inline im Chat gesehen, keine Datei-Pfade)
 - [ ] Genauer Online-Buchungslink (welches System? Doctolib/Samedi/eigenes?)
