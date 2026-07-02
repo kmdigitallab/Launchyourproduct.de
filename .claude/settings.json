@@ -1,5 +1,14 @@
 {
   "description": "Impeccable design detector: runs after Edit/Write/MultiEdit on UI files and surfaces findings as system reminders.",
+  "mcpServers": {
+    "magic": {
+      "command": "npx",
+      "args": ["-y", "@21st-dev/magic@latest"],
+      "env": {
+        "API_KEY": "9d192ca647956c306873fb22f490db5c5fb0608d4ebf77fb5c16862b0b0de57b"
+      }
+    }
+  },
   "hooks": {
     "PostToolUse": [
       {
