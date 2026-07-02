@@ -74,29 +74,76 @@
       padding: 6rem 1.5rem 4rem;
     }
 
-    /* Announce badge */
-    .badge {
+    /* ── Animated Shiny Text ── */
+    .shiny-badge {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
-      padding: .35rem 1rem;
+      padding: .35rem 1rem .35rem .75rem;
       border-radius: 999px;
-      background: rgba(168,85,247,.15);
-      border: 1px solid rgba(168,85,247,.4);
+      background: rgba(168,85,247,.08);
+      border: 1px solid rgba(168,85,247,.35);
       font-size: .78rem;
       font-weight: 600;
-      color: #c084fc;
       letter-spacing: .05em;
       margin-bottom: 2rem;
       animation: fadeUp .7s ease both;
+      cursor: default;
+      /* subtle outer glow */
+      box-shadow: 0 0 18px rgba(168,85,247,.18), inset 0 0 12px rgba(168,85,247,.06);
+      transition: box-shadow .3s, border-color .3s;
     }
-    .badge .dot {
+    .shiny-badge:hover {
+      box-shadow: 0 0 30px rgba(168,85,247,.35), inset 0 0 18px rgba(168,85,247,.1);
+      border-color: rgba(168,85,247,.6);
+    }
+
+    .shiny-badge .dot {
       width: 6px; height: 6px;
       background: #c084fc;
       border-radius: 50%;
+      flex-shrink: 0;
       animation: pulse 1.5s ease infinite;
     }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.5)} }
+
+    /* The shiny text itself */
+    .shiny-text {
+      position: relative;
+      display: inline-block;
+      /* base colour */
+      color: #c084fc;
+      /* shimmer gradient painted over via mask */
+      background: linear-gradient(
+        90deg,
+        #c084fc  0%,
+        #c084fc 35%,
+        #ffffff 50%,
+        #c084fc 65%,
+        #c084fc 100%
+      );
+      background-size: 250% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shinySlide 2.8s linear infinite;
+    }
+    @keyframes shinySlide {
+      0%   { background-position: 200% center; }
+      100% { background-position: -200% center; }
+    }
+
+    /* Arrow chevron after text */
+    .shiny-badge .arrow {
+      font-size: .7rem;
+      color: #c084fc;
+      opacity: .7;
+      transition: transform .2s, opacity .2s;
+    }
+    .shiny-badge:hover .arrow {
+      transform: translateX(3px);
+      opacity: 1;
+    }
 
     /* Gradient headline */
     .hero-title {
@@ -369,9 +416,10 @@
 
   <!-- ── HERO ── -->
   <section class="hero">
-    <div class="badge">
+    <div class="shiny-badge">
       <span class="dot"></span>
-      Neu: Launch-Kit 2.0 ist da
+      <span class="shiny-text">✦ Neu: Launch-Kit 2.0 ist da</span>
+      <span class="arrow">→</span>
     </div>
 
     <h1 class="hero-title">
