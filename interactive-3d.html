@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive 3D — Spline Demo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#000;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;-webkit-font-smoothing:antialiased;}
+
+/* Card: w-full h-[500px] bg-black/[0.96] rounded relative overflow-hidden */
+.card{
+  position:relative;
+  width:100%;
+  max-width:1100px;
+  height:500px;
+  background:rgba(0,0,0,0.96);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px;
+  overflow:hidden;
+}
+
+/* Spotlight — Aceternity-style white glow, top-left, fades in */
+.spotlight{
+  position:absolute;
+  top:-80px;left:0;
+  width:560px;height:780px;
+  pointer-events:none;
+  z-index:1;
+  background:radial-gradient(closest-side at 50% 50%,rgba(255,255,255,0.14),rgba(255,255,255,0.04) 45%,transparent 75%);
+  transform:rotate(-32deg) translateX(-10%);
+  filter:blur(24px);
+  opacity:0;
+  animation:spotIn 2.4s ease .1s forwards;
+}
+@media(min-width:768px){.spotlight{left:240px;top:-40px;}}
+@keyframes spotIn{from{opacity:0;transform:rotate(-32deg) translateX(-24%);}to{opacity:1;transform:rotate(-32deg) translateX(-10%);}}
+
+/* Layout: flex h-full */
+.inner{display:flex;height:100%;position:relative;z-index:2;}
+
+/* Left content: flex-1 p-8, vertically centered */
+.left{flex:1;padding:32px;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:10;}
+.left h1{
+  font-size:clamp(34px,5vw,52px);
+  font-weight:700;
+  line-height:1.05;
+  letter-spacing:-1px;
+  /* bg-gradient-to-b from-neutral-50 to-neutral-400, clip to text */
+  background:linear-gradient(to bottom,#fafafa,#a3a3a3);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.left p{
+  margin-top:16px;
+  max-width:32rem;
+  color:#d4d4d4;
+  font-size:16px;
+  line-height:1.6;
+  font-weight:400;
+}
+
+/* Right content: flex-1, robot fills */
+.right{flex:1;position:relative;}
+.right spline-viewer{width:100%;height:100%;display:block;}
+/* cover the "Built with Spline" watermark */
+.right::after{content:'';position:absolute;bottom:0;right:0;width:150px;height:44px;background:rgba(0,0,0,0.96);z-index:3;pointer-events:none;}
+
+/* loader shown while Spline boots */
+.loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:1;}
+.loader span{width:34px;height:34px;border:3px solid rgba(255,255,255,0.15);border-top-color:rgba(255,255,255,0.7);border-radius:50%;animation:spin .9s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+@media(max-width:640px){
+  .card{height:620px;}
+  .inner{flex-direction:column;}
+  .left{padding:28px 24px 8px;flex:0 0 auto;text-align:center;}
+  .left p{margin-left:auto;margin-right:auto;}
+  .right{flex:1;}
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="spotlight"></div>
+
+  <div class="inner">
+    <!-- Left content -->
+    <div class="left">
+      <h1>Interactive 3D</h1>
+      <p>Bring your UI to life with beautiful 3D scenes. Create immersive experiences that capture attention and enhance your design.</p>
+    </div>
+
+    <!-- Right content: interactive robot (follows the mouse) -->
+    <div class="right">
+      <div class="loader"><span></span></div>
+      <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"></spline-viewer>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
