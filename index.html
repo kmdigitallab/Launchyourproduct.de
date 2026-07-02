@@ -37,7 +37,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 
 /* ── HERO (interaktiv, split mit 3D-Roboter) ── */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:92px 48px 56px;overflow:hidden;}
-.hero-glow{position:absolute;width:900px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,163,74,0.08) 0%,transparent 70%);top:-40px;left:12%;pointer-events:none;z-index:0;}
+.hero-glow{position:absolute;width:900px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,163,74,0.08) 0%,transparent 70%);top:-40px;left:12%;pointer-events:none;z-index:0;animation:glowPulse 7s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{opacity:.65;transform:scale(1);}50%{opacity:1;transform:scale(1.09);}}
 .spotlight{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(600px circle at var(--mx,70%) var(--my,35%),rgba(22,163,74,0.10),transparent 60%);transition:background .12s ease;}
 .hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);}
 .hero-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;}
@@ -202,12 +203,24 @@ h2 .g{color:var(--gl);}
 
 /* ── CONTENT WRAPPER (hebt sich beim Scrollen ueber den Footer) ── */
 .content{position:relative;z-index:10;background:var(--bg);border-bottom:1px solid rgba(255,255,255,0.1);border-bottom-left-radius:32px;border-bottom-right-radius:32px;box-shadow:0 40px 90px rgba(0,0,0,0.55);margin-bottom:460px;overflow:hidden;}
+/* Folien ueber der Ambient-Ebene */
+.content > section,.content > .ticker,.content > .link-thread{position:relative;z-index:1;}
+
+/* ── AMBIENT MOTION — langsam driftende Hintergrund-Glows ── */
+.ambient{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+.ambient span{position:absolute;border-radius:50%;filter:blur(90px);will-change:transform;}
+.ambient span:nth-child(1){width:520px;height:520px;background:radial-gradient(circle,rgba(22,163,74,.16),transparent 70%);top:10%;left:-8%;animation:drift1 22s ease-in-out infinite alternate;}
+.ambient span:nth-child(2){width:620px;height:620px;background:radial-gradient(circle,rgba(74,222,128,.10),transparent 70%);top:42%;right:-12%;animation:drift2 27s ease-in-out infinite alternate;}
+.ambient span:nth-child(3){width:460px;height:460px;background:radial-gradient(circle,rgba(22,163,74,.13),transparent 70%);top:74%;left:18%;animation:drift3 31s ease-in-out infinite alternate;}
+@keyframes drift1{to{transform:translate(130px,90px) scale(1.18);}}
+@keyframes drift2{to{transform:translate(-110px,-90px) scale(1.12);}}
+@keyframes drift3{to{transform:translate(90px,-70px) scale(1.22);}}
 
 /* ── ROTER FADEN — geschwungene Connector-Boegen zwischen den Folien ── */
-.link-thread{position:relative;z-index:1;width:100%;max-width:520px;height:130px;margin:-34px auto -34px;pointer-events:none;}
+.link-thread{position:relative;z-index:1;width:100%;max-width:860px;height:220px;margin:-56px auto -56px;pointer-events:none;}
 .link-thread svg{width:100%;height:100%;display:block;overflow:visible;}
-.link-thread path{fill:none;stroke:var(--gl);stroke-width:2.4;stroke-linecap:round;
-  filter:drop-shadow(0 0 5px rgba(74,222,128,.75)) drop-shadow(0 0 14px rgba(22,163,74,.45));}
+.link-thread path{fill:none;stroke:var(--gl);stroke-width:3;stroke-linecap:round;
+  filter:drop-shadow(0 0 6px rgba(74,222,128,.8)) drop-shadow(0 0 18px rgba(22,163,74,.5));}
 .link-thread .tip{fill:#eafff0;opacity:0;transition:opacity .5s ease .9s;
   filter:drop-shadow(0 0 6px rgba(74,222,128,.95)) drop-shadow(0 0 16px rgba(22,163,74,.6));}
 .link-thread.drawn .tip{opacity:1;animation:tipPulse 2s ease-in-out infinite 1.3s;}
@@ -267,6 +280,7 @@ h2 .g{color:var(--gl);}
 
 <!-- CONTENT — der rote Faden webt zwischen den Folien -->
 <div class="content" id="content">
+  <div class="ambient"><span></span><span></span><span></span></div>
 
 <!-- HERO (interaktiv, 3D-Roboter folgt der Maus) -->
 <section class="hero" id="hero">
@@ -352,7 +366,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 1160 62, 240 120, 600 152 C 900 176, 40 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- JOURNEY / HOW -->
 <section id="how" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
@@ -387,7 +401,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 240 66, 960 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 40 62, 960 120, 600 152 C 300 176, 1160 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- RESULTS -->
 <section id="results">
@@ -469,7 +483,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 1160 62, 240 120, 600 152 C 900 176, 40 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- PROGRAMS -->
 <section id="programs" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
@@ -509,7 +523,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 240 66, 960 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 40 62, 960 120, 600 152 C 300 176, 1160 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- PROCESS -->
 <section id="how2">
@@ -532,7 +546,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 1160 62, 240 120, 600 152 C 900 176, 40 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- FOUNDERS -->
 <section id="founders" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
@@ -562,7 +576,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 240 66, 960 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 40 62, 960 120, 600 152 C 300 176, 1160 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- OBJECTIONS -->
 <section>
@@ -597,7 +611,7 @@ h2 .g{color:var(--gl);}
 </section>
 
 <!-- Faden-Connector -->
-<div class="link-thread"><svg viewBox="0 0 1200 200" preserveAspectRatio="none"><path d="M600 10 C 960 66, 240 132, 600 190"/><circle class="tip" r="5"/></svg></div>
+<div class="link-thread"><svg viewBox="0 0 1200 260" preserveAspectRatio="none"><path d="M600 8 C 1160 62, 240 120, 600 152 C 900 176, 40 224, 600 254"/><circle class="tip" r="5"/></svg></div>
 
 <!-- CTA -->
 <section id="cta">
@@ -705,6 +719,32 @@ h2 .g{color:var(--gl);}
     });
   },{threshold:.35});
   threads.forEach(el=>tObs.observe(el));
+})();
+
+// Motion — Zahlen zaehlen beim Reinscrollen hoch (Proof-Bar + Stats)
+(function(){
+  function animate(el){
+    const raw=el.textContent.trim();
+    const m=raw.match(/^([^\d]*)([\d.,]+)(.*)$/);
+    if(!m){return;}
+    const pre=m[1],numStr=m[2],suf=m[3];
+    const thousand=/\d\.\d{3}/.test(numStr);
+    const decMatch=(!thousand&&numStr.includes(','))?numStr.split(',')[1].length:0;
+    const target=parseFloat(numStr.replace(/\./g,'').replace(',','.'));
+    if(isNaN(target)){return;}
+    function fmt(v){
+      let s;
+      if(thousand)s=Math.round(v).toLocaleString('de-DE');
+      else if(decMatch>0)s=v.toFixed(decMatch).replace('.',',');
+      else s=Math.round(v).toString();
+      return pre+s+suf;
+    }
+    let start=null;const dur=1500;
+    function step(ts){if(!start)start=ts;const p=Math.min((ts-start)/dur,1);const e=1-Math.pow(1-p,3);el.textContent=fmt(target*e);if(p<1)requestAnimationFrame(step);}
+    requestAnimationFrame(step);
+  }
+  const cObs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){animate(e.target);cObs.unobserve(e.target);}});},{threshold:.6});
+  document.querySelectorAll('.pb-num,.s-num').forEach(el=>cObs.observe(el));
 })();
 
 // FAQ
