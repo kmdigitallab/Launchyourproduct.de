@@ -7,6 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
   <style>
     /* ── Magic UI Base ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -383,6 +384,23 @@
     .footer a { color: var(--purple); text-decoration: none; }
     .footer a:hover { text-decoration: underline; }
 
+    /* ── Spline Robot ── */
+    .spline-wrap {
+      width: 100%;
+      max-width: 600px;
+      height: 400px;
+      margin: 2.5rem auto 0;
+      border-radius: 24px;
+      overflow: hidden;
+      position: relative;
+      animation: fadeUp .7s .25s ease both;
+    }
+    spline-viewer {
+      width: 100%;
+      height: 100%;
+      --spline-viewer-background: transparent;
+    }
+
     /* ── Scroll Animations ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
@@ -432,6 +450,11 @@
       Von der Idee zum viralen Launch — in weniger Zeit, mit mehr Wirkung.
       Alles, was du brauchst, auf einer Plattform.
     </p>
+
+    <!-- Spline 3D Robot -->
+    <div class="spline-wrap">
+      <spline-viewer url="https://prod.spline.design/kZDDjO5HlFTv7Yla/scene.splinecode"></spline-viewer>
+    </div>
 
     <div class="cta-group">
       <a href="#start" class="btn-magic btn-primary">
