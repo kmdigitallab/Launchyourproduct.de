@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Launch Your Product</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* ── Magic UI Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --purple: #a855f7;
+      --pink:   #ec4899;
+      --cyan:   #06b6d4;
+      --blue:   #1a73e8;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      overflow-x: hidden;
+    }
+
+    /* ── Floating Blobs ── */
+    .blob-wrap {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: .35;
+      animation: blobFloat 14s ease-in-out infinite alternate;
+    }
+    .blob-1 { width: 600px; height: 600px; background: var(--purple); top: -200px; left: -100px; animation-delay: 0s; }
+    .blob-2 { width: 500px; height: 500px; background: var(--pink);   bottom: -150px; right: -100px; animation-delay: -4s; }
+    .blob-3 { width: 400px; height: 400px; background: var(--cyan);   top: 40%; left: 40%; animation-delay: -8s; }
+    @keyframes blobFloat {
+      from { transform: translate(0, 0) scale(1); }
+      to   { transform: translate(40px, 60px) scale(1.12); }
+    }
+
+    /* ── Grid overlay ── */
+    .grid-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* ── Layout ── */
+    .page { position: relative; z-index: 1; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 1.5rem 4rem;
+    }
+
+    /* Announce badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .35rem 1rem;
+      border-radius: 999px;
+      background: rgba(168,85,247,.15);
+      border: 1px solid rgba(168,85,247,.4);
+      font-size: .78rem;
+      font-weight: 600;
+      color: #c084fc;
+      letter-spacing: .05em;
+      margin-bottom: 2rem;
+      animation: fadeUp .7s ease both;
+    }
+    .badge .dot {
+      width: 6px; height: 6px;
+      background: #c084fc;
+      border-radius: 50%;
+      animation: pulse 1.5s ease infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(1.4)} }
+
+    /* Gradient headline */
+    .hero-title {
+      font-size: clamp(2.6rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -.03em;
+      margin-bottom: 1.5rem;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--pink) 50%, var(--cyan) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .shimmer-text {
+      background: linear-gradient(
+        90deg,
+        #e2e8f0 0%,
+        #ffffff 30%,
+        var(--pink) 50%,
+        #ffffff 70%,
+        #e2e8f0 100%
+      );
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+    @keyframes shimmer { to { background-position: -200% center; } }
+
+    .hero-sub {
+      max-width: 560px;
+      font-size: 1.15rem;
+      color: #94a3b8;
+      margin-bottom: 2.8rem;
+      line-height: 1.7;
+      animation: fadeUp .7s .2s ease both;
+    }
+
+    /* CTA group */
+    .cta-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      animation: fadeUp .7s .3s ease both;
+    }
+    .btn-magic {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .85rem 2rem;
+      border-radius: 12px;
+      font-family: inherit;
+      font-size: .95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .2s, box-shadow .2s;
+      text-decoration: none;
+    }
+    .btn-magic:hover { transform: translateY(-2px); }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: #fff;
+      border: none;
+      box-shadow: 0 0 30px rgba(168,85,247,.45);
+    }
+    .btn-primary:hover { box-shadow: 0 0 50px rgba(168,85,247,.65); }
+
+    .btn-outline {
+      background: rgba(255,255,255,.05);
+      color: #e2e8f0;
+      border: 1px solid rgba(255,255,255,.15);
+      backdrop-filter: blur(10px);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.3); }
+
+    /* ── Gradient Border Cards ── */
+    .cards-section {
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      color: var(--purple);
+      text-transform: uppercase;
+      margin-bottom: .75rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      margin-bottom: 3.5rem;
+    }
+
+    .magic-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Gradient border via ::before pseudo */
+    .magic-card {
+      position: relative;
+      background: rgba(15,15,25,.7);
+      border-radius: 16px;
+      padding: 2rem;
+      text-align: left;
+      backdrop-filter: blur(16px);
+      transition: transform .3s;
+    }
+    .magic-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: 17px;
+      background: linear-gradient(135deg, var(--purple), var(--pink), var(--cyan));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .magic-card:hover { transform: translateY(-6px); }
+    .magic-card:hover::before { opacity: 1; }
+
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .magic-card h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: .6rem;
+      color: #f1f5f9;
+    }
+    .magic-card p {
+      font-size: .92rem;
+      color: #64748b;
+      line-height: 1.65;
+    }
+
+    /* ── Animated Number Stats ── */
+    .stats-section {
+      padding: 5rem 1.5rem;
+    }
+    .stats-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+    .stat {
+      padding: 2rem 1rem;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+    }
+    .stat-num {
+      font-size: 2.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--purple), var(--cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label {
+      font-size: .85rem;
+      color: #64748b;
+      margin-top: .4rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    /* ── Spotlight CTA ── */
+    .spotlight-section {
+      padding: 6rem 1.5rem;
+      text-align: center;
+    }
+    .spotlight-card {
+      position: relative;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 4rem 2.5rem;
+      border-radius: 24px;
+      overflow: hidden;
+      background: rgba(168,85,247,.06);
+      border: 1px solid rgba(168,85,247,.2);
+    }
+    /* animated gradient border ring */
+    .spotlight-card::before {
+      content: '';
+      position: absolute;
+      inset: -2px;
+      border-radius: 26px;
+      background: conic-gradient(
+        from var(--angle, 0deg),
+        var(--purple) 0%,
+        var(--pink) 25%,
+        var(--cyan) 50%,
+        var(--purple) 100%
+      );
+      z-index: -1;
+      animation: spinBorder 4s linear infinite;
+    }
+    @property --angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    @keyframes spinBorder { to { --angle: 360deg; } }
+
+    .spotlight-card h2 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+    .spotlight-card p {
+      color: #94a3b8;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      font-size: .85rem;
+      color: #475569;
+    }
+    .footer a { color: var(--purple); text-decoration: none; }
+    .footer a:hover { text-decoration: underline; }
+
+    /* ── Scroll Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .cta-group { flex-direction: column; align-items: center; }
+      .spotlight-card { padding: 2.5rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Background layers -->
+<div class="blob-wrap">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+</div>
+<div class="grid-bg"></div>
+
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="badge">
+      <span class="dot"></span>
+      Neu: Launch-Kit 2.0 ist da
+    </div>
+
+    <h1 class="hero-title">
+      <span class="shimmer-text">Dein Produkt.</span><br />
+      <span class="gradient-text">Dein Launch.</span><br />
+      Dein Erfolg.
+    </h1>
+
+    <p class="hero-sub">
+      Von der Idee zum viralen Launch — in weniger Zeit, mit mehr Wirkung.
+      Alles, was du brauchst, auf einer Plattform.
+    </p>
+
+    <div class="cta-group">
+      <a href="#start" class="btn-magic btn-primary">
+        ✦ Jetzt starten
+      </a>
+      <a href="#features" class="btn-magic btn-outline">
+        Mehr erfahren →
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FEATURE CARDS ── -->
+  <section class="cards-section" id="features">
+    <p class="section-label reveal">Was wir bieten</p>
+    <h2 class="section-title reveal">
+      Alles für deinen <span class="gradient-text">perfekten Launch</span>
+    </h2>
+
+    <div class="magic-cards">
+      <div class="magic-card reveal">
+        <div class="card-icon">🚀</div>
+        <h3>Launch-Strategie</h3>
+        <p>Schritt-für-Schritt Playbook, das bewährt ist — von Traction bis zu viralen Loops.</p>
+      </div>
+      <div class="magic-card reveal" style="transition-delay:.1s">
+        <div class="card-icon">✦</div>
+        <h3>Magic UI Kit</h3>
+        <p>Fertige Glassmorphism-Komponenten, die sofort beeindrucken — kein Design-Talent nötig.</p>
+      </div>
+      <div class="magic-card reveal" style="transition-delay:.2s">
+        <div class="card-icon">📈</div>
+        <h3>Growth Hacking</h3>
+        <p>Datengetriebene Taktiken für schnelles Nutzerwachstum in den ersten 90 Tagen.</p>
+      </div>
+      <div class="magic-card reveal" style="transition-delay:.3s">
+        <div class="card-icon">🎯</div>
+        <h3>Zielgruppenanalyse</h3>
+        <p>Versteh deine Kunden tiefer als je zuvor — mit KI-gestütztem Persona-Builder.</p>
+      </div>
+      <div class="magic-card reveal" style="transition-delay:.4s">
+        <div class="card-icon">💬</div>
+        <h3>Copy-Templates</h3>
+        <p>Conversion-optimierte Texte für Ads, E-Mails und Landing Pages — sofort einsetzbar.</p>
+      </div>
+      <div class="magic-card reveal" style="transition-delay:.5s">
+        <div class="card-icon">⚡</div>
+        <h3>Schnell-Setup</h3>
+        <p>Dein MVP ist in 48 Stunden live. Unser Checklisten-System macht es möglich.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS ── -->
+  <section class="stats-section">
+    <div class="stats-wrap">
+      <div class="stat reveal">
+        <div class="stat-num">1.200+</div>
+        <div class="stat-label">Erfolgreiche Launches</div>
+      </div>
+      <div class="stat reveal" style="transition-delay:.1s">
+        <div class="stat-num">48h</div>
+        <div class="stat-label">Durchschnittliche Time-to-Live</div>
+      </div>
+      <div class="stat reveal" style="transition-delay:.2s">
+        <div class="stat-num">340%</div>
+        <div class="stat-label">Ø ROI im ersten Monat</div>
+      </div>
+      <div class="stat reveal" style="transition-delay:.3s">
+        <div class="stat-num">98%</div>
+        <div class="stat-label">Kundenzufriedenheit</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SPOTLIGHT CTA ── -->
+  <section class="spotlight-section" id="start">
+    <div class="spotlight-card reveal">
+      <h2>Bereit für deinen <span class="gradient-text">Magic Moment</span>?</h2>
+      <p>Trete 1.200+ Gründern bei, die ihre Produkte mit uns erfolgreich gelauncht haben.</p>
+      <a href="mailto:kmdigitallab@gmail.com" class="btn-magic btn-primary">
+        ✦ Kostenlos durchstarten
+      </a>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>© 2026 <a href="#">Launch Your Product</a> — Alle Rechte vorbehalten.</p>
+  </footer>
+
+</div>
+
+<script>
+  // Intersection Observer for scroll reveals
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  els.forEach(el => io.observe(el));
+</script>
+</body>
+</html>
