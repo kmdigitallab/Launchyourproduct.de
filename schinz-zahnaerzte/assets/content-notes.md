@@ -389,6 +389,17 @@ kontakt@schinz.net · www.schinz.net
   vorhanden, aber welche Plattformen/Links nicht extrahierbar (kein Text/URL sichtbar). Bei
   Bedarf beim Nutzer nachfragen (Facebook/Instagram vermutlich).
 
+## Status: GO erhalten, Überarbeitung umgesetzt
+
+Nutzer hat "doch jetzt die ganze website bauen und umbauen" bestätigt. index.html wurde
+mit allen gesammelten echten Inhalten überarbeitet: Hero/Philosophie-Text, 3-Säulen-
+Leistungsstruktur (Zahnerhalt/Zahnerneuerung/Zahnersatz), Videosprechstunde für
+Angstpatienten, Recall-System, Anamnesebogen-Hinweis, Gesunde-Luft-Hygiene, 12-köpfiges
+echtes Team mit Namen/Rollen/Eintrittsjahren, 2 echte Patientenzitate, korrigierte
+Öffnungszeiten/Fax, Jahreszeiten-Raumkonzept in der Galerie, Jobs-Hinweis im Footer.
+Bilder weiterhin nur als stilistisch passende Farbverlauf-Platzhalter mit Namen/
+Beschriftung (echte Dateien fehlen technisch noch).
+
 ## Offene Punkte für die Überarbeitung (später)
 - [ ] Bilder als echte Dateien erhalten (aktuell nur inline im Chat gesehen, keine Datei-Pfade)
 - [ ] Genauer Online-Buchungslink (welches System? Doctolib/Samedi/eigenes?)
