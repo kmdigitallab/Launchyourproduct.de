@@ -58,6 +58,8 @@ em{font-style:italic;color:var(--gold);}
 
 .lead{font-size:clamp(1.02rem,1.4vw,1.2rem);color:var(--muted);max-width:620px;line-height:1.7;}
 .on-ink .lead{color:var(--muted-on-ink);}
+.hl{font-weight:700;font-style:italic;color:var(--ink);}
+.on-ink .hl{color:var(--paper);}
 
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:inherit;font-weight:600;font-size:.92rem;padding:.95rem 1.9rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;white-space:nowrap;}
 .btn-gold{background:var(--gold);color:#100c02;box-shadow:0 10px 30px rgba(245,183,49,.4),0 0 26px rgba(245,183,49,.22);}
@@ -85,8 +87,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .brand-name-group{display:flex;flex-direction:column;}
 .brand-tagline{font-size:.58rem;font-weight:600;letter-spacing:.12em;color:var(--gold);line-height:1.2;}
 .nav-links{display:flex;gap:2.1rem;}
-.nav-links a{font-size:.86rem;font-weight:500;color:var(--muted);transition:color .2s;}
-.nav-links a:hover{color:var(--gold);}
+.nav-links a{font-size:.86rem;font-weight:700;color:var(--ink);opacity:.78;transition:color .2s,opacity .2s;}
+.nav-links a:hover{color:var(--gold);opacity:1;}
 @media(max-width:900px){.nav-links{display:none;}}
 .btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;}
 .btn-phone span{font-size:.78rem;font-weight:600;}
@@ -115,8 +117,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .hero-mesh{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(560px 400px at 82% 6%,rgba(245,183,49,.18),transparent 65%),radial-gradient(680px 480px at 8% 92%,rgba(245,183,49,.10),transparent 60%);}
 .hero-sparkles{position:absolute;inset:0;z-index:0;pointer-events:none;mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);-webkit-mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);}
 @media(prefers-reduced-motion:reduce){.hero-sparkles{display:none;}}
-.hero-robot{position:absolute;right:-4%;top:0;width:58%;height:100%;z-index:0;opacity:0;transform:scale(1.18);transition:opacity 1.3s ease,transform 1.6s cubic-bezier(.16,1,.3,1);pointer-events:auto;}
-.hero-robot.in{opacity:.5;transform:scale(1);}
+.hero-robot{position:absolute;right:0;bottom:-4%;width:44%;height:56%;z-index:0;opacity:0;transform:scale(1.7);transform-origin:bottom right;transition:opacity 1.3s ease,transform 1.8s cubic-bezier(.16,1,.3,1);pointer-events:auto;}
+.hero-robot.in{opacity:.62;transform:scale(1);}
 .hero-robot spline-viewer{width:100%;height:100%;display:block;}
 @media(max-width:980px){.hero-robot{display:none;}}
 .hero-inner{position:relative;z-index:1;max-width:840px;}
@@ -406,7 +408,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         </div>
         <div class="eyebrow reveal">In der EU gehostet · DSGVO-konform · EU-AI-Act-konform</div>
         <h1 class="h-xl serif reveal" style="transition-delay:.05s">KI-Agenten, die Ihr Unternehmen <em>wirklich</em> entlasten.</h1>
-        <p class="lead reveal" style="transition-delay:.1s">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft digitale Assistenten, die dort übernehmen, wo heute Zeit, Chancen und Energie verloren gehen.</p>
+        <p class="lead reveal" style="transition-delay:.1s">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft <span class="hl">digitale Assistenten</span>, die dort übernehmen, wo heute <span class="hl">Zeit, Chancen und Energie</span> verloren gehen.</p>
         <div class="hero-cta reveal" style="transition-delay:.15s">
           <a href="#pricing" class="btn btn-gold">VOICE AGENT anrufen &amp; testen</a>
           <a href="#social" class="btn btn-outline">SOCIAL MEDIA AGENT kennenlernen</a>
@@ -456,7 +458,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="ov-head">
         <div class="eyebrow reveal">KI-Lösungen im Überblick</div>
         <h2 class="h-lg serif reveal">Für mehr Erreichbarkeit, weniger Aufwand und bessere Abläufe.</h2>
-        <p class="lead reveal" style="margin-top:1rem;">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag Zeit verloren geht: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
+        <p class="lead reveal" style="margin-top:1rem;">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag <span class="hl">Zeit verloren geht</span>: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
       </div>
       <div class="ov-grid">
         <div class="ov-card reveal">
@@ -512,7 +514,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="ind-panel active" id="retail">
         <div>
           <h3 class="serif">Social Media endlich einfach — auch im hektischen Lebensmittelhandel</h3>
-          <p>Social Media wurde bisher nur gemacht, wenn Zeit war — ohne Plan, ohne Recherche und ohne professionelle Bilder. Die Folge: wenig Regelmäßigkeit, wenig Reichweite und immer weniger Lust.</p>
+          <p>Social Media wurde bisher nur gemacht, wenn Zeit war — ohne Plan, ohne Recherche und ohne professionelle Bilder. Die Folge: <span class="hl">wenig Regelmäßigkeit, wenig Reichweite</span> und immer weniger Lust.</p>
           <ul class="ind-list">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Posts ohne Stress</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Relevante Inhalte, die Kunden interessieren</li>
@@ -525,7 +527,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="ind-panel" id="real-estate">
         <div>
           <h3 class="serif">Schnellere Vermarktung und Kundenbindung</h3>
-          <p>Im hart umkämpften Immobilienmarkt zählt jeder Vorteil. Unsere Tools helfen Ihnen, Exposés professionell zu erstellen, Interessenten gezielt anzusprechen und den Verkaufsprozess zu beschleunigen.</p>
+          <p>Im hart umkämpften Immobilienmarkt <span class="hl">zählt jeder Vorteil</span>. Unsere Tools helfen Ihnen, Exposés professionell zu erstellen, Interessenten gezielt anzusprechen und den Verkaufsprozess zu beschleunigen.</p>
           <ul class="ind-list">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Automatische Exposé-Generierung</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Gezieltes Lead-Management</li>
@@ -538,7 +540,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="ind-panel" id="craft">
         <div>
           <h3 class="serif">Auftragsverwaltung und Kundenkommunikation</h3>
-          <p>Für Handwerksbetriebe ist es entscheidend, den Überblick über Aufträge, Angebote und Kunden zu behalten. Unsere Lösung vereinfacht die Verwaltung und sorgt für zufriedene Kunden.</p>
+          <p>Für Handwerksbetriebe ist es entscheidend, <span class="hl">den Überblick zu behalten</span> — über Aufträge, Angebote und Kunden. Unsere Lösung vereinfacht die Verwaltung und sorgt für zufriedene Kunden.</p>
           <ul class="ind-list">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
@@ -551,7 +553,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="ind-panel" id="solo">
         <div>
           <h3 class="serif">Alles unter Kontrolle</h3>
-          <p>Als Einzelunternehmer bist du Manager, Verkäufer und Experte in einem. Wir helfen dir, deine Zeit optimal zu nutzen und den Überblick zu behalten.</p>
+          <p>Als Einzelunternehmer bist du Manager, Verkäufer und Experte in einem. Wir helfen dir, <span class="hl">deine Zeit optimal zu nutzen</span> und den Überblick zu behalten.</p>
           <ul class="ind-list">
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
             <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
@@ -576,7 +578,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <div class="case-stat"><b class="serif">24/7</b><span>Erreichbarkeit — immer freundlich</span></div>
         </div>
       </div>
-      <p class="lead reveal" style="margin-bottom:2.6rem;">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen verlieren durch verpasste Anrufe potenzielle Patienten und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass kein Anruf unbeantwortet bleibt.</p>
+      <p class="lead reveal" style="margin-bottom:2.6rem;">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen <span class="hl">verlieren durch verpasste Anrufe potenzielle Patienten</span> und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass <span class="hl">kein Anruf unbeantwortet bleibt</span>.</p>
       <div class="case-steps">
         <div class="case-step reveal"><span class="n serif">1</span><div class="tag">Vorher</div><h4>Verpasste Anrufe</h4><p>Patienten riefen vergeblich an, da das Personal überlastet war oder außerhalb der Sprechzeiten keine Erreichbarkeit bestand.</p></div>
         <div class="case-step reveal" style="transition-delay:.05s"><span class="n serif">2</span><div class="tag">Vorher</div><h4>Überlastetes Personal</h4><p>Mitarbeiter hatten Mühe, Patienten zurückzurufen, was zu längeren Wartezeiten und Frustration führte.</p></div>
@@ -592,7 +594,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
     <div class="wrap">
       <div class="eyebrow reveal">Vertrauen entsteht nicht durch Technik allein</div>
       <h2 class="h-lg serif reveal" style="max-width:680px;margin-bottom:1.4rem;">KI-Lösungen mit Erfahrung, Strategie und echter Umsetzungskompetenz.</h2>
-      <p class="lead reveal" style="margin-bottom:3rem;">Hinter AIDEN stehen Menschen, die Unternehmen verstehen: mit Erfahrung in Marketing, Vertrieb, Kundenkommunikation und künstlicher Intelligenz. Genau diese Verbindung macht den Unterschied.</p>
+      <p class="lead reveal" style="margin-bottom:3rem;">Hinter AIDEN stehen Menschen, die Unternehmen verstehen: mit Erfahrung in Marketing, Vertrieb, Kundenkommunikation und künstlicher Intelligenz. <span class="hl">Genau diese Verbindung macht den Unterschied.</span></p>
 
       <div class="trust-grid">
         <div class="trust-item reveal">
@@ -948,7 +950,7 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   function build(){
     const w = content.offsetWidth, h = content.offsetHeight;
     svg.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
-    const cx = w * 0.5, amp = w * 0.11, periods = 3.2, steps = 320, phase = Math.PI / 6;
+    const cx = w * 0.5, amp = w * 0.13, periods = 5.5, steps = 400, phase = Math.PI / 6;
     let d = '';
     for(let i = 0; i <= steps; i++){
       const y = h * i / steps;
@@ -958,7 +960,7 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     path.setAttribute('d', d.trim());
 
     grad.setAttribute('y2', h);
-    const HI = 1, LO = 0.08, feather = 30;
+    const HI = 1, LO = 0.22, feather = 22;
     const cTop = content.getBoundingClientRect().top + window.scrollY;
     const blocks = [...content.querySelectorAll('.hero-inner,.wrap')].map(el=>{
       const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t, t + r.height];
