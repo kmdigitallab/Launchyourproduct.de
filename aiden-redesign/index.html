@@ -50,7 +50,7 @@ section{padding:clamp(5rem,10vw,9.5rem) 0;}
 .on-ink .eyebrow{color:var(--gold-light);}
 
 h1,h2,h3,h4{margin:0;letter-spacing:-.01em;}
-.h-xl{font-size:clamp(2.7rem,6.2vw,5rem);font-weight:600;line-height:1.03;}
+.h-xl{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:600;line-height:1.05;}
 .h-lg{font-size:clamp(1.9rem,3.9vw,3.2rem);font-weight:600;line-height:1.1;}
 .h-md{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:600;}
 em{font-style:italic;color:var(--gold);}
@@ -76,8 +76,19 @@ em{font-style:italic;color:var(--gold);}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);}
 .reveal.vis{opacity:1;transform:none;}
 
+/* ── announcement bar ── */
+.announce{position:fixed;top:0;left:0;right:0;z-index:310;display:flex;align-items:center;justify-content:center;gap:.6rem;height:40px;padding:0 44px 0 16px;background:linear-gradient(90deg,#1a1712,#26200f,#1a1712);border-bottom:1px solid rgba(255,226,122,.14);font-size:.78rem;font-weight:600;color:var(--gold-light);transition:transform .4s ease,opacity .4s ease;}
+.announce.hidden{transform:translateY(-100%);opacity:0;pointer-events:none;}
+.announce-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.8);animation:announceDot 1.8s ease-in-out infinite;flex-shrink:0;}
+@keyframes announceDot{0%,100%{opacity:1;}50%{opacity:.4;}}
+.announce a{color:var(--gold-light);text-decoration:underline;text-underline-offset:2px;margin-left:.3rem;}
+.announce-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);background:transparent;border:none;cursor:pointer;transition:color .2s,background .2s;}
+.announce-close:hover{color:#fff;background:rgba(255,255,255,.08);}
+body.has-announce nav.site{top:54px;}
+@media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}}
+
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:14px;right:14px;z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s;}
+nav.site{position:fixed;top:14px;left:14px;right:14px;z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
 nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
 nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),#8a6415,var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,#8a6415 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
 @keyframes navOrbit{to{--na:360deg;}}
@@ -384,7 +395,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @media(max-width:768px){.content{margin-bottom:600px;}.cine-footer{height:600px;padding:44px 20px 22px;}}
 </style>
 </head>
-<body>
+<body class="has-announce">
 
 <div class="intro-spacer" aria-hidden="true"></div>
 <div class="intro-splash" id="introSplash">
@@ -399,6 +410,14 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   </div>
 </div>
 
+
+<div class="announce" id="announceBar">
+  <span class="announce-dot"></span>
+  <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch <a href="#kontakt">jetzt sichern</a></span>
+  <button class="announce-close" id="announceClose" aria-label="Schließen">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
 
 <nav class="site" id="siteNav">
   <div class="nav-inner">
@@ -1264,6 +1283,23 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
       btn.style.transform = `translate(${mx*0.18}px,${my*0.28}px)`;
     });
     btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+  });
+})();
+
+// Announcement bar — dismissible, remembers choice for the session
+(function(){
+  const bar = document.getElementById('announceBar');
+  const btn = document.getElementById('announceClose');
+  if(!bar || !btn) return;
+  if(sessionStorage.getItem('aiden-announce-dismissed') === '1'){
+    bar.classList.add('hidden');
+    document.body.classList.remove('has-announce');
+    return;
+  }
+  btn.addEventListener('click', ()=>{
+    bar.classList.add('hidden');
+    document.body.classList.remove('has-announce');
+    sessionStorage.setItem('aiden-announce-dismissed', '1');
   });
 })();
 
