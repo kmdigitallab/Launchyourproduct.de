@@ -50,9 +50,9 @@ section{padding:clamp(5rem,10vw,9.5rem) 0;}
 .on-ink .eyebrow{color:var(--gold-light);}
 
 h1,h2,h3,h4{margin:0;letter-spacing:-.01em;}
-.h-xl{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:600;line-height:1.05;}
-.h-lg{font-size:clamp(1.9rem,3.6vw,3rem);font-weight:600;line-height:1.12;}
-.h-md{font-size:clamp(1.35rem,2vw,1.65rem);font-weight:600;}
+.h-xl{font-size:clamp(2.7rem,6.2vw,5rem);font-weight:600;line-height:1.03;}
+.h-lg{font-size:clamp(1.9rem,3.9vw,3.2rem);font-weight:600;line-height:1.1;}
+.h-md{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:600;}
 em{font-style:italic;color:var(--gold);}
 .on-ink em{color:var(--gold-light);text-shadow:0 0 28px rgba(233,217,168,.5);}
 
@@ -307,7 +307,9 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
 .tst-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(14,14,16,.1),0 0 34px rgba(245,183,49,.14);border-color:rgba(245,183,49,.4);}
 .tst-card p{font-size:.92rem;color:var(--ink);line-height:1.7;font-style:italic;margin:0 0 1.2rem;}
-.tst-person{font-size:.82rem;}
+.tst-stars{display:flex;gap:3px;margin-bottom:1rem;color:var(--gold);filter:drop-shadow(0 0 4px rgba(245,183,49,.4));}
+.tst-person{display:flex;align-items:center;gap:.7rem;font-size:.82rem;}
+.tst-av{flex-shrink:0;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.02em;box-shadow:0 4px 12px rgba(184,145,47,.3);}
 .tst-person b{display:block;color:var(--ink);}
 .tst-person span{color:var(--muted);}
 
@@ -807,24 +809,29 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;">Gute Zusammenarbeit ist spürbar — in Beratung, Umsetzung und Ergebnis.</h2>
       <div class="tst-grid">
         <div class="tst-card reveal">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <p>„AIDEN hat von Anfang an an mich und meine Ideen geglaubt. Ich habe mich nicht nur als Kunde gefühlt, sondern wirklich begleitet. Durch die Erfahrung und Beratung von AIDEN kann ich heute klar zeigen, wer ich bin und wofür meine Praxis steht."</p>
-          <div class="tst-person"><b>Hector Fernandez Diarte</b><span>Facharzt</span></div>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#b8912f,#e0a83a);">HD</div><div><b>Hector Fernandez Diarte</b><span>Facharzt</span></div></div>
         </div>
         <div class="tst-card reveal" style="transition-delay:.05s">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <p>„Ich habe die Zusammenarbeit mit AIDEN als sehr professionell, zuverlässig und angenehm erlebt. Besonders positiv empfand ich die gute Erreichbarkeit der Ansprechpartner. Rückfragen wurden schnell beantwortet."</p>
-          <div class="tst-person"><b>Karin Kniese</b><span>Psychotherapeutin</span></div>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#8a6d2b,#c9a13b);">KK</div><div><b>Karin Kniese</b><span>Psychotherapeutin</span></div></div>
         </div>
         <div class="tst-card reveal" style="transition-delay:.1s">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <p>„Die Unterstützung von AIDEN ist ein Meilenstein in meiner Social Media Entwicklung. Ich bin absolut begeistert."</p>
-          <div class="tst-person"><b>Jochen Timme</b><span>LRS-Trainer</span></div>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#6b5220,#a8842f);">JT</div><div><b>Jochen Timme</b><span>LRS-Trainer</span></div></div>
         </div>
         <div class="tst-card reveal">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <p>„,Es geht auch leicht' bringt es auf den Punkt. Kompetent, sympathisch, tolles Team!"</p>
-          <div class="tst-person"><b>Silke Lippold</b><span>Zertifizierter Coach &amp; Introvisionsberaterin</span></div>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#c9a13b,#f5b731);">SL</div><div><b>Silke Lippold</b><span>Zertifizierter Coach &amp; Introvisionsberaterin</span></div></div>
         </div>
         <div class="tst-card reveal" style="transition-delay:.05s">
+          <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
           <p>„Die Zusammenarbeit mit diesem Team war wirklich eine tolle Erfahrung. Sie haben uns super geholfen und alles klar und verständlich gemacht. Wir sind sehr zufrieden und können sie auf jeden Fall weiterempfehlen!"</p>
-          <div class="tst-person"><b>Wieland Schorer</b><span>Architekt</span></div>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#7c611f,#b8912f);">WS</div><div><b>Wieland Schorer</b><span>Architekt</span></div></div>
         </div>
       </div>
     </div>
