@@ -290,6 +290,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .price-feats svg{flex-shrink:0;color:var(--gold);margin-top:.15rem;}
 .price-extra{font-size:.78rem;color:var(--muted);margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);}
 .price-card .btn{margin-top:1.4rem;transform:translateY(0);}
+.price-bestfor{max-height:0;opacity:0;overflow:hidden;transition:max-height .4s cubic-bezier(.22,.9,.24,1),opacity .3s ease,margin .4s ease;font-size:.8rem;color:var(--gold);font-weight:600;}
+.price-card:hover .price-bestfor{max-height:60px;opacity:1;margin-top:.7rem;}
 
 .starter-box{background:linear-gradient(160deg,var(--ink),var(--ink-soft));color:var(--paper);border-radius:var(--r);padding:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;margin-bottom:3rem;}
 @media(max-width:860px){.starter-box{grid-template-columns:1fr;}}
@@ -731,6 +733,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Basic wählen</a>
+          <div class="price-bestfor">Am besten für: Einzelunternehmer &amp; Praxisstart</div>
           <div class="price-extra mono">Zusatzminute 0,39&nbsp;€</div>
         </div>
 
@@ -753,6 +756,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
           <a href="#kontakt" class="btn btn-gold">Comfort wählen</a>
+          <div class="price-bestfor">Am besten für: wachsende Teams mit mehreren Kanälen</div>
           <div class="price-extra mono">Zusatzminute 0,32&nbsp;€</div>
         </div>
 
@@ -772,6 +776,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Premium wählen</a>
+          <div class="price-bestfor">Am besten für: größere Unternehmen mit hohem Anrufvolumen</div>
           <div class="price-extra mono">Zusatzminute 0,28&nbsp;€</div>
         </div>
 
@@ -788,6 +793,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen</span></li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Smarte Lösung wählen</a>
+          <div class="price-bestfor">Am besten für: planungssichere Budgets ohne laufende Kosten</div>
           <div class="price-extra mono">Einmalzahlung, kein Abo</div>
         </div>
       </div>
