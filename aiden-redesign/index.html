@@ -41,7 +41,7 @@ body{
 img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
-section{padding:clamp(4rem,8vw,7.5rem) 0;}
+section{padding:clamp(5rem,10vw,9.5rem) 0;}
 @media(max-width:640px){.wrap{padding:0 20px;}}
 
 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;}
@@ -90,6 +90,12 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 @media(max-width:900px){.nav-links{display:none;}}
 .btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;}
 .btn-phone span{font-size:.78rem;font-weight:600;}
+
+/* ── cursor glow ── */
+.cursor-glow{position:fixed;top:0;left:0;width:420px;height:420px;margin:-210px 0 0 -210px;border-radius:50%;pointer-events:none;z-index:2000;background:radial-gradient(circle,rgba(245,183,49,.10),transparent 70%);opacity:0;transition:opacity .3s ease,width .35s ease,height .35s ease,margin .35s ease;}
+.cursor-glow.on{opacity:1;}
+.cursor-glow.big{width:560px;height:560px;margin:-280px 0 0 -280px;background:radial-gradient(circle,rgba(245,183,49,.16),transparent 70%);}
+.btn-gold,.btn-outline{transition:transform .18s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;}
 
 /* ── WhatsApp bubble ── */
 .wa-bubble{position:fixed;right:22px;bottom:22px;z-index:400;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .25s ease;}
@@ -179,7 +185,8 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 .case-stat span{font-size:.78rem;color:var(--muted-on-ink);}
 .case-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;}
 @media(max-width:980px){.case-steps{grid-template-columns:repeat(2,1fr);}}
-.case-step{background:rgba(255,255,255,.04);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.5rem;}
+.case-step{background:rgba(255,255,255,.04);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.8rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.case-step:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.35),0 0 30px rgba(245,183,49,.12);border-color:rgba(245,183,49,.35);}
 .case-step .n{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;color:var(--gold-light);font-size:1rem;display:block;margin-bottom:.9rem;}
 .case-step .tag{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:.3rem;}
 .case-step h4{font-size:.98rem;margin-bottom:.4rem;}
@@ -196,7 +203,8 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
 @media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
-.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.4rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.team-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(14,14,16,.1),0 0 34px rgba(245,183,49,.14);border-color:rgba(245,183,49,.4);}
 .team-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(155deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:1.2rem;}
 .team-card h4{font-size:1.1rem;margin-bottom:.15rem;}
 .team-card .role{font-size:.82rem;color:var(--gold);font-weight:600;margin-bottom:1rem;}
@@ -205,7 +213,8 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 /* ── onboarding paths ── */
 .path-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
 @media(max-width:860px){.path-grid{grid-template-columns:1fr;}}
-.path-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.8rem,3vw,2.6rem);}
+.path-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(2rem,3.4vw,2.9rem);transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.path-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(14,14,16,.1),0 0 34px rgba(245,183,49,.14);border-color:rgba(245,183,49,.4);}
 .path-card h3{font-size:1.3rem;margin-bottom:.4rem;}
 .path-card>.sub{font-size:.85rem;color:var(--gold);font-weight:600;margin-bottom:1.6rem;}
 .path-step{display:grid;grid-template-columns:34px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);}
@@ -259,7 +268,8 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 .tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
 @media(max-width:900px){.tst-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.tst-grid{grid-template-columns:1fr;}}
-.tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;}
+.tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.tst-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(14,14,16,.1),0 0 34px rgba(245,183,49,.14);border-color:rgba(245,183,49,.4);}
 .tst-card p{font-size:.92rem;color:var(--ink);line-height:1.7;font-style:italic;margin:0 0 1.2rem;}
 .tst-person{font-size:.82rem;}
 .tst-person b{display:block;color:var(--ink);}
@@ -547,7 +557,7 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
           <h2 class="h-lg serif reveal" style="max-width:600px;">Nie wieder verpasste Patientenanrufe.</h2>
         </div>
         <div class="case-stats reveal">
-          <div class="case-stat"><b class="serif">62 %</b><span>Mehr Patientenanrufe angenommen</span></div>
+          <div class="case-stat"><b class="serif" data-count="62" data-suffix=" %">0 %</b><span>Mehr Patientenanrufe angenommen</span></div>
           <div class="case-stat"><b class="serif">24/7</b><span>Erreichbarkeit — immer freundlich</span></div>
         </div>
       </div>
@@ -1061,6 +1071,64 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
   });
 });
+
+// Cursor glow — soft light that follows the pointer, brightens over interactive elements
+(function(){
+  if(window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const glow = document.createElement('div');
+  glow.className = 'cursor-glow';
+  document.body.appendChild(glow);
+  let x = 0, y = 0, cx = 0, cy = 0;
+  window.addEventListener('mousemove', e=>{ x = e.clientX; y = e.clientY; glow.classList.add('on'); });
+  document.querySelectorAll('a,button,.price-card,.ov-card,.team-card,.tst-card,.path-card,.case-step').forEach(el=>{
+    el.addEventListener('mouseenter', ()=>glow.classList.add('big'));
+    el.addEventListener('mouseleave', ()=>glow.classList.remove('big'));
+  });
+  function raf(){
+    cx += (x - cx) * 0.16; cy += (y - cy) * 0.16;
+    glow.style.transform = `translate(${cx}px,${cy}px)`;
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+})();
+
+// Magnetic buttons — CTA buttons subtly pull toward the cursor
+(function(){
+  if(window.matchMedia('(pointer: coarse)').matches || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  document.querySelectorAll('.btn-gold, .btn-outline').forEach(btn=>{
+    btn.addEventListener('mousemove', e=>{
+      const r = btn.getBoundingClientRect();
+      const mx = e.clientX - r.left - r.width/2, my = e.clientY - r.top - r.height/2;
+      btn.style.transform = `translate(${mx*0.18}px,${my*0.28}px)`;
+    });
+    btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
+  });
+})();
+
+// Animated counters — count up once when scrolled into view
+(function(){
+  const els = document.querySelectorAll('[data-count]');
+  if(!els.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.count);
+      const suffix = el.dataset.suffix || '';
+      const dur = 1400;
+      const start = performance.now();
+      function step(now){
+        const p = Math.min(1, (now - start) / dur);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased) + suffix;
+        if(p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+      io.unobserve(el);
+    });
+  }, { threshold: .6 });
+  els.forEach(el=>io.observe(el));
+})();
 </script>
 
 <a href="https://wa.me/" class="wa-bubble" aria-label="WhatsApp Kontakt" target="_blank" rel="noopener">
