@@ -206,8 +206,12 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .case{background:var(--ink);color:var(--paper);}
 .case-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;}
 .case-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.case-stat{min-width:180px;}
 .case-stat b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--gold-light);}
 .case-stat span{font-size:.78rem;color:var(--muted-on-ink);}
+.case-stat-bar{margin-top:.7rem;height:4px;border-radius:4px;background:rgba(255,255,255,.08);overflow:hidden;}
+.case-stat-bar i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,var(--gold),var(--gold-light));transition:width 1.4s cubic-bezier(.22,.9,.24,1);}
+.case-stat-bar.vis i{width:var(--fill,0%);}
 .case-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;}
 @media(max-width:980px){.case-steps{grid-template-columns:repeat(2,1fr);}}
 .case-step{background:rgba(255,255,255,.04);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.8rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
@@ -593,8 +597,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <h2 class="h-lg serif reveal" style="max-width:600px;">Nie wieder verpasste Patientenanrufe.</h2>
         </div>
         <div class="case-stats reveal">
-          <div class="case-stat"><b class="serif" data-count="62" data-suffix=" %">0 %</b><span>Mehr Patientenanrufe angenommen</span></div>
-          <div class="case-stat"><b class="serif">24/7</b><span>Erreichbarkeit — immer freundlich</span></div>
+          <div class="case-stat"><b class="serif" data-count="62" data-suffix=" %">0 %</b><span>Mehr Patientenanrufe angenommen</span><div class="case-stat-bar" style="--fill:62%;"><i></i></div></div>
+          <div class="case-stat"><b class="serif">24/7</b><span>Erreichbarkeit — immer freundlich</span><div class="case-stat-bar" style="--fill:100%;"><i></i></div></div>
         </div>
       </div>
       <p class="lead reveal" style="margin-bottom:2.6rem;">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen <span class="hl">verlieren durch verpasste Anrufe potenzielle Patienten</span> und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass <span class="hl">kein Anruf unbeantwortet bleibt</span>.</p>
@@ -1298,6 +1302,20 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
     });
   }, { threshold: .6 });
   els.forEach(el=>io.observe(el));
+})();
+
+// KPI bars — fill in when scrolled into view
+(function(){
+  const bars = document.querySelectorAll('.case-stat-bar');
+  if(!bars.length) return;
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      entry.target.classList.add('vis');
+      io.unobserve(entry.target);
+    });
+  }, { threshold: .6 });
+  bars.forEach(el=>io.observe(el));
 })();
 </script>
 
