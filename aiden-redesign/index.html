@@ -695,9 +695,9 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender Integration</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Priorität-Support</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Wissensdatenbank</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">API-Zugang</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Perfekte Einrichtung</span></li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
           <a href="#kontakt" class="btn btn-gold">Comfort wählen</a>
@@ -730,9 +730,9 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <div class="price-was mono">4.536&nbsp;€ einmalig</div>
           <div class="price-save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24 Monate Laufzeit</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">800 Freiminuten</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">3 KI-Assistenten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">24 Monate Laufzeit</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>800 Freiminuten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen</span></li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Smarte Lösung wählen</a>
@@ -951,7 +951,7 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     stops = stops.map(([o,a])=>[Math.max(0,Math.min(1,o)), a]).sort((x,y)=>x[0]-y[0]);
 
     // Auf dunklen Sektionen den Faden zusaetzlich dezenter machen (weniger dominant)
-    const DARK_MAX = 0.4;
+    const DARK_MAX = 0.18;
     const darkRegions = [...content.querySelectorAll('header.hero,.ov-section,.case,.final-cta,.starter-box')].map(el=>{
       const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t / h, (t + r.height) / h];
     });
