@@ -159,11 +159,15 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .badge-gold{background:rgba(233,217,168,.14);color:var(--gold-light);border:1px solid rgba(233,217,168,.3);backdrop-filter:blur(8px);font-weight:700;font-size:.72rem;letter-spacing:.02em;padding:.5rem .95rem;border-radius:100px;box-shadow:0 0 18px rgba(245,183,49,.15);}
 
 /* ── trusted by ── */
-.trust-bar{padding:2.6rem 0;border-bottom:1px solid var(--line);}
+.trust-bar{padding:2.6rem 0;border-bottom:1px solid var(--line);border-top:1px solid var(--line);overflow:hidden;}
 .trust-bar-label{text-align:center;font-size:.74rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1.6rem;}
-.trust-bar-logos{display:flex;justify-content:center;align-items:center;gap:clamp(1.6rem,4vw,3.2rem);flex-wrap:wrap;}
-.trust-bar-logos span{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.15rem;color:var(--muted);opacity:.6;transition:opacity .25s ease,color .25s ease;}
-.trust-bar-logos span:hover{opacity:1;color:var(--gold);}
+.trust-track-wrap{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);}
+.trust-track{display:flex;align-items:center;gap:clamp(2.4rem,5vw,4rem);width:max-content;animation:trustScroll 26s linear infinite;}
+.trust-track:hover{animation-play-state:paused;}
+.trust-track span{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.15rem;color:var(--muted);opacity:.65;white-space:nowrap;transition:opacity .25s ease,color .25s ease;}
+.trust-track span:hover{opacity:1;color:var(--gold);}
+@keyframes trustScroll{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+@media(prefers-reduced-motion:reduce){.trust-track{animation:none;}}
 
 /* ── overview grid ── */
 .ov-head{max-width:680px;margin-bottom:3rem;}
@@ -469,7 +473,10 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <section class="trust-bar">
     <div class="wrap">
       <div class="trust-bar-label reveal">Integriert mit den Tools, die Sie bereits nutzen</div>
-      <div class="trust-bar-logos reveal" style="transition-delay:.05s">
+    </div>
+    <div class="trust-track-wrap reveal" style="transition-delay:.05s">
+      <div class="trust-track">
+        <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span>
         <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span>
       </div>
     </div>
