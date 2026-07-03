@@ -560,7 +560,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="case-steps">
         <div class="case-step reveal"><span class="n serif">1</span><div class="tag">Vorher</div><h4>Verpasste Anrufe</h4><p>Patienten riefen vergeblich an, da das Personal überlastet war oder außerhalb der Sprechzeiten keine Erreichbarkeit bestand.</p></div>
         <div class="case-step reveal" style="transition-delay:.05s"><span class="n serif">2</span><div class="tag">Vorher</div><h4>Überlastetes Personal</h4><p>Mitarbeiter hatten Mühe, Patienten zurückzurufen, was zu längeren Wartezeiten und Frustration führte.</p></div>
-        <div class="case-step reveal" style="transition-delay:.1s"><span class="n serif">3</span><div class="tag">Mit AIDEN</div><h4>Keine Anrufe mehr ins Leere</h4><p>Patientenanrufe werden automatisch angenommen und individuell beantwortet — mit Namen angesprochen, sofort gut aufgehoben.</p></div>
+        <div class="case-step reveal" id="caseStepNoLine" style="transition-delay:.1s"><span class="n serif">3</span><div class="tag">Mit AIDEN</div><h4>Keine Anrufe mehr ins Leere</h4><p>Patientenanrufe werden automatisch angenommen und individuell beantwortet — mit Namen angesprochen, sofort gut aufgehoben.</p></div>
         <div class="case-step reveal" style="transition-delay:.15s"><span class="n serif">4</span><div class="tag">Terminbuchung</div><h4>Voller Kalender, leicht gemacht</h4><p>AIDEN bucht Termine via SMS, WhatsApp oder E-Mail und integriert sich nahtlos in den Praxiskalender.</p></div>
         <div class="case-step reveal" style="transition-delay:.2s"><span class="n serif">5</span><div class="tag">Ergebnis</div><h4>Zufriedene Patienten, entspanntes Team</h4><p>Die Praxis läuft entspannter und deutlich effizienter — das Team ist freundlich statt gestresst.</p></div>
       </div>
@@ -670,7 +670,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <ul class="price-feats">
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>100 Freiminuten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">24/7 Telefonannahme</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24/7 Telefonannahme</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp Integration</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Telegram Integration</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung</li>
@@ -959,6 +959,16 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
       const inDark = darkRegions.some(([s,e]) => o >= s && o <= e);
       return [o, inDark ? Math.min(a, DARK_MAX) : a];
     });
+
+    // An dieser einen Karte soll der Faden komplett verschwinden und danach wieder erscheinen
+    const noLineEl = document.getElementById('caseStepNoLine');
+    if(noLineEl){
+      const r = noLineEl.getBoundingClientRect();
+      const t = (r.top + window.scrollY - cTop - feather) / h;
+      const b = (r.top + window.scrollY - cTop + r.height + feather) / h;
+      stops.push([Math.max(0, t), 0], [Math.min(1, b), 0]);
+      stops.sort((x,y)=>x[0]-y[0]);
+    }
 
     grad.innerHTML = stops.map(([o,a])=>'<stop offset="'+(o*100).toFixed(2)+'%" stop-color="#ffe27a" stop-opacity="'+a+'"/>').join('');
 
