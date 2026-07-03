@@ -129,13 +129,16 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
 
 /* ── overview grid ── */
 .ov-head{max-width:680px;margin-bottom:3rem;}
-.ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
-.ov-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2rem 1.9rem;transition:transform .3s,box-shadow .3s,border-color .3s;}
-.ov-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent;}
-.ov-card.feat{background:linear-gradient(160deg,var(--ink),var(--ink-soft));color:var(--paper);}
+.ov-section{background:var(--ink);color:var(--paper);padding:5.5rem 0;}
+.ov-section .eyebrow{color:var(--gold-light);}
+.ov-section .lead{color:var(--muted-on-ink);}
+.ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:2.6rem;}
+.ov-card{background:var(--gold);color:var(--ink);border-radius:var(--r);padding:2rem 1.9rem;transition:transform .3s,box-shadow .3s;}
+.ov-card:hover{transform:translateY(-5px);box-shadow:0 24px 50px rgba(0,0,0,.35);}
+.ov-icon{width:38px;height:38px;border-radius:8px;background:var(--ink);color:var(--gold-light);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
 .ov-card h3{font-size:1.1rem;margin-bottom:.6rem;}
-.ov-card p{font-size:.9rem;color:var(--muted);line-height:1.65;margin:0;}
-.ov-card.feat p{color:var(--muted-on-ink);}
+.ov-card p{font-size:.9rem;color:rgba(14,14,16,.72);line-height:1.65;margin:0;}
+.ov-cta-row{text-align:center;margin-top:2.8rem;}
 .ov-num{display:block;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:1rem;}
 .ov-card.feat .ov-num{color:var(--gold-light);}
 @media(max-width:900px){.ov-grid{grid-template-columns:1fr 1fr;}}
@@ -208,8 +211,8 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
 .price-note svg{color:var(--gold);flex-shrink:0;}
 .price-note p{margin:0;font-size:.88rem;color:var(--muted);}
 .price-note strong{color:var(--ink);}
-.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-@media(max-width:980px){.price-grid{grid-template-columns:1fr 1fr;}}
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+@media(max-width:1180px){.price-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:640px){.price-grid{grid-template-columns:1fr;}}
 .price-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.1rem;display:flex;flex-direction:column;
   transition:transform .45s cubic-bezier(.22,.9,.24,1),box-shadow .45s cubic-bezier(.22,.9,.24,1),border-color .3s ease;}
@@ -381,7 +384,7 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
   </header>
 
   <!-- OVERVIEW -->
-  <section id="loesungen">
+  <section id="loesungen" class="ov-section">
     <div class="wrap">
       <div class="ov-head">
         <div class="eyebrow reveal">KI-Lösungen im Überblick</div>
@@ -389,36 +392,39 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
         <p class="lead reveal" style="margin-top:1rem;">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag Zeit verloren geht: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
       </div>
       <div class="ov-grid">
-        <div class="ov-card feat reveal">
-          <span class="ov-num serif">01</span>
+        <div class="ov-card reveal">
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
           <h3>KI Voice Agents</h3>
           <p>Verpassen Sie nie wieder einen Kunden. Ihr KI-Agent nimmt Anrufe entgegen, qualifiziert Anfragen und bucht Termine in Echtzeit — 24/7, mit einem Lächeln.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.05s">
-          <span class="ov-num serif">02</span>
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
           <h3>Social Media Agent</h3>
           <p>Erstellen, planen und veröffentlichen Sie Social-Media-Beiträge automatisch — passend zu Ihrer Zielgruppe, Ihrer Marke und der jeweiligen Plattform.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.1s">
-          <span class="ov-num serif">03</span>
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg></div>
           <h3>Prozess-Automation</h3>
           <p>Automatisieren Sie wiederkehrende Aufgaben und Workflows. Sparen Sie Zeit, reduzieren Sie Fehler und entlasten Sie Ihr Team von manueller Arbeit.</p>
         </div>
         <div class="ov-card reveal">
-          <span class="ov-num serif">04</span>
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><circle cx="9" cy="7" r="4"/><path d="M1 21v-2a4 4 0 013-3.87"/></svg></div>
           <h3>Lead-Management</h3>
           <p>Erfassen und qualifizieren Sie Leads sofort. Verwandeln Sie jede Anfrage automatisch in eine echte Verkaufschance.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.05s">
-          <span class="ov-num serif">05</span>
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
           <h3>Kundensupport</h3>
           <p>Antworten Sie Kunden sofort — jederzeit. Schneller, einheitlicher und professioneller Support, ohne zusätzliches Personal aufzubauen.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.1s">
-          <span class="ov-num serif">06</span>
+          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
           <h3>Individuelle Lösungen</h3>
           <p>Maßgeschneiderte Systeme, die genau auf Ihre Herausforderungen, Abläufe und Ziele abgestimmt sind.</p>
         </div>
+      </div>
+      <div class="ov-cta-row reveal">
+        <a href="#kontakt" class="btn btn-gold">Individuelle Lösung finden</a>
       </div>
     </div>
   </section>
@@ -618,8 +624,12 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>100 Freiminuten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24/7 Telefonannahme</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender-Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Telegram Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Kalender Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminerinnerung</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Basic wählen</a>
           <div class="price-extra mono">Zusatzminute 0,39&nbsp;€</div>
@@ -635,9 +645,13 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
           <ul class="price-feats">
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>200 Freiminuten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender Integration</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
           <a href="#kontakt" class="btn btn-gold">Comfort wählen</a>
           <div class="price-extra mono">Zusatzminute 0,32&nbsp;€</div>
@@ -654,9 +668,28 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen inklusive</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Premium wählen</a>
           <div class="price-extra mono">Zusatzminute 0,28&nbsp;€</div>
+        </div>
+
+        <div class="price-card reveal" style="transition-delay:.15s">
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4.5 12.5H11L9.5 22L18 11.5H12.5L13 2z"/></svg></div>
+          <div class="price-name">Smarte Lösung</div>
+          <div class="price-now serif">2.349&nbsp;€<span class="unit">&nbsp;einmalig</span></div>
+          <div class="price-was mono">4.536&nbsp;€ einmalig</div>
+          <div class="price-save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24 Monate Laufzeit</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>800 Freiminuten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-outline">Smarte Lösung wählen</a>
+          <div class="price-extra mono">Einmalzahlung, kein Abo</div>
         </div>
       </div>
     </div>
