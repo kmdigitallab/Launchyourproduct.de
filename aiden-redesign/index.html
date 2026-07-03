@@ -316,9 +316,9 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
 /* ── golden thread (LYP-Stil: gebogene SVG-Linie, scroll-gebunden) ── */
 .flow-thread{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible;}
-.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;
   filter:drop-shadow(0 0 8px rgba(255,226,122,.7)) drop-shadow(0 0 22px rgba(245,183,49,.5));}
-.content>section,.content>header{position:relative;z-index:1;}
+.wrap,.hero-inner,.beams-wrap{position:relative;z-index:1;}
 
 /* ── content wrapper w/ cinematic footer reveal ── */
 .content{position:relative;z-index:10;background:var(--paper);margin-bottom:480px;box-shadow:0 40px 90px rgba(0,0,0,.14);}
@@ -692,9 +692,9 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <ul class="price-feats">
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>200 Freiminuten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">WhatsApp &amp; Telegram Integration</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Priorität-Support</span></li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
@@ -712,8 +712,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <div class="price-save">Sie sparen 1.800&nbsp;€ im 1. Jahr</div>
           <ul class="price-feats">
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>600 Freiminuten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen inklusive</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">3 KI-Assistenten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen inklusive</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
@@ -730,10 +730,10 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <div class="price-was mono">4.536&nbsp;€ einmalig</div>
           <div class="price-save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24 Monate Laufzeit</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">24 Monate Laufzeit, einmalig statt Abo</span></li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>800 Freiminuten</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen</li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Smarte Lösung wählen</a>
           <div class="price-extra mono">Einmalzahlung, kein Abo</div>
@@ -938,7 +938,7 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     path.setAttribute('d', d.trim());
 
     grad.setAttribute('y2', h);
-    const HI = 1, LO = 0.22, feather = 22;
+    const HI = 1, LO = 0.4, feather = 20;
     const cTop = content.getBoundingClientRect().top + window.scrollY;
     const blocks = [...content.querySelectorAll('.hero-inner,.wrap')].map(el=>{
       const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t, t + r.height];
