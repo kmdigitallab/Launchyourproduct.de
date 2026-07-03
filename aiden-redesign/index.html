@@ -255,6 +255,16 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .team-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0;}
 
 /* ── onboarding paths ── */
+/* ── problem section ── */
+.pain-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.6rem;}
+@media(max-width:980px){.pain-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.pain-grid{grid-template-columns:1fr;}}
+.pain-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
+.pain-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(14,14,16,.1),0 0 30px rgba(220,60,60,.1);border-color:rgba(220,60,60,.25);}
+.pain-icon{width:40px;height:40px;border-radius:10px;background:rgba(220,60,60,.08);color:#c94b4b;display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
+.pain-card h3{font-size:1.02rem;margin-bottom:.5rem;}
+.pain-card p{font-size:.86rem;color:var(--muted);line-height:1.65;margin:0;}
+
 .path-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
 @media(max-width:860px){.path-grid{grid-template-columns:1fr;}}
 .path-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(2rem,3.4vw,2.9rem);transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
@@ -501,6 +511,37 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="trust-track">
         <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span>
         <span>OpenAI</span><span>WhatsApp</span><span>Telegram</span><span>Google Calendar</span><span>Microsoft 365</span><span>Meta</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="wrap">
+      <div class="eyebrow reveal">Der Alltag ohne AIDEN</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;">Jeder verpasste Anruf ist ein Kunde, den Sie nicht kennenlernen.</h2>
+      <p class="lead reveal" style="margin-top:1rem;">So sieht der Alltag in vielen Unternehmen aus — bevor ein KI-Agent übernimmt.</p>
+      <div class="pain-grid">
+        <div class="pain-card reveal">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
+          <h3>Verpasste Anrufe</h3>
+          <p>Während eines Kundengesprächs klingelt das Telefon — und der nächste Kunde legt auf, bevor jemand abheben kann.</p>
+        </div>
+        <div class="pain-card reveal" style="transition-delay:.05s">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          <h3>Keine Zeit für Social Media</h3>
+          <p>Content-Planung bleibt liegen, weil das Tagesgeschäft vorgeht — die Sichtbarkeit leidet Woche für Woche.</p>
+        </div>
+        <div class="pain-card reveal" style="transition-delay:.1s">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg></div>
+          <h3>Wiederkehrende Aufgaben</h3>
+          <p>Terminbestätigungen, Rückfragen, Erinnerungen — dieselben Handgriffe, jeden Tag, ohne dass sich das Team darauf konzentrieren kann, was wirklich zählt.</p>
+        </div>
+        <div class="pain-card reveal" style="transition-delay:.15s">
+          <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><circle cx="9" cy="7" r="4"/><path d="M1 21v-2a4 4 0 013-3.87"/></svg></div>
+          <h3>Leads gehen verloren</h3>
+          <p>Interessenten melden sich, bekommen aber erst Stunden später eine Antwort — und haben sich bis dahin oft schon anders entschieden.</p>
+        </div>
       </div>
     </div>
   </section>
