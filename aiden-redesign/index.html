@@ -73,11 +73,28 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 .brand{display:flex;align-items:center;gap:.6rem;}
 .brand-mark{width:34px;height:34px;border-radius:2px;background:var(--ink);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.15rem;}
-.brand-name{font-weight:700;font-size:1.02rem;letter-spacing:.01em;}
+.brand-name{font-weight:700;font-size:1.02rem;letter-spacing:.01em;line-height:1.1;}
+.brand-name-group{display:flex;flex-direction:column;}
+.brand-tagline{font-size:.58rem;font-weight:600;letter-spacing:.12em;color:var(--gold);line-height:1.2;}
 .nav-links{display:flex;gap:2.1rem;}
 .nav-links a{font-size:.86rem;font-weight:500;color:var(--muted);transition:color .2s;}
 .nav-links a:hover{color:var(--gold);}
 @media(max-width:900px){.nav-links{display:none;}}
+.btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;}
+.btn-phone span{font-size:.78rem;font-weight:600;}
+
+/* ── WhatsApp bubble ── */
+.wa-bubble{position:fixed;right:22px;bottom:22px;z-index:400;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .25s ease;}
+.wa-bubble:hover{transform:scale(1.08);}
+.wa-bubble::after{content:"";position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#e0333f;border:2px solid #fff;}
+.wa-bubble svg{width:30px;height:30px;}
+@media(max-width:768px){.wa-bubble{right:14px;bottom:14px;width:52px;height:52px;}}
+
+/* ── rating badge ── */
+.hero-rating{display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;}
+.hero-rating .stars{display:flex;gap:2px;color:var(--gold-light);}
+.hero-rating .stars svg{width:15px;height:15px;fill:currentColor;}
+.hero-rating span{font-size:.8rem;color:var(--muted-on-ink);font-weight:500;}
 
 /* ── hero ── */
 .hero{position:relative;background:var(--ink);color:var(--paper);padding:calc(78px + 5rem) 0 5.5rem;overflow:hidden;}
@@ -107,6 +124,8 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
 .badges{display:flex;gap:1.6rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid var(--line-on-ink);}
 .badge{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--muted-on-ink);}
 .badge svg{color:var(--gold-light);flex-shrink:0;}
+.badges.reveal{border-top:none;padding-top:0;gap:.7rem;}
+.badge-gold{background:var(--gold);color:var(--ink);font-weight:700;font-size:.72rem;letter-spacing:.02em;padding:.5rem .95rem;border-radius:6px;}
 
 /* ── overview grid ── */
 .ov-head{max-width:680px;margin-bottom:3rem;}
@@ -280,15 +299,21 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
   <div class="nav-inner">
     <a href="#top" class="brand">
       <span class="brand-mark">A</span>
-      <span class="brand-name">AIDEN</span>
+      <span class="brand-name-group">
+        <span class="brand-name">AIDEN</span>
+        <span class="brand-tagline">AIO – ALL IN ONE</span>
+      </span>
     </a>
     <div class="nav-links">
-      <a href="#voice">Voice Agent</a>
+      <a href="#kundenportal">Kundenportal</a>
+      <a href="#voice">Voice Agents</a>
       <a href="#social">Social Media Agent</a>
-      <a href="#pricing">Preise</a>
-      <a href="#faq">FAQ</a>
+      <a href="#stimmen">Referenzen</a>
     </div>
-    <a href="#pricing" class="btn btn-gold">Kostenlos starten</a>
+    <a href="#pricing" class="btn btn-gold btn-phone">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      <span>Voice Agent<br>testen</span>
+    </a>
   </div>
 </nav>
 
@@ -299,17 +324,27 @@ nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
     <div class="hero-mesh"></div>
     <div class="wrap hero-grid">
       <div class="hero-inner">
+        <div class="hero-rating reveal">
+          <span class="stars">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </span>
+          <span>5.0 von zufriedenen Kunden bewertet</span>
+        </div>
         <div class="eyebrow reveal">In der EU gehostet · DSGVO-konform · EU-AI-Act-konform</div>
         <h1 class="h-xl serif reveal" style="transition-delay:.05s">KI-Agenten, die Ihr Unternehmen <em>wirklich</em> entlasten.</h1>
         <p class="lead reveal" style="transition-delay:.1s">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft digitale Assistenten, die dort übernehmen, wo heute Zeit, Chancen und Energie verloren gehen.</p>
         <div class="hero-cta reveal" style="transition-delay:.15s">
-          <a href="#pricing" class="btn btn-gold">Voice Agent starten</a>
-          <a href="#social" class="btn btn-outline">Social Media Agent ansehen</a>
+          <a href="#pricing" class="btn btn-gold">VOICE AGENT anrufen &amp; testen</a>
+          <a href="#social" class="btn btn-outline">SOCIAL MEDIA AGENT kennenlernen</a>
         </div>
         <div class="badges reveal" style="transition-delay:.2s">
-          <div class="badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>In der EU gehostet</div>
-          <div class="badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>DSGVO-konform</div>
-          <div class="badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>EU-AI-Act-konform</div>
+          <div class="badge badge-gold">In der EU gehostet</div>
+          <div class="badge badge-gold">DSGVO-konform</div>
+          <div class="badge badge-gold">EU-AI-Act-konform</div>
         </div>
       </div>
 
@@ -818,5 +853,9 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
   });
 });
 </script>
+
+<a href="https://wa.me/" class="wa-bubble" aria-label="WhatsApp Kontakt" target="_blank" rel="noopener">
+  <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg>
+</a>
 </body>
 </html>
