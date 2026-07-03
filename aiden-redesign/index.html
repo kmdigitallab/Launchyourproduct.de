@@ -104,6 +104,11 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .nav-links a{font-size:.86rem;font-weight:700;color:var(--ink);opacity:.78;transition:color .2s,opacity .2s;}
 .nav-links a:hover{color:var(--gold);opacity:1;}
 @media(max-width:900px){.nav-links{display:none;}}
+.lang-switch{display:flex;align-items:center;gap:2px;padding:3px;border-radius:100px;background:rgba(14,14,16,.05);border:1px solid var(--line);margin-right:.9rem;}
+.lang-btn{font-family:inherit;font-size:.7rem;font-weight:700;letter-spacing:.03em;color:var(--muted);background:transparent;border:none;border-radius:100px;padding:.4rem .7rem;cursor:pointer;transition:background .2s,color .2s;}
+.lang-btn:hover{color:var(--ink);}
+.lang-btn.active{background:var(--gold);color:#100c02;}
+@media(max-width:560px){.lang-switch{margin-right:.5rem;}.lang-btn{padding:.35rem .55rem;}}
 .btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;}
 .btn-phone span{font-size:.78rem;font-weight:600;}
 
@@ -412,10 +417,10 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <canvas class="intro-sparkles" id="introSparkles" aria-hidden="true"></canvas>
   <h1 class="intro-word">AIDEN</h1>
   <div class="intro-rule"></div>
-  <div class="intro-sub">AIO – ALL IN ONE</div>
-  <div class="intro-interact"><span class="dot"></span>Zum Interagieren bewegen</div>
+  <div class="intro-sub" data-i18n="intro.sub">AIO – ALL IN ONE</div>
+  <div class="intro-interact" data-i18n="intro.interact"><span class="dot"></span>Zum Interagieren bewegen</div>
   <div class="intro-hint">
-    <span>Nach unten scrollen</span>
+    <span data-i18n="intro.scroll">Nach unten scrollen</span>
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
   </div>
 </div>
@@ -423,7 +428,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
 <div class="announce" id="announceBar">
   <span class="announce-dot"></span>
-  <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch <a href="#kontakt">jetzt sichern</a></span>
+  <span class="announce-text" data-i18n="announce.text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch <a href="#kontakt">jetzt sichern</a></span>
   <button class="announce-close" id="announceClose" aria-label="Schließen">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -439,14 +444,18 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       </span>
     </a>
     <div class="nav-links">
-      <a href="#kundenportal">Kundenportal</a>
-      <a href="#voice">Voice Agents</a>
-      <a href="#social">Social Media Agent</a>
-      <a href="#stimmen">Referenzen</a>
+      <a href="#kundenportal" data-i18n="nav.portal">Kundenportal</a>
+      <a href="#voice" data-i18n="nav.voice">Voice Agents</a>
+      <a href="#social" data-i18n="nav.social">Social Media Agent</a>
+      <a href="#stimmen" data-i18n="nav.refs">Referenzen</a>
+    </div>
+    <div class="lang-switch" id="langSwitch" role="group" aria-label="Sprache wählen">
+      <button type="button" class="lang-btn active" data-lang="de">DE</button>
+      <button type="button" class="lang-btn" data-lang="en">EN</button>
     </div>
     <a href="#pricing" class="btn btn-gold btn-phone">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      <span>Voice Agent<br>testen</span>
+      <span data-i18n="nav.cta">Voice Agent<br>testen</span>
     </a>
   </div>
 </nav>
@@ -473,19 +482,19 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </span>
-          <span>5.0 von zufriedenen Kunden bewertet</span>
+          <span data-i18n="hero.rating">5.0 von zufriedenen Kunden bewertet</span>
         </div>
-        <div class="eyebrow reveal">In der EU gehostet · DSGVO-konform · EU-AI-Act-konform</div>
-        <h1 class="h-xl serif reveal" style="transition-delay:.05s">KI-Agenten, die Ihr Unternehmen <em>wirklich</em> entlasten.</h1>
-        <p class="lead reveal" style="transition-delay:.1s">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft <span class="hl">digitale Assistenten</span>, die dort übernehmen, wo heute <span class="hl">Zeit, Chancen und Energie</span> verloren gehen.</p>
+        <div class="eyebrow reveal" data-i18n="hero.eyebrow">In der EU gehostet · DSGVO-konform · EU-AI-Act-konform</div>
+        <h1 class="h-xl serif reveal" style="transition-delay:.05s" data-i18n="hero.h1">KI-Agenten, die Ihr Unternehmen <em>wirklich</em> entlasten.</h1>
+        <p class="lead reveal" style="transition-delay:.1s" data-i18n="hero.lead">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft <span class="hl">digitale Assistenten</span>, die dort übernehmen, wo heute <span class="hl">Zeit, Chancen und Energie</span> verloren gehen.</p>
         <div class="hero-cta reveal" style="transition-delay:.15s">
-          <a href="#pricing" class="btn btn-gold">VOICE AGENT anrufen &amp; testen</a>
-          <a href="#social" class="btn btn-outline">SOCIAL MEDIA AGENT kennenlernen</a>
+          <a href="#pricing" class="btn btn-gold" data-i18n="hero.cta1">VOICE AGENT anrufen &amp; testen</a>
+          <a href="#social" class="btn btn-outline" data-i18n="hero.cta2">SOCIAL MEDIA AGENT kennenlernen</a>
         </div>
         <div class="badges reveal" style="transition-delay:.2s">
-          <div class="badge badge-gold">In der EU gehostet</div>
-          <div class="badge badge-gold">DSGVO-konform</div>
-          <div class="badge badge-gold">EU-AI-Act-konform</div>
+          <div class="badge badge-gold" data-i18n="hero.badge1">In der EU gehostet</div>
+          <div class="badge badge-gold" data-i18n="hero.badge2">DSGVO-konform</div>
+          <div class="badge badge-gold" data-i18n="hero.badge3">EU-AI-Act-konform</div>
         </div>
       </div>
 
@@ -505,7 +514,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- TRUSTED BY -->
   <section class="trust-bar">
     <div class="wrap">
-      <div class="trust-bar-label reveal">Integriert mit den Tools, die Sie bereits nutzen</div>
+      <div class="trust-bar-label reveal" data-i18n="trust.label">Integriert mit den Tools, die Sie bereits nutzen</div>
     </div>
     <div class="trust-track-wrap reveal" style="transition-delay:.05s">
       <div class="trust-track">
@@ -518,29 +527,29 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- PROBLEM -->
   <section id="problem">
     <div class="wrap">
-      <div class="eyebrow reveal">Der Alltag ohne AIDEN</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;">Jeder verpasste Anruf ist ein Kunde, den Sie nicht kennenlernen.</h2>
-      <p class="lead reveal" style="margin-top:1rem;">So sieht der Alltag in vielen Unternehmen aus — bevor ein KI-Agent übernimmt.</p>
+      <div class="eyebrow reveal" data-i18n="problem.eyebrow">Der Alltag ohne AIDEN</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;" data-i18n="problem.h2">Jeder verpasste Anruf ist ein Kunde, den Sie nicht kennenlernen.</h2>
+      <p class="lead reveal" style="margin-top:1rem;" data-i18n="problem.lead">So sieht der Alltag in vielen Unternehmen aus — bevor ein KI-Agent übernimmt.</p>
       <div class="pain-grid">
         <div class="pain-card reveal">
           <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/><line x1="1" y1="1" x2="23" y2="23"/></svg></div>
-          <h3>Verpasste Anrufe</h3>
-          <p>Während eines Kundengesprächs klingelt das Telefon — und der nächste Kunde legt auf, bevor jemand abheben kann.</p>
+          <h3 data-i18n="problem.c1.h">Verpasste Anrufe</h3>
+          <p data-i18n="problem.c1.p">Während eines Kundengesprächs klingelt das Telefon — und der nächste Kunde legt auf, bevor jemand abheben kann.</p>
         </div>
         <div class="pain-card reveal" style="transition-delay:.05s">
           <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <h3>Keine Zeit für Social Media</h3>
-          <p>Content-Planung bleibt liegen, weil das Tagesgeschäft vorgeht — die Sichtbarkeit leidet Woche für Woche.</p>
+          <h3 data-i18n="problem.c2.h">Keine Zeit für Social Media</h3>
+          <p data-i18n="problem.c2.p">Content-Planung bleibt liegen, weil das Tagesgeschäft vorgeht — die Sichtbarkeit leidet Woche für Woche.</p>
         </div>
         <div class="pain-card reveal" style="transition-delay:.1s">
           <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg></div>
-          <h3>Wiederkehrende Aufgaben</h3>
-          <p>Terminbestätigungen, Rückfragen, Erinnerungen — dieselben Handgriffe, jeden Tag, ohne dass sich das Team darauf konzentrieren kann, was wirklich zählt.</p>
+          <h3 data-i18n="problem.c3.h">Wiederkehrende Aufgaben</h3>
+          <p data-i18n="problem.c3.p">Terminbestätigungen, Rückfragen, Erinnerungen — dieselben Handgriffe, jeden Tag, ohne dass sich das Team darauf konzentrieren kann, was wirklich zählt.</p>
         </div>
         <div class="pain-card reveal" style="transition-delay:.15s">
           <div class="pain-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><circle cx="9" cy="7" r="4"/><path d="M1 21v-2a4 4 0 013-3.87"/></svg></div>
-          <h3>Leads gehen verloren</h3>
-          <p>Interessenten melden sich, bekommen aber erst Stunden später eine Antwort — und haben sich bis dahin oft schon anders entschieden.</p>
+          <h3 data-i18n="problem.c4.h">Leads gehen verloren</h3>
+          <p data-i18n="problem.c4.p">Interessenten melden sich, bekommen aber erst Stunden später eine Antwort — und haben sich bis dahin oft schon anders entschieden.</p>
         </div>
       </div>
     </div>
@@ -550,44 +559,44 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <section id="loesungen" class="ov-section">
     <div class="wrap">
       <div class="ov-head">
-        <div class="eyebrow reveal">KI-Lösungen im Überblick</div>
-        <h2 class="h-lg serif reveal">Für mehr Erreichbarkeit, weniger Aufwand und bessere Abläufe.</h2>
-        <p class="lead reveal" style="margin-top:1rem;">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag <span class="hl">Zeit verloren geht</span>: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
+        <div class="eyebrow reveal" data-i18n="ov.eyebrow">KI-Lösungen im Überblick</div>
+        <h2 class="h-lg serif reveal" data-i18n="ov.h2">Für mehr Erreichbarkeit, weniger Aufwand und bessere Abläufe.</h2>
+        <p class="lead reveal" style="margin-top:1rem;" data-i18n="ov.lead">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag <span class="hl">Zeit verloren geht</span>: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
       </div>
       <div class="ov-grid">
         <div class="ov-card reveal">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-          <h3>KI Voice Agents</h3>
-          <p><span class="hl">Verpassen Sie nie wieder einen Kunden.</span> Ihr KI-Agent nimmt Anrufe entgegen, qualifiziert Anfragen und bucht Termine in Echtzeit — 24/7, mit einem Lächeln.</p>
+          <h3 data-i18n="ov.c1.h">KI Voice Agents</h3>
+          <p data-i18n="ov.c1.p"><span class="hl">Verpassen Sie nie wieder einen Kunden.</span> Ihr KI-Agent nimmt Anrufe entgegen, qualifiziert Anfragen und bucht Termine in Echtzeit — 24/7, mit einem Lächeln.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.05s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12h8M8 8h8M8 16h5"/></svg></div>
-          <h3>Social Media Agent</h3>
-          <p>Erstellen, planen und veröffentlichen Sie Social-Media-Beiträge <span class="hl">vollautomatisch</span> — passend zu Ihrer Zielgruppe, Ihrer Marke und der jeweiligen Plattform.</p>
+          <h3 data-i18n="ov.c2.h">Social Media Agent</h3>
+          <p data-i18n="ov.c2.p">Erstellen, planen und veröffentlichen Sie Social-Media-Beiträge <span class="hl">vollautomatisch</span> — passend zu Ihrer Zielgruppe, Ihrer Marke und der jeweiligen Plattform.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.1s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 1l4 4-4 4M3 11V9a4 4 0 014-4h14M7 23l-4-4 4-4M21 13v2a4 4 0 01-4 4H3"/></svg></div>
-          <h3>Prozess-Automation</h3>
-          <p>Automatisieren Sie wiederkehrende Aufgaben und Workflows. <span class="hl">Sparen Sie Zeit, reduzieren Sie Fehler</span> und entlasten Sie Ihr Team von manueller Arbeit.</p>
+          <h3 data-i18n="ov.c3.h">Prozess-Automation</h3>
+          <p data-i18n="ov.c3.p">Automatisieren Sie wiederkehrende Aufgaben und Workflows. <span class="hl">Sparen Sie Zeit, reduzieren Sie Fehler</span> und entlasten Sie Ihr Team von manueller Arbeit.</p>
         </div>
         <div class="ov-card reveal">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/><circle cx="9" cy="7" r="4"/><path d="M1 21v-2a4 4 0 013-3.87"/></svg></div>
-          <h3>Lead-Management</h3>
-          <p>Erfassen und qualifizieren Sie Leads sofort. <span class="hl">Verwandeln Sie jede Anfrage</span> automatisch in eine echte Verkaufschance.</p>
+          <h3 data-i18n="ov.c4.h">Lead-Management</h3>
+          <p data-i18n="ov.c4.p">Erfassen und qualifizieren Sie Leads sofort. <span class="hl">Verwandeln Sie jede Anfrage</span> automatisch in eine echte Verkaufschance.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.05s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg></div>
-          <h3>Kundensupport</h3>
-          <p><span class="hl">Antworten Sie Kunden sofort</span> — jederzeit. Schneller, einheitlicher und professioneller Support, ohne zusätzliches Personal aufzubauen.</p>
+          <h3 data-i18n="ov.c5.h">Kundensupport</h3>
+          <p data-i18n="ov.c5.p"><span class="hl">Antworten Sie Kunden sofort</span> — jederzeit. Schneller, einheitlicher und professioneller Support, ohne zusätzliches Personal aufzubauen.</p>
         </div>
         <div class="ov-card reveal" style="transition-delay:.1s">
           <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <h3>Individuelle Lösungen</h3>
-          <p><span class="hl">Maßgeschneiderte Systeme</span>, die genau auf Ihre Herausforderungen, Abläufe und Ziele abgestimmt sind.</p>
+          <h3 data-i18n="ov.c6.h">Individuelle Lösungen</h3>
+          <p data-i18n="ov.c6.p"><span class="hl">Maßgeschneiderte Systeme</span>, die genau auf Ihre Herausforderungen, Abläufe und Ziele abgestimmt sind.</p>
         </div>
       </div>
       <div class="ov-cta-row reveal">
-        <a href="#kontakt" class="btn btn-gold">Individuelle Lösung finden</a>
+        <a href="#kontakt" class="btn btn-gold" data-i18n="ov.cta">Individuelle Lösung finden</a>
       </div>
     </div>
   </section>
@@ -595,66 +604,66 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- INDUSTRIES -->
   <section class="ind-section" id="branchen">
     <div class="wrap">
-      <div class="eyebrow reveal">Für dein Business gemacht</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;">Egal ob Praxis, Handwerksbetrieb, Immobilienbüro oder Einzelunternehmen.</h2>
+      <div class="eyebrow reveal" data-i18n="ind.eyebrow">Für dein Business gemacht</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;" data-i18n="ind.h2">Egal ob Praxis, Handwerksbetrieb, Immobilienbüro oder Einzelunternehmen.</h2>
 
       <div class="ind-tabs reveal">
-        <button class="ind-tab active" data-tab="retail">Einzelhandel</button>
-        <button class="ind-tab" data-tab="real-estate">Immobilienbranche</button>
-        <button class="ind-tab" data-tab="craft">Handwerksbetriebe</button>
-        <button class="ind-tab" data-tab="solo">Einzelunternehmen</button>
+        <button class="ind-tab active" data-tab="retail" data-i18n="ind.tab1">Einzelhandel</button>
+        <button class="ind-tab" data-tab="real-estate" data-i18n="ind.tab2">Immobilienbranche</button>
+        <button class="ind-tab" data-tab="craft" data-i18n="ind.tab3">Handwerksbetriebe</button>
+        <button class="ind-tab" data-tab="solo" data-i18n="ind.tab4">Einzelunternehmen</button>
       </div>
 
       <div class="ind-panel active" id="retail">
         <div>
-          <h3 class="serif">Social Media endlich einfach — auch im hektischen Lebensmittelhandel</h3>
-          <p>Social Media wurde bisher nur gemacht, wenn Zeit war — ohne Plan, ohne Recherche und ohne professionelle Bilder. Die Folge: <span class="hl">wenig Regelmäßigkeit, wenig Reichweite</span> und immer weniger Lust.</p>
+          <h3 class="serif" data-i18n="ind.p1.h">Social Media endlich einfach — auch im hektischen Lebensmittelhandel</h3>
+          <p data-i18n="ind.p1.p">Social Media wurde bisher nur gemacht, wenn Zeit war — ohne Plan, ohne Recherche und ohne professionelle Bilder. Die Folge: <span class="hl">wenig Regelmäßigkeit, wenig Reichweite</span> und immer weniger Lust.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Posts ohne Stress</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Relevante Inhalte, die Kunden interessieren</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Sichtbarkeit in unter 1 Stunde pro Woche</li>
+            <li data-i18n="ind.p1.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Posts ohne Stress</li>
+            <li data-i18n="ind.p1.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Relevante Inhalte, die Kunden interessieren</li>
+            <li data-i18n="ind.p1.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Sichtbarkeit in unter 1 Stunde pro Woche</li>
           </ul>
         </div>
-        <div class="ind-visual"><div class="lbl">Zeitaufwand pro Woche</div><div class="stat serif">&lt; 1 Std.</div></div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p1.statlbl">Zeitaufwand pro Woche</div><div class="stat serif" data-i18n="ind.p1.statval">&lt; 1 Std.</div></div>
       </div>
 
       <div class="ind-panel" id="real-estate">
         <div>
-          <h3 class="serif">Schnellere Vermarktung und Kundenbindung</h3>
-          <p>Im hart umkämpften Immobilienmarkt <span class="hl">zählt jeder Vorteil</span>. Unsere Tools helfen Ihnen, Exposés professionell zu erstellen, Interessenten gezielt anzusprechen und den Verkaufsprozess zu beschleunigen.</p>
+          <h3 class="serif" data-i18n="ind.p2.h">Schnellere Vermarktung und Kundenbindung</h3>
+          <p data-i18n="ind.p2.p">Im hart umkämpften Immobilienmarkt <span class="hl">zählt jeder Vorteil</span>. Unsere Tools helfen Ihnen, Exposés professionell zu erstellen, Interessenten gezielt anzusprechen und den Verkaufsprozess zu beschleunigen.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Automatische Exposé-Generierung</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Gezieltes Lead-Management</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Transparente Kommunikation mit Kunden</li>
+            <li data-i18n="ind.p2.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Automatische Exposé-Generierung</li>
+            <li data-i18n="ind.p2.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Gezieltes Lead-Management</li>
+            <li data-i18n="ind.p2.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Transparente Kommunikation mit Kunden</li>
           </ul>
         </div>
-        <div class="ind-visual"><div class="lbl">Fokus</div><div class="stat serif">Lead-Speed</div></div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p2.statlbl">Fokus</div><div class="stat serif" data-i18n="ind.p2.statval">Lead-Speed</div></div>
       </div>
 
       <div class="ind-panel" id="craft">
         <div>
-          <h3 class="serif">Auftragsverwaltung und Kundenkommunikation</h3>
-          <p>Für Handwerksbetriebe ist es entscheidend, <span class="hl">den Überblick zu behalten</span> — über Aufträge, Angebote und Kunden. Unsere Lösung vereinfacht die Verwaltung und sorgt für zufriedene Kunden.</p>
+          <h3 class="serif" data-i18n="ind.p3.h">Auftragsverwaltung und Kundenkommunikation</h3>
+          <p data-i18n="ind.p3.p">Für Handwerksbetriebe ist es entscheidend, <span class="hl">den Überblick zu behalten</span> — über Aufträge, Angebote und Kunden. Unsere Lösung vereinfacht die Verwaltung und sorgt für zufriedene Kunden.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
+            <li data-i18n="ind.common.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
+            <li data-i18n="ind.common.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
+            <li data-i18n="ind.common.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
           </ul>
         </div>
-        <div class="ind-visual"><div class="lbl">Ergebnis</div><div class="stat serif">Klarer Überblick</div></div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p3.statlbl">Ergebnis</div><div class="stat serif" data-i18n="ind.p3.statval">Klarer Überblick</div></div>
       </div>
 
       <div class="ind-panel" id="solo">
         <div>
-          <h3 class="serif">Alles unter Kontrolle</h3>
-          <p>Als Einzelunternehmer bist du Manager, Verkäufer und Experte in einem. Wir helfen dir, <span class="hl">deine Zeit optimal zu nutzen</span> und den Überblick zu behalten.</p>
+          <h3 class="serif" data-i18n="ind.p4.h">Alles unter Kontrolle</h3>
+          <p data-i18n="ind.p4.p">Als Einzelunternehmer bist du Manager, Verkäufer und Experte in einem. Wir helfen dir, <span class="hl">deine Zeit optimal zu nutzen</span> und den Überblick zu behalten.</p>
           <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
+            <li data-i18n="ind.common.l1"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
+            <li data-i18n="ind.common.l2"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
+            <li data-i18n="ind.common.l3"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
           </ul>
         </div>
-        <div class="ind-visual"><div class="lbl">Rolle</div><div class="stat serif">Alles in einem</div></div>
+        <div class="ind-visual"><div class="lbl" data-i18n="ind.p4.statlbl">Rolle</div><div class="stat serif" data-i18n="ind.p4.statval">Alles in einem</div></div>
       </div>
     </div>
   </section>
@@ -664,21 +673,21 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
     <div class="wrap">
       <div class="case-head">
         <div>
-          <div class="eyebrow reveal">Kundenbeispiel · Praxis &amp; Kliniken</div>
-          <h2 class="h-lg serif reveal" style="max-width:600px;">Nie wieder verpasste Patientenanrufe.</h2>
+          <div class="eyebrow reveal" data-i18n="case.eyebrow">Kundenbeispiel · Praxis &amp; Kliniken</div>
+          <h2 class="h-lg serif reveal" style="max-width:600px;" data-i18n="case.h2">Nie wieder verpasste Patientenanrufe.</h2>
         </div>
         <div class="case-stats reveal">
-          <div class="case-stat"><b class="serif" data-count="62" data-suffix=" %">0 %</b><span>Mehr Patientenanrufe angenommen</span><div class="case-stat-bar" style="--fill:62%;"><i></i></div></div>
-          <div class="case-stat"><b class="serif">24/7</b><span>Erreichbarkeit — immer freundlich</span><div class="case-stat-bar" style="--fill:100%;"><i></i></div></div>
+          <div class="case-stat"><b class="serif" data-count="62" data-suffix=" %">0 %</b><span data-i18n="case.stat1lbl">Mehr Patientenanrufe angenommen</span><div class="case-stat-bar" style="--fill:62%;"><i></i></div></div>
+          <div class="case-stat"><b class="serif">24/7</b><span data-i18n="case.stat2lbl">Erreichbarkeit — immer freundlich</span><div class="case-stat-bar" style="--fill:100%;"><i></i></div></div>
         </div>
       </div>
-      <p class="lead reveal" style="margin-bottom:2.6rem;">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen <span class="hl">verlieren durch verpasste Anrufe potenzielle Patienten</span> und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass <span class="hl">kein Anruf unbeantwortet bleibt</span>.</p>
+      <p class="lead reveal" style="margin-bottom:2.6rem;" data-i18n="case.lead">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen <span class="hl">verlieren durch verpasste Anrufe potenzielle Patienten</span> und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass <span class="hl">kein Anruf unbeantwortet bleibt</span>.</p>
       <div class="case-steps">
-        <div class="case-step reveal"><span class="n serif">1</span><div class="tag">Vorher</div><h4>Verpasste Anrufe</h4><p>Patienten riefen vergeblich an, da das Personal überlastet war oder außerhalb der Sprechzeiten keine Erreichbarkeit bestand.</p></div>
-        <div class="case-step reveal" style="transition-delay:.05s"><span class="n serif">2</span><div class="tag">Vorher</div><h4>Überlastetes Personal</h4><p>Mitarbeiter hatten Mühe, Patienten zurückzurufen, was zu längeren Wartezeiten und Frustration führte.</p></div>
-        <div class="case-step reveal" id="caseStepNoLine" style="transition-delay:.1s"><span class="n serif">3</span><div class="tag">Mit AIDEN</div><h4>Keine Anrufe mehr ins Leere</h4><p>Patientenanrufe werden automatisch angenommen und individuell beantwortet — mit Namen angesprochen, sofort gut aufgehoben.</p></div>
-        <div class="case-step reveal" style="transition-delay:.15s"><span class="n serif">4</span><div class="tag">Terminbuchung</div><h4>Voller Kalender, leicht gemacht</h4><p>AIDEN bucht Termine via SMS, WhatsApp oder E-Mail und integriert sich nahtlos in den Praxiskalender.</p></div>
-        <div class="case-step reveal" style="transition-delay:.2s"><span class="n serif">5</span><div class="tag">Ergebnis</div><h4>Zufriedene Patienten, entspanntes Team</h4><p>Die Praxis läuft entspannter und deutlich effizienter — das Team ist freundlich statt gestresst.</p></div>
+        <div class="case-step reveal"><span class="n serif">1</span><div class="tag" data-i18n="case.s1.tag">Vorher</div><h4 data-i18n="case.s1.h">Verpasste Anrufe</h4><p data-i18n="case.s1.p">Patienten riefen vergeblich an, da das Personal überlastet war oder außerhalb der Sprechzeiten keine Erreichbarkeit bestand.</p></div>
+        <div class="case-step reveal" style="transition-delay:.05s"><span class="n serif">2</span><div class="tag" data-i18n="case.s2.tag">Vorher</div><h4 data-i18n="case.s2.h">Überlastetes Personal</h4><p data-i18n="case.s2.p">Mitarbeiter hatten Mühe, Patienten zurückzurufen, was zu längeren Wartezeiten und Frustration führte.</p></div>
+        <div class="case-step reveal" id="caseStepNoLine" style="transition-delay:.1s"><span class="n serif">3</span><div class="tag" data-i18n="case.s3.tag">Mit AIDEN</div><h4 data-i18n="case.s3.h">Keine Anrufe mehr ins Leere</h4><p data-i18n="case.s3.p">Patientenanrufe werden automatisch angenommen und individuell beantwortet — mit Namen angesprochen, sofort gut aufgehoben.</p></div>
+        <div class="case-step reveal" style="transition-delay:.15s"><span class="n serif">4</span><div class="tag" data-i18n="case.s4.tag">Terminbuchung</div><h4 data-i18n="case.s4.h">Voller Kalender, leicht gemacht</h4><p data-i18n="case.s4.p">AIDEN bucht Termine via SMS, WhatsApp oder E-Mail und integriert sich nahtlos in den Praxiskalender.</p></div>
+        <div class="case-step reveal" style="transition-delay:.2s"><span class="n serif">5</span><div class="tag" data-i18n="case.s5.tag">Ergebnis</div><h4 data-i18n="case.s5.h">Zufriedene Patienten, entspanntes Team</h4><p data-i18n="case.s5.p">Die Praxis läuft entspannter und deutlich effizienter — das Team ist freundlich statt gestresst.</p></div>
       </div>
     </div>
   </section>
@@ -686,20 +695,20 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- TRUST / ÜBER UNS -->
   <section id="ueber-uns">
     <div class="wrap">
-      <div class="eyebrow reveal">Vertrauen entsteht nicht durch Technik allein</div>
-      <h2 class="h-lg serif reveal" style="max-width:680px;margin-bottom:1.4rem;">KI-Lösungen mit Erfahrung, Strategie und echter Umsetzungskompetenz.</h2>
-      <p class="lead reveal" style="margin-bottom:3rem;">Hinter AIDEN stehen Menschen, die Unternehmen verstehen: mit Erfahrung in Marketing, Vertrieb, Kundenkommunikation und künstlicher Intelligenz. <span class="hl">Genau diese Verbindung macht den Unterschied.</span></p>
+      <div class="eyebrow reveal" data-i18n="trust2.eyebrow">Vertrauen entsteht nicht durch Technik allein</div>
+      <h2 class="h-lg serif reveal" style="max-width:680px;margin-bottom:1.4rem;" data-i18n="trust2.h2">KI-Lösungen mit Erfahrung, Strategie und echter Umsetzungskompetenz.</h2>
+      <p class="lead reveal" style="margin-bottom:3rem;" data-i18n="trust2.lead">Hinter AIDEN stehen Menschen, die Unternehmen verstehen: mit Erfahrung in Marketing, Vertrieb, Kundenkommunikation und künstlicher Intelligenz. <span class="hl">Genau diese Verbindung macht den Unterschied.</span></p>
 
       <div class="trust-grid">
         <div class="trust-item reveal">
-          <h3>Mehr als 13 Jahre KI-Erfahrung</h3>
-          <p>Dr. Irena Schindler bringt mehr als 13 Jahre Erfahrung im Bereich künstliche Intelligenz ein und ist der technologische Kopf hinter den KI-Agenten von AIDEN.</p>
-          <p class="payoff">Das bedeutet für Sie: <em>Ihre Lösung basiert auf fundierter Erfahrung, nicht auf kurzfristigem KI-Hype.</em></p>
+          <h3 data-i18n="trust2.i1.h">Mehr als 13 Jahre KI-Erfahrung</h3>
+          <p data-i18n="trust2.i1.p">Dr. Irena Schindler bringt mehr als 13 Jahre Erfahrung im Bereich künstliche Intelligenz ein und ist der technologische Kopf hinter den KI-Agenten von AIDEN.</p>
+          <p class="payoff" data-i18n="trust2.i1.payoff">Das bedeutet für Sie: <em>Ihre Lösung basiert auf fundierter Erfahrung, nicht auf kurzfristigem KI-Hype.</em></p>
         </div>
         <div class="trust-item reveal" style="transition-delay:.05s">
-          <h3>Mehr als 30 Jahre Marketing &amp; Vertrieb</h3>
-          <p>AIDEN verbindet langjährige Erfahrung in Marketing, Vertrieb, Kundenkommunikation und strategischer Umsetzung für Unternehmen.</p>
-          <p class="payoff">Das bedeutet für Sie: <em>Ihr Agent wird mit Blick auf Zielgruppe, Kommunikation und echte Geschäftsprozesse entwickelt.</em></p>
+          <h3 data-i18n="trust2.i2.h">Mehr als 30 Jahre Marketing &amp; Vertrieb</h3>
+          <p data-i18n="trust2.i2.p">AIDEN verbindet langjährige Erfahrung in Marketing, Vertrieb, Kundenkommunikation und strategischer Umsetzung für Unternehmen.</p>
+          <p class="payoff" data-i18n="trust2.i2.payoff">Das bedeutet für Sie: <em>Ihr Agent wird mit Blick auf Zielgruppe, Kommunikation und echte Geschäftsprozesse entwickelt.</em></p>
         </div>
       </div>
 
@@ -707,14 +716,14 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         <div class="team-card reveal">
           <div class="team-av serif">HK</div>
           <h4>Heidrun Keim</h4>
-          <div class="role">Geschäftsführerin xC Consultants / xC-KI</div>
-          <p>Heidrun Keim bringt mehr als 35 Jahre Erfahrung in Marketing und Vertrieb ein. Sie sorgt dafür, dass KI-Lösungen nicht nur technisch möglich sind, sondern für Kunden verständlich, nutzbar und verkaufsstark werden.</p>
+          <div class="role" data-i18n="team1.role">Geschäftsführerin xC Consultants / xC-KI</div>
+          <p data-i18n="team1.bio">Heidrun Keim bringt mehr als 35 Jahre Erfahrung in Marketing und Vertrieb ein. Sie sorgt dafür, dass KI-Lösungen nicht nur technisch möglich sind, sondern für Kunden verständlich, nutzbar und verkaufsstark werden.</p>
         </div>
         <div class="team-card reveal" style="transition-delay:.05s">
           <div class="team-av serif">IS</div>
           <h4>Dr. Irena Schindler</h4>
-          <div class="role">Geschäftsführerin AIDEN · KI-Expertin</div>
-          <p>Dr. Irena Schindler sorgt dafür, dass aus Ideen stabile, intelligente und praxistaugliche KI-Agenten werden, die Unternehmen im Alltag wirklich entlasten.</p>
+          <div class="role" data-i18n="team2.role">Geschäftsführerin AIDEN · KI-Expertin</div>
+          <p data-i18n="team2.bio">Dr. Irena Schindler sorgt dafür, dass aus Ideen stabile, intelligente und praxistaugliche KI-Agenten werden, die Unternehmen im Alltag wirklich entlasten.</p>
         </div>
       </div>
     </div>
@@ -723,26 +732,26 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- ONBOARDING PATHS -->
   <section class="ind-section" id="start">
     <div class="wrap">
-      <div class="eyebrow reveal">So einfach starten Sie mit AIDEN</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;">Welcher Agent soll Ihr Unternehmen zuerst entlasten?</h2>
+      <div class="eyebrow reveal" data-i18n="start.eyebrow">So einfach starten Sie mit AIDEN</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;" data-i18n="start.h2">Welcher Agent soll Ihr Unternehmen zuerst entlasten?</h2>
 
       <div class="path-grid">
         <div class="path-card reveal">
-          <h3 class="serif">Voice Agent starten</h3>
-          <div class="sub">Tarif wählen. Agent einrichten. Anrufe automatisch entgegennehmen.</div>
-          <div class="path-step"><span class="n serif">1</span><div><h4>Tarif auswählen</h4><p><span class="hl">Starten Sie kostenlos</span>, per Prepaid oder mit einem passenden Monatstarif.</p></div></div>
-          <div class="path-step"><span class="n serif">2</span><div><h4>Agent einrichten</h4><p>Definieren Sie Begrüßung, Fragen, Antworten, Weiterleitungen und Abläufe — vom Self-Service bis zur individuellen Anpassung.</p></div></div>
-          <div class="path-step"><span class="n serif">3</span><div><h4>Entlastung spüren</h4><p>Der Agent nimmt Anrufe entgegen, erfasst Anliegen und <span class="hl">entlastet Ihr Team</span>.</p></div></div>
-          <div class="path-payoff">Einfacher Einstieg. Schnell eingerichtet. Persönlich begleitet.</div>
+          <h3 class="serif" data-i18n="start.p1.h">Voice Agent starten</h3>
+          <div class="sub" data-i18n="start.p1.sub">Tarif wählen. Agent einrichten. Anrufe automatisch entgegennehmen.</div>
+          <div class="path-step"><span class="n serif">1</span><div><h4 data-i18n="start.p1.s1.h">Tarif auswählen</h4><p data-i18n="start.p1.s1.p"><span class="hl">Starten Sie kostenlos</span>, per Prepaid oder mit einem passenden Monatstarif.</p></div></div>
+          <div class="path-step"><span class="n serif">2</span><div><h4 data-i18n="start.p1.s2.h">Agent einrichten</h4><p data-i18n="start.p1.s2.p">Definieren Sie Begrüßung, Fragen, Antworten, Weiterleitungen und Abläufe — vom Self-Service bis zur individuellen Anpassung.</p></div></div>
+          <div class="path-step"><span class="n serif">3</span><div><h4 data-i18n="start.p1.s3.h">Entlastung spüren</h4><p data-i18n="start.p1.s3.p">Der Agent nimmt Anrufe entgegen, erfasst Anliegen und <span class="hl">entlastet Ihr Team</span>.</p></div></div>
+          <div class="path-payoff" data-i18n="start.p1.payoff">Einfacher Einstieg. Schnell eingerichtet. Persönlich begleitet.</div>
         </div>
 
         <div class="path-card reveal" style="transition-delay:.05s">
-          <h3 class="serif">Social Media Agent starten</h3>
-          <div class="sub">Kostenlosen Termin buchen oder direkt im Chat starten.</div>
-          <div class="path-step"><span class="n serif">1</span><div><h4>Termin buchen</h4><p>Starten Sie mit einem kostenlosen Ersttermin oder stellen Sie Ihre Fragen direkt im Chat.</p></div></div>
-          <div class="path-step"><span class="n serif">2</span><div><h4>Ziele festlegen</h4><p>Wir klären Zielgruppe, Kanäle, Themen, Tonalität und Content-Ziele.</p></div></div>
-          <div class="path-step"><span class="n serif">3</span><div><h4>Sichtbar werden</h4><p>Der Agent unterstützt bei Recherche, Planung, Texten, Bildideen und Veröffentlichung — via WhatsApp oder Telegram.</p></div></div>
-          <div class="path-payoff">Mehr Struktur. Weniger Content-Stress. Regelmäßig sichtbar.</div>
+          <h3 class="serif" data-i18n="start.p2.h">Social Media Agent starten</h3>
+          <div class="sub" data-i18n="start.p2.sub">Kostenlosen Termin buchen oder direkt im Chat starten.</div>
+          <div class="path-step"><span class="n serif">1</span><div><h4 data-i18n="start.p2.s1.h">Termin buchen</h4><p data-i18n="start.p2.s1.p">Starten Sie mit einem kostenlosen Ersttermin oder stellen Sie Ihre Fragen direkt im Chat.</p></div></div>
+          <div class="path-step"><span class="n serif">2</span><div><h4 data-i18n="start.p2.s2.h">Ziele festlegen</h4><p data-i18n="start.p2.s2.p">Wir klären Zielgruppe, Kanäle, Themen, Tonalität und Content-Ziele.</p></div></div>
+          <div class="path-step"><span class="n serif">3</span><div><h4 data-i18n="start.p2.s3.h">Sichtbar werden</h4><p data-i18n="start.p2.s3.p">Der Agent unterstützt bei Recherche, Planung, Texten, Bildideen und Veröffentlichung — via WhatsApp oder Telegram.</p></div></div>
+          <div class="path-payoff" data-i18n="start.p2.payoff">Mehr Struktur. Weniger Content-Stress. Regelmäßig sichtbar.</div>
         </div>
       </div>
     </div>
@@ -751,112 +760,112 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- PRICING -->
   <section class="pricing-section" id="pricing">
     <div class="wrap">
-      <div class="eyebrow reveal">Preise</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;">Der Voice Agent, der erst kostet, wenn er arbeitet.</h2>
+      <div class="eyebrow reveal" data-i18n="pricing.eyebrow">Preise</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;" data-i18n="pricing.h2">Der Voice Agent, der erst kostet, wenn er arbeitet.</h2>
 
       <div class="starter-box reveal">
         <div>
-          <div class="eyebrow" style="color:var(--gold-light);">Keine Fixkosten</div>
-          <h3 class="h-md serif">Prepaid-Tarif: 0&nbsp;€ zum Starten</h3>
-          <p style="color:var(--muted-on-ink);font-size:.92rem;margin:.8rem 0 0;max-width:44ch;">So starten Sie mit KI-Telefonie <span class="hl">ohne Kostenrisiko</span> und bleiben erreichbar, wenn gerade niemand ans Telefon gehen kann. Ideal für Einzelunternehmer, Freelancer und kleine Unternehmen.</p>
+          <div class="eyebrow" style="color:var(--gold-light);" data-i18n="pricing.starter.eyebrow">Keine Fixkosten</div>
+          <h3 class="h-md serif" data-i18n="pricing.starter.h">Prepaid-Tarif: 0&nbsp;€ zum Starten</h3>
+          <p style="color:var(--muted-on-ink);font-size:.92rem;margin:.8rem 0 0;max-width:44ch;" data-i18n="pricing.starter.p">So starten Sie mit KI-Telefonie <span class="hl">ohne Kostenrisiko</span> und bleiben erreichbar, wenn gerade niemand ans Telefon gehen kann. Ideal für Einzelunternehmer, Freelancer und kleine Unternehmen.</p>
         </div>
         <div>
-          <div class="price-now serif">0&nbsp;€<span class="unit">&nbsp;Grundgebühr</span></div>
+          <div class="price-now serif">0&nbsp;€<span class="unit" data-i18n="pricing.starter.unit">&nbsp;Grundgebühr</span></div>
           <ul class="starter-list">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>15 kostenlose Testminuten inklusive</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Danach nur 0,69&nbsp;€ pro Minute</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Keine Kreditkarte, keine Vertragsbindung</li>
+            <li data-i18n="pricing.starter.l1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>15 kostenlose Testminuten inklusive</li>
+            <li data-i18n="pricing.starter.l2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Danach nur 0,69&nbsp;€ pro Minute</li>
+            <li data-i18n="pricing.starter.l3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Keine Kreditkarte, keine Vertragsbindung</li>
           </ul>
-          <a href="#" class="btn btn-gold" style="margin-top:1.6rem;">24/7 Telefonannahme testen</a>
+          <a href="#" class="btn btn-gold" style="margin-top:1.6rem;" data-i18n="pricing.starter.cta">24/7 Telefonannahme testen</a>
         </div>
       </div>
 
       <div class="price-note reveal">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
-        <p><strong>Fünf Tarife stehen zur Auswahl</strong> — für alle, die den Voice Agent fest im Alltag nutzen möchten. Alle Monatspreise gelten bei 12 Monaten Laufzeit.</p>
+        <p data-i18n="pricing.note"><strong>Fünf Tarife stehen zur Auswahl</strong> — für alle, die den Voice Agent fest im Alltag nutzen möchten. Alle Monatspreise gelten bei 12 Monaten Laufzeit.</p>
       </div>
 
       <div class="price-grid">
         <div class="price-card price-scrub">
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.1a7.5 7.5 0 0115 0"/></svg></div>
-          <div class="price-name">Einsteiger · Basic</div>
-          <div class="price-now serif">69&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
-          <div class="price-was mono">98&nbsp;€ / Monat</div>
-          <div class="price-save">Sie sparen 240&nbsp;€ im 1. Jahr</div>
+          <div class="price-name" data-i18n="pc1.name">Einsteiger · Basic</div>
+          <div class="price-now serif">69&nbsp;€<span class="unit" data-i18n="pc.unit.month">&nbsp;/ Monat</span></div>
+          <div class="price-was mono" data-i18n="pc1.was">98&nbsp;€ / Monat</div>
+          <div class="price-save" data-i18n="pc1.save">Sie sparen 240&nbsp;€ im 1. Jahr</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>100 Freiminuten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24/7 Telefonannahme</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Telegram Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Kalender Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminerinnerung</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
+            <li data-i18n="pc1.f1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>100 Freiminuten</li>
+            <li data-i18n="pc.common.1ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
+            <li data-i18n="pc1.f3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24/7 Telefonannahme</li>
+            <li data-i18n="pc1.f4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp Integration</li>
+            <li data-i18n="pc1.f5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Telegram Integration</li>
+            <li data-i18n="pc1.f6"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung</li>
+            <li data-i18n="pc1.f7"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Kalender Integration</li>
+            <li data-i18n="pc1.f8"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminerinnerung</li>
+            <li data-i18n="pc.common.email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
-          <a href="#kontakt" class="btn btn-outline">Basic wählen</a>
-          <div class="price-bestfor">Am besten für: Einzelunternehmer &amp; Praxisstart</div>
-          <div class="price-extra mono">Zusatzminute 0,39&nbsp;€</div>
+          <a href="#kontakt" class="btn btn-outline" data-i18n="pc1.cta">Basic wählen</a>
+          <div class="price-bestfor" data-i18n="pc1.bestfor">Am besten für: Einzelunternehmer &amp; Praxisstart</div>
+          <div class="price-extra mono" data-i18n="pc1.extra">Zusatzminute 0,39&nbsp;€</div>
         </div>
 
         <div class="price-card feat price-scrub">
-          <div class="price-tag">Beliebtester Plan</div>
+          <div class="price-tag" data-i18n="pc2.tag">Beliebtester Plan</div>
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56v4.82a6 6 0 01-1.83-1.01l-4.01-4.01a6 6 0 01-1.01-1.83H7.5a6 6 0 017.38-5.84zM10.5 14.5L14 11"/></svg></div>
-          <div class="price-name">Comfort</div>
-          <div class="price-now serif">129&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
-          <div class="price-was mono">189&nbsp;€ / Monat</div>
-          <div class="price-save">Sie sparen 720&nbsp;€ im 1. Jahr</div>
+          <div class="price-name" data-i18n="pc2.name">Comfort</div>
+          <div class="price-now serif">129&nbsp;€<span class="unit" data-i18n="pc.unit.month">&nbsp;/ Monat</span></div>
+          <div class="price-was mono" data-i18n="pc2.was">189&nbsp;€ / Monat</div>
+          <div class="price-save" data-i18n="pc2.save">Sie sparen 720&nbsp;€ im 1. Jahr</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>200 Freiminuten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender Integration</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Priorität-Support</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Wissensdatenbank</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">API-Zugang</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Perfekte Einrichtung</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
+            <li data-i18n="pc2.f1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>200 Freiminuten</li>
+            <li data-i18n="pc.common.1ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
+            <li data-i18n="pc2.f3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
+            <li data-i18n="pc2.f4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender Integration</li>
+            <li data-i18n="pc2.f5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Priorität-Support</span></li>
+            <li data-i18n="pc2.f6"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Wissensdatenbank</span></li>
+            <li data-i18n="pc2.f7"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">API-Zugang</span></li>
+            <li data-i18n="pc2.f8"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Perfekte Einrichtung</span></li>
+            <li data-i18n="pc.common.email"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Email Benachrichtigung</li>
           </ul>
-          <a href="#kontakt" class="btn btn-gold">Comfort wählen</a>
-          <div class="price-bestfor">Am besten für: wachsende Teams mit mehreren Kanälen</div>
-          <div class="price-extra mono">Zusatzminute 0,32&nbsp;€</div>
+          <a href="#kontakt" class="btn btn-gold" data-i18n="pc2.cta">Comfort wählen</a>
+          <div class="price-bestfor" data-i18n="pc2.bestfor">Am besten für: wachsende Teams mit mehreren Kanälen</div>
+          <div class="price-extra mono" data-i18n="pc2.extra">Zusatzminute 0,32&nbsp;€</div>
         </div>
 
         <div class="price-card price-scrub">
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375"/></svg></div>
-          <div class="price-name">Für größere Unternehmen · Premium</div>
-          <div class="price-now serif">249&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
-          <div class="price-was mono">399&nbsp;€ / Monat</div>
-          <div class="price-save">Sie sparen 1.800&nbsp;€ im 1. Jahr</div>
+          <div class="price-name" data-i18n="pc3.name">Für größere Unternehmen · Premium</div>
+          <div class="price-now serif">249&nbsp;€<span class="unit" data-i18n="pc.unit.month">&nbsp;/ Monat</span></div>
+          <div class="price-was mono" data-i18n="pc3.was">399&nbsp;€ / Monat</div>
+          <div class="price-save" data-i18n="pc3.save">Sie sparen 1.800&nbsp;€ im 1. Jahr</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">600 Freiminuten</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">3 KI-Assistenten</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen inklusive</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
+            <li data-i18n="pc3.f1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">600 Freiminuten</span></li>
+            <li data-i18n="pc.common.3ki"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">3 KI-Assistenten</span></li>
+            <li data-i18n="pc3.f3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen inklusive</span></li>
+            <li data-i18n="pc3.f4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
+            <li data-i18n="pc3.f5"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
+            <li data-i18n="pc3.f6"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
+            <li data-i18n="pc3.f7"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Perfekte Einrichtung</li>
           </ul>
-          <a href="#kontakt" class="btn btn-outline">Premium wählen</a>
-          <div class="price-bestfor">Am besten für: größere Unternehmen mit hohem Anrufvolumen</div>
-          <div class="price-extra mono">Zusatzminute 0,28&nbsp;€</div>
+          <a href="#kontakt" class="btn btn-outline" data-i18n="pc3.cta">Premium wählen</a>
+          <div class="price-bestfor" data-i18n="pc3.bestfor">Am besten für: größere Unternehmen mit hohem Anrufvolumen</div>
+          <div class="price-extra mono" data-i18n="pc3.extra">Zusatzminute 0,28&nbsp;€</div>
         </div>
 
         <div class="price-card price-scrub">
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4.5 12.5H11L9.5 22L18 11.5H12.5L13 2z"/></svg></div>
-          <div class="price-name">Smarte Lösung</div>
-          <div class="price-now serif">2.349&nbsp;€<span class="unit">&nbsp;einmalig</span></div>
-          <div class="price-was mono">4.536&nbsp;€ einmalig</div>
-          <div class="price-save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
+          <div class="price-name" data-i18n="pc4.name">Smarte Lösung</div>
+          <div class="price-now serif">2.349&nbsp;€<span class="unit" data-i18n="pc4.unit">&nbsp;einmalig</span></div>
+          <div class="price-was mono" data-i18n="pc4.was">4.536&nbsp;€ einmalig</div>
+          <div class="price-save" data-i18n="pc4.save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">24 Monate Laufzeit</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>800 Freiminuten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen</span></li>
+            <li data-i18n="pc4.f1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">24 Monate Laufzeit</span></li>
+            <li data-i18n="pc4.f2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>800 Freiminuten</li>
+            <li data-i18n="pc4.f3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
+            <li data-i18n="pc4.f4"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen</span></li>
           </ul>
-          <a href="#kontakt" class="btn btn-outline">Smarte Lösung wählen</a>
-          <div class="price-bestfor">Am besten für: planungssichere Budgets ohne laufende Kosten</div>
-          <div class="price-extra mono">Einmalzahlung, kein Abo</div>
+          <a href="#kontakt" class="btn btn-outline" data-i18n="pc4.cta">Smarte Lösung wählen</a>
+          <div class="price-bestfor" data-i18n="pc4.bestfor">Am besten für: planungssichere Budgets ohne laufende Kosten</div>
+          <div class="price-extra mono" data-i18n="pc4.extra">Einmalzahlung, kein Abo</div>
         </div>
       </div>
     </div>
@@ -865,33 +874,33 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- TESTIMONIALS -->
   <section id="stimmen">
     <div class="wrap">
-      <div class="eyebrow reveal">Unsere Kunden lieben uns</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;">Gute Zusammenarbeit ist spürbar — in Beratung, Umsetzung und Ergebnis.</h2>
+      <div class="eyebrow reveal" data-i18n="tst.eyebrow">Unsere Kunden lieben uns</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;" data-i18n="tst.h2">Gute Zusammenarbeit ist spürbar — in Beratung, Umsetzung und Ergebnis.</h2>
       <div class="tst-grid">
         <div class="tst-card reveal">
           <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p>„AIDEN hat von Anfang an an mich und meine Ideen geglaubt. Ich habe mich nicht nur als Kunde gefühlt, sondern wirklich begleitet. Durch die Erfahrung und Beratung von AIDEN kann ich heute klar zeigen, wer ich bin und wofür meine Praxis steht."</p>
-          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#b8912f,#e0a83a);">HD</div><div><b>Hector Fernandez Diarte</b><span>Facharzt</span></div></div>
+          <p data-i18n="tst1.quote">„AIDEN hat von Anfang an an mich und meine Ideen geglaubt. Ich habe mich nicht nur als Kunde gefühlt, sondern wirklich begleitet. Durch die Erfahrung und Beratung von AIDEN kann ich heute klar zeigen, wer ich bin und wofür meine Praxis steht."</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#b8912f,#e0a83a);">HD</div><div><b>Hector Fernandez Diarte</b><span data-i18n="tst1.role">Facharzt</span></div></div>
         </div>
         <div class="tst-card reveal" style="transition-delay:.05s">
           <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p>„Ich habe die Zusammenarbeit mit AIDEN als sehr professionell, zuverlässig und angenehm erlebt. Besonders positiv empfand ich die gute Erreichbarkeit der Ansprechpartner. Rückfragen wurden schnell beantwortet."</p>
-          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#8a6d2b,#c9a13b);">KK</div><div><b>Karin Kniese</b><span>Psychotherapeutin</span></div></div>
+          <p data-i18n="tst2.quote">„Ich habe die Zusammenarbeit mit AIDEN als sehr professionell, zuverlässig und angenehm erlebt. Besonders positiv empfand ich die gute Erreichbarkeit der Ansprechpartner. Rückfragen wurden schnell beantwortet."</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#8a6d2b,#c9a13b);">KK</div><div><b>Karin Kniese</b><span data-i18n="tst2.role">Psychotherapeutin</span></div></div>
         </div>
         <div class="tst-card reveal" style="transition-delay:.1s">
           <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p>„Die Unterstützung von AIDEN ist ein Meilenstein in meiner Social Media Entwicklung. Ich bin absolut begeistert."</p>
-          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#6b5220,#a8842f);">JT</div><div><b>Jochen Timme</b><span>LRS-Trainer</span></div></div>
+          <p data-i18n="tst3.quote">„Die Unterstützung von AIDEN ist ein Meilenstein in meiner Social Media Entwicklung. Ich bin absolut begeistert."</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#6b5220,#a8842f);">JT</div><div><b>Jochen Timme</b><span data-i18n="tst3.role">LRS-Trainer</span></div></div>
         </div>
         <div class="tst-card reveal">
           <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p>„,Es geht auch leicht' bringt es auf den Punkt. Kompetent, sympathisch, tolles Team!"</p>
-          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#c9a13b,#f5b731);">SL</div><div><b>Silke Lippold</b><span>Zertifizierter Coach &amp; Introvisionsberaterin</span></div></div>
+          <p data-i18n="tst4.quote">„,Es geht auch leicht' bringt es auf den Punkt. Kompetent, sympathisch, tolles Team!"</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#c9a13b,#f5b731);">SL</div><div><b>Silke Lippold</b><span data-i18n="tst4.role">Zertifizierter Coach &amp; Introvisionsberaterin</span></div></div>
         </div>
         <div class="tst-card reveal" style="transition-delay:.05s">
           <div class="tst-stars"><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="13" height="13" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-          <p>„Die Zusammenarbeit mit diesem Team war wirklich eine tolle Erfahrung. Sie haben uns super geholfen und alles klar und verständlich gemacht. Wir sind sehr zufrieden und können sie auf jeden Fall weiterempfehlen!"</p>
-          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#7c611f,#b8912f);">WS</div><div><b>Wieland Schorer</b><span>Architekt</span></div></div>
+          <p data-i18n="tst5.quote">„Die Zusammenarbeit mit diesem Team war wirklich eine tolle Erfahrung. Sie haben uns super geholfen und alles klar und verständlich gemacht. Wir sind sehr zufrieden und können sie auf jeden Fall weiterempfehlen!"</p>
+          <div class="tst-person"><div class="tst-av" style="background:linear-gradient(155deg,#7c611f,#b8912f);">WS</div><div><b>Wieland Schorer</b><span data-i18n="tst5.role">Architekt</span></div></div>
         </div>
       </div>
     </div>
@@ -901,45 +910,45 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <section class="ind-section" id="faq">
     <div class="wrap">
       <div style="text-align:center;">
-        <div class="eyebrow reveal" style="justify-content:center;">Häufige Fragen</div>
-        <h2 class="h-lg serif reveal">Antworten auf die wichtigsten Fragen zu AIDEN.</h2>
+        <div class="eyebrow reveal" style="justify-content:center;" data-i18n="faq.eyebrow">Häufige Fragen</div>
+        <h2 class="h-lg serif reveal" data-i18n="faq.h2">Antworten auf die wichtigsten Fragen zu AIDEN.</h2>
       </div>
       <div class="faq-list">
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Wie kann ich mit AIDEN starten?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Wählen Sie einen Voice-Agent-Tarif oder buchen Sie einen kostenlosen Ersttermin für den Social Media Agent — beide Wege sind in wenigen Minuten eingerichtet.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q1">Wie kann ich mit AIDEN starten?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a1"><p>Wählen Sie einen Voice-Agent-Tarif oder buchen Sie einen kostenlosen Ersttermin für den Social Media Agent — beide Wege sind in wenigen Minuten eingerichtet.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Für wen sind die KI-Agenten geeignet?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Für Praxen, Handwerksbetriebe, Immobilienbüros, Einzelunternehmen und den Einzelhandel — überall dort, wo Anrufe, Content oder wiederkehrende Aufgaben Zeit kosten.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q2">Für wen sind die KI-Agenten geeignet?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a2"><p>Für Praxen, Handwerksbetriebe, Immobilienbüros, Einzelunternehmen und den Einzelhandel — überall dort, wo Anrufe, Content oder wiederkehrende Aufgaben Zeit kosten.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Muss ich technisches Vorwissen haben?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Nein. Die Einrichtung reicht von Self-Service bis zur individuellen Anpassung durch unser Team — Sie werden persönlich begleitet.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q3">Muss ich technisches Vorwissen haben?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a3"><p>Nein. Die Einrichtung reicht von Self-Service bis zur individuellen Anpassung durch unser Team — Sie werden persönlich begleitet.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Was ist der Social Media Agent?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Ein digitaler Assistent, der Beiträge passend zu Ihrer Zielgruppe, Marke und Plattform erstellt, plant und veröffentlicht — via WhatsApp oder Telegram gesteuert.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q4">Was ist der Social Media Agent?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a4"><p>Ein digitaler Assistent, der Beiträge passend zu Ihrer Zielgruppe, Marke und Plattform erstellt, plant und veröffentlicht — via WhatsApp oder Telegram gesteuert.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Kann der Social Media Agent im Stil meines Unternehmens schreiben?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Ja. Zielgruppe, Kanäle, Themen und Tonalität werden zu Beginn gemeinsam festgelegt, damit Ihr Content zu Ihrer Marke passt.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q5">Kann der Social Media Agent im Stil meines Unternehmens schreiben?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a5"><p>Ja. Zielgruppe, Kanäle, Themen und Tonalität werden zu Beginn gemeinsam festgelegt, damit Ihr Content zu Ihrer Marke passt.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Kann ich Inhalte vor der Veröffentlichung prüfen?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Ja, Beiträge werden zur Freigabe vorbereitet, bevor sie veröffentlicht werden.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q6">Kann ich Inhalte vor der Veröffentlichung prüfen?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a6"><p>Ja, Beiträge werden zur Freigabe vorbereitet, bevor sie veröffentlicht werden.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Ist der Voice Agent rund um die Uhr erreichbar?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Ja — 24/7, freundlich und in Echtzeit, auch außerhalb Ihrer Sprechzeiten.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q7">Ist der Voice Agent rund um die Uhr erreichbar?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a7"><p>Ja — 24/7, freundlich und in Echtzeit, auch außerhalb Ihrer Sprechzeiten.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Kann der Voice Agent Termine vereinbaren oder weiterleiten?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Ja, per SMS, WhatsApp oder E-Mail, integriert in Ihren bestehenden Kalender.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q8">Kann der Voice Agent Termine vereinbaren oder weiterleiten?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a8"><p>Ja, per SMS, WhatsApp oder E-Mail, integriert in Ihren bestehenden Kalender.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Sind die KI-Agenten DSGVO-konform?<span class="faq-ic">+</span></button>
-          <div class="faq-a"><p>Ja. AIDEN wird in der EU gehostet und ist DSGVO- sowie EU-AI-Act-konform.</p></div>
+          <button class="faq-q" aria-expanded="false" data-i18n="faq.q9">Sind die KI-Agenten DSGVO-konform?<span class="faq-ic">+</span></button>
+          <div class="faq-a" data-i18n="faq.a9"><p>Ja. AIDEN wird in der EU gehostet und ist DSGVO- sowie EU-AI-Act-konform.</p></div>
         </div>
       </div>
     </div>
@@ -948,17 +957,17 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <!-- FINAL CTA -->
   <section class="final-cta" id="kontakt">
     <div class="wrap">
-      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);">Die Zukunft Ihres Unternehmens beginnt jetzt</div>
-      <h2 class="h-lg serif">Es ist nicht die Frage, <em>ob</em> Sie KI nutzen — sondern <em>wann</em>.</h2>
-      <p class="lead">Mehr Leads, weniger Aufwand, vollautomatisierte Prozesse — entwickelt, um Ihr Geschäft zu skalieren.</p>
+      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);" data-i18n="final.eyebrow">Die Zukunft Ihres Unternehmens beginnt jetzt</div>
+      <h2 class="h-lg serif" data-i18n="final.h2">Es ist nicht die Frage, <em>ob</em> Sie KI nutzen — sondern <em>wann</em>.</h2>
+      <p class="lead" data-i18n="final.lead">Mehr Leads, weniger Aufwand, vollautomatisierte Prozesse — entwickelt, um Ihr Geschäft zu skalieren.</p>
       <div class="hero-cta" style="justify-content:center;">
-        <a href="#pricing" class="btn btn-gold">Voice Agent starten</a>
-        <a href="mailto:info@aiden.ae" class="btn btn-outline">Kostenloses Erstgespräch buchen</a>
+        <a href="#pricing" class="btn btn-gold" data-i18n="final.cta1">Voice Agent starten</a>
+        <a href="mailto:info@aiden.ae" class="btn btn-outline" data-i18n="final.cta2">Kostenloses Erstgespräch buchen</a>
       </div>
       <div class="final-list">
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Immer verfügbar</span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Sofortige Antwort auf jede Anfrage</span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Vollautomatisierte Prozesse</span>
+        <span data-i18n="final.l1"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Immer verfügbar</span>
+        <span data-i18n="final.l2"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Sofortige Antwort auf jede Anfrage</span>
+        <span data-i18n="final.l3"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Vollautomatisierte Prozesse</span>
       </div>
     </div>
   </section>
@@ -975,7 +984,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
         <div class="brand-mark">A</div>
         <div class="brand-name">AIDEN</div>
       </div>
-      <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+      <p class="cf-tag" data-i18n="footer.tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
       <div class="cf-social">
         <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.6c0-1.57-.03-3.6-2.19-3.6-2.19 0-2.53 1.71-2.53 3.48V23h-4V8.5z"/></svg></a>
         <a href="#" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
@@ -984,28 +993,28 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
     </div>
     <div class="cf-cols">
       <div class="cf-col">
-        <h5>Produkte</h5>
-        <a href="#voice">Voice Agent</a>
-        <a href="#social">Social Media Agent</a>
-        <a href="#pricing">Preise</a>
+        <h5 data-i18n="footer.col1.h">Produkte</h5>
+        <a href="#voice" data-i18n="footer.voice">Voice Agent</a>
+        <a href="#social" data-i18n="footer.social">Social Media Agent</a>
+        <a href="#pricing" data-i18n="footer.pricing">Preise</a>
       </div>
       <div class="cf-col">
-        <h5>Unternehmen</h5>
-        <a href="#ueber-uns">Über uns</a>
-        <a href="#stimmen">Kunden</a>
-        <a href="#kontakt">Kontakt</a>
+        <h5 data-i18n="footer.col2.h">Unternehmen</h5>
+        <a href="#ueber-uns" data-i18n="footer.about">Über uns</a>
+        <a href="#stimmen" data-i18n="footer.customers">Kunden</a>
+        <a href="#kontakt" data-i18n="footer.contact">Kontakt</a>
       </div>
       <div class="cf-col">
-        <h5>Rechtliches</h5>
-        <a href="#">Impressum</a>
-        <a href="#">Datenschutz</a>
-        <a href="#">AGB</a>
+        <h5 data-i18n="footer.col3.h">Rechtliches</h5>
+        <a href="#" data-i18n="footer.imprint">Impressum</a>
+        <a href="#" data-i18n="footer.privacy">Datenschutz</a>
+        <a href="#" data-i18n="footer.terms">AGB</a>
       </div>
     </div>
   </div>
   <div class="cf-word">AIDEN</div>
   <div class="cf-bottom">
-    <p>© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <p data-i18n="footer.copyright">© 2026 AIDEN. Alle Rechte vorbehalten.</p>
     <div style="display:flex;gap:18px;">
       <a href="mailto:info@aiden.ae">info@aiden.ae</a>
       <a href="tel:+971561155278">+971 56 115 5278</a>
@@ -1419,5 +1428,45 @@ document.querySelectorAll('.faq-q').forEach(btn=>{
 <a href="https://wa.me/" class="wa-bubble" aria-label="WhatsApp Kontakt" target="_blank" rel="noopener">
   <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg>
 </a>
+
+<script>
+// Language switcher — German (default, from HTML) <-> English (from dictionary)
+(function(){
+const AIDEN_I18N_EN = {"nav.portal":"Customer Portal","nav.voice":"Voice Agents","nav.refs":"References","nav.cta":"Voice Agent<br>test now","announce.text":"Currently accepting new clients &mdash; free first consultation <a href=\"#kontakt\">book now</a>","intro.sub":"AIO – ALL IN ONE","intro.scroll":"Scroll down","intro.interact":"<span class=\"dot\"></span>Move to interact","hero.rating":"5.0 rated by happy customers","hero.eyebrow":"Hosted in the EU · GDPR-compliant · EU AI Act-compliant","hero.h1":"AI agents that <em>truly</em> take work off your hands.","hero.lead":"Missed calls, no time for social media, or repetitive daily tasks: AIDEN builds <span class=\"hl\">digital assistants</span> that take over wherever <span class=\"hl\">time, opportunity and energy</span> get lost today.","hero.cta1":"CALL &amp; TEST THE VOICE AGENT","hero.cta2":"DISCOVER THE SOCIAL MEDIA AGENT","hero.badge1":"Hosted in the EU","hero.badge2":"GDPR-compliant","hero.badge3":"EU AI Act-compliant","trust.label":"Integrated with the tools you already use","problem.eyebrow":"Everyday life without AIDEN","problem.h2":"Every missed call is a customer you never got to meet.","problem.lead":"This is what everyday life looks like in many businesses — before an AI agent takes over.","problem.c1.h":"Missed calls","problem.c1.p":"While you're on a call with one customer, the phone rings again — and the next caller hangs up before anyone can answer.","problem.c2.h":"No time for social media","problem.c2.p":"Content planning keeps getting pushed aside by daily business — visibility suffers week after week.","problem.c3.h":"Repetitive tasks","problem.c3.p":"Appointment confirmations, follow-up questions, reminders — the same tasks every day, leaving no room for the team to focus on what really matters.","problem.c4.h":"Leads slip away","problem.c4.p":"Prospects reach out but only hear back hours later — and by then they've often already decided to go elsewhere.","ov.eyebrow":"AI solutions at a glance","ov.h2":"For better availability, less effort and smoother workflows.","ov.lead":"AIDEN builds digital assistants that step in exactly where <span class=\"hl\">time gets lost</span> in everyday business: calls, follow-ups, appointments, leads, content and repetitive tasks.","ov.c1.h":"AI Voice Agents","ov.c1.p":"<span class=\"hl\">Never miss a customer again.</span> Your AI agent answers calls, qualifies inquiries and books appointments in real time — 24/7, with a smile.","ov.c2.h":"Social Media Agent","ov.c2.p":"Create, schedule and publish social media posts <span class=\"hl\">fully automatically</span> — tailored to your audience, your brand and each platform.","ov.c3.h":"Process automation","ov.c3.p":"Automate recurring tasks and workflows. <span class=\"hl\">Save time, reduce errors</span> and free your team from manual work.","ov.c4.h":"Lead management","ov.c4.p":"<span class=\"hl\">Turn every inquiry</span> automatically into a real sales opportunity by capturing and qualifying leads instantly.","ov.c5.h":"Customer support","ov.c5.p":"<span class=\"hl\">Respond to customers instantly</span> — around the clock. Faster, more consistent and professional support without hiring extra staff.","ov.c6.h":"Custom solutions","ov.c6.p":"<span class=\"hl\">Tailor-made systems</span>, built precisely around your challenges, workflows and goals.","ov.cta":"Find your custom solution","ind.eyebrow":"Built for your business","ind.h2":"Whether you run a practice, a trade business, a real estate office or a solo business.","ind.tab1":"Retail","ind.tab2":"Real Estate","ind.tab3":"Trade Businesses","ind.tab4":"Solo Businesses","ind.p1.h":"Social media made easy — even in the busy grocery trade","ind.p1.p":"Social media only happened when there was time — no plan, no research, no professional photos. The result: <span class=\"hl\">little consistency, little reach</span> and less and less motivation.","ind.p1.l1":"Consistent posts without the stress","ind.p1.l2":"Relevant content that customers actually care about","ind.p1.l3":"More visibility in under 1 hour a week","ind.p1.statlbl":"Time spent per week","ind.p1.statval":"&lt; 1 hr","ind.p2.h":"Faster marketing and stronger client relationships","ind.p2.p":"In the fiercely competitive real estate market, <span class=\"hl\">every advantage counts</span>. Our tools help you create professional listings, target prospects precisely and speed up the sales process.","ind.p2.l1":"Automatic listing generation","ind.p2.l2":"Targeted lead management","ind.p2.l3":"Transparent client communication","ind.p2.statlbl":"Focus","ind.p2.statval":"Lead speed","ind.p3.h":"Job management and client communication","ind.p3.p":"For trade businesses, <span class=\"hl\">staying on top of things</span> is essential — jobs, quotes and clients. Our solution simplifies the admin work and keeps customers happy.","ind.p3.statlbl":"Result","ind.p3.statval":"Total clarity","ind.p4.h":"Everything under control","ind.p4.p":"As a solo business owner, you're manager, salesperson and expert all in one. We help you <span class=\"hl\">make the most of your time</span> and stay on top of everything.","ind.p4.statlbl":"Role","ind.p4.statval":"All-in-one","ind.common.l1":"Digital quotes and invoicing","ind.common.l2":"Simple scheduling and resource planning","ind.common.l3":"Improved customer communication","case.eyebrow":"Customer example · Practices &amp; Clinics","case.h2":"Never miss another patient call.","case.stat1lbl":"More patient calls answered","case.stat2lbl":"Availability — always friendly","case.lead":"Being unreachable is a major problem in healthcare. Many practices <span class=\"hl\">lose potential patients through missed calls</span> and put unnecessary strain on their team. AIDEN offers an intelligent solution that ensures <span class=\"hl\">no call goes unanswered</span>.","trust2.eyebrow":"Trust isn't built by technology alone","trust2.h2":"AI solutions built on experience, strategy and real execution skill.","trust2.lead":"Behind AIDEN are people who understand business: with experience in marketing, sales, customer communication and artificial intelligence. <span class=\"hl\">That exact combination is what makes the difference.</span>","trust2.i1.h":"Over 13 years of AI experience","trust2.i1.p":"Dr. Irena Schindler brings over 13 years of experience in artificial intelligence and is the technological mind behind AIDEN's AI agents.","trust2.i1.payoff":"What that means for you: <em>your solution is built on solid experience, not short-lived AI hype.</em>","trust2.i2.h":"Over 30 years of marketing &amp; sales","trust2.i2.p":"AIDEN combines decades of experience in marketing, sales, customer communication and strategic execution for businesses.","trust2.i2.payoff":"What that means for you: <em>your agent is built with your audience, communication and real business processes in mind.</em>","team1.role":"Managing Director xC Consultants / xC-AI","team1.bio":"Heidrun Keim brings over 35 years of experience in marketing and sales. She ensures AI solutions aren't just technically possible, but understandable, usable and sales-effective for clients.","team2.role":"Managing Director AIDEN · AI Expert","team2.bio":"Dr. Irena Schindler turns ideas into stable, intelligent, practical AI agents that genuinely take work off businesses' hands every day.","start.eyebrow":"Getting started with AIDEN is this simple","start.h2":"Which agent should take work off your hands first?","start.p1.h":"Start the Voice Agent","start.p1.sub":"Choose a plan. Set up your agent. Answer calls automatically.","start.p1.s1.h":"Choose a plan","start.p1.s1.p":"<span class=\"hl\">Start for free</span>, with prepaid or a monthly plan that fits.","start.p1.s2.h":"Set up your agent","start.p1.s2.p":"Define greetings, questions, answers, call routing and workflows — from self-service to fully custom setup.","start.p1.s3.h":"Feel the relief","start.p1.s3.p":"The agent answers calls, captures requests and <span class=\"hl\">takes the load off your team</span>.","start.p1.payoff":"Easy to start. Quick to set up. Personally guided.","start.p2.h":"Start the Social Media Agent","start.p2.sub":"Book a free consultation or start directly in chat.","start.p2.s1.h":"Book a consultation","start.p2.s1.p":"Start with a free initial consultation or ask your questions directly in chat.","start.p2.s2.h":"Define your goals","start.p2.s2.p":"We clarify your audience, channels, topics, tone of voice and content goals.","start.p2.s3.h":"Become visible","start.p2.s3.p":"The agent helps with research, planning, copywriting, image ideas and publishing — via WhatsApp or Telegram.","start.p2.payoff":"More structure. Less content stress. Consistently visible.","case.s1.tag":"Before","case.s1.h":"Missed calls","case.s1.p":"Patients called in vain because staff were overloaded or the practice was unreachable outside office hours.","case.s2.tag":"Before","case.s2.h":"Overloaded staff","case.s2.p":"Staff struggled to call patients back, leading to longer wait times and frustration.","case.s3.tag":"With AIDEN","case.s3.h":"No more unanswered calls","case.s3.p":"Patient calls are answered automatically and personally — greeted by name, taken care of instantly.","case.s4.tag":"Booking","case.s4.h":"A full calendar, made easy","case.s4.p":"AIDEN books appointments via SMS, WhatsApp or email and integrates seamlessly with your practice calendar.","case.s5.tag":"Result","case.s5.h":"Happy patients, a relaxed team","case.s5.p":"The practice runs more calmly and far more efficiently — the team is friendly instead of stressed.","pricing.eyebrow":"Pricing","pricing.h2":"The Voice Agent that only costs you once it starts working.","pricing.starter.eyebrow":"No fixed costs","pricing.starter.h":"Prepaid plan: €0 to get started","pricing.starter.p":"Start with AI telephony <span class=\"hl\">at no financial risk</span> and stay reachable even when no one can pick up the phone. Ideal for solo entrepreneurs, freelancers and small businesses.","pricing.starter.unit":"&nbsp;base fee","pricing.starter.l1":"15 free test minutes included","pricing.starter.l2":"Then just &euro;0.69 per minute","pricing.starter.l3":"No credit card, no contract commitment","pricing.starter.cta":"Test 24/7 call answering","pricing.note":"<strong>Five plans are available</strong> — for anyone who wants to use the Voice Agent as part of their everyday operations. All monthly prices apply with a 12-month term.","pc1.name":"Starter · Basic","pc1.was":"&euro;98 / month","pc1.save":"You save &euro;240 in year 1","pc1.f1":"100 free minutes","pc1.f3":"24/7 call answering","pc1.f4":"WhatsApp integration","pc1.f5":"Telegram integration","pc1.f6":"Appointment booking","pc1.f7":"Calendar integration","pc1.f8":"Appointment reminders","pc1.cta":"Choose Basic","pc1.bestfor":"Best for: solo entrepreneurs &amp; new practices","pc1.extra":"Extra minute &euro;0.39","pc.unit.month":"&nbsp;/ month","pc.common.1ki":"1 AI assistant","pc.common.email":"Email notifications","pc2.tag":"Most popular plan","pc2.name":"Comfort","pc2.was":"&euro;189 / month","pc2.save":"You save &euro;720 in year 1","pc2.f1":"200 free minutes","pc2.f3":"WhatsApp &amp; Telegram integration","pc2.f4":"Appointment booking &amp; calendar integration","pc2.f5":"<span class=\"hl\">Priority support</span>","pc2.f6":"<span class=\"hl\">Knowledge base</span>","pc2.f7":"<span class=\"hl\">API access</span>","pc2.f8":"<span class=\"hl\">Perfect setup</span>","pc2.cta":"Choose Comfort","pc2.bestfor":"Best for: growing teams with multiple channels","pc2.extra":"Extra minute &euro;0.32","pc3.name":"For larger businesses · Premium","pc3.was":"&euro;399 / month","pc3.save":"You save &euro;1,800 in year 1","pc3.f1":"<span class=\"hl\">600 free minutes</span>","pc.common.3ki":"<span class=\"hl\">3 AI assistants</span>","pc3.f3":"<span class=\"hl\">All features included</span>","pc3.f4":"Priority support","pc3.f5":"API access","pc3.f6":"Knowledge base","pc3.f7":"Perfect setup","pc3.cta":"Choose Premium","pc3.bestfor":"Best for: larger businesses with high call volume","pc3.extra":"Extra minute &euro;0.28","pc4.name":"Smart Solution","pc4.unit":"&nbsp;one-time","pc4.was":"&euro;4,536 one-time","pc4.save":"You save &euro;2,187 introductory price","pc4.f1":"<span class=\"hl\">24-month term</span>","pc4.f2":"800 free minutes","pc4.f3":"3 AI assistants","pc4.f4":"<span class=\"hl\">All features</span>","pc4.cta":"Choose Smart Solution","pc4.bestfor":"Best for: predictable budgets with no ongoing costs","pc4.extra":"One-time payment, no subscription","tst.eyebrow":"Our customers love us","tst.h2":"Great collaboration is something you can feel — in advice, execution and results.","tst1.quote":"\"AIDEN believed in me and my ideas from day one. I never just felt like a customer — I felt genuinely supported. Thanks to AIDEN's experience and guidance, I can now clearly show who I am and what my practice stands for.\"","tst1.role":"Specialist Physician","tst2.quote":"\"I experienced working with AIDEN as very professional, reliable and pleasant. I particularly appreciated how easy it was to reach the team. Questions were answered quickly.\"","tst2.role":"Psychotherapist","tst3.quote":"\"AIDEN's support has been a milestone in my social media growth. I'm absolutely thrilled.\"","tst3.role":"Learning Disabilities Coach","tst4.quote":"\"'It can be easy' says it all. Competent, likeable, a great team!\"","tst4.role":"Certified Coach &amp; Introvision Counselor","tst5.quote":"\"Working with this team was truly a great experience. They helped us tremendously and explained everything clearly. We're very satisfied and can definitely recommend them!\"","tst5.role":"Architect","faq.eyebrow":"Frequently Asked Questions","faq.h2":"Answers to the most important questions about AIDEN.","faq.q1":"How do I get started with AIDEN?","faq.a1":"Choose a Voice Agent plan or book a free initial consultation for the Social Media Agent — both paths are set up within minutes.","faq.q2":"Who are the AI agents suitable for?","faq.a2":"For practices, trade businesses, real estate offices, solo businesses and retail — anywhere that calls, content or repetitive tasks cost time.","faq.q3":"Do I need any technical knowledge?","faq.a3":"No. Setup ranges from self-service to fully custom configuration by our team — you'll be personally guided throughout.","faq.q4":"What is the Social Media Agent?","faq.a4":"A digital assistant that creates, schedules and publishes posts tailored to your audience, brand and platform — controlled via WhatsApp or Telegram.","faq.q5":"Can the Social Media Agent write in my brand's style?","faq.a5":"Yes. Your audience, channels, topics and tone of voice are defined together at the start, so your content matches your brand.","faq.q6":"Can I review content before it's published?","faq.a6":"Yes, posts are prepared for your approval before they go live.","faq.q7":"Is the Voice Agent available around the clock?","faq.a7":"Yes — 24/7, friendly and in real time, even outside your regular office hours.","faq.q8":"Can the Voice Agent schedule or transfer appointments?","faq.a8":"Yes, via SMS, WhatsApp or email, integrated with your existing calendar.","faq.q9":"Are the AI agents GDPR-compliant?","faq.a9":"Yes. AIDEN is hosted in the EU and is compliant with both GDPR and the EU AI Act.","final.eyebrow":"The future of your business starts now","final.h2":"The question isn't <em>if</em> you'll use AI — it's <em>when</em>.","final.lead":"More leads, less effort, fully automated processes — built to scale your business.","final.cta1":"Start the Voice Agent","final.cta2":"Book a free consultation","final.l1":"Always available","final.l2":"Instant response to every inquiry","final.l3":"Fully automated processes","footer.tag":"AI agents that truly take work off your hands — Voice Agent, Social Media Agent and custom AI automation.","footer.col1.h":"Products","footer.voice":"Voice Agent","footer.social":"Social Media Agent","footer.pricing":"Pricing","footer.col2.h":"Company","footer.about":"About us","footer.customers":"Customers","footer.contact":"Contact","footer.col3.h":"Legal","footer.imprint":"Imprint","footer.privacy":"Privacy Policy","footer.terms":"Terms","footer.copyright":"&copy; 2026 AIDEN. All rights reserved."};
+
+  const els = document.querySelectorAll('[data-i18n]');
+  const originalDE = new Map();
+  els.forEach(el => originalDE.set(el, el.innerHTML));
+
+  function applyLanguage(lang){
+    els.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if(lang === 'en' && AIDEN_I18N_EN[key] !== undefined){
+        el.innerHTML = AIDEN_I18N_EN[key];
+      } else {
+        el.innerHTML = originalDE.get(el);
+      }
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+    try { localStorage.setItem('aiden-lang', lang); } catch(e){}
+  }
+
+  document.querySelectorAll('.lang-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLanguage(btn.dataset.lang));
+  });
+
+  let initial = 'de';
+  try {
+    const saved = localStorage.getItem('aiden-lang');
+    if(saved === 'en' || saved === 'de'){
+      initial = saved;
+    } else if((navigator.language || '').toLowerCase().indexOf('de') !== 0){
+      initial = 'en';
+    }
+  } catch(e){}
+  if(initial !== 'de') applyLanguage(initial);
+})();
+</script>
 </body>
 </html>
