@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AIDEN — KI-Agenten, die Ihr Unternehmen wirklich entlasten</title>
 <meta name="description" content="AIDEN entwickelt Voice Agents, Social Media Agents und individuelle KI-Automatisierung für Praxen, Handwerksbetriebe, Immobilienbüros und Einzelunternehmen. In der EU gehostet, DSGVO- und EU-AI-Act-konform.">
+<script type="module" src="https://unpkg.com/@splinetool/viewer@1.9.82/build/spline-viewer.js"></script>
 <style>
 :root{
   --ink:#16140f;
@@ -71,10 +72,9 @@ em{font-style:italic;color:var(--gold);}
 .reveal.vis{opacity:1;transform:none;}
 
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:14px;right:14px;z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,.5);border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),0 0 32px rgba(245,183,49,.14),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s;}
-nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),0 0 44px rgba(245,183,49,.22),inset 0 1px 0 rgba(255,255,255,.7);}
-nav.site::after{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),transparent 0 72%,var(--gold-light) 84%,var(--gold) 90%,var(--gold-light) 96%,transparent 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;filter:blur(.3px);opacity:.95;animation:navOrbit 6s linear infinite;pointer-events:none;}
-nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;background:conic-gradient(from var(--na,0deg),transparent 0 72%,rgba(245,183,49,.5) 84%,rgba(255,226,122,.65) 90%,rgba(245,183,49,.5) 96%,transparent 100%);filter:blur(14px);opacity:.8;animation:navOrbit 6s linear infinite;pointer-events:none;z-index:-1;}
+nav.site{position:fixed;top:14px;left:14px;right:14px;z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s;}
+nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
+nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),#8a6415,var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,#8a6415 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
 @keyframes navOrbit{to{--na:360deg;}}
 @property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
@@ -115,6 +115,10 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 .hero-mesh{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(560px 400px at 82% 6%,rgba(245,183,49,.18),transparent 65%),radial-gradient(680px 480px at 8% 92%,rgba(245,183,49,.10),transparent 60%);}
 .hero-sparkles{position:absolute;inset:0;z-index:0;pointer-events:none;mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);-webkit-mask-image:radial-gradient(680px 460px at 26% 42%,#000 0%,#000 35%,transparent 78%);}
 @media(prefers-reduced-motion:reduce){.hero-sparkles{display:none;}}
+.hero-robot{position:absolute;right:-4%;top:0;width:58%;height:100%;z-index:0;opacity:0;transform:scale(1.18);transition:opacity 1.3s ease,transform 1.6s cubic-bezier(.16,1,.3,1);pointer-events:none;}
+.hero-robot.in{opacity:.5;transform:scale(1);}
+.hero-robot spline-viewer{width:100%;height:100%;display:block;}
+@media(max-width:980px){.hero-robot{display:none;}}
 .hero-inner{position:relative;z-index:1;max-width:840px;}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
@@ -128,15 +132,16 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 @keyframes beamRun{from{stroke-dashoffset:var(--len);}to{stroke-dashoffset:calc(var(--len) * -1);}}
 .beam-node{fill:#151517;stroke:var(--line-on-ink);stroke-width:1.5;}
 .beam-node.core{fill:var(--ink);stroke:var(--gold);}
-.node-label{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;color:var(--muted-on-ink);white-space:nowrap;}
-.node-label svg{color:var(--gold-light);flex-shrink:0;}
+.node-label{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;background:rgba(255,226,122,.08);border:1px solid rgba(255,226,122,.18);}
+.node-label svg{color:var(--gold-light);flex-shrink:0;width:26px;height:26px;}
 .hub-pill{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:172px;height:64px;border-radius:100px;background:#151517;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
 .hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
 @keyframes hubSpin{to{--a:360deg;}}
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
-.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+.hero-cta{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hero-cta .btn{padding:.78rem 1.4rem;font-size:.82rem;}
 .badges{display:flex;gap:1.6rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid var(--line-on-ink);}
 .badge{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--muted-on-ink);}
 .badge svg{color:var(--gold-light);flex-shrink:0;}
@@ -311,8 +316,8 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
 
 /* ── golden thread (LYP-Stil: gebogene SVG-Linie, scroll-gebunden) ── */
 .flow-thread{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible;}
-.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;
-  filter:drop-shadow(0 0 6px rgba(255,226,122,.55)) drop-shadow(0 0 18px rgba(245,183,49,.4));}
+.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 8px rgba(255,226,122,.7)) drop-shadow(0 0 22px rgba(245,183,49,.5));}
 .content>section,.content>header{position:relative;z-index:1;}
 
 /* ── content wrapper w/ cinematic footer reveal ── */
@@ -383,6 +388,9 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
   <header class="hero on-ink" id="top">
     <div class="hero-mesh"></div>
     <canvas class="hero-sparkles" id="heroSparkles" aria-hidden="true"></canvas>
+    <div class="hero-robot" id="heroRobot" aria-hidden="true">
+      <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"></spline-viewer>
+    </div>
     <div class="wrap hero-grid">
       <div class="hero-inner">
         <div class="hero-rating reveal">
@@ -430,11 +438,11 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
           <circle class="beam-node" cx="220" cy="400" r="7"/>
         </svg>
 
-        <div class="node-label" style="left:15.9%;top:20.5%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Telefon</div>
-        <div class="node-label" style="left:84.1%;top:20.5%;"><svg width="14" height="14" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg>WhatsApp</div>
-        <div class="node-label" style="left:13.6%;top:68.2%;"><svg width="14" height="14" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg>Telegram</div>
-        <div class="node-label" style="left:86.4%;top:68.2%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Kalender</div>
-        <div class="node-label" style="left:50%;top:90.9%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>E-Mail</div>
+        <div class="node-label" style="left:15.9%;top:20.5%;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="node-label" style="left:84.1%;top:20.5%;"><svg width="26" height="26" viewBox="0 0 32 32" fill="currentColor"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg></div>
+        <div class="node-label" style="left:13.6%;top:68.2%;"><svg width="26" height="26" viewBox="0 0 240 240" fill="currentColor"><path d="M120 0a120 120 0 1 0 0 240 120 120 0 0 0 0-240zm54.6 81.8-18.4 86.7c-1.4 6.2-5 7.7-10.1 4.8l-28-20.6-13.5 13c-1.5 1.5-2.8 2.8-5.6 2.8l2-28.4 51.7-46.7c2.3-2 -.5-3.2-3.5-1.2l-63.9 40.2-27.5-8.6c-6-1.9-6.1-6 1.2-8.8l107.4-41.4c5-1.8 9.4 1.2 8.2 8.2z"/></svg></div>
+        <div class="node-label" style="left:86.4%;top:68.2%;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div>
+        <div class="node-label" style="left:50%;top:90.9%;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></div>
 
         <div class="hub-pill"><span>AIDEN</span></div>
       </div>
@@ -693,7 +701,7 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
           <div class="price-extra mono">Zusatzminute 0,39&nbsp;€</div>
         </div>
 
-        <div class="price-card feat reveal" style="transition-delay:.05s">
+        <div class="price-card feat reveal" style="transition-delay:.12s">
           <div class="price-tag">Beliebtester Plan</div>
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56v4.82a6 6 0 01-1.83-1.01l-4.01-4.01a6 6 0 01-1.01-1.83H7.5a6 6 0 017.38-5.84zM10.5 14.5L14 11"/></svg></div>
           <div class="price-name">Comfort</div>
@@ -715,7 +723,7 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
           <div class="price-extra mono">Zusatzminute 0,32&nbsp;€</div>
         </div>
 
-        <div class="price-card reveal" style="transition-delay:.1s">
+        <div class="price-card reveal" style="transition-delay:.24s">
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375"/></svg></div>
           <div class="price-name">Für größere Unternehmen · Premium</div>
           <div class="price-now serif">249&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
@@ -734,7 +742,7 @@ nav.site::before{content:'';position:absolute;inset:-8px;border-radius:30px;back
           <div class="price-extra mono">Zusatzminute 0,28&nbsp;€</div>
         </div>
 
-        <div class="price-card reveal" style="transition-delay:.15s">
+        <div class="price-card reveal" style="transition-delay:.36s">
           <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M13 2L4.5 12.5H11L9.5 22L18 11.5H12.5L13 2z"/></svg></div>
           <div class="price-name">Smarte Lösung</div>
           <div class="price-now serif">2.349&nbsp;€<span class="unit">&nbsp;einmalig</span></div>
@@ -949,7 +957,7 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     path.setAttribute('d', d.trim());
 
     grad.setAttribute('y2', h);
-    const HI = 0.85, LO = 0.04, feather = 34;
+    const HI = 1, LO = 0.08, feather = 30;
     const cTop = content.getBoundingClientRect().top + window.scrollY;
     const blocks = [...content.querySelectorAll('.hero-inner,.wrap')].map(el=>{
       const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t, t + r.height];
@@ -1057,6 +1065,13 @@ function initSparkles(canvasId, opts){
   requestAnimationFrame(tick);
 }
 initSparkles('introSparkles', { host: document.getElementById('introSplash'), density: 3800, goldRatio: 0.55, fall: true, interactive: true });
+
+// Hero robot — zoom-in reveal shortly after load
+(function(){
+  const el = document.getElementById('heroRobot');
+  if(!el) return;
+  setTimeout(()=>el.classList.add('in'), 300);
+})();
 
 // Hero sparkles — ambient drifting particle field
 (function(){
