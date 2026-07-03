@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AIDEN — KI-Agenten, die Ihr Unternehmen wirklich entlasten</title>
+<meta name="description" content="AIDEN entwickelt Voice Agents, Social Media Agents und individuelle KI-Automatisierung für Praxen, Handwerksbetriebe, Immobilienbüros und Einzelunternehmen. In der EU gehostet, DSGVO- und EU-AI-Act-konform.">
+<style>
+:root{
+  --ink:#0e0e10;
+  --ink-soft:#1c1c1f;
+  --paper:#fbfaf7;
+  --paper-2:#f2efe7;
+  --gold:#b8912f;
+  --gold-light:#e9d9a8;
+  --gold-dim:rgba(184,145,47,.14);
+  --muted:#6b6b63;
+  --muted-on-ink:#a9a89f;
+  --line:rgba(14,14,16,.10);
+  --line-on-ink:rgba(255,255,255,.12);
+  --r:3px;
+  --shadow:0 30px 70px rgba(14,14,16,.16);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.serif{font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;}
+.mono{font-family:ui-monospace,"SF Mono","Cascadia Code","Roboto Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+section{padding:clamp(4rem,8vw,7.5rem) 0;}
+@media(max-width:640px){.wrap{padding:0 20px;}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:1.1rem;}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
+.on-ink .eyebrow{color:var(--gold-light);}
+
+h1,h2,h3,h4{margin:0;letter-spacing:-.01em;}
+.h-xl{font-size:clamp(2.6rem,5.6vw,4.6rem);font-weight:500;line-height:1.02;}
+.h-lg{font-size:clamp(1.9rem,3.6vw,3rem);font-weight:500;line-height:1.08;}
+.h-md{font-size:clamp(1.35rem,2vw,1.65rem);font-weight:500;}
+em{font-style:italic;color:var(--gold);}
+.on-ink em{color:var(--gold-light);}
+
+.lead{font-size:clamp(1.02rem,1.4vw,1.2rem);color:var(--muted);max-width:620px;line-height:1.7;}
+.on-ink .lead{color:var(--muted-on-ink);}
+
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:inherit;font-weight:600;font-size:.92rem;padding:.95rem 1.9rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;white-space:nowrap;}
+.btn-gold{background:var(--gold);color:#100c02;box-shadow:0 10px 26px rgba(184,145,47,.3);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(184,145,47,.42);}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--line);}
+.btn-outline:hover{border-color:var(--ink);}
+.on-ink .btn-outline{color:var(--paper);border-color:var(--line-on-ink);}
+.on-ink .btn-outline:hover{border-color:var(--gold-light);}
+
+/* ── reveal ── */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ── nav ── */
+nav.site{position:fixed;top:0;left:0;right:0;z-index:300;height:78px;display:flex;align-items:center;background:rgba(251,250,247,.82);backdrop-filter:blur(16px) saturate(160%);border-bottom:1px solid transparent;transition:background .3s,border-color .3s;}
+nav.site.scrolled{background:rgba(251,250,247,.96);border-color:var(--line);}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 32px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:.6rem;}
+.brand-mark{width:34px;height:34px;border-radius:2px;background:var(--ink);display:flex;align-items:center;justify-content:center;color:var(--gold-light);font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.15rem;}
+.brand-name{font-weight:700;font-size:1.02rem;letter-spacing:.01em;}
+.nav-links{display:flex;gap:2.1rem;}
+.nav-links a{font-size:.86rem;font-weight:500;color:var(--muted);transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+@media(max-width:900px){.nav-links{display:none;}}
+
+/* ── hero ── */
+.hero{position:relative;background:var(--ink);color:var(--paper);padding:calc(78px + 5rem) 0 5.5rem;overflow:hidden;}
+.hero-mesh{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(560px 400px at 82% 6%,rgba(184,145,47,.18),transparent 65%),radial-gradient(680px 480px at 8% 92%,rgba(184,145,47,.10),transparent 60%);}
+.hero-inner{position:relative;z-index:1;max-width:840px;}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
+
+/* ── pulse beams hub ── */
+.beams-wrap{position:relative;height:clamp(340px,38vw,460px);}
+.beams-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;}
+.beam-path{fill:none;stroke:var(--line-on-ink);stroke-width:1.5;}
+.beam-flow{fill:none;stroke:var(--gold-light);stroke-width:2.5;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(233,217,168,.8));opacity:0;}
+.beam-flow.run{opacity:1;animation:beamRun 1.8s linear;}
+@keyframes beamRun{from{stroke-dashoffset:var(--len);}to{stroke-dashoffset:calc(var(--len) * -1);}}
+.beam-node{fill:#151517;stroke:var(--line-on-ink);stroke-width:1.5;}
+.beam-node.core{fill:var(--ink);stroke:var(--gold);}
+.node-label{position:absolute;transform:translate(-50%,-50%);display:flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:600;color:var(--muted-on-ink);white-space:nowrap;}
+.node-label svg{color:var(--gold-light);flex-shrink:0;}
+.hub-pill{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:172px;height:64px;border-radius:100px;background:#151517;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
+@keyframes hubSpin{to{--a:360deg;}}
+@property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
+.hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+.badges{display:flex;gap:1.6rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid var(--line-on-ink);}
+.badge{display:flex;align-items:center;gap:.55rem;font-size:.8rem;color:var(--muted-on-ink);}
+.badge svg{color:var(--gold-light);flex-shrink:0;}
+
+/* ── overview grid ── */
+.ov-head{max-width:680px;margin-bottom:3rem;}
+.ov-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.ov-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2rem 1.9rem;transition:transform .3s,box-shadow .3s,border-color .3s;}
+.ov-card:hover{transform:translateY(-5px);box-shadow:var(--shadow);border-color:transparent;}
+.ov-card.feat{background:linear-gradient(160deg,var(--ink),var(--ink-soft));color:var(--paper);}
+.ov-card h3{font-size:1.1rem;margin-bottom:.6rem;}
+.ov-card p{font-size:.9rem;color:var(--muted);line-height:1.65;margin:0;}
+.ov-card.feat p{color:var(--muted-on-ink);}
+.ov-num{display:block;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;color:var(--gold);font-size:1.05rem;margin-bottom:1rem;}
+.ov-card.feat .ov-num{color:var(--gold-light);}
+@media(max-width:900px){.ov-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:600px){.ov-grid{grid-template-columns:1fr;}}
+
+/* ── industries ── */
+.ind-section{background:var(--paper-2);}
+.ind-tabs{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+.ind-tab{font-size:.82rem;font-weight:600;padding:.6rem 1.1rem;border-radius:100px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer;transition:.2s;}
+.ind-tab.active,.ind-tab:hover{border-color:var(--gold);color:var(--ink);background:var(--gold-dim);}
+.ind-panel{display:none;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.8rem,4vw,3rem);}
+.ind-panel.active{display:grid;grid-template-columns:1.2fr 1fr;gap:2.5rem;align-items:center;}
+@media(max-width:800px){.ind-panel.active{grid-template-columns:1fr;}}
+.ind-panel h3{font-size:1.5rem;margin-bottom:.9rem;}
+.ind-panel p{color:var(--muted);font-size:.95rem;line-height:1.7;margin:0 0 1.4rem;}
+.ind-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.7rem;}
+.ind-list li{display:flex;gap:.7rem;align-items:flex-start;font-size:.9rem;}
+.ind-list svg{flex-shrink:0;color:var(--gold);margin-top:.2rem;}
+.ind-visual{background:var(--ink);border-radius:var(--r);padding:2rem;color:var(--paper);}
+.ind-visual .lbl{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-light);margin-bottom:.5rem;}
+.ind-visual .stat{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.4rem;color:var(--gold-light);}
+
+/* ── case study ── */
+.case{background:var(--ink);color:var(--paper);}
+.case-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3rem;}
+.case-stats{display:flex;gap:2.5rem;flex-wrap:wrap;}
+.case-stat b{display:block;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.6rem;color:var(--gold-light);}
+.case-stat span{font-size:.78rem;color:var(--muted-on-ink);}
+.case-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:1.1rem;}
+@media(max-width:980px){.case-steps{grid-template-columns:repeat(2,1fr);}}
+.case-step{background:rgba(255,255,255,.04);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.5rem;}
+.case-step .n{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;color:var(--gold-light);font-size:1rem;display:block;margin-bottom:.9rem;}
+.case-step .tag{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:.3rem;}
+.case-step h4{font-size:.98rem;margin-bottom:.4rem;}
+.case-step p{font-size:.82rem;color:var(--muted-on-ink);line-height:1.6;margin:0;}
+
+/* ── trust / team ── */
+.trust-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-bottom:3.5rem;}
+@media(max-width:860px){.trust-grid{grid-template-columns:1fr;}}
+.trust-item{padding-top:1.6rem;border-top:1px solid var(--line);}
+.trust-item h3{font-size:1.05rem;margin-bottom:.6rem;}
+.trust-item p{font-size:.9rem;color:var(--muted);line-height:1.7;margin:0 0 .8rem;}
+.trust-item .payoff{font-size:.85rem;color:var(--ink);font-weight:600;}
+.trust-item .payoff em{font-weight:600;}
+
+.team-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;}
+@media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
+.team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.2rem;}
+.team-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(155deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:1.2rem;}
+.team-card h4{font-size:1.1rem;margin-bottom:.15rem;}
+.team-card .role{font-size:.82rem;color:var(--gold);font-weight:600;margin-bottom:1rem;}
+.team-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0;}
+
+/* ── onboarding paths ── */
+.path-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
+@media(max-width:860px){.path-grid{grid-template-columns:1fr;}}
+.path-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.8rem,3vw,2.6rem);}
+.path-card h3{font-size:1.3rem;margin-bottom:.4rem;}
+.path-card>.sub{font-size:.85rem;color:var(--gold);font-weight:600;margin-bottom:1.6rem;}
+.path-step{display:grid;grid-template-columns:34px 1fr;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--line);}
+.path-step:last-of-type{border-bottom:none;}
+.path-step .n{width:34px;height:34px;border-radius:50%;background:var(--gold-dim);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:.95rem;}
+.path-step h4{font-size:.95rem;margin-bottom:.3rem;}
+.path-step p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0;}
+.path-payoff{margin-top:1.6rem;padding-top:1.4rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--ink);font-weight:600;}
+
+/* ── pricing ── */
+.pricing-section{background:var(--paper-2);}
+.price-note{display:flex;align-items:center;gap:1rem;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.4rem 1.8rem;margin-bottom:2.6rem;max-width:640px;}
+.price-note svg{color:var(--gold);flex-shrink:0;}
+.price-note p{margin:0;font-size:.88rem;color:var(--muted);}
+.price-note strong{color:var(--ink);}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:980px){.price-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.price-grid{grid-template-columns:1fr;}}
+.price-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.1rem;display:flex;flex-direction:column;
+  transition:transform .45s cubic-bezier(.22,.9,.24,1),box-shadow .45s cubic-bezier(.22,.9,.24,1),border-color .3s ease;}
+.price-card:hover{transform:translateY(-8px) scale(1.015);box-shadow:0 30px 60px rgba(14,14,16,.14);border-color:var(--gold);}
+.price-card.feat{border-color:var(--gold);box-shadow:0 24px 50px rgba(184,145,47,.16);animation:featPulse 3.2s ease-in-out infinite;}
+.price-card.feat:hover{animation-play-state:paused;box-shadow:0 32px 64px rgba(184,145,47,.32);}
+@keyframes featPulse{0%,100%{box-shadow:0 24px 50px rgba(184,145,47,.16);}50%{box-shadow:0 24px 58px rgba(184,145,47,.34);}}
+.price-tag{position:absolute;top:-12px;left:2.1rem;background:var(--gold);color:#100c02;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;}
+.price-icon{width:44px;height:44px;border-radius:50%;background:var(--gold-dim);color:var(--gold);display:flex;align-items:center;justify-content:center;margin-bottom:1.3rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),background .3s ease;}
+.price-card:hover .price-icon{transform:scale(1.1) rotate(-6deg);background:var(--gold);color:#fff;}
+.price-name{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;}
+.price-now{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.5rem;color:var(--ink);}
+.price-now .unit{font-family:inherit;font-style:normal;font-size:1rem;color:var(--muted);}
+.price-was{font-size:.85rem;color:var(--muted);text-decoration:line-through;margin-top:.2rem;}
+.price-save{font-size:.8rem;color:var(--gold);font-weight:600;margin:.3rem 0 1.4rem;}
+.price-feats{list-style:none;margin:0 0 1.6rem;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1;}
+.price-feats li{display:flex;gap:.6rem;align-items:flex-start;font-size:.85rem;color:var(--ink);opacity:0;transform:translateX(-8px);transition:opacity .4s ease,transform .4s ease;}
+.price-card.vis .price-feats li{opacity:1;transform:none;}
+.price-feats li:nth-child(1){transition-delay:.1s;} .price-feats li:nth-child(2){transition-delay:.16s;}
+.price-feats li:nth-child(3){transition-delay:.22s;} .price-feats li:nth-child(4){transition-delay:.28s;}
+.price-feats li:nth-child(5){transition-delay:.34s;}
+.price-feats svg{flex-shrink:0;color:var(--gold);margin-top:.15rem;}
+.price-extra{font-size:.78rem;color:var(--muted);margin-top:auto;padding-top:1rem;border-top:1px solid var(--line);}
+.price-card .btn{margin-top:1.4rem;transform:translateY(0);}
+
+.starter-box{background:linear-gradient(160deg,var(--ink),var(--ink-soft));color:var(--paper);border-radius:var(--r);padding:clamp(2rem,4vw,3rem);display:grid;grid-template-columns:1.1fr .9fr;gap:2.5rem;align-items:center;margin-bottom:3rem;}
+@media(max-width:860px){.starter-box{grid-template-columns:1fr;}}
+.starter-box .price-now{color:var(--gold-light);}
+.starter-list{list-style:none;margin:1.2rem 0 0;padding:0;display:flex;flex-direction:column;gap:.55rem;}
+.starter-list li{display:flex;gap:.6rem;font-size:.88rem;color:var(--muted-on-ink);}
+.starter-list svg{color:var(--gold-light);flex-shrink:0;margin-top:.15rem;}
+
+/* ── testimonials ── */
+.tst-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:900px){.tst-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:640px){.tst-grid{grid-template-columns:1fr;}}
+.tst-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;}
+.tst-card p{font-size:.92rem;color:var(--ink);line-height:1.7;font-style:italic;margin:0 0 1.2rem;}
+.tst-person{font-size:.82rem;}
+.tst-person b{display:block;color:var(--ink);}
+.tst-person span{color:var(--muted);}
+
+/* ── faq ── */
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.35rem 0;background:none;border:none;font-family:inherit;font-size:.98rem;font-weight:600;text-align:left;cursor:pointer;color:var(--ink);}
+.faq-ic{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--gold);transition:.3s;}
+.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--gold);color:#fff;border-color:var(--gold);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a p{padding-bottom:1.3rem;font-size:.9rem;color:var(--muted);line-height:1.75;max-width:640px;margin:0;}
+.faq-item.open .faq-a{max-height:220px;}
+
+/* ── final cta ── */
+.final-cta{background:var(--ink);color:var(--paper);}
+.final-cta .wrap{text-align:center;}
+.final-cta .lead{max-width:520px;margin:1.1rem auto 2.2rem;}
+.final-list{display:flex;justify-content:center;gap:2.2rem;flex-wrap:wrap;margin-top:2.6rem;font-size:.85rem;color:var(--muted-on-ink);}
+.final-list span{display:flex;align-items:center;gap:.5rem;}
+.final-list svg{color:var(--gold-light);}
+
+/* ── content wrapper w/ cinematic footer reveal ── */
+.content{position:relative;z-index:10;background:var(--paper);margin-bottom:480px;box-shadow:0 40px 90px rgba(0,0,0,.14);}
+
+.cine-footer{position:fixed;left:0;bottom:0;width:100%;height:480px;z-index:0;overflow:hidden;background:linear-gradient(180deg,#0b0b0d,#050506);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:60px 32px 26px;}
+.cf-glow{position:absolute;top:-45%;left:50%;transform:translateX(-50%);width:1000px;height:560px;pointer-events:none;background:radial-gradient(ellipse,rgba(184,145,47,.16),transparent 70%);}
+.cf-top{position:relative;z-index:2;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;max-width:1180px;width:100%;}
+.cf-brand{max-width:340px;}
+.cf-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:16px;}
+.cf-logo .brand-mark{background:var(--gold-light);color:var(--ink);}
+.cf-logo .brand-name{color:#fff;}
+.cf-tag{font-size:.86rem;color:var(--muted-on-ink);line-height:1.7;}
+.cf-cols{display:flex;gap:56px;flex-wrap:wrap;}
+.cf-col h5{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:14px;font-weight:700;}
+.cf-col a{display:block;font-size:.86rem;color:#d8d6cc;margin-bottom:10px;transition:color .15s;}
+.cf-col a:hover{color:var(--gold-light);}
+.cf-word{position:relative;z-index:1;text-align:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:clamp(48px,12vw,170px);line-height:.85;user-select:none;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,0));-webkit-background-clip:text;background-clip:text;color:transparent;}
+.cf-bottom{position:relative;z-index:2;display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;max-width:1180px;width:100%;border-top:1px solid var(--line-on-ink);padding-top:18px;}
+.cf-bottom p{margin:0;font-size:.78rem;color:var(--muted-on-ink);}
+.cf-bottom a{font-size:.78rem;color:var(--muted-on-ink);}
+.cf-bottom a:hover{color:var(--gold-light);}
+@media(max-width:768px){.content{margin-bottom:600px;}.cine-footer{height:600px;padding:44px 20px 22px;}}
+</style>
+</head>
+<body>
+
+<nav class="site" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">A</span>
+      <span class="brand-name">AIDEN</span>
+    </a>
+    <div class="nav-links">
+      <a href="#voice">Voice Agent</a>
+      <a href="#social">Social Media Agent</a>
+      <a href="#pricing">Preise</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#pricing" class="btn btn-gold">Kostenlos starten</a>
+  </div>
+</nav>
+
+<div class="content" id="content">
+
+  <!-- HERO -->
+  <header class="hero on-ink" id="top">
+    <div class="hero-mesh"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-inner">
+        <div class="eyebrow reveal">In der EU gehostet · DSGVO-konform · EU-AI-Act-konform</div>
+        <h1 class="h-xl serif reveal" style="transition-delay:.05s">KI-Agenten, die Ihr Unternehmen <em>wirklich</em> entlasten.</h1>
+        <p class="lead reveal" style="transition-delay:.1s">Ob verpasste Anrufe, fehlende Social-Media-Zeit oder wiederkehrende Aufgaben im Tagesgeschäft: AIDEN schafft digitale Assistenten, die dort übernehmen, wo heute Zeit, Chancen und Energie verloren gehen.</p>
+        <div class="hero-cta reveal" style="transition-delay:.15s">
+          <a href="#pricing" class="btn btn-gold">Voice Agent starten</a>
+          <a href="#social" class="btn btn-outline">Social Media Agent ansehen</a>
+        </div>
+        <div class="badges reveal" style="transition-delay:.2s">
+          <div class="badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>In der EU gehostet</div>
+          <div class="badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>DSGVO-konform</div>
+          <div class="badge"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>EU-AI-Act-konform</div>
+        </div>
+      </div>
+
+      <div class="beams-wrap reveal" style="transition-delay:.1s" id="beamsWrap">
+        <svg class="beams-svg" id="beamsSvg" viewBox="0 0 440 440" preserveAspectRatio="xMidYMid meet">
+          <path class="beam-path" d="M220 220 L70 90"/>
+          <path class="beam-path" d="M220 220 L370 90"/>
+          <path class="beam-path" d="M220 220 L60 300"/>
+          <path class="beam-path" d="M220 220 L380 300"/>
+          <path class="beam-path" d="M220 220 L220 400"/>
+
+          <path class="beam-flow" id="f1" d="M220 220 L70 90"/>
+          <path class="beam-flow" id="f2" d="M220 220 L370 90"/>
+          <path class="beam-flow" id="f3" d="M220 220 L60 300"/>
+          <path class="beam-flow" id="f4" d="M220 220 L380 300"/>
+          <path class="beam-flow" id="f5" d="M220 220 L220 400"/>
+
+          <circle class="beam-node" cx="70" cy="90" r="7"/>
+          <circle class="beam-node" cx="370" cy="90" r="7"/>
+          <circle class="beam-node" cx="60" cy="300" r="7"/>
+          <circle class="beam-node" cx="380" cy="300" r="7"/>
+          <circle class="beam-node" cx="220" cy="400" r="7"/>
+        </svg>
+
+        <div class="node-label" style="left:15.9%;top:20.5%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Telefon</div>
+        <div class="node-label" style="left:84.1%;top:20.5%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>WhatsApp</div>
+        <div class="node-label" style="left:13.6%;top:68.2%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>Telegram</div>
+        <div class="node-label" style="left:86.4%;top:68.2%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Kalender</div>
+        <div class="node-label" style="left:50%;top:90.9%;"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg>E-Mail</div>
+
+        <div class="hub-pill"><span>AIDEN</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- OVERVIEW -->
+  <section id="loesungen">
+    <div class="wrap">
+      <div class="ov-head">
+        <div class="eyebrow reveal">KI-Lösungen im Überblick</div>
+        <h2 class="h-lg serif reveal">Für mehr Erreichbarkeit, weniger Aufwand und bessere Abläufe.</h2>
+        <p class="lead reveal" style="margin-top:1rem;">AIDEN entwickelt digitale Assistenten, die genau dort unterstützen, wo im Unternehmensalltag Zeit verloren geht: bei Anrufen, Rückfragen, Terminen, Leads, Content und wiederkehrenden Aufgaben.</p>
+      </div>
+      <div class="ov-grid">
+        <div class="ov-card feat reveal">
+          <span class="ov-num serif">01</span>
+          <h3>KI Voice Agents</h3>
+          <p>Verpassen Sie nie wieder einen Kunden. Ihr KI-Agent nimmt Anrufe entgegen, qualifiziert Anfragen und bucht Termine in Echtzeit — 24/7, mit einem Lächeln.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.05s">
+          <span class="ov-num serif">02</span>
+          <h3>Social Media Agent</h3>
+          <p>Erstellen, planen und veröffentlichen Sie Social-Media-Beiträge automatisch — passend zu Ihrer Zielgruppe, Ihrer Marke und der jeweiligen Plattform.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.1s">
+          <span class="ov-num serif">03</span>
+          <h3>Prozess-Automation</h3>
+          <p>Automatisieren Sie wiederkehrende Aufgaben und Workflows. Sparen Sie Zeit, reduzieren Sie Fehler und entlasten Sie Ihr Team von manueller Arbeit.</p>
+        </div>
+        <div class="ov-card reveal">
+          <span class="ov-num serif">04</span>
+          <h3>Lead-Management</h3>
+          <p>Erfassen und qualifizieren Sie Leads sofort. Verwandeln Sie jede Anfrage automatisch in eine echte Verkaufschance.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.05s">
+          <span class="ov-num serif">05</span>
+          <h3>Kundensupport</h3>
+          <p>Antworten Sie Kunden sofort — jederzeit. Schneller, einheitlicher und professioneller Support, ohne zusätzliches Personal aufzubauen.</p>
+        </div>
+        <div class="ov-card reveal" style="transition-delay:.1s">
+          <span class="ov-num serif">06</span>
+          <h3>Individuelle Lösungen</h3>
+          <p>Maßgeschneiderte Systeme, die genau auf Ihre Herausforderungen, Abläufe und Ziele abgestimmt sind.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INDUSTRIES -->
+  <section class="ind-section" id="branchen">
+    <div class="wrap">
+      <div class="eyebrow reveal">Für dein Business gemacht</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;">Egal ob Praxis, Handwerksbetrieb, Immobilienbüro oder Einzelunternehmen.</h2>
+
+      <div class="ind-tabs reveal">
+        <button class="ind-tab active" data-tab="retail">Einzelhandel</button>
+        <button class="ind-tab" data-tab="real-estate">Immobilienbranche</button>
+        <button class="ind-tab" data-tab="craft">Handwerksbetriebe</button>
+        <button class="ind-tab" data-tab="solo">Einzelunternehmen</button>
+      </div>
+
+      <div class="ind-panel active" id="retail">
+        <div>
+          <h3 class="serif">Social Media endlich einfach — auch im hektischen Lebensmittelhandel</h3>
+          <p>Social Media wurde bisher nur gemacht, wenn Zeit war — ohne Plan, ohne Recherche und ohne professionelle Bilder. Die Folge: wenig Regelmäßigkeit, wenig Reichweite und immer weniger Lust.</p>
+          <ul class="ind-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Posts ohne Stress</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Relevante Inhalte, die Kunden interessieren</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Sichtbarkeit in unter 1 Stunde pro Woche</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl">Zeitaufwand pro Woche</div><div class="stat serif">&lt; 1 Std.</div></div>
+      </div>
+
+      <div class="ind-panel" id="real-estate">
+        <div>
+          <h3 class="serif">Schnellere Vermarktung und Kundenbindung</h3>
+          <p>Im hart umkämpften Immobilienmarkt zählt jeder Vorteil. Unsere Tools helfen Ihnen, Exposés professionell zu erstellen, Interessenten gezielt anzusprechen und den Verkaufsprozess zu beschleunigen.</p>
+          <ul class="ind-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Automatische Exposé-Generierung</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Gezieltes Lead-Management</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Transparente Kommunikation mit Kunden</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl">Fokus</div><div class="stat serif">Lead-Speed</div></div>
+      </div>
+
+      <div class="ind-panel" id="craft">
+        <div>
+          <h3 class="serif">Auftragsverwaltung und Kundenkommunikation</h3>
+          <p>Für Handwerksbetriebe ist es entscheidend, den Überblick über Aufträge, Angebote und Kunden zu behalten. Unsere Lösung vereinfacht die Verwaltung und sorgt für zufriedene Kunden.</p>
+          <ul class="ind-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl">Ergebnis</div><div class="stat serif">Klarer Überblick</div></div>
+      </div>
+
+      <div class="ind-panel" id="solo">
+        <div>
+          <h3 class="serif">Alles unter Kontrolle</h3>
+          <p>Als Einzelunternehmer bist du Manager, Verkäufer und Experte in einem. Wir helfen dir, deine Zeit optimal zu nutzen und den Überblick zu behalten.</p>
+          <ul class="ind-list">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Digitale Angebots- und Rechnungsstellung</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Termin- und Ressourcenplanung</li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Verbesserte Kundenkommunikation</li>
+          </ul>
+        </div>
+        <div class="ind-visual"><div class="lbl">Rolle</div><div class="stat serif">Alles in einem</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CASE STUDY -->
+  <section class="case" id="fallbeispiel">
+    <div class="wrap">
+      <div class="case-head">
+        <div>
+          <div class="eyebrow reveal">Kundenbeispiel · Praxis &amp; Kliniken</div>
+          <h2 class="h-lg serif reveal" style="max-width:600px;">Nie wieder verpasste Patientenanrufe.</h2>
+        </div>
+        <div class="case-stats reveal">
+          <div class="case-stat"><b class="serif">62 %</b><span>Mehr Patientenanrufe angenommen</span></div>
+          <div class="case-stat"><b class="serif">24/7</b><span>Erreichbarkeit — immer freundlich</span></div>
+        </div>
+      </div>
+      <p class="lead reveal" style="margin-bottom:2.6rem;">Unerreichbarkeit ist ein großes Problem im Gesundheitswesen. Viele Praxen verlieren durch verpasste Anrufe potenzielle Patienten und belasten ihr Team unnötig. AIDEN bietet eine intelligente Lösung, die sicherstellt, dass kein Anruf unbeantwortet bleibt.</p>
+      <div class="case-steps">
+        <div class="case-step reveal"><span class="n serif">1</span><div class="tag">Vorher</div><h4>Verpasste Anrufe</h4><p>Patienten riefen vergeblich an, da das Personal überlastet war oder außerhalb der Sprechzeiten keine Erreichbarkeit bestand.</p></div>
+        <div class="case-step reveal" style="transition-delay:.05s"><span class="n serif">2</span><div class="tag">Vorher</div><h4>Überlastetes Personal</h4><p>Mitarbeiter hatten Mühe, Patienten zurückzurufen, was zu längeren Wartezeiten und Frustration führte.</p></div>
+        <div class="case-step reveal" style="transition-delay:.1s"><span class="n serif">3</span><div class="tag">Mit AIDEN</div><h4>Keine Anrufe mehr ins Leere</h4><p>Patientenanrufe werden automatisch angenommen und individuell beantwortet — mit Namen angesprochen, sofort gut aufgehoben.</p></div>
+        <div class="case-step reveal" style="transition-delay:.15s"><span class="n serif">4</span><div class="tag">Terminbuchung</div><h4>Voller Kalender, leicht gemacht</h4><p>AIDEN bucht Termine via SMS, WhatsApp oder E-Mail und integriert sich nahtlos in den Praxiskalender.</p></div>
+        <div class="case-step reveal" style="transition-delay:.2s"><span class="n serif">5</span><div class="tag">Ergebnis</div><h4>Zufriedene Patienten, entspanntes Team</h4><p>Die Praxis läuft entspannter und deutlich effizienter — das Team ist freundlich statt gestresst.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST / ÜBER UNS -->
+  <section id="ueber-uns">
+    <div class="wrap">
+      <div class="eyebrow reveal">Vertrauen entsteht nicht durch Technik allein</div>
+      <h2 class="h-lg serif reveal" style="max-width:680px;margin-bottom:1.4rem;">KI-Lösungen mit Erfahrung, Strategie und echter Umsetzungskompetenz.</h2>
+      <p class="lead reveal" style="margin-bottom:3rem;">Hinter AIDEN stehen Menschen, die Unternehmen verstehen: mit Erfahrung in Marketing, Vertrieb, Kundenkommunikation und künstlicher Intelligenz. Genau diese Verbindung macht den Unterschied.</p>
+
+      <div class="trust-grid">
+        <div class="trust-item reveal">
+          <h3>Mehr als 13 Jahre KI-Erfahrung</h3>
+          <p>Dr. Irena Schindler bringt mehr als 13 Jahre Erfahrung im Bereich künstliche Intelligenz ein und ist der technologische Kopf hinter den KI-Agenten von AIDEN.</p>
+          <p class="payoff">Das bedeutet für Sie: <em>Ihre Lösung basiert auf fundierter Erfahrung, nicht auf kurzfristigem KI-Hype.</em></p>
+        </div>
+        <div class="trust-item reveal" style="transition-delay:.05s">
+          <h3>Mehr als 30 Jahre Marketing &amp; Vertrieb</h3>
+          <p>AIDEN verbindet langjährige Erfahrung in Marketing, Vertrieb, Kundenkommunikation und strategischer Umsetzung für Unternehmen.</p>
+          <p class="payoff">Das bedeutet für Sie: <em>Ihr Agent wird mit Blick auf Zielgruppe, Kommunikation und echte Geschäftsprozesse entwickelt.</em></p>
+        </div>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-av serif">HK</div>
+          <h4>Heidrun Keim</h4>
+          <div class="role">Geschäftsführerin xC Consultants / xC-KI</div>
+          <p>Heidrun Keim bringt mehr als 35 Jahre Erfahrung in Marketing und Vertrieb ein. Sie sorgt dafür, dass KI-Lösungen nicht nur technisch möglich sind, sondern für Kunden verständlich, nutzbar und verkaufsstark werden.</p>
+        </div>
+        <div class="team-card reveal" style="transition-delay:.05s">
+          <div class="team-av serif">IS</div>
+          <h4>Dr. Irena Schindler</h4>
+          <div class="role">Geschäftsführerin AIDEN · KI-Expertin</div>
+          <p>Dr. Irena Schindler sorgt dafür, dass aus Ideen stabile, intelligente und praxistaugliche KI-Agenten werden, die Unternehmen im Alltag wirklich entlasten.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ONBOARDING PATHS -->
+  <section class="ind-section" id="start">
+    <div class="wrap">
+      <div class="eyebrow reveal">So einfach starten Sie mit AIDEN</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;">Welcher Agent soll Ihr Unternehmen zuerst entlasten?</h2>
+
+      <div class="path-grid">
+        <div class="path-card reveal">
+          <h3 class="serif">Voice Agent starten</h3>
+          <div class="sub">Tarif wählen. Agent einrichten. Anrufe automatisch entgegennehmen.</div>
+          <div class="path-step"><span class="n serif">1</span><div><h4>Tarif auswählen</h4><p>Starten Sie kostenlos, per Prepaid oder mit einem passenden Monatstarif.</p></div></div>
+          <div class="path-step"><span class="n serif">2</span><div><h4>Agent einrichten</h4><p>Definieren Sie Begrüßung, Fragen, Antworten, Weiterleitungen und Abläufe — vom Self-Service bis zur individuellen Anpassung.</p></div></div>
+          <div class="path-step"><span class="n serif">3</span><div><h4>Entlastung spüren</h4><p>Der Agent nimmt Anrufe entgegen, erfasst Anliegen und entlastet Ihr Team.</p></div></div>
+          <div class="path-payoff">Einfacher Einstieg. Schnell eingerichtet. Persönlich begleitet.</div>
+        </div>
+
+        <div class="path-card reveal" style="transition-delay:.05s">
+          <h3 class="serif">Social Media Agent starten</h3>
+          <div class="sub">Kostenlosen Termin buchen oder direkt im Chat starten.</div>
+          <div class="path-step"><span class="n serif">1</span><div><h4>Termin buchen</h4><p>Starten Sie mit einem kostenlosen Ersttermin oder stellen Sie Ihre Fragen direkt im Chat.</p></div></div>
+          <div class="path-step"><span class="n serif">2</span><div><h4>Ziele festlegen</h4><p>Wir klären Zielgruppe, Kanäle, Themen, Tonalität und Content-Ziele.</p></div></div>
+          <div class="path-step"><span class="n serif">3</span><div><h4>Sichtbar werden</h4><p>Der Agent unterstützt bei Recherche, Planung, Texten, Bildideen und Veröffentlichung — via WhatsApp oder Telegram.</p></div></div>
+          <div class="path-payoff">Mehr Struktur. Weniger Content-Stress. Regelmäßig sichtbar.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing-section" id="pricing">
+    <div class="wrap">
+      <div class="eyebrow reveal">Preise</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;">Der Voice Agent, der erst kostet, wenn er arbeitet.</h2>
+
+      <div class="starter-box reveal">
+        <div>
+          <div class="eyebrow" style="color:var(--gold-light);">Keine Fixkosten</div>
+          <h3 class="h-md serif">Prepaid-Tarif: 0&nbsp;€ zum Starten</h3>
+          <p style="color:var(--muted-on-ink);font-size:.92rem;margin:.8rem 0 0;max-width:44ch;">So starten Sie mit KI-Telefonie ohne Kostenrisiko und bleiben erreichbar, wenn gerade niemand ans Telefon gehen kann. Ideal für Einzelunternehmer, Freelancer und kleine Unternehmen.</p>
+        </div>
+        <div>
+          <div class="price-now serif">0&nbsp;€<span class="unit">&nbsp;Grundgebühr</span></div>
+          <ul class="starter-list">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>15 kostenlose Testminuten inklusive</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Danach nur 0,69&nbsp;€ pro Minute</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Keine Kreditkarte, keine Vertragsbindung</li>
+          </ul>
+          <a href="#" class="btn btn-gold" style="margin-top:1.6rem;">24/7 Telefonannahme testen</a>
+        </div>
+      </div>
+
+      <div class="price-note reveal">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v4M12 16h.01"/></svg>
+        <p><strong>Fünf Tarife stehen zur Auswahl</strong> — für alle, die den Voice Agent fest im Alltag nutzen möchten. Alle Monatspreise gelten bei 12 Monaten Laufzeit.</p>
+      </div>
+
+      <div class="price-grid">
+        <div class="price-card reveal">
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.1a7.5 7.5 0 0115 0"/></svg></div>
+          <div class="price-name">Einsteiger · Basic</div>
+          <div class="price-now serif">69&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
+          <div class="price-was mono">98&nbsp;€ / Monat</div>
+          <div class="price-save">Sie sparen 240&nbsp;€ im 1. Jahr</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>100 Freiminuten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24/7 Telefonannahme</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>WhatsApp &amp; Telegram Integration</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Terminbuchung &amp; Kalender-Integration</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-outline">Basic wählen</a>
+          <div class="price-extra mono">Zusatzminute 0,39&nbsp;€</div>
+        </div>
+
+        <div class="price-card feat reveal" style="transition-delay:.05s">
+          <div class="price-tag">Beliebtester Plan</div>
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.82m5.84-2.56v4.82a6 6 0 01-1.83-1.01l-4.01-4.01a6 6 0 01-1.01-1.83H7.5a6 6 0 017.38-5.84zM10.5 14.5L14 11"/></svg></div>
+          <div class="price-name">Comfort</div>
+          <div class="price-now serif">129&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
+          <div class="price-was mono">189&nbsp;€ / Monat</div>
+          <div class="price-save">Sie sparen 720&nbsp;€ im 1. Jahr</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>200 Freiminuten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>1 KI-Assistent</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-gold">Comfort wählen</a>
+          <div class="price-extra mono">Zusatzminute 0,32&nbsp;€</div>
+        </div>
+
+        <div class="price-card reveal" style="transition-delay:.1s">
+          <div class="price-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h6.375M9 12h6.375m-6.375 5.25h6.375"/></svg></div>
+          <div class="price-name">Für größere Unternehmen · Premium</div>
+          <div class="price-now serif">249&nbsp;€<span class="unit">&nbsp;/ Monat</span></div>
+          <div class="price-was mono">399&nbsp;€ / Monat</div>
+          <div class="price-save">Sie sparen 1.800&nbsp;€ im 1. Jahr</div>
+          <ul class="price-feats">
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>600 Freiminuten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen inklusive</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
+          </ul>
+          <a href="#kontakt" class="btn btn-outline">Premium wählen</a>
+          <div class="price-extra mono">Zusatzminute 0,28&nbsp;€</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="stimmen">
+    <div class="wrap">
+      <div class="eyebrow reveal">Unsere Kunden lieben uns</div>
+      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.8rem;">Gute Zusammenarbeit ist spürbar — in Beratung, Umsetzung und Ergebnis.</h2>
+      <div class="tst-grid">
+        <div class="tst-card reveal">
+          <p>„AIDEN hat von Anfang an an mich und meine Ideen geglaubt. Ich habe mich nicht nur als Kunde gefühlt, sondern wirklich begleitet. Durch die Erfahrung und Beratung von AIDEN kann ich heute klar zeigen, wer ich bin und wofür meine Praxis steht."</p>
+          <div class="tst-person"><b>Hector Fernandez Diarte</b><span>Facharzt</span></div>
+        </div>
+        <div class="tst-card reveal" style="transition-delay:.05s">
+          <p>„Ich habe die Zusammenarbeit mit AIDEN als sehr professionell, zuverlässig und angenehm erlebt. Besonders positiv empfand ich die gute Erreichbarkeit der Ansprechpartner. Rückfragen wurden schnell beantwortet."</p>
+          <div class="tst-person"><b>Karin Kniese</b><span>Psychotherapeutin</span></div>
+        </div>
+        <div class="tst-card reveal" style="transition-delay:.1s">
+          <p>„Die Unterstützung von AIDEN ist ein Meilenstein in meiner Social Media Entwicklung. Ich bin absolut begeistert."</p>
+          <div class="tst-person"><b>Jochen Timme</b><span>LRS-Trainer</span></div>
+        </div>
+        <div class="tst-card reveal">
+          <p>„,Es geht auch leicht' bringt es auf den Punkt. Kompetent, sympathisch, tolles Team!"</p>
+          <div class="tst-person"><b>Silke Lippold</b><span>Zertifizierter Coach &amp; Introvisionsberaterin</span></div>
+        </div>
+        <div class="tst-card reveal" style="transition-delay:.05s">
+          <p>„Die Zusammenarbeit mit diesem Team war wirklich eine tolle Erfahrung. Sie haben uns super geholfen und alles klar und verständlich gemacht. Wir sind sehr zufrieden und können sie auf jeden Fall weiterempfehlen!"</p>
+          <div class="tst-person"><b>Wieland Schorer</b><span>Architekt</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ind-section" id="faq">
+    <div class="wrap">
+      <div style="text-align:center;">
+        <div class="eyebrow reveal" style="justify-content:center;">Häufige Fragen</div>
+        <h2 class="h-lg serif reveal">Antworten auf die wichtigsten Fragen zu AIDEN.</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Wie kann ich mit AIDEN starten?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Wählen Sie einen Voice-Agent-Tarif oder buchen Sie einen kostenlosen Ersttermin für den Social Media Agent — beide Wege sind in wenigen Minuten eingerichtet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Für wen sind die KI-Agenten geeignet?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Für Praxen, Handwerksbetriebe, Immobilienbüros, Einzelunternehmen und den Einzelhandel — überall dort, wo Anrufe, Content oder wiederkehrende Aufgaben Zeit kosten.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Muss ich technisches Vorwissen haben?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Nein. Die Einrichtung reicht von Self-Service bis zur individuellen Anpassung durch unser Team — Sie werden persönlich begleitet.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Was ist der Social Media Agent?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Ein digitaler Assistent, der Beiträge passend zu Ihrer Zielgruppe, Marke und Plattform erstellt, plant und veröffentlicht — via WhatsApp oder Telegram gesteuert.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Kann der Social Media Agent im Stil meines Unternehmens schreiben?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Ja. Zielgruppe, Kanäle, Themen und Tonalität werden zu Beginn gemeinsam festgelegt, damit Ihr Content zu Ihrer Marke passt.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Kann ich Inhalte vor der Veröffentlichung prüfen?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Ja, Beiträge werden zur Freigabe vorbereitet, bevor sie veröffentlicht werden.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Ist der Voice Agent rund um die Uhr erreichbar?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Ja — 24/7, freundlich und in Echtzeit, auch außerhalb Ihrer Sprechzeiten.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Kann der Voice Agent Termine vereinbaren oder weiterleiten?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Ja, per SMS, WhatsApp oder E-Mail, integriert in Ihren bestehenden Kalender.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Sind die KI-Agenten DSGVO-konform?<span class="faq-ic">+</span></button>
+          <div class="faq-a"><p>Ja. AIDEN wird in der EU gehostet und ist DSGVO- sowie EU-AI-Act-konform.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final-cta" id="kontakt">
+    <div class="wrap">
+      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);">Die Zukunft Ihres Unternehmens beginnt jetzt</div>
+      <h2 class="h-lg serif">Es ist nicht die Frage, <em>ob</em> Sie KI nutzen — sondern <em>wann</em>.</h2>
+      <p class="lead">Mehr Leads, weniger Aufwand, vollautomatisierte Prozesse — entwickelt, um Ihr Geschäft zu skalieren.</p>
+      <div class="hero-cta" style="justify-content:center;">
+        <a href="#pricing" class="btn btn-gold">Voice Agent starten</a>
+        <a href="mailto:info@aiden.ae" class="btn btn-outline">Kostenloses Erstgespräch buchen</a>
+      </div>
+      <div class="final-list">
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Immer verfügbar</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Sofortige Antwort auf jede Anfrage</span>
+        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Vollautomatisierte Prozesse</span>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.content -->
+
+<!-- CINEMATIC FOOTER -->
+<footer class="cine-footer">
+  <div class="cf-glow"></div>
+  <div class="cf-top">
+    <div class="cf-brand">
+      <div class="cf-logo">
+        <div class="brand-mark">A</div>
+        <div class="brand-name">AIDEN</div>
+      </div>
+      <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
+    </div>
+    <div class="cf-cols">
+      <div class="cf-col">
+        <h5>Produkte</h5>
+        <a href="#voice">Voice Agent</a>
+        <a href="#social">Social Media Agent</a>
+        <a href="#pricing">Preise</a>
+      </div>
+      <div class="cf-col">
+        <h5>Unternehmen</h5>
+        <a href="#ueber-uns">Über uns</a>
+        <a href="#stimmen">Kunden</a>
+        <a href="#kontakt">Kontakt</a>
+      </div>
+      <div class="cf-col">
+        <h5>Rechtliches</h5>
+        <a href="#">Impressum</a>
+        <a href="#">Datenschutz</a>
+        <a href="#">AGB</a>
+      </div>
+    </div>
+  </div>
+  <div class="cf-word">AIDEN</div>
+  <div class="cf-bottom">
+    <p>© 2026 AIDEN. Alle Rechte vorbehalten.</p>
+    <div style="display:flex;gap:18px;">
+      <a href="mailto:info@aiden.ae">info@aiden.ae</a>
+      <a href="tel:+971561155278">+971 56 115 5278</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav=document.getElementById('siteNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Industry tabs
+document.querySelectorAll('.ind-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.ind-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.ind-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Pulse beams — sequential glowing pulses along each connector
+(function(){
+  const paths = document.querySelectorAll('.beam-flow');
+  if(!paths.length) return;
+  paths.forEach(p=>{
+    const len = p.getTotalLength();
+    p.style.setProperty('--len', len);
+    p.style.strokeDasharray = (len*0.28) + ' ' + len;
+  });
+  let i = 0;
+  function fire(){
+    const p = paths[i % paths.length];
+    p.classList.remove('run'); void p.offsetWidth; p.classList.add('run');
+    i++;
+    setTimeout(fire, 650);
+  }
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ fire(); io.disconnect(); } });
+  }, {threshold:.3});
+  io.observe(document.getElementById('beamsWrap'));
+})();
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!open){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+});
+</script>
+</body>
+</html>
