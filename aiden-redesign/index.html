@@ -711,9 +711,9 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <div class="price-was mono">399&nbsp;€ / Monat</div>
           <div class="price-save">Sie sparen 1.800&nbsp;€ im 1. Jahr</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>600 Freiminuten</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">600 Freiminuten</span></li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">3 KI-Assistenten</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen inklusive</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen inklusive</span></li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Priorität-Support</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>API-Zugang</li>
             <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Wissensdatenbank</li>
@@ -730,10 +730,10 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
           <div class="price-was mono">4.536&nbsp;€ einmalig</div>
           <div class="price-save">Sie sparen 2.187&nbsp;€ Einführungspreis</div>
           <ul class="price-feats">
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">24 Monate Laufzeit, einmalig statt Abo</span></li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>800 Freiminuten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>3 KI-Assistenten</li>
-            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Alle Funktionen</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>24 Monate Laufzeit</li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">800 Freiminuten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">3 KI-Assistenten</span></li>
+            <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span class="hl">Alle Funktionen</span></li>
           </ul>
           <a href="#kontakt" class="btn btn-outline">Smarte Lösung wählen</a>
           <div class="price-extra mono">Einmalzahlung, kein Abo</div>
@@ -949,6 +949,17 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     });
     stops.push([1, HI]);
     stops = stops.map(([o,a])=>[Math.max(0,Math.min(1,o)), a]).sort((x,y)=>x[0]-y[0]);
+
+    // Auf dunklen Sektionen den Faden zusaetzlich dezenter machen (weniger dominant)
+    const DARK_MAX = 0.4;
+    const darkRegions = [...content.querySelectorAll('header.hero,.ov-section,.case,.final-cta,.starter-box')].map(el=>{
+      const r = el.getBoundingClientRect(); const t = r.top + window.scrollY - cTop; return [t / h, (t + r.height) / h];
+    });
+    stops = stops.map(([o,a])=>{
+      const inDark = darkRegions.some(([s,e]) => o >= s && o <= e);
+      return [o, inDark ? Math.min(a, DARK_MAX) : a];
+    });
+
     grad.innerHTML = stops.map(([o,a])=>'<stop offset="'+(o*100).toFixed(2)+'%" stop-color="#ffe27a" stop-opacity="'+a+'"/>').join('');
 
     len = path.getTotalLength();
