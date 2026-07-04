@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<!--
+  Rupp Bräu Lauenau — Premium-Redesign
+  Fusion aus "150 Jahre Brautradition" (Wärme, Handwerk, Geschichte) und
+  einer Apple/Linear/Stripe-Level-Poliertheit (Glass-Nav, Magnetic Buttons,
+  Cursor-Glow, Scroll-Reveals, animierte Kennzahlen).
+
+  AUDIT DER ORIGINALSEITE (ruppbraeu.de) — kurz zusammengefasst:
+  - Visuelle Hierarchie: Generisches Shopify-Theme, keine klare Bühne für
+    die eigentliche Stärke (150 Jahre Familienbrauerei) im Hero.
+  - Vertrauen: Die Geschichte seit 1861 wird nirgends prominent erzählt,
+    obwohl sie das stärkste Verkaufsargument ist.
+  - Navigation: Viele gleichrangige Menüpunkte (Home/Gastronomie/Speisekarte/
+    Getränkekarte/Brauerei/...), keine klare Haupt-CTA.
+  - CTA: Kein einziger "Tisch reservieren"/"Jetzt anrufen"-Call-to-Action
+    oberhalb des Falts trotz Telefonnummer im Footer.
+  - Struktur: Erlebnisse (Brauereibesichtigung 10€, Brauseminar ab 100€)
+    sind als reine Shop-Produkte vergraben statt als Erlebnis präsentiert.
+  - Typografie/Whitespace: Enge, generische Theme-Typografie ohne
+    erkennbare Markenpersönlichkeit.
+  - Mobile: Kein Hinweis auf ein bewusst gestaltetes Mobile-Erlebnis.
+
+  Das Redesign behebt genau das: eine Bühne für die Geschichte, klare
+  Haupt-CTA ("Tisch reservieren"), die Erlebnisse (Führung/Brauseminar)
+  als eigene Sektion mit echten Preisen, echte Öffnungszeiten sofort
+  sichtbar, ruhige aber lebendige Premium-Motion.
+
+  Hinweis: Fotos (Hero, Brauerei, Gasträume, Biere) fehlen noch — echte
+  Aufnahmen ergänzen. Keine erfundenen Preise/Fakten über das hinaus, was
+  auf der Originalseite stand.
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rupp Bräu — Familienbrauerei &amp; Gasthaus in Lauenau seit 1861</title>
+<meta name="description" content="Rupp Bräu in Lauenau am Deister: seit 1861 braut die Familie Rupp ihr eigenes Bier in traditioneller Weise. Brauhaus-Restaurant, Biergarten, Brauereibesichtigung und Brauseminare.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1210;
+  --ink-soft:#2a1c18;
+  --paper:#faf6f0;
+  --paper-2:#f1e9dd;
+  --burgundy:#6b1f1f;
+  --burgundy-deep:#3f1212;
+  --copper:#b8752f;
+  --copper-light:#d99a52;
+  --copper-dim:rgba(184,117,47,.14);
+  --muted:#6b6259;
+  --muted-on-ink:#c9b8ac;
+  --line:rgba(28,18,16,.10);
+  --line-on-ink:rgba(217,154,82,.18);
+  --r:20px;
+  --shadow:0 24px 60px rgba(28,14,10,.14);
+  --glow-copper:0 0 40px rgba(184,117,47,.35);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+.serif{font-family:"Newsreader",Georgia,serif;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+button{font-family:inherit;}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+section{padding:clamp(5rem,9vw,8rem) 0;}
+@media(max-width:640px){.wrap{padding:0 20px;}}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--burgundy);margin-bottom:1.1rem;}
+.eyebrow::before{content:'';width:24px;height:2px;background:var(--copper);border-radius:2px;}
+.on-ink .eyebrow{color:var(--copper-light);}
+
+h1,h2,h3,h4{margin:0;letter-spacing:-.01em;}
+.h-xl{font-size:clamp(2.6rem,5.6vw,4.4rem);font-weight:600;line-height:1.06;}
+.h-lg{font-size:clamp(1.9rem,3.8vw,3rem);font-weight:600;line-height:1.12;}
+.h-md{font-size:clamp(1.3rem,2vw,1.6rem);font-weight:600;}
+em{font-style:italic;color:var(--burgundy);}
+.on-ink em{color:var(--copper-light);}
+
+.lead{font-size:clamp(1.02rem,1.4vw,1.18rem);color:var(--muted);max-width:600px;line-height:1.7;}
+.on-ink .lead{color:var(--muted-on-ink);}
+.hl{font-weight:700;font-style:italic;color:var(--ink);}
+.on-ink .hl{color:var(--copper-light);}
+
+/* ── buttons (magnetic + glow) ── */
+.btn{position:relative;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-weight:600;font-size:.92rem;padding:1rem 2rem;border-radius:100px;border:1.5px solid transparent;cursor:pointer;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s ease,background .25s ease,border-color .25s ease;white-space:nowrap;}
+.btn-ripple{position:absolute;border-radius:50%;background:rgba(255,255,255,.5);transform:scale(0);animation:rippleAnim .6s ease-out forwards;pointer-events:none;}
+@keyframes rippleAnim{to{transform:scale(1);opacity:0;}}
+.btn-primary{background:var(--burgundy);color:#fdf3ec;box-shadow:0 12px 28px rgba(107,31,31,.32);}
+.btn-primary:hover{background:var(--burgundy-deep);box-shadow:0 18px 40px rgba(107,31,31,.42);}
+.btn-outline{background:transparent;color:var(--ink);border-color:var(--line);font-weight:600;}
+.btn-outline:hover{border-color:var(--ink);}
+.on-ink .btn-outline{color:var(--paper);border-color:var(--line-on-ink);}
+.on-ink .btn-outline:hover{border-color:var(--copper-light);box-shadow:0 0 24px rgba(217,154,82,.2);}
+.magnetic{will-change:transform;}
+
+/* ── cursor glow ── */
+.cursor-glow{position:fixed;top:0;left:0;width:220px;height:220px;margin:-110px 0 0 -110px;border-radius:50%;pointer-events:none;z-index:2000;background:radial-gradient(circle,rgba(184,117,47,.14),transparent 70%);opacity:0;transition:opacity .3s ease;}
+.cursor-glow.on{opacity:1;}
+@media(hover:none){.cursor-glow{display:none;}}
+
+/* ── reveal ── */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);}
+.reveal.vis{opacity:1;transform:none;}
+
+/* ── announcement ── */
+.announce{position:fixed;top:0;left:0;right:0;z-index:310;display:flex;align-items:center;justify-content:center;gap:.6rem;height:42px;padding:0 44px 0 16px;background:linear-gradient(90deg,#2a1a12,#3a2216,#2a1a12);border-bottom:1px solid var(--line-on-ink);font-size:.78rem;font-weight:600;color:var(--copper-light);}
+.announce a{color:var(--copper-light);text-decoration:underline;text-underline-offset:2px;margin-left:.3rem;}
+.announce-dot{width:6px;height:6px;border-radius:50%;background:#7fbf6a;box-shadow:0 0 8px rgba(127,191,106,.8);animation:announceDot 1.8s ease-in-out infinite;flex-shrink:0;}
+@keyframes announceDot{0%,100%{opacity:1;}50%{opacity:.4;}}
+.announce-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);background:transparent;border:none;cursor:pointer;}
+body.has-announce nav.site{top:56px;}
+@media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}}
+
+/* ── nav (glass) ── */
+nav.site{position:fixed;top:14px;left:14px;right:14px;z-index:300;height:74px;display:flex;align-items:center;background:rgba(250,246,240,.7);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(28,18,16,.06);border-radius:24px;box-shadow:0 10px 34px rgba(28,14,10,.1);transition:background .3s,box-shadow .3s,top .4s ease;}
+nav.site.scrolled{background:rgba(250,246,240,.9);}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+@media(max-width:640px){nav.site{top:10px;left:10px;right:10px;height:66px;border-radius:18px;}}
+.brand{display:flex;align-items:center;gap:.65rem;}
+.brand-mark{width:36px;height:36px;border-radius:9px;background:var(--burgundy);color:var(--copper-light);display:flex;align-items:center;justify-content:center;font-family:"Newsreader",Georgia,serif;font-style:italic;font-size:1.2rem;flex-shrink:0;}
+.brand-name-group{display:flex;flex-direction:column;line-height:1.15;}
+.brand-name{font-weight:700;font-size:1.02rem;}
+.brand-tagline{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--copper);}
+.nav-links{display:flex;gap:2rem;}
+.nav-links a{font-size:.86rem;font-weight:600;color:var(--ink);opacity:.75;transition:opacity .2s,color .2s;}
+.nav-links a:hover{opacity:1;color:var(--burgundy);}
+@media(max-width:920px){.nav-links{display:none;}}
+.nav-cta{display:flex;align-items:center;gap:.5rem;padding:.62rem 1.15rem;font-size:.82rem;}
+
+/* ── hero ── */
+.hero{position:relative;background:var(--ink);color:var(--paper);padding:calc(78px + 6rem) 0 6rem;overflow:hidden;}
+.hero-mesh{position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(620px 420px at 84% 8%,rgba(184,117,47,.16),transparent 65%),radial-gradient(700px 480px at 6% 94%,rgba(107,31,31,.28),transparent 60%);}
+.hero-mesh span{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;}
+.hero-mesh span:nth-child(1){width:420px;height:420px;background:radial-gradient(circle,rgba(217,154,82,.22),transparent 70%);top:-8%;left:6%;animation:drift1 20s ease-in-out infinite alternate;}
+.hero-mesh span:nth-child(2){width:380px;height:380px;background:radial-gradient(circle,rgba(107,31,31,.3),transparent 70%);bottom:-12%;right:10%;animation:drift2 24s ease-in-out infinite alternate;}
+@keyframes drift1{to{transform:translate(50px,30px) scale(1.1);}}
+@keyframes drift2{to{transform:translate(-40px,-25px) scale(1.08);}}
+@media(prefers-reduced-motion:reduce){.hero-mesh span{animation:none;}}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,3.2rem);align-items:center;}
+@media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
+.hero .lead{margin:1.4rem 0 2.1rem;}
+.hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.2rem;}
+.badges{display:flex;gap:1.4rem;flex-wrap:wrap;padding-top:1.6rem;border-top:1px solid var(--line-on-ink);}
+.badge{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:var(--muted-on-ink);}
+.badge svg{color:var(--copper-light);flex-shrink:0;}
+
+.since-badge{position:relative;background:linear-gradient(160deg,#241612,#150c0a);border:1px solid var(--line-on-ink);border-radius:24px;padding:2.6rem 2rem;text-align:center;box-shadow:var(--shadow);}
+.since-badge .yr{font-family:"Newsreader",Georgia,serif;font-style:italic;font-size:3.6rem;color:var(--copper-light);line-height:1;text-shadow:0 0 30px rgba(217,154,82,.35);}
+.since-badge .lbl{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-on-ink);margin-top:.6rem;}
+.since-badge .divider{width:40px;height:1px;background:var(--line-on-ink);margin:1.4rem auto;}
+.since-badge p{font-size:.86rem;color:var(--muted-on-ink);margin:0;max-width:30ch;margin-inline:auto;}
+
+/* ── stats strip ── */
+.stats-strip{padding:2.8rem 0;border-bottom:1px solid var(--line);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;text-align:center;}
+@media(max-width:760px){.stats-grid{grid-template-columns:1fr 1fr;}}
+.stat b{display:block;font-family:"Newsreader",Georgia,serif;font-size:clamp(1.8rem,3vw,2.4rem);color:var(--burgundy);}
+.stat span{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+
+/* ── rooms ── */
+.rooms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.6rem;}
+@media(max-width:940px){.rooms-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.rooms-grid{grid-template-columns:1fr;}}
+.room-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;transition:transform .35s cubic-bezier(.22,.9,.24,1),box-shadow .35s ease,border-color .3s ease;}
+.room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(184,117,47,.35);}
+.room-icon{width:42px;height:42px;border-radius:11px;background:var(--copper-dim);color:var(--copper);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.room-card h3{font-size:1.04rem;margin-bottom:.55rem;}
+.room-card p{font-size:.87rem;color:var(--muted);line-height:1.6;margin:0;}
+
+/* ── beers ── */
+.beer-section{background:var(--ink);color:var(--paper);}
+.beer-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.6rem;}
+@media(max-width:980px){.beer-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:640px){.beer-grid{grid-template-columns:1fr 1fr;}}
+.beer-card{background:rgba(255,255,255,.04);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.6rem 1.3rem;text-align:center;transition:transform .35s cubic-bezier(.22,.9,.24,1),box-shadow .35s ease,border-color .3s ease;}
+.beer-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,.35),0 0 26px rgba(184,117,47,.14);border-color:rgba(217,154,82,.4);}
+.beer-glass{width:34px;height:44px;margin:0 auto 1rem;border-radius:6px 6px 3px 3px;position:relative;overflow:hidden;border:1.5px solid var(--line-on-ink);}
+.beer-glass i{position:absolute;left:0;right:0;bottom:0;display:block;}
+.beer-card h4{font-size:.92rem;margin-bottom:.3rem;color:#fff;}
+.beer-card span{font-size:.74rem;color:var(--muted-on-ink);}
+
+/* ── history / process ── */
+.history-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,3rem);align-items:center;}
+@media(max-width:900px){.history-grid{grid-template-columns:1fr;}}
+.process-card{background:var(--paper-2);border-radius:var(--r);padding:clamp(1.8rem,3vw,2.4rem);}
+.process-step{display:grid;grid-template-columns:34px 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);}
+.process-step:last-child{border-bottom:none;}
+.process-step .n{width:34px;height:34px;border-radius:50%;background:var(--copper-dim);color:var(--burgundy);display:flex;align-items:center;justify-content:center;font-family:"Newsreader",Georgia,serif;font-style:italic;font-size:.95rem;}
+.process-step h4{font-size:.95rem;margin-bottom:.25rem;}
+.process-step p{font-size:.84rem;color:var(--muted);line-height:1.6;margin:0;}
+
+/* ── experiences (tours & seminars) ── */
+.exp-section{background:var(--paper-2);}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:2.6rem;}
+@media(max-width:860px){.exp-grid{grid-template-columns:1fr;}}
+.exp-card{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.9rem,3vw,2.4rem);display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease;}
+.exp-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);}
+.exp-card.feat{border-color:var(--copper);}
+.exp-tag{position:absolute;top:-12px;left:2rem;background:var(--copper);color:#2a1a12;font-size:.68rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;}
+.exp-price{font-family:"Newsreader",Georgia,serif;font-style:italic;font-size:2.1rem;color:var(--burgundy);margin:.8rem 0 .3rem;}
+.exp-price span{font-family:"Inter",sans-serif;font-style:normal;font-size:.95rem;color:var(--muted);}
+.exp-list{list-style:none;margin:1.2rem 0 1.6rem;padding:0;display:flex;flex-direction:column;gap:.6rem;flex:1;}
+.exp-list li{display:flex;gap:.6rem;align-items:flex-start;font-size:.87rem;}
+.exp-list svg{flex-shrink:0;color:var(--copper);margin-top:.15rem;}
+
+/* ── faq ── */
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.4rem 0;background:none;border:none;font-size:1rem;font-weight:600;text-align:left;cursor:pointer;color:var(--ink);}
+.faq-ic{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--burgundy);transition:.3s;}
+.faq-item.open .faq-ic{transform:rotate(45deg);background:var(--burgundy);color:#fff;border-color:var(--burgundy);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;}
+.faq-a p{padding-bottom:1.3rem;font-size:.9rem;color:var(--muted);line-height:1.75;max-width:640px;margin:0;}
+.faq-item.open .faq-a{max-height:220px;}
+
+/* ── final cta ── */
+.final-cta{background:var(--ink);color:var(--paper);position:relative;overflow:hidden;}
+.final-cta .wrap{text-align:center;position:relative;z-index:1;}
+.final-cta .lead{max-width:520px;margin:1.1rem auto 2.2rem;}
+.final-list{display:flex;justify-content:center;gap:2.2rem;flex-wrap:wrap;margin-top:2.6rem;font-size:.85rem;color:var(--muted-on-ink);}
+.final-list span{display:flex;align-items:center;gap:.5rem;}
+.final-list svg{color:var(--copper-light);}
+
+/* ── footer ── */
+footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 0 1.8rem;}
+.footer-top{display:flex;justify-content:space-between;gap:2.4rem;flex-wrap:wrap;margin-bottom:2.2rem;}
+.footer-brand{display:flex;align-items:center;gap:.65rem;margin-bottom:1rem;}
+.footer-brand .brand-mark{background:var(--copper-light);color:var(--burgundy-deep);}
+.footer-brand .brand-name{color:#fff;}
+.footer-tag{font-size:.86rem;color:#d8c3ae;max-width:34ch;line-height:1.7;}
+.footer-cols{display:flex;gap:3rem;flex-wrap:wrap;}
+.footer-col h5{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#cba883;margin-bottom:.9rem;font-weight:700;}
+.footer-col a{display:block;font-size:.86rem;color:#e9d9cb;margin-bottom:.6rem;}
+.footer-col a:hover{color:var(--copper-light);}
+.footer-bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid rgba(233,217,203,.16);padding-top:1.2rem;font-size:.78rem;color:#cba883;}
+.footer-bottom a{color:#cba883;}
+.footer-bottom a:hover{color:var(--copper-light);}
+</style>
+</head>
+<body class="has-announce">
+
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<div class="announce" id="announceBar">
+  <span class="announce-dot"></span>
+  <span>Reservierungen für Feiertage &amp; Gruppen jetzt möglich <a href="#kontakt">Tisch anfragen</a></span>
+  <button class="announce-close" id="announceClose" aria-label="Schließen">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+  </button>
+</div>
+
+<nav class="site" id="siteNav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">R</span>
+      <span class="brand-name-group">
+        <span class="brand-name">Rupp Bräu</span>
+        <span class="brand-tagline">Seit 1861 · Lauenau</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#gasthaus">Gasthaus</a>
+      <a href="#biere">Biere</a>
+      <a href="#brauerei">Brauerei</a>
+      <a href="#erlebnisse">Erlebnisse</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="tel:00495043-2275" class="btn btn-primary nav-cta magnetic">Tisch reservieren</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero on-ink" id="top">
+  <div class="hero-mesh" aria-hidden="true"><span></span><span></span></div>
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal">Familienbrauerei &amp; Gasthaus in Lauenau</div>
+      <h1 class="h-xl serif reveal" style="transition-delay:.05s">Seit 1861 <em>ehrlich</em> gebraut, in Lauenau am Deister.</h1>
+      <p class="lead reveal" style="transition-delay:.1s">Rupp Bräu ist mehr als eine Brauerei — seit fünf Generationen braut die Familie Rupp <span class="hl">ihr eigenes Bier in traditioneller Weise</span> und serviert es im eigenen Brauhaus-Restaurant, Biergarten und Eiskeller.</p>
+      <div class="hero-cta reveal" style="transition-delay:.15s">
+        <a href="tel:00495043-2275" class="btn btn-primary magnetic">Tisch reservieren</a>
+        <a href="#erlebnisse" class="btn btn-outline magnetic">Brauerei erleben</a>
+      </div>
+      <div class="badges reveal" style="transition-delay:.2s">
+        <div class="badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Mi–Fr ab 17 Uhr · Sa &amp; So ab 11 Uhr</div>
+        <div class="badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Feggendorfer Straße 10, Lauenau</div>
+      </div>
+    </div>
+    <div class="since-badge reveal" style="transition-delay:.1s">
+      <div class="yr" data-count="1861">0</div>
+      <div class="lbl">Familienbrauerei seit</div>
+      <div class="divider"></div>
+      <p>Fünf eigene Biersorten, gebraut nach traditioneller Handwerkskunst — bis heute.</p>
+    </div>
+  </div>
+</header>
+
+<!-- STATS -->
+<section class="stats-strip">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat reveal"><b data-count="1861">0</b><span>Gegründet</span></div>
+      <div class="stat reveal" style="transition-delay:.05s"><b data-count="5">0</b><span>Eigene Biersorten</span></div>
+      <div class="stat reveal" style="transition-delay:.1s"><b data-count="4">0</b><span>Gasträume &amp; Biergarten</span></div>
+      <div class="stat reveal" style="transition-delay:.15s"><b data-count="164">0</b><span>Jahre Brautradition</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- GASTHAUS / RÄUME -->
+<section id="gasthaus">
+  <div class="wrap">
+    <div class="eyebrow reveal">Unsere Gasträume</div>
+    <h2 class="h-lg serif reveal" style="max-width:600px;">Vier Räume, eine Brauerei — für jeden Anlass der passende Platz.</h2>
+    <div class="rooms-grid">
+      <div class="room-card reveal">
+        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1"/></svg></div>
+        <h3>Brauhaus-Restaurant</h3>
+        <p>Der große Gastraum direkt an der Brauerei — deftige Küche und frisch gezapftes Rupp-Bräu.</p>
+      </div>
+      <div class="room-card reveal" style="transition-delay:.05s">
+        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+        <h3>Alte Gaststube</h3>
+        <p>Urig, historisch, gemütlich — die traditionsreiche Stube der Familie Rupp.</p>
+      </div>
+      <div class="room-card reveal" style="transition-delay:.1s">
+        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 1 5 5c0 3-2 5-2 8H9c0-3-2-5-2-8a5 5 0 0 1 5-5Z"/><path d="M9 19h6M10 22h4"/></svg></div>
+        <h3>Eiskeller</h3>
+        <p>Der historische Felsenkeller — stimmungsvoll für private Feiern und besondere Abende.</p>
+      </div>
+      <div class="room-card reveal" style="transition-delay:.15s">
+        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M5 3h14l-1 9a6 6 0 0 1-12 0L5 3Z"/><path d="M5 8H3a2 2 0 0 0 2 4M19 8h2a2 2 0 0 1-2 4"/></svg></div>
+        <h3>Biergarten</h3>
+        <p>Rupp-Bräu direkt aus dem Holzfass, im Sommer unter freiem Himmel genossen.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BIERE -->
+<section class="beer-section" id="biere">
+  <div class="wrap">
+    <div class="eyebrow reveal on-ink">Unsere Biere</div>
+    <h2 class="h-lg serif reveal on-ink" style="max-width:600px;">Fünf eigene Sorten, nach traditioneller Handwerkskunst gebraut.</h2>
+    <p class="lead reveal on-ink" style="margin-top:1rem;">Nur <span class="hl">Wasser, Malz, Hopfen und Hefe</span> — mehr braucht ein Rupp-Bräu nicht.</p>
+    <div class="beer-grid">
+      <div class="beer-card reveal">
+        <div class="beer-glass"><i style="height:78%;background:linear-gradient(180deg,#e8b84a,#c9922e);"></i></div>
+        <h4>Pilsener</h4><span>Spritzig &amp; klassisch</span>
+      </div>
+      <div class="beer-card reveal" style="transition-delay:.05s">
+        <div class="beer-glass"><i style="height:82%;background:linear-gradient(180deg,#5a3a1e,#3a2412);"></i></div>
+        <h4>Dunkel</h4><span>Malzig &amp; vollmundig</span>
+      </div>
+      <div class="beer-card reveal" style="transition-delay:.1s">
+        <div class="beer-glass"><i style="height:85%;background:linear-gradient(180deg,#7a3618,#4a1e0e);"></i></div>
+        <h4>Doppelbock</h4><span>Kräftig &amp; stark</span>
+      </div>
+      <div class="beer-card reveal" style="transition-delay:.15s">
+        <div class="beer-glass"><i style="height:76%;background:linear-gradient(180deg,#e0982e,#b8752f);"></i></div>
+        <h4>Pale Ale</h4><span>Hopfig &amp; modern</span>
+      </div>
+      <div class="beer-card reveal" style="transition-delay:.2s">
+        <div class="beer-glass"><i style="height:80%;background:linear-gradient(180deg,#e8d9a0,#d4bd74);"></i></div>
+        <h4>Weizen</h4><span>Fruchtig &amp; obergärig</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BRAUEREI / PROZESS -->
+<section id="brauerei">
+  <div class="wrap history-grid">
+    <div>
+      <div class="eyebrow reveal">Unsere Brauerei</div>
+      <h2 class="h-lg serif reveal" style="max-width:560px;">Wie unser Bier gebraut wird — seit 150 Jahren nach demselben Prinzip.</h2>
+      <p class="lead reveal" style="margin-top:1.2rem;">Braumeister Thomas Rupp führt die Tradition der Familie fort: <span class="hl">reine Naturzutaten</span>, traditionelle Rezepturen und viel Geduld.</p>
+    </div>
+    <div class="process-card reveal" style="transition-delay:.1s">
+      <div class="process-step"><span class="n">1</span><div><h4>Wasser</h4><p>Die Basis jedes guten Bieres — rein und regional.</p></div></div>
+      <div class="process-step"><span class="n">2</span><div><h4>Malz</h4><p>Gibt Farbe, Körper und den charakteristischen Geschmack.</p></div></div>
+      <div class="process-step"><span class="n">3</span><div><h4>Hopfen</h4><p>Sorgt für Bittere, Aroma und natürliche Haltbarkeit.</p></div></div>
+      <div class="process-step"><span class="n">4</span><div><h4>Hefe</h4><p>Verwandelt die Zutaten durch Gärung in echtes Rupp-Bräu.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ERLEBNISSE -->
+<section class="exp-section" id="erlebnisse">
+  <div class="wrap">
+    <div class="eyebrow reveal">Die Brauerei erleben</div>
+    <h2 class="h-lg serif reveal" style="max-width:600px;">Zusehen, verkosten oder selbst brauen.</h2>
+    <div class="exp-grid">
+      <div class="exp-card reveal">
+        <h3 class="serif">Brauereibesichtigung</h3>
+        <div class="exp-price">10&nbsp;€<span> / Person</span></div>
+        <ul class="exp-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Ca. 45 Minuten Führung durch die Brauerei</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Inklusive 3× 0,1 l Verkostung verschiedener Sorten</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Ab 5 Personen, auch als Gruppe</li>
+        </ul>
+        <a href="tel:00495043-2275" class="btn btn-outline magnetic">Führung anfragen</a>
+      </div>
+      <div class="exp-card feat reveal" style="transition-delay:.05s">
+        <div class="exp-tag">Die Geschenkidee</div>
+        <h3 class="serif">MACH DEIN BIER — Brauseminar</h3>
+        <div class="exp-price">ab 100&nbsp;€<span> / Person</span></div>
+        <ul class="exp-list">
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Ca. 7 Stunden betreutes Brauen mit Braumeister Thomas Rupp</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Getränke &amp; Brauermahlzeit während des Seminars inklusive</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Optional: eigenes Bier nach 5 Wochen Lagerung abholen (+10&nbsp;€)</li>
+          <li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>5–15 Teilnehmer, größere Gruppen auf Anfrage</li>
+        </ul>
+        <a href="tel:00495043-2275" class="btn btn-primary magnetic">Seminar buchen</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="wrap">
+    <div style="text-align:center;">
+      <div class="eyebrow reveal" style="justify-content:center;">Häufige Fragen</div>
+      <h2 class="h-lg serif reveal">Antworten auf die wichtigsten Fragen zu Rupp Bräu.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wann hat Rupp Bräu geöffnet?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><p>Montag und Dienstag ist Ruhetag. Mittwoch bis Freitag ab 17 Uhr, Samstag und Sonntag ab 11 Uhr. Für besondere Anlässe öffnen wir auch auf Anfrage.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Muss ich einen Tisch reservieren?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><p>Wir empfehlen eine rechtzeitige Reservierung, besonders am Wochenende und für Gruppen — unter 0049 (0) 5043-2275.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Kann ich die Brauerei besichtigen?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><p>Ja, für 10 € pro Person mit ca. 45-minütiger Führung inklusive Verkostung. Bitte vorab anmelden.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Was ist das Brauseminar "Mach dein Bier"?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><p>Ein rund siebenstündiges, betreutes Bierbrauen mit Braumeister Thomas Rupp, ab 100 € pro Person — die perfekte Geschenkidee für Bierliebhaber.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Gibt es eine Ferienwohnung?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><p>Ja, Rupp Bräu bietet auch eine Ferienwohnung in Lauenau an — Details gerne telefonisch erfragen.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">Wie ist die Anfahrt?<span class="faq-ic">+</span></button>
+        <div class="faq-a"><p>Feggendorfer Straße 10, 31867 Lauenau. Kostenlose Wohnmobil-Stellplätze sind vorhanden.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta on-ink" id="kontakt">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Wir freuen uns auf Ihren Besuch</div>
+    <h2 class="h-lg serif">Reservieren Sie Ihren Tisch bei <em>Rupp</em> Bräu.</h2>
+    <p class="lead">Familienbrauerei seit 1861 — frisch gezapftes Bier, deftige Küche und Räume für jeden Anlass.</p>
+    <div class="hero-cta" style="justify-content:center;">
+      <a href="tel:00495043-2275" class="btn btn-primary magnetic">0049 (0) 5043-2275 anrufen</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Feggendorfer+Strasse+10,+31867+Lauenau" class="btn btn-outline magnetic" target="_blank" rel="noopener">Anfahrt planen</a>
+    </div>
+    <div class="final-list">
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Familienbrauerei seit 1861</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Fünf eigene Biersorten</span>
+      <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Feggendorfer Straße 10, Lauenau</span>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <span class="brand-mark">R</span>
+          <span class="brand-name">Rupp Bräu</span>
+        </div>
+        <p class="footer-tag">Familienbrauerei &amp; Gasthaus in Lauenau am Deister — seit 1861 in traditioneller Weise gebraut.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h5>Entdecken</h5>
+          <a href="#gasthaus">Gasthaus</a>
+          <a href="#biere">Biere</a>
+          <a href="#erlebnisse">Erlebnisse</a>
+        </div>
+        <div class="footer-col">
+          <h5>Kontakt</h5>
+          <a href="tel:00495043-2275">0049 (0) 5043-2275</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=Feggendorfer+Strasse+10,+31867+Lauenau" target="_blank" rel="noopener">Feggendorfer Straße 10, Lauenau</a>
+        </div>
+        <div class="footer-col">
+          <h5>Rechtliches</h5>
+          <a href="https://www.ruppbraeu.de/impressum">Impressum</a>
+          <a href="https://www.ruppbraeu.de/datenschutzerklarung">Datenschutz</a>
+          <a href="https://www.ruppbraeu.de/agb">AGB</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Rupp Bräu Lauenau. Alle Rechte vorbehalten.</p>
+      <a href="tel:00495043-2275">0049 (0) 5043-2275</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll state
+const nav=document.getElementById('siteNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
+
+// Announcement close
+const bar=document.getElementById('announceBar');
+document.getElementById('announceClose').addEventListener('click',()=>{bar.style.display='none';document.body.classList.remove('has-announce');});
+
+// Cursor glow
+const glow=document.getElementById('cursorGlow');
+if(matchMedia('(hover:hover)').matches){
+  window.addEventListener('mousemove',e=>{glow.style.transform=`translate(${e.clientX}px, ${e.clientY}px)`;glow.classList.add('on');});
+  document.addEventListener('mouseleave',()=>glow.classList.remove('on'));
+}
+
+// Magnetic buttons
+document.querySelectorAll('.magnetic').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=e.clientX-r.left-r.width/2, y=e.clientY-r.top-r.height/2;
+    btn.style.transform=`translate(${x*0.18}px, ${y*0.35}px)`;
+  });
+  btn.addEventListener('mouseleave',()=>btn.style.transform='');
+  btn.addEventListener('click',function(e){
+    const r=this.getBoundingClientRect();
+    const ripple=document.createElement('span');
+    ripple.className='btn-ripple';
+    const size=Math.max(r.width,r.height)*1.6;
+    ripple.style.width=ripple.style.height=size+'px';
+    ripple.style.left=(e.clientX-r.left-size/2)+'px';
+    ripple.style.top=(e.clientY-r.top-size/2)+'px';
+    this.appendChild(ripple);
+    setTimeout(()=>ripple.remove(),650);
+  });
+});
+
+// Scroll reveal
+const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// Animated counters
+const counters=document.querySelectorAll('[data-count]');
+const cObs=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(!entry.isIntersecting) return;
+    const el=entry.target, target=parseInt(el.dataset.count,10), dur=1400, start=performance.now();
+    function tick(now){
+      const p=Math.min((now-start)/dur,1);
+      const eased=1-Math.pow(1-p,3);
+      el.textContent=Math.round(eased*target);
+      if(p<1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+    cObs.unobserve(el);
+  });
+},{threshold:.5});
+counters.forEach(el=>cObs.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.parentElement;
+    const wasOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-q').setAttribute('aria-expanded','false');});
+    if(!wasOpen){item.classList.add('open');btn.setAttribute('aria-expanded','true');}
+  });
+});
+</script>
+</body>
+</html>
