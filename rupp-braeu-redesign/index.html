@@ -169,9 +169,22 @@ nav.site.scrolled{background:rgba(250,246,240,.9);}
 .rooms-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.1rem;margin-top:2.6rem;}
 @media(max-width:940px){.rooms-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.rooms-grid{grid-template-columns:1fr;}}
-.room-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:1.9rem;transition:transform .35s cubic-bezier(.22,.9,.24,1),box-shadow .35s ease,border-color .3s ease;}
+
+.keller-showcase{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(1.6rem,3vw,3rem);align-items:center;margin-top:3rem;background:var(--paper-2);border-radius:24px;padding:clamp(1.4rem,2.5vw,1.6rem);}
+@media(max-width:860px){.keller-showcase{grid-template-columns:1fr;}}
+.keller-photo{border-radius:16px;overflow:hidden;}
+.keller-photo img{width:100%;height:100%;object-fit:cover;display:block;max-height:420px;}
+.keller-text{padding:0 clamp(0px,2vw,1rem) 0 0;}
+.keller-text h3{font-size:1.3rem;margin:.4rem 0 .9rem;}
+.keller-text p{font-size:.92rem;color:var(--muted);line-height:1.7;margin:0;}
+@media(max-width:860px){.keller-text{padding:0 .4rem 1.4rem;}}
+.room-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;transition:transform .35s cubic-bezier(.22,.9,.24,1),box-shadow .35s ease,border-color .3s ease;}
 .room-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:rgba(184,117,47,.35);}
-.room-icon{width:42px;height:42px;border-radius:11px;background:var(--copper-dim);color:var(--copper);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.room-photo{position:relative;height:170px;overflow:hidden;}
+.room-photo img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.22,.9,.24,1);}
+.room-card:hover .room-photo img{transform:scale(1.06);}
+.room-body{padding:1.6rem 1.7rem 1.8rem;}
+.room-icon{width:42px;height:42px;border-radius:11px;background:var(--copper-dim);color:var(--copper);display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
 .room-card h3{font-size:1.04rem;margin-bottom:.55rem;}
 .room-card p{font-size:.87rem;color:var(--muted);line-height:1.6;margin:0;}
 
@@ -190,6 +203,8 @@ nav.site.scrolled{background:rgba(250,246,240,.9);}
 /* ── history / process ── */
 .history-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,4vw,3rem);align-items:center;}
 @media(max-width:900px){.history-grid{grid-template-columns:1fr;}}
+.history-photo{margin-top:1.8rem;border-radius:16px;overflow:hidden;box-shadow:var(--shadow);height:260px;}
+.history-photo img{width:100%;height:100%;object-fit:cover;display:block;}
 .process-card{background:var(--paper-2);border-radius:var(--r);padding:clamp(1.8rem,3vw,2.4rem);}
 .process-step{display:grid;grid-template-columns:34px 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);}
 .process-step:last-child{border-bottom:none;}
@@ -230,6 +245,13 @@ nav.site.scrolled{background:rgba(250,246,240,.9);}
 .final-list svg{color:var(--copper-light);}
 
 /* ── footer ── */
+/* ── roter Faden (scroll-gebundene Linie in Kupfer/Bordeaux) ── */
+.content{position:relative;}
+.flow-thread{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible;}
+.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 7px rgba(184,117,47,.55)) drop-shadow(0 0 18px rgba(107,31,31,.4));}
+.hero,.wrap{position:relative;z-index:1;}
+
 footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 0 1.8rem;}
 .footer-top{display:flex;justify-content:space-between;gap:2.4rem;flex-wrap:wrap;margin-bottom:2.2rem;}
 .footer-brand{display:flex;align-items:center;gap:.65rem;margin-bottom:1rem;}
@@ -278,6 +300,9 @@ footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 
 </nav>
 
 <!-- HERO -->
+<div class="content" id="content">
+  <svg class="flow-thread" id="flowThread" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0"></linearGradient></defs><path id="flowPath"/></svg>
+
 <header class="hero on-ink" id="top">
   <div class="hero-mesh" aria-hidden="true"><span></span><span></span></div>
   <div class="wrap hero-grid">
@@ -322,24 +347,45 @@ footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 
     <h2 class="h-lg serif reveal" style="max-width:600px;">Vier Räume, eine Brauerei — für jeden Anlass der passende Platz.</h2>
     <div class="rooms-grid">
       <div class="room-card reveal">
-        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1"/></svg></div>
-        <h3>Brauhaus-Restaurant</h3>
-        <p>Der große Gastraum direkt an der Brauerei — deftige Küche und frisch gezapftes Rupp-Bräu.</p>
+        <div class="room-photo"><img src="images/brauhaus-restaurant.jpg" alt="Brauhaus-Restaurant von Rupp Bräu mit Blick auf den Braukessel" loading="lazy" width="1024" height="683"></div>
+        <div class="room-body">
+          <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1M14 9h1M9 13h1M14 13h1"/></svg></div>
+          <h3>Brauhaus-Restaurant</h3>
+          <p>Der große Gastraum direkt an der Brauerei — deftige Küche und frisch gezapftes Rupp-Bräu, mit Blick auf den Braukessel.</p>
+        </div>
       </div>
       <div class="room-card reveal" style="transition-delay:.05s">
-        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
-        <h3>Alte Gaststube</h3>
-        <p>Urig, historisch, gemütlich — die traditionsreiche Stube der Familie Rupp.</p>
+        <div class="room-photo"><img src="images/alte-gaststube.jpg" alt="Alte Gaststube von Rupp Bräu mit traditionellen Holztischen" loading="lazy" width="1024" height="683"></div>
+        <div class="room-body">
+          <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
+          <h3>Alte Gaststube</h3>
+          <p>Urig, historisch, gemütlich — die traditionsreiche Stube der Familie Rupp.</p>
+        </div>
       </div>
       <div class="room-card reveal" style="transition-delay:.1s">
-        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 1 5 5c0 3-2 5-2 8H9c0-3-2-5-2-8a5 5 0 0 1 5-5Z"/><path d="M9 19h6M10 22h4"/></svg></div>
-        <h3>Eiskeller</h3>
-        <p>Der historische Felsenkeller — stimmungsvoll für private Feiern und besondere Abende.</p>
+        <div class="room-photo"><img src="images/eiskeller-gastraum.jpg" alt="Eiskeller / Felsenkeller von Rupp Bräu, historisches Gewölbe mit Gästen" loading="lazy" width="1024" height="683"></div>
+        <div class="room-body">
+          <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a5 5 0 0 1 5 5c0 3-2 5-2 8H9c0-3-2-5-2-8a5 5 0 0 1 5-5Z"/><path d="M9 19h6M10 22h4"/></svg></div>
+          <h3>Eiskeller</h3>
+          <p>Der historische Felsenkeller — stimmungsvoll für private Feiern und besondere Abende.</p>
+        </div>
       </div>
       <div class="room-card reveal" style="transition-delay:.15s">
-        <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M5 3h14l-1 9a6 6 0 0 1-12 0L5 3Z"/><path d="M5 8H3a2 2 0 0 0 2 4M19 8h2a2 2 0 0 1-2 4"/></svg></div>
-        <h3>Biergarten</h3>
-        <p>Rupp-Bräu direkt aus dem Holzfass, im Sommer unter freiem Himmel genossen.</p>
+        <div class="room-photo"><img src="images/biergarten.jpg" alt="Biergarten von Rupp Bräu im Sonnenschein mit Gästen" loading="lazy" width="1024" height="683"></div>
+        <div class="room-body">
+          <div class="room-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M5 3h14l-1 9a6 6 0 0 1-12 0L5 3Z"/><path d="M5 8H3a2 2 0 0 0 2 4M19 8h2a2 2 0 0 1-2 4"/></svg></div>
+          <h3>Biergarten</h3>
+          <p>Rupp-Bräu direkt aus dem Holzfass, im Sommer unter freiem Himmel genossen.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="keller-showcase reveal" style="transition-delay:.2s">
+      <div class="keller-photo"><img src="images/eiskeller-sitzecke.jpg" alt="Gemütliche Sitzecke im ehemaligen Füllschacht des Felsenkellers bei Rupp Bräu" loading="lazy" width="1024" height="768"></div>
+      <div class="keller-text">
+        <div class="eyebrow">Ein Ort mit Geschichte</div>
+        <h3 class="serif">Der Felsenkeller — einst Füllschacht, heute Lieblingsplatz.</h3>
+        <p>Unter dicken Natursteinmauern, im Licht warmer Lampenschirme: Diese runde Sitzecke im ehemaligen Füllschacht ist einer der persönlichsten Plätze bei Rupp Bräu — ideal für kleine Runden, die etwas Besonderes suchen.</p>
       </div>
     </div>
   </div>
@@ -383,6 +429,7 @@ footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 
       <div class="eyebrow reveal">Unsere Brauerei</div>
       <h2 class="h-lg serif reveal" style="max-width:560px;">Wie unser Bier gebraut wird — seit 150 Jahren nach demselben Prinzip.</h2>
       <p class="lead reveal" style="margin-top:1.2rem;">Braumeister Thomas Rupp führt die Tradition der Familie fort: <span class="hl">reine Naturzutaten</span>, traditionelle Rezepturen und viel Geduld.</p>
+      <div class="history-photo reveal" style="transition-delay:.05s"><img src="images/aussicht-restaurant.jpg" alt="Blick aus dem Brauhaus-Restaurant auf die Sudkessel von Rupp Bräu" loading="lazy" width="1024" height="683"></div>
     </div>
     <div class="process-card reveal" style="transition-delay:.1s">
       <div class="process-step"><span class="n">1</span><div><h4>Wasser</h4><p>Die Basis jedes guten Bieres — rein und regional.</p></div></div>
@@ -479,6 +526,8 @@ footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 
   </div>
 </section>
 
+</div><!-- /.content -->
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -517,6 +566,55 @@ footer.site-footer{background:var(--burgundy-deep);color:#e9d9cb;padding:3.4rem 
 </footer>
 
 <script>
+// Roter Faden — geschwungene, scroll-gebundene Linie durch die Seite
+(function(){
+  const content=document.getElementById('content');
+  const svg=document.getElementById('flowThread');
+  const path=document.getElementById('flowPath');
+  const grad=document.getElementById('flowGrad');
+  if(!content||!svg||!path) return;
+  let len=0;
+
+  function build(){
+    const w=content.offsetWidth, h=content.offsetHeight;
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+    const cx=w*0.5, amp=w*0.11, periods=5, steps=380, phase=Math.PI/6;
+    let d='';
+    for(let i=0;i<=steps;i++){
+      const y=h*i/steps;
+      const x=cx+Math.sin((i/steps)*Math.PI*2*periods+phase)*amp;
+      d+=(i===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';
+    }
+    path.setAttribute('d',d);
+    len=path.getTotalLength();
+    path.style.strokeDasharray=len;
+    path.style.strokeDashoffset=len;
+    grad.setAttribute('x1',cx);grad.setAttribute('x2',cx);
+    grad.setAttribute('y1',0);grad.setAttribute('y2',h);
+    update();
+  }
+
+  function update(){
+    const h=content.offsetHeight;
+    const scrollTop=window.scrollY;
+    const viewH=window.innerHeight;
+    const progress=Math.min(1,Math.max(0,(scrollTop+viewH*0.5)/h));
+    path.style.strokeDashoffset=len*(1-progress);
+
+    const feather=0.16;
+    const stops=[[0,0],[Math.max(0,progress-feather),0],[progress,1],[Math.min(1,progress+.02),1],[1,0]];
+    grad.innerHTML=stops.map(([o,a])=>'<stop offset="'+(o*100).toFixed(2)+'%" stop-color="#b8752f" stop-opacity="'+a+'"/>').join('');
+  }
+
+  let raf=null;
+  function onScroll(){ if(raf) return; raf=requestAnimationFrame(()=>{ update(); raf=null; }); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', build);
+  window.addEventListener('load', build);
+  build();
+  setTimeout(build, 400);
+})();
+
 // Nav scroll state
 const nav=document.getElementById('siteNav');
 window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>20));
