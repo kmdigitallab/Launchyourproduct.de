@@ -163,12 +163,14 @@ nav.site{position:sticky;top:0;z-index:300;background:var(--cream);border-bottom
 
 /* ── speisekarte (menu card) ── */
 .menu-section{background:var(--cream-2);}
-.menu-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:2rem;}
-.menu-tab{font-family:"Lora",serif;font-size:.85rem;font-weight:700;padding:.65rem 1.2rem;border-radius:100px 100px 0 0;border:1.5px solid var(--forest);border-bottom:none;background:var(--cream);color:var(--forest);cursor:pointer;transition:.2s;}
+.menu-tabs{display:flex;gap:.5rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:2rem;padding-bottom:2px;}
+.menu-tabs::-webkit-scrollbar{display:none;}
+.menu-tab{font-family:"Lora",serif;font-size:.85rem;font-weight:700;padding:.65rem 1.2rem;border-radius:100px 100px 0 0;border:1.5px solid var(--forest);border-bottom:none;background:var(--cream);color:var(--forest);cursor:pointer;transition:.2s;flex:0 0 auto;white-space:nowrap;}
 .menu-tab.active{background:var(--forest);color:var(--cream);}
 .menu-tab:not(.active):hover{background:#fff;}
-.drink-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem;}
-.drink-tab{font-family:"Lora",serif;font-size:.78rem;font-weight:700;letter-spacing:.02em;padding:.5rem 1rem;border-radius:100px;border:1.5px solid var(--rust);background:transparent;color:var(--rust);cursor:pointer;transition:.2s;}
+.drink-tabs{display:flex;gap:.5rem;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-bottom:1.6rem;padding-bottom:2px;}
+.drink-tabs::-webkit-scrollbar{display:none;}
+.drink-tab{font-family:"Lora",serif;font-size:.78rem;font-weight:700;letter-spacing:.02em;padding:.5rem 1rem;border-radius:100px;border:1.5px solid var(--rust);background:transparent;color:var(--rust);cursor:pointer;transition:.2s;flex:0 0 auto;white-space:nowrap;}
 .drink-tab.active{background:var(--rust);color:#fff;}
 .drink-tab:not(.active):hover{background:rgba(181,80,46,.08);}
 .drink-panel{display:none;}
