@@ -167,6 +167,12 @@ nav.site{position:sticky;top:0;z-index:300;background:var(--cream);border-bottom
 .menu-tab{font-family:"Lora",serif;font-size:.85rem;font-weight:700;padding:.65rem 1.2rem;border-radius:100px 100px 0 0;border:1.5px solid var(--forest);border-bottom:none;background:var(--cream);color:var(--forest);cursor:pointer;transition:.2s;}
 .menu-tab.active{background:var(--forest);color:var(--cream);}
 .menu-tab:not(.active):hover{background:#fff;}
+.drink-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.6rem;}
+.drink-tab{font-family:"Lora",serif;font-size:.78rem;font-weight:700;letter-spacing:.02em;padding:.5rem 1rem;border-radius:100px;border:1.5px solid var(--rust);background:transparent;color:var(--rust);cursor:pointer;transition:.2s;}
+.drink-tab.active{background:var(--rust);color:#fff;}
+.drink-tab:not(.active):hover{background:rgba(181,80,46,.08);}
+.drink-panel{display:none;}
+.drink-panel.active{display:block;}
 .menu-card{display:none;background:#fff;border:1.5px solid var(--forest);border-radius:0 var(--r) var(--r) var(--r);padding:clamp(1.8rem,4vw,2.8rem);box-shadow:var(--shadow);}
 .menu-card.active{display:block;}
 .menu-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;}
@@ -462,14 +468,24 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
     </div>
 
     <div class="menu-card" id="getraenke">
-      <div class="menu-subhead">Bier vom Fass</div>
+      <div class="drink-tabs reveal">
+        <button class="drink-tab active" data-drink="fass">Bier vom Fass</button>
+        <button class="drink-tab" data-drink="flasche">Bier aus der Flasche</button>
+        <button class="drink-tab" data-drink="weine">Weine</button>
+        <button class="drink-tab" data-drink="warm">Warme Getränke</button>
+        <button class="drink-tab" data-drink="kalt">Kalte Getränke</button>
+        <button class="drink-tab" data-drink="schnaps">Schnäpse</button>
+      </div>
+
+      <div class="drink-panel active" id="drink-fass">
       <ul class="menu-list">
         <li class="menu-item"><div class="mi-top"><span class="name">Rupp Bräu Hell</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 5,20&nbsp;€ · 1,0 l 9,30&nbsp;€</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Rupp Bräu Dunkel</span><span class="leader"></span><span class="price">3,80&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 5,70&nbsp;€ · 1,0 l 9,90&nbsp;€</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Radler</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 5,20&nbsp;€ · 1,0 l 9,30&nbsp;€</span></li>
       </ul>
+      </div>
 
-      <div class="menu-subhead">Bier aus der Flasche</div>
+      <div class="drink-panel" id="drink-flasche">
       <ul class="menu-list">
         <li class="menu-item"><div class="mi-top"><span class="name">Zwickel Landbier</span><span class="leader"></span><span class="price">4,90&nbsp;€</span></div><span class="desc">0,5 l</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Erdinger Helles Lagerbier</span><span class="leader"></span><span class="price">4,90&nbsp;€</span></div><span class="desc">0,5 l</span></li>
@@ -481,7 +497,9 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
         <li class="menu-item"><div class="mi-top"><span class="name">Bitburger Pils alkoholfrei</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,33 l</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Glas Sekt</span><span class="leader"></span><span class="price">3,00&nbsp;€</span></div><span class="desc">0,1 l</span></li>
       </ul>
+      </div>
 
+      <div class="drink-panel" id="drink-weine">
       <div class="menu-subhead">Weißweine &amp; Rosé <span style="text-transform:none;font-weight:400;color:var(--muted);">(je 0,2 l)</span></div>
       <ul class="menu-list">
         <li class="menu-item"><div class="mi-top"><span class="name">Chardonnay</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Italien, trocken</span></li>
@@ -509,8 +527,9 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
         <li class="menu-item"><div class="mi-top"><span class="name">Johannisbeere, Kirsch, Schlehe, Stachelbeere</span><span class="leader"></span><span class="price">4,50&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Flasche Obstwein außer Haus</span><span class="leader"></span><span class="price">12,00&nbsp;€</span></div><span class="desc">am Tisch 18,00&nbsp;€</span></li>
       </ul>
+      </div>
 
-      <div class="menu-subhead">Alkoholfreies</div>
+      <div class="drink-panel" id="drink-kalt">
       <ul class="menu-list">
         <li class="menu-item"><div class="mi-top"><span class="name">Mineralwasser „mit“ oder „ohne“</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">0,25 l — 0,75 l 6,50&nbsp;€</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Coca-Cola / Coca-Cola Zero</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 4,90&nbsp;€</span></li>
@@ -524,8 +543,9 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
         <li class="menu-item"><div class="mi-top"><span class="name">Malzbier</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,33 l</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Apfelsaft „naturtrüb“</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">0,3 l</span></li>
       </ul>
+      </div>
 
-      <div class="menu-subhead">Heißgetränke</div>
+      <div class="drink-panel" id="drink-warm">
       <ul class="menu-list">
         <li class="menu-item"><div class="mi-top"><span class="name">Becher Kaffee</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Milchkaffee</span><span class="leader"></span><span class="price">3,80&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
@@ -539,7 +559,9 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
         <li class="menu-item"><div class="mi-top"><span class="name">Glühkirsch</span><span class="leader"></span><span class="price">4,80&nbsp;€</span></div><span class="desc">saisonal</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Grog</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
       </ul>
+      </div>
 
+      <div class="drink-panel" id="drink-schnaps">
       <div class="menu-subhead">Schnäpse <span style="text-transform:none;font-weight:400;color:var(--muted);">(2 cl, sofern nicht anders angegeben)</span></div>
       <ul class="menu-list">
         <li class="menu-item"><div class="mi-top"><span class="name">Obstler</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
@@ -557,6 +579,7 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
         <li class="menu-item"><div class="mi-top"><span class="name">Ramazotti</span><span class="leader"></span><span class="price">5,90&nbsp;€</span></div><span class="desc">32&nbsp;%, 4 cl</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Baileys</span><span class="leader"></span><span class="price">5,90&nbsp;€</span></div><span class="desc">17&nbsp;%, 4 cl</span></li>
       </ul>
+      </div>
 
       <div class="menu-tags"><span class="menu-tag">Vom Fass</span><span class="menu-tag">Regionale Weine</span><span class="menu-tag">Vollständige Preisliste</span></div>
     </div>
@@ -808,6 +831,16 @@ document.querySelectorAll('.menu-tab').forEach(tab=>{
     document.querySelectorAll('.menu-card').forEach(p=>p.classList.remove('active'));
     tab.classList.add('active');
     document.getElementById(tab.dataset.tab).classList.add('active');
+  });
+});
+
+// Drink sub-tabs
+document.querySelectorAll('.drink-tab').forEach(tab=>{
+  tab.addEventListener('click',()=>{
+    document.querySelectorAll('.drink-tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.drink-panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('drink-'+tab.dataset.drink).classList.add('active');
   });
 });
 
