@@ -122,34 +122,29 @@ nav.site{position:sticky;top:0;z-index:300;background:var(--cream);border-bottom
 .nav-cta{display:flex;align-items:center;gap:.6rem;}
 
 /* ── hero ── */
-.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding:clamp(3.2rem,7vw,5.5rem) 0 clamp(3rem,6vw,4.5rem);overflow:hidden;color:#fff;}
-.hero-photo{position:absolute;inset:0;z-index:0;}
-.hero-photo img{width:100%;height:100%;object-fit:cover;}
-.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,15,.32) 0%,rgba(14,20,15,.28) 45%,rgba(14,20,15,.92) 100%);}
-.hero .eyebrow{color:var(--ochre);text-shadow:0 1px 6px rgba(0,0,0,.5);}
-.hero .eyebrow::before{background:var(--ochre);}
-.hero .btn-outline{color:#fff;border-color:rgba(255,255,255,.7);background:rgba(20,33,26,.25);}
-.hero .btn-outline:hover{background:#fff;color:var(--forest-deep);}
-.hero .lead{color:#e9e3d4;margin:1.3rem 0 2rem;}
-.hero .hl{color:#fff;}
-.hero em{color:var(--ochre);}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,3.2rem);align-items:end;width:100%;}
+.hero{position:relative;background:var(--cream);padding:clamp(3.2rem,7vw,5.5rem) 0 clamp(3.5rem,7vw,5rem);overflow:hidden;}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,3.2rem);align-items:center;}
 @media(max-width:940px){.hero-grid{grid-template-columns:1fr;}}
+.hero .lead{margin:1.3rem 0 2rem;}
 .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.2rem;}
 .hero-facts{display:flex;flex-direction:column;gap:.9rem;}
-.fact-tile{display:flex;align-items:flex-start;gap:.85rem;background:rgba(255,255,255,.94);border:1.5px solid var(--line);border-radius:var(--r);padding:1rem 1.2rem;box-shadow:var(--shadow);}
+.fact-tile{display:flex;align-items:flex-start;gap:.85rem;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:1rem 1.2rem;box-shadow:var(--shadow);}
 .fact-tile svg{flex-shrink:0;color:var(--forest);margin-top:.15rem;}
-.fact-tile b{display:block;font-family:"Fraunces",serif;font-size:1rem;margin-bottom:.15rem;color:var(--ink);}
+.fact-tile b{display:block;font-family:"Fraunces",serif;font-size:1rem;margin-bottom:.15rem;}
 .fact-tile span{font-size:.85rem;color:var(--muted);}
 
-.badge-panel{position:relative;background:rgba(20,33,26,.55);backdrop-filter:blur(6px);border:1px solid rgba(232,189,124,.3);border-radius:18px;padding:2.2rem 1.8rem;text-align:center;box-shadow:var(--shadow);}
-.stamp{position:relative;z-index:1;width:130px;height:130px;margin:0 auto 1.1rem;border-radius:50%;border:3px dashed var(--ochre);display:flex;align-items:center;justify-content:center;transform:rotate(-6deg);}
-.stamp-inner{width:104px;height:104px;border-radius:50%;border:2px solid var(--ochre);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ochre);font-family:"Fraunces",serif;}
-.stamp-inner b{font-size:1.5rem;line-height:1;}
-.stamp-inner span{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;text-align:center;padding:0 .5rem;}
-.badge-panel h3{position:relative;z-index:1;color:var(--cream);font-size:1.1rem;margin-bottom:.5rem;}
-.badge-panel p{position:relative;z-index:1;color:#cdd9c9;font-size:.85rem;margin:0;max-width:32ch;margin-inline:auto;}
-@media(max-width:640px){.hero{min-height:auto;}}
+.badge-panel{position:relative;border-radius:18px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/5;}
+.badge-panel .bp-photo{position:absolute;inset:0;}
+.badge-panel .bp-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.badge-panel .bp-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,33,26,.1) 40%,rgba(20,33,26,.88) 100%);}
+.badge-panel .bp-content{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem 1.6rem;text-align:center;}
+.stamp{position:relative;z-index:1;width:120px;height:120px;margin:0 auto 1rem;border-radius:50%;border:3px dashed var(--ochre);display:flex;align-items:center;justify-content:center;transform:rotate(-6deg);}
+.stamp-inner{width:96px;height:96px;border-radius:50%;border:2px solid var(--ochre);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ochre);font-family:"Fraunces",serif;}
+.stamp-inner b{font-size:1.4rem;line-height:1;}
+.stamp-inner span{font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;text-align:center;padding:0 .5rem;}
+.badge-panel h3{position:relative;z-index:1;color:var(--cream);font-size:1.05rem;margin-bottom:.4rem;}
+.badge-panel p{position:relative;z-index:1;color:#cdd9c9;font-size:.82rem;margin:0;max-width:32ch;margin-inline:auto;}
+@media(max-width:940px){.badge-panel{aspect-ratio:16/9;max-width:420px;margin:0 auto;}}
 
 /* ── divider ── */
 .divider{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:0 auto 2.6rem;color:var(--ochre);max-width:340px;}
@@ -183,6 +178,8 @@ nav.site{position:sticky;top:0;z-index:300;background:var(--cream);border-bottom
 .menu-item .price{font-family:"Fraunces",serif;font-weight:600;font-size:1rem;color:var(--forest);flex-shrink:0;white-space:nowrap;}
 .menu-item .desc{display:block;font-size:.85rem;color:var(--muted);margin-top:.3rem;}
 @media(max-width:640px){.menu-item .leader{display:none;}}
+.menu-subhead{font-family:"Fraunces",serif;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--rust);margin:1.6rem 0 .3rem;}
+.menu-subhead:first-child{margin-top:0;}
 .menu-tags{display:flex;gap:.5rem;margin-top:1.6rem;flex-wrap:wrap;}
 .menu-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.74rem;font-weight:600;color:var(--forest);background:var(--cream-2);border:1px solid var(--line);border-radius:100px;padding:.35rem .8rem;}
 
@@ -310,7 +307,7 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
 <svg class="flow-thread" id="flowThread" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0"></linearGradient></defs><path id="flowPath"/></svg>
 
 <header class="hero" id="top">
-  <div class="hero-photo"><img src="images/torbogen.jpg" alt="Der historische Torbogen des Forsthaus Blumenhagen im Sommer" width="1024" height="683"></div>
+  <div class="topo" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow reveal">Waldgaststätte im Deister · Lauenau</div>
@@ -333,14 +330,17 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
     </div>
 
     <div class="badge-panel reveal" style="transition-delay:.1s">
-      <div class="stamp">
-        <div class="stamp-inner">
-          <b>1/12</b>
-          <span>Deister-Wanderpass</span>
+      <div class="bp-photo"><img src="images/torbogen.jpg" alt="Der historische Torbogen des Forsthaus Blumenhagen im Sommer" loading="lazy" width="1024" height="683"></div>
+      <div class="bp-content">
+        <div class="stamp">
+          <div class="stamp-inner">
+            <b>1/12</b>
+            <span>Deister-Wanderpass</span>
+          </div>
         </div>
+        <h3 class="serif">Station des Deister-Wanderpasses</h3>
+        <p>Eine von zwölf Stationen — Stempel abholen, einkehren, weiterwandern.</p>
       </div>
-      <h3 class="serif">Station des Deister-Wanderpasses</h3>
-      <p>Eine von zwölf Stationen — Stempel abholen, einkehren, weiterwandern.</p>
     </div>
   </div>
 </header>
@@ -462,19 +462,103 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
     </div>
 
     <div class="menu-card" id="getraenke">
+      <div class="menu-subhead">Bier vom Fass</div>
       <ul class="menu-list">
-        <li class="menu-item"><div class="mi-top"><span class="name">Rupp Bräu Hell</span><span class="leader"></span><span class="price">ab 3,60&nbsp;€</span></div><span class="desc">vom Fass — 0,3 l 3,60&nbsp;€ · 0,5 l 5,20&nbsp;€ · 1,0 l 9,30&nbsp;€</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Rupp Bräu Dunkel</span><span class="leader"></span><span class="price">ab 3,80&nbsp;€</span></div><span class="desc">vom Fass — 0,3 l 3,80&nbsp;€ · 0,5 l 5,70&nbsp;€ · 1,0 l 9,90&nbsp;€</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Radler</span><span class="leader"></span><span class="price">ab 3,60&nbsp;€</span></div><span class="desc">vom Fass — 0,3 l 3,60&nbsp;€ · 0,5 l 5,20&nbsp;€ · 1,0 l 9,30&nbsp;€</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger Weißbier</span><span class="leader"></span><span class="price">5,20&nbsp;€</span></div><span class="desc">0,5 l, auch als Dunkel oder alkoholfrei</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Hausweine (Weiß/Rot)</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">0,2 l, z. B. Riesling, Dornfelder, Tempranillo — Flasche am Tisch 24&nbsp;€</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Aperol Spritz</span><span class="leader"></span><span class="price">7,90&nbsp;€</span></div><span class="desc">0,2 l</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Obstweine</span><span class="leader"></span><span class="price">4,50&nbsp;€</span></div><span class="desc">0,2 l — Brombeere, Heidelbeere, Holunder, Kirsche u. a.</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Alkoholfreie Getränke</span><span class="leader"></span><span class="price">ab 3,20&nbsp;€</span></div><span class="desc">Mineralwasser, Cola, Fanta, Sprite, Apfelschorle u. a.</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Kaffeespezialitäten</span><span class="leader"></span><span class="price">ab 2,80&nbsp;€</span></div><span class="desc">Espresso, Cappuccino, Latte Macchiato, Milchkaffee</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Glühwein &amp; Grog</span><span class="leader"></span><span class="price">ab 3,90&nbsp;€</span></div><span class="desc">saisonal, auch als Glühkirsch</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Rupp Bräu Hell</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 5,20&nbsp;€ · 1,0 l 9,30&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Rupp Bräu Dunkel</span><span class="leader"></span><span class="price">3,80&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 5,70&nbsp;€ · 1,0 l 9,90&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Radler</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 5,20&nbsp;€ · 1,0 l 9,30&nbsp;€</span></li>
       </ul>
-      <div class="menu-tags"><span class="menu-tag">Vom Fass</span><span class="menu-tag">Regionale Weine</span></div>
+
+      <div class="menu-subhead">Bier aus der Flasche</div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Zwickel Landbier</span><span class="leader"></span><span class="price">4,90&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger Helles Lagerbier</span><span class="leader"></span><span class="price">4,90&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger Natur-Radler</span><span class="leader"></span><span class="price">4,90&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger „Ur-Weisse“</span><span class="leader"></span><span class="price">5,20&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger Weißbier dunkel</span><span class="leader"></span><span class="price">5,20&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger „Pikantus“ Weizenbock</span><span class="leader"></span><span class="price">5,80&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Erdinger Weißbier alkoholfrei</span><span class="leader"></span><span class="price">5,20&nbsp;€</span></div><span class="desc">0,5 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Bitburger Pils alkoholfrei</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,33 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Glas Sekt</span><span class="leader"></span><span class="price">3,00&nbsp;€</span></div><span class="desc">0,1 l</span></li>
+      </ul>
+
+      <div class="menu-subhead">Weißweine &amp; Rosé <span style="text-transform:none;font-weight:400;color:var(--muted);">(je 0,2 l)</span></div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Chardonnay</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Italien, trocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Riesling</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Mosel, halbtrocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Grauburgunder</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Deutschland, trocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Weißburgunder</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Deutschland, trocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Weißweinschorle</span><span class="leader"></span><span class="price">5,50&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Piccolo Freixenete</span><span class="leader"></span><span class="price">6,90&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Aperol Spritz</span><span class="leader"></span><span class="price">7,90&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Flasche Wein (Rot/Weiß) am Tisch</span><span class="leader"></span><span class="price">24,00&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+      </ul>
+
+      <div class="menu-subhead">Rotweine <span style="text-transform:none;font-weight:400;color:var(--muted);">(je 0,2 l)</span></div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Tempranillo</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Spanien, trocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Dornfelder</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Rheinhessen, halbtrocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Primitivo</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Italien, trocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Montepulciano</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">Italien, trocken</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Weißherbst Rosé</span><span class="leader"></span><span class="price">6,50&nbsp;€</span></div><span class="desc">halbtrocken</span></li>
+      </ul>
+
+      <div class="menu-subhead">Obstweine <span style="text-transform:none;font-weight:400;color:var(--muted);">(je 0,2 l, 4,50&nbsp;€)</span></div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Brombeere, Heidelbeere, Holunder</span><span class="leader"></span><span class="price">4,50&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Johannisbeere, Kirsch, Schlehe, Stachelbeere</span><span class="leader"></span><span class="price">4,50&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Flasche Obstwein außer Haus</span><span class="leader"></span><span class="price">12,00&nbsp;€</span></div><span class="desc">am Tisch 18,00&nbsp;€</span></li>
+      </ul>
+
+      <div class="menu-subhead">Alkoholfreies</div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Mineralwasser „mit“ oder „ohne“</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">0,25 l — 0,75 l 6,50&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Coca-Cola / Coca-Cola Zero</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 4,90&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Fanta</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 4,90&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Sprite</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 4,90&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Spezi</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 4,90&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Apfelschorle „naturtrüb“</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,3 l — 0,5 l 4,90&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Holunderblüten-Schorle</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">0,33 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Direkt-Saft-Schorle Rhabarber</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">0,33 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Direkt-Saft-Schorle Apfel-Sanddorn</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">0,33 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Malzbier</span><span class="leader"></span><span class="price">3,60&nbsp;€</span></div><span class="desc">0,33 l</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Apfelsaft „naturtrüb“</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">0,3 l</span></li>
+      </ul>
+
+      <div class="menu-subhead">Heißgetränke</div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Becher Kaffee</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Milchkaffee</span><span class="leader"></span><span class="price">3,80&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Espresso</span><span class="leader"></span><span class="price">2,80&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Doppelter Espresso</span><span class="leader"></span><span class="price">4,80&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Cappuccino</span><span class="leader"></span><span class="price">3,50&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Latte Macchiato</span><span class="leader"></span><span class="price">4,10&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Kakao mit Sahne</span><span class="leader"></span><span class="price">4,20&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Glas Tee</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">Schwarz, Früchte, Roibusch, Grün, Pfefferminz</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Glühwein</span><span class="leader"></span><span class="price">4,50&nbsp;€</span></div><span class="desc">saisonal</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Glühkirsch</span><span class="leader"></span><span class="price">4,80&nbsp;€</span></div><span class="desc">saisonal</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Grog</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">&nbsp;</span></li>
+      </ul>
+
+      <div class="menu-subhead">Schnäpse <span style="text-transform:none;font-weight:400;color:var(--muted);">(2 cl, sofern nicht anders angegeben)</span></div>
+      <ul class="menu-list">
+        <li class="menu-item"><div class="mi-top"><span class="name">Obstler</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Fernet Branca</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Malteser Aquavit</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Schierker Feuerstein</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">35&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Ratzeputz</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">58&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Heidegeist</span><span class="leader"></span><span class="price">3,90&nbsp;€</span></div><span class="desc">50&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Rostocker Kümmel</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">38&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Jägermeister</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">35&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Wodka</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Grappa</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Ouzo</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Bärwurz</span><span class="leader"></span><span class="price">3,20&nbsp;€</span></div><span class="desc">40&nbsp;%</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Ramazotti</span><span class="leader"></span><span class="price">5,90&nbsp;€</span></div><span class="desc">32&nbsp;%, 4 cl</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Baileys</span><span class="leader"></span><span class="price">5,90&nbsp;€</span></div><span class="desc">17&nbsp;%, 4 cl</span></li>
+      </ul>
+
+      <div class="menu-tags"><span class="menu-tag">Vom Fass</span><span class="menu-tag">Regionale Weine</span><span class="menu-tag">Vollständige Preisliste</span></div>
     </div>
   </div>
   <p style="text-align:center;font-size:.78rem;color:var(--muted);margin-top:2rem;">Auszug aus der Speisekarte (Stand 07/2026) — die vollständige, aktuelle Karte liegt im Restaurant &amp; im Allergiker-Verzeichnis vor.</p>
