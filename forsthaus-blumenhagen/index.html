@@ -91,6 +91,13 @@ em.on-dark{color:var(--ochre);}
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300'%3E%3Cg fill='none' stroke='%232f4a34' stroke-opacity='0.10' stroke-width='1.4'%3E%3Cpath d='M-20 40 Q 80 10 180 45 T 420 35'/%3E%3Cpath d='M-20 90 Q 90 55 190 95 T 420 85'/%3E%3Cpath d='M-20 140 Q 100 105 200 145 T 420 135'/%3E%3Cpath d='M-20 190 Q 110 155 210 195 T 420 185'/%3E%3Cpath d='M-20 240 Q 120 205 220 245 T 420 235'/%3E%3C/g%3E%3C/svg%3E");
   background-size:520px 390px;}
 
+/* ── Waldweg-Faden: geschwungener, scroll-gebundener Wanderpfad durch die Seite ── */
+.content{position:relative;}
+.flow-thread{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible;}
+.flow-thread path{fill:none;stroke:url(#flowGrad);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:1 14;
+  filter:drop-shadow(0 0 5px rgba(200,150,62,.55));}
+.hero,section,footer.site-footer{position:relative;z-index:1;}
+
 /* ── status/info strip ── */
 .info-strip{background:var(--forest-deep);color:#d9e3d3;}
 .info-strip .wrap{display:flex;align-items:center;justify-content:center;gap:1.8rem;flex-wrap:wrap;padding:.6rem 32px;font-size:.8rem;font-family:"Lora",serif;}
@@ -115,26 +122,34 @@ nav.site{position:sticky;top:0;z-index:300;background:var(--cream);border-bottom
 .nav-cta{display:flex;align-items:center;gap:.6rem;}
 
 /* ── hero ── */
-.hero{position:relative;background:var(--cream);padding:clamp(3.2rem,7vw,5.5rem) 0 clamp(3.5rem,7vw,5rem);overflow:hidden;}
-.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,3.2rem);align-items:center;}
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;padding:clamp(3.2rem,7vw,5.5rem) 0 clamp(3rem,6vw,4.5rem);overflow:hidden;color:#fff;}
+.hero-photo{position:absolute;inset:0;z-index:0;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;}
+.hero-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,20,15,.32) 0%,rgba(14,20,15,.28) 45%,rgba(14,20,15,.92) 100%);}
+.hero .eyebrow{color:var(--ochre);text-shadow:0 1px 6px rgba(0,0,0,.5);}
+.hero .eyebrow::before{background:var(--ochre);}
+.hero .btn-outline{color:#fff;border-color:rgba(255,255,255,.7);background:rgba(20,33,26,.25);}
+.hero .btn-outline:hover{background:#fff;color:var(--forest-deep);}
+.hero .lead{color:#e9e3d4;margin:1.3rem 0 2rem;}
+.hero .hl{color:#fff;}
+.hero em{color:var(--ochre);}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,4vw,3.2rem);align-items:end;width:100%;}
 @media(max-width:940px){.hero-grid{grid-template-columns:1fr;}}
-.hero .lead{margin:1.3rem 0 2rem;}
 .hero-cta{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.2rem;}
 .hero-facts{display:flex;flex-direction:column;gap:.9rem;}
-.fact-tile{display:flex;align-items:flex-start;gap:.85rem;background:#fff;border:1.5px solid var(--line);border-radius:var(--r);padding:1rem 1.2rem;box-shadow:var(--shadow);}
+.fact-tile{display:flex;align-items:flex-start;gap:.85rem;background:rgba(255,255,255,.94);border:1.5px solid var(--line);border-radius:var(--r);padding:1rem 1.2rem;box-shadow:var(--shadow);}
 .fact-tile svg{flex-shrink:0;color:var(--forest);margin-top:.15rem;}
-.fact-tile b{display:block;font-family:"Fraunces",serif;font-size:1rem;margin-bottom:.15rem;}
+.fact-tile b{display:block;font-family:"Fraunces",serif;font-size:1rem;margin-bottom:.15rem;color:var(--ink);}
 .fact-tile span{font-size:.85rem;color:var(--muted);}
 
-.badge-panel{position:relative;background:var(--forest);border-radius:18px;padding:2.4rem 2rem;text-align:center;box-shadow:var(--shadow);overflow:hidden;}
-.badge-panel::before{content:'';position:absolute;inset:0;background-image:url("images/torbogen.jpg");background-size:cover;background-position:center;}
-.badge-panel::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,33,26,.35),rgba(20,33,26,.86));}
-.stamp{position:relative;z-index:1;width:150px;height:150px;margin:0 auto 1.2rem;border-radius:50%;border:3px dashed var(--ochre);display:flex;align-items:center;justify-content:center;transform:rotate(-6deg);}
-.stamp-inner{width:122px;height:122px;border-radius:50%;border:2px solid var(--ochre);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ochre);font-family:"Fraunces",serif;}
-.stamp-inner b{font-size:1.7rem;line-height:1;}
-.stamp-inner span{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;text-align:center;padding:0 .6rem;}
-.badge-panel h3{position:relative;z-index:1;color:var(--cream);font-size:1.15rem;margin-bottom:.5rem;}
-.badge-panel p{position:relative;z-index:1;color:#cdd9c9;font-size:.86rem;margin:0;max-width:32ch;margin-inline:auto;}
+.badge-panel{position:relative;background:rgba(20,33,26,.55);backdrop-filter:blur(6px);border:1px solid rgba(232,189,124,.3);border-radius:18px;padding:2.2rem 1.8rem;text-align:center;box-shadow:var(--shadow);}
+.stamp{position:relative;z-index:1;width:130px;height:130px;margin:0 auto 1.1rem;border-radius:50%;border:3px dashed var(--ochre);display:flex;align-items:center;justify-content:center;transform:rotate(-6deg);}
+.stamp-inner{width:104px;height:104px;border-radius:50%;border:2px solid var(--ochre);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--ochre);font-family:"Fraunces",serif;}
+.stamp-inner b{font-size:1.5rem;line-height:1;}
+.stamp-inner span{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem;text-align:center;padding:0 .5rem;}
+.badge-panel h3{position:relative;z-index:1;color:var(--cream);font-size:1.1rem;margin-bottom:.5rem;}
+.badge-panel p{position:relative;z-index:1;color:#cdd9c9;font-size:.85rem;margin:0;max-width:32ch;margin-inline:auto;}
+@media(max-width:640px){.hero{min-height:auto;}}
 
 /* ── divider ── */
 .divider{display:flex;align-items:center;justify-content:center;gap:.9rem;margin:0 auto 2.6rem;color:var(--ochre);max-width:340px;}
@@ -291,8 +306,11 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
 </nav>
 
 <!-- HERO -->
+<div class="content" id="content">
+<svg class="flow-thread" id="flowThread" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0"></linearGradient></defs><path id="flowPath"/></svg>
+
 <header class="hero" id="top">
-  <div class="topo" aria-hidden="true"></div>
+  <div class="hero-photo"><img src="images/torbogen.jpg" alt="Der historische Torbogen des Forsthaus Blumenhagen im Sommer" width="1024" height="683"></div>
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow reveal">Waldgaststätte im Deister · Lauenau</div>
@@ -335,38 +353,38 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
     </div>
     <div style="text-align:center;max-width:640px;margin:0 auto;">
       <div class="eyebrow reveal" style="justify-content:center;">Warum Forsthaus Blumenhagen</div>
-      <h2 class="h-lg serif reveal">Für Wanderer, Familien und alle, die es gerne urig mögen.</h2>
+      <h2 class="h-lg serif reveal">Ein Rastplatz, an dem der Wald zur Ruhe kommt.</h2>
     </div>
     <div class="why-grid">
       <div class="why-card reveal">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg></div>
-        <h3>Hausgemachte Küche</h3>
-        <p>Schnitzel, Bratkartoffeln, Salate und Sülze — alles hausgemacht, deftig und in großzügigen Portionen.</p>
+        <h3>Wie bei Oma in der Waldküche</h3>
+        <p>Knusprige Schnitzel, goldbraune Bratkartoffeln aus der Pfanne, Sülze nach altem Hausrezept — deftig, ehrlich und in Portionen, bei denen niemand hungrig aufsteht.</p>
       </div>
       <div class="why-card reveal" style="transition-delay:.05s">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 17v4M5 3h14l-1 9a6 6 0 0 1-12 0L5 3Z"/><path d="M5 8H3a2 2 0 0 0 2 4M19 8h2a2 2 0 0 1-2 4"/></svg></div>
-        <h3>Biergarten im Grünen</h3>
-        <p>Einer der schönsten Biergärten Schaumburgs — im Sommer im Schatten alter Bäume, im Winter gemütlich drinnen.</p>
+        <h3>Ein Biergarten unter alten Buchen</h3>
+        <p>Sonnenlicht, das durchs Blätterdach fällt, ein kühles Bier in der Hand — einer der schönsten Biergärten Schaumburgs, im Winter zieht die Geselligkeit einfach mit hinein ins Warme.</p>
       </div>
       <div class="why-card reveal" style="transition-delay:.1s">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
-        <h3>Deister-Wanderpass-Station</h3>
-        <p>Eine von zwölf Stationen auf dem Deister-Wanderpass — perfekte Rast auf halber Strecke.</p>
+        <h3>Stempel Nummer eins von zwölf</h3>
+        <p>Mitten auf dem Deister-Wanderpass gelegen — hier klopft man sich den Waldboden von den Stiefeln, holt sich den Stempel ab und gönnt sich die verdiente Rast.</p>
       </div>
       <div class="why-card reveal">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg></div>
-        <h3>Für Familien</h3>
-        <p>Eigene Kindergerichte wie Chickennuggets oder ein kleines Schnitzel — auch mit Kindern gerne willkommen.</p>
+        <h3>Platz für die ganze Familie</h3>
+        <p>Chickennuggets für die Kleinen, ein kühles Bier für die Großen — bei uns wird niemand schräg angeschaut, wenn am Nebentisch Kinder lachen.</p>
       </div>
       <div class="why-card reveal" style="transition-delay:.05s">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg></div>
-        <h3>Feiern &amp; Gruppen</h3>
-        <p>Platz für Wandergruppen und Gesellschaften — vorab kurz anrufen und reservieren.</p>
+        <h3>Raum für große Runden</h3>
+        <p>Ob Wandergruppe mit zwölf Stempelkarten oder Familienfeier mit drei Generationen — ein kurzer Anruf genügt, wir richten den Tisch für Sie her.</p>
       </div>
       <div class="why-card reveal" style="transition-delay:.1s">
         <div class="why-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></div>
-        <h3>Ganzjährig geöffnet</h3>
-        <p>Donnerstag bis Sonntag sowie an Feiertagen, ab 11 Uhr mit durchgehend warmer Küche.</p>
+        <h3>An vier Tagen für Sie da</h3>
+        <p>Donnerstag bis Sonntag sowie an Feiertagen steht die Küchentür ab 11 Uhr offen — durchgehend warm, ganz ohne Mittagspause.</p>
       </div>
     </div>
   </div>
@@ -394,7 +412,8 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
         <li class="menu-item"><div class="mi-top"><span class="name">Champignon-Rahmschnitzel</span><span class="leader"></span><span class="price">19,80&nbsp;€</span></div><span class="desc">mit hausgemachten Bratkartoffeln &amp; frischem Salatteller</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Holsteiner Schnitzel</span><span class="leader"></span><span class="price">19,80&nbsp;€</span></div><span class="desc">mit zwei Spiegeleiern, hausgemachten Bratkartoffeln &amp; frischem Salatteller</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Frisch gegrillte Rippchen</span><span class="leader"></span><span class="price">17,50&nbsp;€ <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(½ 13,50&nbsp;€)</span></span></div><span class="desc">mit hausgemachten Bratkartoffeln, dazu Barbecuesauce</span></li>
-        <li class="menu-item"><div class="mi-top"><span class="name">Zwei kleine gegrillte Putensteaks</span><span class="leader"></span><span class="price">16,80&nbsp;€ <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(½ 11,80&nbsp;€)</span></span></div><span class="desc">mit viel frischem Salat — auch mit Champignonrahmsauce &amp; Bratkartoffeln für 20,80&nbsp;€</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Zwei kleine gegrillte Putensteaks</span><span class="leader"></span><span class="price">16,80&nbsp;€ <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(½ 11,80&nbsp;€)</span></span></div><span class="desc">mit viel frischem Salat</span></li>
+        <li class="menu-item"><div class="mi-top"><span class="name">Putensteaks Champignonrahm</span><span class="leader"></span><span class="price">20,80&nbsp;€ <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(½ 15,80&nbsp;€)</span></span></div><span class="desc">zwei kleine gegrillte Putensteaks mit Champignonrahmsauce, hausgemachten Bratkartoffeln &amp; frischem Salatteller</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Bayerischer Leberkäse</span><span class="leader"></span><span class="price">14,90&nbsp;€ <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(½ 10,90&nbsp;€)</span></span></div><span class="desc">mit zwei Spiegeleiern &amp; hausgemachten Bratkartoffeln</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Riesencurrywurst</span><span class="leader"></span><span class="price">ab 8,90&nbsp;€</span></div><span class="desc">mit Brötchen 8,90&nbsp;€ · mit Pommes Frites 11,90&nbsp;€ · mit Bratkartoffeln 12,90&nbsp;€</span></li>
         <li class="menu-item"><div class="mi-top"><span class="name">Hausmacher Sülze</span><span class="leader"></span><span class="price">14,80&nbsp;€ <span style="color:var(--muted);font-weight:400;font-size:.8rem;">(½ 10,50&nbsp;€)</span></span></div><span class="desc">mit hausgemachten Bratkartoffeln, Gewürzgurke &amp; Remouladensauce</span></li>
@@ -608,6 +627,8 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
   </div>
 </section>
 
+</div><!-- /.content -->
+
 <footer class="site-footer">
   <div class="wrap">
     <div class="footer-top">
@@ -649,6 +670,49 @@ footer.site-footer{background:var(--bark);color:#ecdfc9;padding:3rem 0 1.6rem;}
 </a>
 
 <script>
+// Waldweg-Faden — geschwungener, scroll-gebundener Wanderpfad durch die Seite
+(function(){
+  const content=document.getElementById('content');
+  const svg=document.getElementById('flowThread');
+  const path=document.getElementById('flowPath');
+  const grad=document.getElementById('flowGrad');
+  if(!content||!svg||!path) return;
+
+  function build(){
+    const w=content.offsetWidth, h=content.offsetHeight;
+    svg.setAttribute('viewBox','0 0 '+w+' '+h);
+    const cx=w*0.5, amp=w*0.1, periods=5.5, steps=380, phase=Math.PI/6;
+    let d='';
+    for(let i=0;i<=steps;i++){
+      const y=h*i/steps;
+      const x=cx+Math.sin((i/steps)*Math.PI*2*periods+phase)*amp;
+      d+=(i===0?'M':'L')+x.toFixed(1)+' '+y.toFixed(1)+' ';
+    }
+    path.setAttribute('d',d);
+    grad.setAttribute('x1',cx);grad.setAttribute('x2',cx);
+    grad.setAttribute('y1',0);grad.setAttribute('y2',h);
+    update();
+  }
+
+  function update(){
+    const h=content.offsetHeight;
+    const scrollTop=window.scrollY;
+    const viewH=window.innerHeight;
+    const progress=Math.min(1,Math.max(0,(scrollTop+viewH*0.5)/h));
+    const feather=0.16;
+    const stops=[[0,0],[Math.max(0,progress-feather),0],[progress,1],[Math.min(1,progress+.02),1],[1,0]];
+    grad.innerHTML=stops.map(([o,a])=>'<stop offset="'+(o*100).toFixed(2)+'%" stop-color="#c8963e" stop-opacity="'+a+'"/>').join('');
+  }
+
+  let raf=null;
+  function onScroll(){ if(raf) return; raf=requestAnimationFrame(()=>{ update(); raf=null; }); }
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', build);
+  window.addEventListener('load', build);
+  build();
+  setTimeout(build, 400);
+})();
+
 // Scroll reveal
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
