@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<!--
+  VILLA AZURE 3D — echtes Three.js-3D-Massenmodell (kein Bild-Parallax).
+  Prozedural gebaute, stilisierte Villa (Boxen/Ebenen/einfache Materialien) —
+  kein gekauftes/gescanntes 3D-Asset. Kamera fährt beim Scrollen entlang
+  eines definierten Pfads durch die Szene (GSAP ScrollTrigger + Three.js).
+-->
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Villa Azure — 3D Walkthrough</title>
+<meta name="description" content="Villa Azure — echte 3D-Kamerafahrt durch ein stilisiertes Architekturmodell, gesteuert per Scroll.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;1,6..96,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0c0c0b; --paper:#f6f3ec; --gold:#c6a15b; --gold-soft:#e3cd9c; --stone:#8a8578;
+  --line:rgba(246,243,236,.16); --ease:cubic-bezier(.16,.84,.28,1);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html,body{margin:0;background:var(--ink);color:var(--paper);font-family:"Inter",-apple-system,sans-serif;font-weight:300;overflow-x:hidden;}
+.serif{font-family:"Bodoni Moda",Georgia,serif;}
+a{color:inherit;text-decoration:none;}
+::selection{background:var(--gold);color:var(--ink);}
+
+#canvasWrap{position:fixed;inset:0;z-index:0;}
+#canvasWrap canvas{display:block;width:100%;height:100%;}
+
+.scroll-track{position:relative;z-index:1;}
+.beat{height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 clamp(1.6rem,6vw,5.5rem) clamp(3rem,7vw,5.5rem);pointer-events:none;}
+.beat.center{align-items:center;text-align:center;justify-content:center;padding-bottom:0;}
+.beat-tag{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem;opacity:0;transform:translateY(24px);}
+.beat-tag .num{font-family:"Bodoni Moda",serif;font-size:.82rem;color:var(--gold-soft);}
+.eyebrow{display:inline-flex;align-items:center;gap:.7rem;font-size:.72rem;font-weight:500;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);}
+.eyebrow::before{content:'';width:34px;height:1px;background:var(--gold);}
+.beat-title{font-size:clamp(2.1rem,5.6vw,4.2rem);line-height:1.06;max-width:16ch;opacity:0;transform:translateY(30px);}
+.beat-title em{font-style:italic;color:var(--gold-soft);}
+.beat-sub{margin:1.1rem 0 0;font-size:clamp(.94rem,1.3vw,1.08rem);color:#d9d4c4;max-width:42ch;line-height:1.75;opacity:0;transform:translateY(30px);}
+
+.hero-beat{justify-content:center;align-items:center;text-align:center;}
+.hero-beat .kicker{font-size:.7rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold-soft);opacity:0;}
+.hero-beat h1{font-family:"Bodoni Moda",serif;font-size:clamp(3rem,9vw,7rem);letter-spacing:.02em;margin:.6rem 0 0;opacity:0;}
+.hero-beat .sub{margin-top:1rem;font-size:.9rem;letter-spacing:.05em;color:#ddd7c6;opacity:0;}
+.scroll-cue{position:absolute;left:50%;bottom:2.6rem;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.7rem;opacity:0;animation:cueIn 1.4s var(--ease) 2s forwards;}
+@keyframes cueIn{to{opacity:1;}}
+.scroll-cue span{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:var(--stone);}
+.scroll-cue .line{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);position:relative;overflow:hidden;}
+.scroll-cue .line::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:linear-gradient(var(--gold-soft),transparent);animation:cueDrop 2s ease-in-out infinite;}
+@keyframes cueDrop{0%{top:-100%;}100%{top:100%;}}
+
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:1.6rem clamp(1.4rem,4vw,3.2rem);opacity:0;transform:translateY(-14px);transition:opacity .8s var(--ease),transform .8s var(--ease),background .4s ease,border-color .4s ease;pointer-events:none;border-bottom:1px solid transparent;}
+.site-nav.show{opacity:1;transform:none;pointer-events:auto;}
+.site-nav.solid{background:rgba(12,12,11,.6);backdrop-filter:blur(16px) saturate(140%);border-color:var(--line);}
+.nav-mark{font-family:"Bodoni Moda",serif;font-size:1.05rem;letter-spacing:.1em;}
+.nav-mark b{color:var(--gold-soft);font-weight:500;}
+.nav-progress{width:160px;height:1px;background:rgba(246,243,236,.18);position:relative;}
+.nav-progress i{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--gold);}
+@media(max-width:760px){.nav-progress{display:none;}}
+.nav-cta{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--line);border-radius:100px;padding:.65rem 1.35rem;transition:border-color .35s ease,background .35s ease,color .35s ease;}
+.nav-cta:hover{border-color:var(--gold);background:var(--gold);color:var(--ink);}
+
+.preloader{position:fixed;inset:0;z-index:1000;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.4rem;transition:opacity 1s var(--ease),visibility 1s;}
+.preloader.done{opacity:0;visibility:hidden;pointer-events:none;}
+.preloader .mark{font-family:"Bodoni Moda",serif;font-size:1.5rem;letter-spacing:.14em;}
+.preload-pct{font-size:.68rem;letter-spacing:.2em;color:var(--stone);font-variant-numeric:tabular-nums;}
+
+.end-cta{position:relative;z-index:2;background:var(--ink);padding:clamp(5rem,10vw,8rem) clamp(1.6rem,6vw,5.5rem);text-align:center;}
+.end-cta h2{font-family:"Bodoni Moda",serif;font-size:clamp(2.2rem,5.6vw,4rem);max-width:16ch;margin:1rem auto 0;}
+.end-cta h2 em{color:var(--gold-soft);font-style:italic;}
+.cta-form{margin-top:2.2rem;display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center;}
+.cta-form input{background:rgba(246,243,236,.08);border:1px solid rgba(246,243,236,.28);color:var(--paper);padding:.95rem 1.3rem;border-radius:100px;font-family:"Inter",sans-serif;font-size:.88rem;min-width:240px;}
+.cta-form input::placeholder{color:#a39d8c;}
+.cta-form button{background:var(--gold);color:var(--ink);border:none;padding:.95rem 1.8rem;border-radius:100px;font-weight:600;font-size:.86rem;cursor:pointer;transition:transform .3s var(--ease),background .3s ease;}
+.cta-form button:hover{background:var(--gold-soft);transform:translateY(-2px);}
+.site-footer{position:relative;z-index:2;background:var(--ink);border-top:1px solid var(--line);padding:2rem clamp(1.6rem,5vw,3.5rem);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;font-size:.74rem;color:var(--stone);}
+
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+</style>
+</head>
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="mark">VILLA <b style="color:var(--gold-soft)">AZURE</b></div>
+  <div class="preload-pct" id="preloadPct">Baue 3D-Modell … 0%</div>
+</div>
+
+<div id="canvasWrap"></div>
+
+<nav class="site-nav" id="siteNav">
+  <div class="nav-mark">VILLA <b>AZURE</b></div>
+  <div class="nav-progress"><i id="navProgress"></i></div>
+  <a href="#viewing" class="nav-cta">Besichtigung anfragen</a>
+</nav>
+
+<div class="scroll-track" id="scrollTrack">
+  <section class="beat hero-beat" data-beat="0">
+    <div class="kicker">Ein privates Anwesen am Meer</div>
+    <h1 class="serif">Villa Azure</h1>
+    <div class="sub">Echtes 3D-Modell. Scrollen steuert die Kamera.</div>
+    <div class="scroll-cue"><span>Scrollen</span><div class="line"></div></div>
+  </section>
+
+  <section class="beat" data-beat="1">
+    <div class="beat-tag"><span class="num serif">01</span><span class="eyebrow">Anflug</span></div>
+    <h2 class="beat-title serif">Aus der Luft, <em>über die Bucht.</em></h2>
+    <p class="beat-sub">Die Kamera senkt sich über das Grundstück und nähert sich dem Baukörper.</p>
+  </section>
+
+  <section class="beat" data-beat="2">
+    <div class="beat-tag"><span class="num serif">02</span><span class="eyebrow">Ankunft</span></div>
+    <h2 class="beat-title serif">Der Eingang <em>öffnet sich.</em></h2>
+    <p class="beat-sub">Die Fassade tritt zur Seite, die Kamera gleitet auf die Eingangsebene zu.</p>
+  </section>
+
+  <section class="beat" data-beat="3">
+    <div class="beat-tag"><span class="num serif">03</span><span class="eyebrow">Wohnraum</span></div>
+    <h2 class="beat-title serif">Innen, <em>im warmen Licht.</em></h2>
+    <p class="beat-sub">Die Kamera bewegt sich durch die offene Wohnebene, vorbei an den raumhohen Verglasungen.</p>
+  </section>
+
+  <section class="beat center" data-beat="4">
+    <div class="beat-tag"><span class="num serif">04</span><span class="eyebrow">Terrasse &amp; Pool</span></div>
+    <h2 class="beat-title serif" style="max-width:20ch;">Der Infinity-Pool <em>löst sich im Horizont auf.</em></h2>
+    <p class="beat-sub" style="max-width:44ch;">Die Kamera hebt ab, dreht langsam über das Wasser und öffnet den Blick zum Meer.</p>
+  </section>
+
+  <section class="beat" data-beat="5">
+    <div class="beat-tag"><span class="num serif">05</span><span class="eyebrow">Rückzug</span></div>
+    <h2 class="beat-title serif">Ein letzter Blick, <em>zur blauen Stunde.</em></h2>
+    <p class="beat-sub">Die Kamera zieht sich zurück und zeigt das gesamte Anwesen im Abendlicht.</p>
+  </section>
+</div>
+
+<section class="end-cta" id="viewing">
+  <div class="eyebrow" style="justify-content:center;display:inline-flex;">Nur nach Vereinbarung</div>
+  <h2 class="serif">Vereinbaren Sie <em>Ihre private Besichtigung.</em></h2>
+  <form class="cta-form" id="viewingForm">
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="E-Mail-Adresse" required>
+    <button type="submit">Anfragen</button>
+  </form>
+</section>
+<footer class="site-footer">
+  <div>VILLA AZURE</div>
+  <div>3D-Konzeptmodell — prozedural generiert, kein reales Objekt.</div>
+  <div>&copy; 2026</div>
+</footer>
+
+<script src="vendor/three.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
+<script src="vendor/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  gsap.registerPlugin(ScrollTrigger);
+
+  /* ============ THREE.JS SCENE ============ */
+  const wrap = document.getElementById('canvasWrap');
+  const renderer = new THREE.WebGLRenderer({ antialias:true, alpha:false });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  wrap.appendChild(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const fogColor = 0xcfd9e0;
+  scene.fog = new THREE.Fog(fogColor, 30, 140);
+  scene.background = new THREE.Color(fogColor);
+
+  const camera = new THREE.PerspectiveCamera(42, window.innerWidth/window.innerHeight, 0.1, 400);
+
+  function resize(){
+    const w = window.innerWidth, h = window.innerHeight;
+    renderer.setSize(w,h);
+    camera.aspect = w/h;
+    camera.updateProjectionMatrix();
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  /* ---- Lighting: golden hour ---- */
+  const hemi = new THREE.HemisphereLight(0xfff3df, 0x4a5a52, .65);
+  scene.add(hemi);
+  const sun = new THREE.DirectionalLight(0xffe2b0, 2.2);
+  sun.position.set(-26, 22, 18);
+  sun.castShadow = true;
+  sun.shadow.mapSize.set(2048,2048);
+  sun.shadow.camera.left = -40; sun.shadow.camera.right = 40;
+  sun.shadow.camera.top = 40; sun.shadow.camera.bottom = -40;
+  sun.shadow.camera.far = 120;
+  sun.shadow.bias = -0.0015;
+  scene.add(sun);
+  const fill = new THREE.PointLight(0xffcf8e, 60, 60, 2);
+  fill.position.set(6, 6, 10);
+  scene.add(fill);
+
+  /* ---- Materials ---- */
+  const matConcrete = new THREE.MeshStandardMaterial({ color:0xefece2, roughness:.85, metalness:.02 });
+  const matConcreteDark = new THREE.MeshStandardMaterial({ color:0x2b2e33, roughness:.6, metalness:.15 });
+  const matWood = new THREE.MeshStandardMaterial({ color:0xa9793f, roughness:.55, metalness:.05 });
+  const matGlass = new THREE.MeshPhysicalMaterial({ color:0xbfe0e6, roughness:.05, metalness:0, transmission:.85, thickness:.2, transparent:true, opacity:.55 });
+  const matGlassWarm = new THREE.MeshStandardMaterial({ color:0xffdca0, emissive:0xffb35c, emissiveIntensity:.9, roughness:.4 });
+  const matGrass = new THREE.MeshStandardMaterial({ color:0x869a72, roughness:1 });
+  const matWater = new THREE.MeshPhysicalMaterial({ color:0x2fb1c9, roughness:.05, metalness:.1, transmission:.6, thickness:1, transparent:true, opacity:.92 });
+  const matFloor = new THREE.MeshStandardMaterial({ color:0xe7e2d3, roughness:.5 });
+  const matStone = new THREE.MeshStandardMaterial({ color:0xd8d2c2, roughness:.9 });
+  const matFurniture = new THREE.MeshStandardMaterial({ color:0xcfd6cf, roughness:.7 });
+  const matWalnut = new THREE.MeshStandardMaterial({ color:0x5b3d26, roughness:.5 });
+
+  const villa = new THREE.Group();
+  scene.add(villa);
+
+  /* ---- Ground / lawn ---- */
+  const ground = new THREE.Mesh(new THREE.CircleGeometry(70, 64), matGrass);
+  ground.rotation.x = -Math.PI/2;
+  ground.receiveShadow = true;
+  villa.add(ground);
+
+  /* ---- Terrace stone deck ---- */
+  const deck = new THREE.Mesh(new THREE.BoxGeometry(26, .2, 16), matStone);
+  deck.position.set(0, .1, 6);
+  deck.receiveShadow = true;
+  villa.add(deck);
+
+  /* ---- Main volume: ground floor ---- */
+  function box(w,h,d,mat,x,y,z){
+    const m = new THREE.Mesh(new THREE.BoxGeometry(w,h,d), mat);
+    m.position.set(x,y,z);
+    m.castShadow = true; m.receiveShadow = true;
+    villa.add(m);
+    return m;
+  }
+
+  // Ground floor slab
+  box(20, .6, 12, matFloor, 0, .3, -2);
+  // Ground floor walls (white volume) — leave front open (glazing) via separate glass panel
+  box(20, 3.2, .4, matConcrete, 0, 2.1, -8);      // back wall
+  box(.4, 3.2, 12, matConcrete, -10, 2.1, -2);    // left wall
+  box(.4, 3.2, 12, matConcrete, 10, 2.1, -2);     // right wall
+  // Front glazing (facing terrace/pool, +z)
+  box(19.2, 3.0, .15, matGlass, 0, 2.0, 4);
+  // Roof slab (flat, cantilevered)
+  box(21.5, .5, 13.5, matConcrete, 0, 3.9, -2);
+
+  // Upper floor volume (bedroom block), offset, wood clad
+  box(11, 3, 7, matWood, -2, 6.4, -4);
+  box(10.4, .4, 6.6, matConcreteDark, -2, 8.05, -4);
+  // Upper floor windows strip (warm glow at dusk)
+  box(9.6, .9, .12, matGlassWarm, -2, 6.6, -0.55);
+
+  // Entrance canopy + door glow
+  box(3.4, .25, 2.4, matConcrete, 6.5, 3.6, 5.6);
+  box(1.6, 2.4, .12, matGlassWarm, 6.5, 1.4, 6.7);
+
+  // Chimney / vertical accent
+  box(1.1, 5.4, 1.1, matConcreteDark, 8.4, 2.9, -7);
+
+  /* ---- Interior hint furniture (visible through glass) ---- */
+  function sofaAt(x,z,rot){
+    const g = new THREE.Group();
+    const seat = new THREE.Mesh(new THREE.BoxGeometry(3.2, .5, 1.1), matFurniture);
+    seat.position.y = .55; seat.castShadow = true;
+    const back = new THREE.Mesh(new THREE.BoxGeometry(3.2, .7, .25), matFurniture);
+    back.position.set(0, .95, -.4); back.castShadow = true;
+    g.add(seat, back);
+    g.position.set(x, 0, z); g.rotation.y = rot;
+    villa.add(g);
+  }
+  sofaAt(-3, 0.5, 0);
+  const table = new THREE.Mesh(new THREE.CylinderGeometry(.9,.9,.5,24), matWalnut);
+  table.position.set(-3, .55, 2.4); table.castShadow = true;
+  villa.add(table);
+
+  /* ---- Kitchen island block (visible through glass, right side) ---- */
+  const island = new THREE.Mesh(new THREE.BoxGeometry(3.4, 1.05, 1.5), matStone);
+  island.position.set(4.5, .95, .8); island.castShadow = true; island.receiveShadow = true;
+  villa.add(island);
+
+  /* ---- Pool ---- */
+  const pool = new THREE.Mesh(new THREE.BoxGeometry(12, .3, 5.5), matWater);
+  pool.position.set(-1, .05, 12);
+  villa.add(pool);
+  const poolDeck = new THREE.Mesh(new THREE.BoxGeometry(15, .15, 8), matStone);
+  poolDeck.position.set(-1, .02, 12);
+  poolDeck.receiveShadow = true;
+  villa.add(poolDeck);
+
+  /* ---- Loungers ---- */
+  function lounger(x,z){
+    const g = new THREE.Group();
+    const base = new THREE.Mesh(new THREE.BoxGeometry(2.2,.15,.7), new THREE.MeshStandardMaterial({color:0xf2ede0, roughness:.8}));
+    base.position.y = .3; base.castShadow = true;
+    g.add(base);
+    g.position.set(x,0,z);
+    villa.add(g);
+  }
+  lounger(-6.5, 10.5); lounger(-6.5, 12.5);
+
+  /* ---- Simple trees (cone + cylinder) ---- */
+  function tree(x,z,scale){
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(.18,.24,2,8), matWalnut);
+    trunk.position.y = 1; trunk.castShadow = true;
+    const leaves = new THREE.Mesh(new THREE.SphereGeometry(1.4, 10, 10), new THREE.MeshStandardMaterial({color:0x4f6b46, roughness:1}));
+    leaves.position.y = 2.6; leaves.castShadow = true;
+    g.add(trunk, leaves);
+    g.scale.setScalar(scale);
+    g.position.set(x,0,z);
+    villa.add(g);
+  }
+  [[-16,-10,1.3],[-19,-2,1.6],[16,-14,1.1],[19,-4,1.4],[-14,16,1.2],[15,18,1.5],[-22,10,1.8],[22,8,1.3]].forEach(([x,z,s])=>tree(x,z,s));
+
+  /* ---- distant hills for depth ---- */
+  const hillMat = new THREE.MeshStandardMaterial({ color:0x7f9a86, roughness:1 });
+  const hill = new THREE.Mesh(new THREE.SphereGeometry(50, 24, 24, 0, Math.PI*2, 0, Math.PI/2), hillMat);
+  hill.position.set(0, -46, -60);
+  hill.scale.set(1.8, .6, 1);
+  villa.add(hill);
+
+  /* ============ CAMERA PATH ============ */
+  // Waypoints: [x,y,z] position + [x,y,z] lookAt, indexed 0..5 matching beats
+  const path = [
+    { pos:[0, 34, 46],   look:[0, 2, -2] },   // 0 hero — aerial
+    { pos:[0, 16, 34],   look:[0, 3, -2] },   // 1 approach — descending
+    { pos:[7.5, 3.4, 11], look:[6.5, 2, 5.5] }, // 2 entrance close
+    { pos:[-1.5, 2.4, 6.5], look:[-3, 1.6, -3] }, // 3 living room interior
+    { pos:[-1, 9, 20],   look:[-1, .3, 12] }, // 4 pool orbit (elevated)
+    { pos:[26, 14, 40],  look:[0, 3, 0] },    // 5 pull back dusk
+  ];
+
+  const camPos = new THREE.Vector3().set(...path[0].pos);
+  const camLook = new THREE.Vector3().set(...path[0].look);
+  camera.position.copy(camPos);
+  camera.lookAt(camLook);
+
+  const state = { t: 0 }; // 0..(path.length-1)
+
+  function updateCameraFromT(t){
+    const n = path.length - 1;
+    const clamped = Math.max(0, Math.min(n, t));
+    const i = Math.min(n-1, Math.floor(clamped));
+    const f = clamped - i;
+    const a = path[i], b = path[i+1] || path[i];
+    const ease = f*f*(3-2*f); // smoothstep for gentler easing between waypoints
+    const px = THREE.MathUtils.lerp(a.pos[0], b.pos[0], ease);
+    const py = THREE.MathUtils.lerp(a.pos[1], b.pos[1], ease);
+    const pz = THREE.MathUtils.lerp(a.pos[2], b.pos[2], ease);
+    const lx = THREE.MathUtils.lerp(a.look[0], b.look[0], ease);
+    const ly = THREE.MathUtils.lerp(a.look[1], b.look[1], ease);
+    const lz = THREE.MathUtils.lerp(a.look[2], b.look[2], ease);
+    camera.position.set(px,py,pz);
+    camera.lookAt(lx,ly,lz);
+  }
+
+  /* subtle idle sway for cinematic life even while scroll is static */
+  let idle = 0;
+  function render(){
+    idle += 0.004;
+    if(!reduced){
+      camera.position.x += Math.sin(idle)*0.004;
+      camera.position.y += Math.cos(idle*.7)*0.003;
+    }
+    renderer.render(scene, camera);
+    requestAnimationFrame(render);
+  }
+
+  /* ============ SCROLL DRIVING ============ */
+  const beats = gsap.utils.toArray('.beat');
+  const total = beats.length - 1;
+
+  ScrollTrigger.create({
+    trigger: '#scrollTrack',
+    start: 'top top',
+    end: 'bottom bottom',
+    scrub: 0.7,
+    onUpdate(self){
+      const t = self.progress * total;
+      updateCameraFromT(t);
+      document.getElementById('navProgress').style.width = (self.progress*100) + '%';
+    }
+  });
+
+  beats.forEach((beat)=>{
+    const tag = beat.querySelector('.beat-tag');
+    const title = beat.querySelector('.beat-title');
+    const sub = beat.querySelector('.beat-sub');
+    const targets = [tag, title, sub].filter(Boolean);
+    if(!targets.length) return;
+    gsap.timeline({ scrollTrigger:{ trigger:beat, start:'top 55%', toggleActions:'play none none reverse' } })
+      .to(targets, { opacity:1, y:0, duration:1, ease:'power3.out', stagger:.12 });
+  });
+
+  /* hero intro */
+  function heroIntro(){
+    const tl = gsap.timeline({ defaults:{ ease:'power3.out' } });
+    tl.to('.hero-beat .kicker', { opacity:1, duration:1 }, .1)
+      .to('.hero-beat h1', { opacity:1, duration:1.4 }, .3)
+      .to('.hero-beat .sub', { opacity:1, duration:1 }, 1.0);
+  }
+
+  const nav = document.getElementById('siteNav');
+  ScrollTrigger.create({
+    trigger:'.hero-beat', start:'bottom top+=100',
+    onEnter(){ nav.classList.add('show','solid'); },
+    onLeaveBack(){ nav.classList.remove('show','solid'); }
+  });
+
+  /* ============ PRELOAD (scene is procedural, just wait a tick for GPU upload) ============ */
+  const pre = document.getElementById('preloader');
+  const pct = document.getElementById('preloadPct');
+  let p = 0;
+  const iv = setInterval(()=>{
+    p += Math.random()*22 + 10;
+    if(p >= 100){
+      p = 100; clearInterval(iv);
+      pct.textContent = 'Bereit — 100%';
+      renderer.render(scene, camera); // warm up
+      setTimeout(()=>{ pre.classList.add('done'); render(); heroIntro(); ScrollTrigger.refresh(); }, 350);
+    } else {
+      pct.textContent = 'Baue 3D-Modell … ' + Math.round(p) + '%';
+    }
+  }, 90);
+
+  /* CTA form (demo) */
+  document.getElementById('viewingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const btn = this.querySelector('button');
+    const original = btn.textContent;
+    btn.textContent = 'Anfrage gesendet';
+    setTimeout(()=>{ btn.textContent = original; this.reset(); }, 2400);
+  });
+})();
+</script>
+</body>
+</html>
