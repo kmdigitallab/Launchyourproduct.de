@@ -257,7 +257,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @media(max-width:700px){.team-grid{grid-template-columns:1fr;}}
 .team-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:2.4rem;transition:transform .4s cubic-bezier(.22,.9,.24,1),box-shadow .4s ease,border-color .3s ease;}
 .team-card:hover{transform:translateY(-6px);box-shadow:0 26px 50px rgba(14,14,16,.1),0 0 34px rgba(204,163,0,.14);border-color:rgba(204,163,0,.4);}
-.team-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(155deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:1.2rem;}
+.team-av{width:72px;height:72px;border-radius:50%;background:linear-gradient(155deg,var(--gold),var(--gold-light));display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1.3rem;color:var(--ink);margin-bottom:1.2rem;overflow:hidden;}
+.team-av img{width:100%;height:100%;object-fit:cover;display:block;}
 .team-card h4{font-size:1.1rem;margin-bottom:.15rem;}
 .team-card .role{font-size:.82rem;color:var(--gold);font-weight:600;margin-bottom:1rem;}
 .team-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0;}
@@ -685,13 +686,13 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 
       <div class="team-grid">
         <div class="team-card reveal">
-          <div class="team-av serif">HK</div>
+          <div class="team-av"><img src="images/team-heidrun.jpg" alt="Heidrun Keim" loading="lazy"></div>
           <h4>Heidrun Keim</h4>
           <div class="role" data-i18n="team1.role">Geschäftsführerin xC Consultants / xC-KI</div>
           <p data-i18n="team1.bio">Heidrun Keim bringt mehr als 35 Jahre Erfahrung in Marketing und Vertrieb ein. Sie sorgt dafür, dass KI-Lösungen nicht nur technisch möglich sind, sondern für Kunden verständlich, nutzbar und verkaufsstark werden.</p>
         </div>
         <div class="team-card reveal" style="transition-delay:.05s">
-          <div class="team-av serif">IS</div>
+          <div class="team-av"><img src="images/team-irena.jpg" alt="Dr. Irena Schindler" loading="lazy"></div>
           <h4>Dr. Irena Schindler</h4>
           <div class="role" data-i18n="team2.role">Geschäftsführerin AIDEN · KI-Expertin</div>
           <p data-i18n="team2.bio">Dr. Irena Schindler sorgt dafür, dass aus Ideen stabile, intelligente und praxistaugliche KI-Agenten werden, die Unternehmen im Alltag wirklich entlasten.</p>
