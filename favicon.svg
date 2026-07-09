@@ -1,9 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="16" fill="#07090a"/>
-  <rect x="4.5" y="4.5" width="55" height="55" rx="13" fill="#16a34a"/>
-  <polygon points="32,10 42,18 48,50 40,44 28,44 20,50 26,18" fill="#fff"/>
-  <polygon points="20,50 12,54 20,40" fill="#fff"/>
-  <polygon points="48,50 56,54 48,40" fill="#fff"/>
-  <circle cx="32" cy="30" r="4" fill="#16a34a"/>
-  <polygon points="28,44 34,58 40,44" fill="#e6f0dc"/>
+  <rect width="64" height="64" rx="15" fill="#0d1117"/>
+  <rect x="5" y="5" width="54" height="54" rx="13" fill="#154a2c"/>
+  <text x="32" y="41" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="19" letter-spacing="3" fill="#ffffff">LYP</text>
 </svg>
