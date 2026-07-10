@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bestellübersicht — AIDEN</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
+<style>
+:root{
+  --ink:#000000;
+  --paper:#ffffff;
+  --paper-2:#f2f2f2;
+  --gold:#cca300;
+  --gold-text:#8a6d00;
+  --gold-light:#ffda47;
+  --gold-dim:rgba(204,163,0,.16);
+  --muted:#5c5c5c;
+  --muted-on-ink:#b8b8b8;
+  --line:rgba(0,0,0,.10);
+  --line-on-ink:rgba(255,218,71,.14);
+  --r:22px;
+  --shadow:0 30px 70px rgba(0,0,0,.16);
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;transition-duration:.001ms!important;}}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.serif{font-family:"Iowan Old Style","Palatino Linotype","Book Antiqua",Georgia,serif;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:640px;margin:0 auto;padding:0 24px;}
+
+/* nav */
+nav.site{position:sticky;top:0;z-index:50;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.85);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--line);}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.brand{display:flex;align-items:center;gap:.6rem;}
+.brand-logo{height:24px;width:auto;display:block;}
+.back-link{font-size:.85rem;font-weight:700;color:var(--muted);display:flex;align-items:center;gap:.4rem;}
+.back-link:hover{color:var(--ink);}
+
+/* layout */
+main{padding:clamp(2.5rem,6vw,4.5rem) 0 5rem;}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-text);margin-bottom:1rem;}
+.eyebrow::before{content:'';width:24px;height:1px;background:var(--gold);}
+h1{font-size:clamp(1.7rem,4vw,2.3rem);font-weight:600;letter-spacing:-.01em;margin:0 0 .6rem;}
+.lead{font-size:1rem;color:var(--muted);margin:0 0 2.4rem;max-width:48ch;}
+
+/* order card */
+.order-card{background:#fff;border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-bottom:1.6rem;}
+.order-head{background:linear-gradient(160deg,var(--ink),#1a1a1a);color:#fff;padding:2rem 2.2rem;position:relative;}
+.order-tag{display:inline-block;background:var(--gold);color:#000;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:.3rem .7rem;border-radius:100px;margin-bottom:1rem;}
+.order-name{font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:.5rem;}
+.order-price{font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:2.6rem;color:#fff;}
+.order-price .unit{font-family:inherit;font-style:normal;font-size:1rem;color:var(--muted-on-ink);}
+.order-was{font-size:.85rem;color:var(--muted-on-ink);text-decoration:line-through;margin-top:.3rem;}
+.order-save{font-size:.85rem;color:var(--gold-light);font-weight:600;margin-top:.3rem;}
+.order-body{padding:1.8rem 2.2rem 2.2rem;}
+.order-bestfor{font-size:.86rem;color:var(--gold-text);font-weight:600;margin-bottom:1.4rem;}
+.order-feats{list-style:none;margin:0 0 1.6rem;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.7rem .9rem;}
+.order-feats li{display:flex;gap:.5rem;align-items:flex-start;font-size:.86rem;}
+.order-feats svg{flex-shrink:0;color:var(--gold-text);margin-top:.15rem;}
+.order-extra{font-size:.8rem;color:var(--muted);padding-top:1.2rem;border-top:1px solid var(--line);}
+
+/* trust */
+.trust-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem;}
+.trust-badge{display:flex;align-items:center;gap:.5rem;font-size:.78rem;color:var(--muted);background:var(--paper-2);border-radius:100px;padding:.5rem .9rem;}
+.trust-badge svg{color:var(--gold-text);flex-shrink:0;}
+
+/* button */
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;font-family:inherit;font-weight:600;font-size:.95rem;padding:1.05rem 1.9rem;border-radius:var(--r);border:1px solid transparent;cursor:pointer;transition:transform .18s ease,box-shadow .25s ease;width:100%;}
+.btn-gold{background:var(--gold);color:#000000;box-shadow:0 10px 30px rgba(204,163,0,.4),0 0 26px rgba(204,163,0,.22);}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 14px 34px rgba(204,163,0,.45);}
+.secure-note{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:.8rem;color:var(--muted);margin-top:1rem;text-align:center;}
+.secure-note svg{flex-shrink:0;color:var(--gold-text);}
+
+@media(max-width:480px){
+  .order-head,.order-body{padding-left:1.4rem;padding-right:1.4rem;}
+  .order-feats{grid-template-columns:1fr;}
+  .order-price{font-size:2.1rem;}
+}
+</style>
+</head>
+<body>
+
+<nav class="site">
+  <div class="nav-inner">
+    <a href="index.html" class="brand">
+      <img src="images/aiden-logo.png" alt="AIDEN" class="brand-logo" width="562" height="133">
+    </a>
+    <a href="index.html#pricing" class="back-link">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      Zurück zu den Tarifen
+    </a>
+  </div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <div class="eyebrow">Bestellübersicht</div>
+    <h1 id="pageTitle">Ihr Tarif</h1>
+    <p class="lead">Prüfen Sie Ihre Auswahl — die eigentliche Zahlung wickeln wir über unseren zertifizierten Zahlungsdienstleister Stripe ab, damit Ihre Daten jederzeit sicher sind.</p>
+
+    <div class="order-card" id="orderCard">
+      <div class="order-head">
+        <div class="order-tag" id="orderTag" style="display:none;"></div>
+        <div class="order-name" id="orderName">Lädt…</div>
+        <div class="order-price serif" id="orderPrice"></div>
+        <div class="order-was mono" id="orderWas"></div>
+        <div class="order-save" id="orderSave"></div>
+      </div>
+      <div class="order-body">
+        <div class="order-bestfor" id="orderBestfor"></div>
+        <ul class="order-feats" id="orderFeats"></ul>
+        <div class="order-extra" id="orderExtra"></div>
+      </div>
+    </div>
+
+    <div class="trust-row">
+      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>In der EU gehostet</div>
+      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>DSGVO-konform</div>
+      <div class="trust-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-4z"/></svg>Zahlung via Stripe</div>
+    </div>
+
+    <a href="#" id="payButton" target="_blank" rel="noopener" class="btn btn-gold">
+      Jetzt sicher bezahlen
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </a>
+    <p class="secure-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+      Sie werden zur verschlüsselten Bezahlseite unseres Zahlungsdienstleisters Stripe weitergeleitet.
+    </p>
+  </div>
+</main>
+
+<script>
+const CHECK = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>';
+
+const PLANS = {
+  basic: {
+    name: 'Einsteiger · Basic',
+    price: '69&nbsp;€', unit: '&nbsp;/ Monat',
+    was: '98&nbsp;€ / Monat', save: 'Sie sparen 240&nbsp;€ im 1. Jahr',
+    bestfor: 'Am besten für: Einzelunternehmer & Praxisstart',
+    extra: 'Zusatzminute 0,39&nbsp;€',
+    feats: ['100 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'],
+    url: 'https://buy.stripe.com/7sY3cw0webOEdM17Pw9sk01'
+  },
+  comfort: {
+    name: 'Comfort', tag: 'Beliebtester Plan',
+    price: '129&nbsp;€', unit: '&nbsp;/ Monat',
+    was: '189&nbsp;€ / Monat', save: 'Sie sparen 720&nbsp;€ im 1. Jahr',
+    bestfor: 'Am besten für: wachsende Teams mit mehreren Kanälen',
+    extra: 'Zusatzminute 0,32&nbsp;€',
+    feats: ['200 Freiminuten','1 KI-Assistent','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Priorität-Support & Wissensdatenbank'],
+    url: 'https://buy.stripe.com/dRm9AUgvc3i8cHX2vc9sk07'
+  },
+  premium: {
+    name: 'Für größere Unternehmen · Premium',
+    price: '249&nbsp;€', unit: '&nbsp;/ Monat',
+    was: '399&nbsp;€ / Monat', save: 'Sie sparen 1.800&nbsp;€ im 1. Jahr',
+    bestfor: 'Am besten für: größere Unternehmen mit hohem Anrufvolumen',
+    extra: 'Zusatzminute 0,28&nbsp;€',
+    feats: ['600 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'],
+    url: 'https://buy.stripe.com/bJeaEYbaS8Cs0Zfd9Q9sk05'
+  },
+  smart: {
+    name: 'Smarte Lösung',
+    price: '2.349&nbsp;€', unit: '&nbsp;einmalig',
+    was: '4.536&nbsp;€ einmalig', save: 'Sie sparen 2.187&nbsp;€ Einführungspreis',
+    bestfor: 'Am besten für: planungssichere Budgets ohne laufende Kosten',
+    extra: 'Einmalzahlung, kein Abo',
+    feats: ['800 Freiminuten','3 KI-Assistenten','24/7 Telefonannahme','WhatsApp & Telegram Integration','API-Zugang','Perfekte Einrichtung','Terminbuchung & Kalender','Alle Funktionen inklusive'],
+    url: 'https://buy.stripe.com/28E28sfr82e48rH0n49sk03'
+  }
+};
+
+const params = new URLSearchParams(location.search);
+const plan = PLANS[params.get('plan')] || PLANS.comfort;
+
+document.getElementById('pageTitle').textContent = plan.name;
+document.getElementById('orderName').textContent = plan.name;
+document.getElementById('orderPrice').innerHTML = plan.price + '<span class="unit">' + plan.unit + '</span>';
+document.getElementById('orderWas').innerHTML = plan.was;
+document.getElementById('orderSave').innerHTML = plan.save;
+document.getElementById('orderBestfor').textContent = plan.bestfor;
+document.getElementById('orderExtra').innerHTML = plan.extra;
+document.getElementById('orderFeats').innerHTML = plan.feats.map(f => '<li>' + CHECK + '<span>' + f + '</span></li>').join('');
+document.getElementById('payButton').href = plan.url;
+if (plan.tag) {
+  const tagEl = document.getElementById('orderTag');
+  tagEl.textContent = plan.tag;
+  tagEl.style.display = 'inline-block';
+}
+document.title = plan.name + ' — AIDEN';
+</script>
+</body>
+</html>
