@@ -122,12 +122,12 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
 @media(max-width:640px){nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}}
-.brand{display:flex;align-items:center;gap:.6rem;}
+.brand{display:flex;flex-direction:column;gap:1px;}
 .brand-logo{height:26px;width:auto;display:block;}
-.brand-text{display:flex;flex-direction:column;justify-content:center;gap:1px;}
-.brand-tagline{font-size:.56rem;font-weight:600;letter-spacing:.11em;color:var(--ink);line-height:1.1;}
+.brand-top{display:flex;align-items:center;gap:.6rem;}
+.brand-tagline{font-size:.56rem;font-weight:600;letter-spacing:.11em;color:var(--ink);line-height:1.1;padding-top:2px;}
 .brand-legal-name{font-size:.48rem;font-weight:500;letter-spacing:.01em;color:var(--muted);line-height:1.1;white-space:nowrap;}
-@media(max-width:640px){.brand-text{display:none;}}
+@media(max-width:640px){.brand-tagline,.brand-legal-name{display:none;}}
 .nav-links{display:flex;gap:2.1rem;}
 .nav-links a{font-size:.86rem;font-weight:700;color:var(--ink);opacity:.78;transition:color .2s,opacity .2s;}
 .nav-links a:hover{color:var(--gold-text);opacity:1;}
@@ -455,11 +455,11 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 <nav class="site" id="siteNav">
   <div class="nav-inner">
     <a href="#top" class="brand">
-      <img src="images/aiden-logo.png" alt="AIDEN — Artificial Intelligence Developing Service LLC" class="brand-logo" width="600" height="153">
-      <span class="brand-text">
+      <span class="brand-top">
+        <img src="images/aiden-logo.png" alt="AIDEN — Artificial Intelligence Developing Service LLC" class="brand-logo" width="600" height="153">
         <span class="brand-tagline">AIO – ALL IN ONE</span>
-        <span class="brand-legal-name">Artificial Intelligence Developing Service LLC</span>
       </span>
+      <span class="brand-legal-name">Artificial Intelligence Developing Service LLC</span>
     </a>
     <div class="nav-links">
       <a href="https://billing.stripe.com/p/login/bJe00k6UCaKA8rH6Ls9sk00" target="_blank" rel="noopener" data-i18n="nav.portal">Kundenportal</a>
