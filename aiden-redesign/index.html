@@ -1182,6 +1182,19 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   if(!el) return;
   setTimeout(()=>el.classList.add('in'), 300);
 
+  // The 3D scene streams from an external CDN (prod.spline.design). If the
+  // network blocks or fails to reach it (offline, restrictive proxy, ad
+  // blocker), the viewer's internal fetch rejects — swallow that specific,
+  // non-critical rejection so it never surfaces as an uncaught page error;
+  // the hero still works fine with just no robot rendered.
+  window.addEventListener('unhandledrejection', (e) => {
+    const msg = String((e.reason && e.reason.message) || e.reason || '');
+    const stack = String((e.reason && e.reason.stack) || '');
+    if(msg.includes('Failed to fetch') && (stack.includes('spline') || document.querySelector('spline-viewer'))){
+      e.preventDefault();
+    }
+  });
+
   // Forward page-wide mouse position to the Spline canvas as synthetic pointer
   // events, so a scene built with a "look at mouse" interaction reacts to the
   // cursor anywhere on the page — not only while hovering the small viewer area.
