@@ -118,39 +118,61 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @keyframes navOrbit{to{--na:360deg;}}
 @property --na{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .nav-inner{max-width:1180px;margin:0 auto;padding:0 26px;width:100%;display:flex;align-items:center;justify-content:space-between;}
+.nav-right{display:flex;align-items:center;gap:.5rem;order:5;}
 @media(max-width:640px){
   nav.site{top:10px;left:10px;right:10px;height:64px;border-radius:18px;}
+  /* Blur + rotierender Rand sind auf mobilen Geräten (echtes iOS Safari) beim
+     Scrollen sichtbar ruckelig/instabil — auf kleinen Screens daher deaktiviert. */
   nav.site,nav.site.scrolled{background:rgba(255,255,255,.94);backdrop-filter:none;-webkit-backdrop-filter:none;}
   nav.site::before{display:none;}
 }
-.brand{display:flex;align-items:center;gap:.6rem;}
+.brand{display:flex;align-items:center;gap:.6rem;order:1;}
 .brand-logo{height:26px;width:auto;display:block;}
-.brand-tagline{font-size:.58rem;font-weight:600;letter-spacing:.12em;color:var(--gold-text);line-height:1.2;padding-top:2px;}
-@media(max-width:640px){.brand-tagline{display:none;}}
-.nav-links{display:flex;gap:2.1rem;}
+.brand-tagline{font-size:.58rem;font-weight:600;letter-spacing:.12em;color:var(--ink);line-height:1.2;padding-top:2px;white-space:nowrap;}
+@media(max-width:900px){.brand-tagline{font-size:.5rem;letter-spacing:.08em;}}
+.nav-links{display:flex;gap:2.1rem;order:2;}
 .nav-links a{font-size:.86rem;font-weight:700;color:var(--ink);opacity:.78;transition:color .2s,opacity .2s;}
 .nav-links a:hover{color:var(--gold-text);opacity:1;}
-.nav-burger{display:none;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:none;background:transparent;color:var(--ink);cursor:pointer;margin-right:.4rem;flex-shrink:0;}
+.nav-burger{display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--ink);cursor:pointer;flex-shrink:0;}
 .nav-burger:hover{background:rgba(14,14,16,.06);}
+.cta-short{display:none;}
 @media(max-width:900px){
   .nav-links{display:none;}
   .nav-burger{display:flex;}
 }
-.mobile-menu{display:none;flex-direction:column;gap:.2rem;padding:.6rem 1.1rem 1.2rem;border-top:1px solid var(--line);}
+.mobile-menu{display:none;flex-direction:column;gap:.2rem;width:100%;padding:.6rem 1.1rem 1.2rem;margin-top:.6rem;background:rgba(255,255,255,.98);border-top:1px solid var(--line);border-radius:0 0 18px 18px;}
+.mobile-menu-tagline{font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--gold-text);padding:.6rem 0 .3rem;display:block;}
 .mobile-menu a{padding:.85rem 0;font-size:.95rem;font-weight:700;color:var(--ink);border-bottom:1px solid var(--line);}
 .mobile-menu a:last-child{border-bottom:none;}
 .mobile-menu.open{display:flex;}
-@media(max-width:900px){
-  nav.site{flex-wrap:wrap;height:auto;}
-  nav.site.menu-open .nav-inner{padding-bottom:0;}
-}
-.lang-switch{display:flex;align-items:center;gap:2px;padding:3px;border-radius:100px;background:rgba(14,14,16,.05);border:1px solid var(--line);margin-right:.9rem;}
+.lang-switch{display:flex;align-items:center;gap:2px;padding:3px;border-radius:100px;background:rgba(14,14,16,.05);border:1px solid var(--line);order:4;}
 .lang-btn{font-family:inherit;font-size:.7rem;font-weight:700;letter-spacing:.03em;color:var(--muted);background:transparent;border:none;border-radius:100px;padding:.4rem .7rem;cursor:pointer;transition:background .2s,color .2s;}
 .lang-btn:hover{color:var(--ink);}
 .lang-btn.active{background:var(--gold);color:#000000;}
-@media(max-width:560px){.lang-switch{margin-right:.5rem;}.lang-btn{padding:.35rem .55rem;}}
-.btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;}
+.btn-phone{display:flex;align-items:center;gap:.55rem;line-height:1.15;text-align:left;padding:.5rem 1.1rem;order:3;}
 .btn-phone span{font-size:.78rem;font-weight:600;}
+.mobile-menu-cta{display:none;}
+.mobile-menu-lang{display:none;}
+@media(max-width:900px){
+  nav.site{flex-wrap:wrap;height:auto;}
+  nav.site.menu-open .nav-inner{padding-bottom:0;}
+  .brand-logo{height:18px;}
+  .nav-right{gap:.4rem;}
+  .btn-phone{padding:.42rem .65rem;gap:0;order:1;}
+  .btn-phone svg{display:none;}
+  .btn-phone span{font-size:.66rem;}
+  .cta-full{display:none;}
+  .cta-short{display:inline;}
+  .lang-switch:not(.mobile-menu-lang){display:none;}
+  .nav-burger{width:30px;height:30px;order:2;}
+  .mobile-menu-cta{display:block;text-align:center;margin:1rem 0 .3rem;}
+  .mobile-menu-lang{display:flex;margin:.5rem 0 .2rem;align-self:flex-start;}
+}
+@media(max-width:340px){
+  .brand-tagline{display:none;}
+  .btn-phone{padding:.38rem .5rem;}
+  .btn-phone span{font-size:.6rem;}
+}
 
 /* ── cursor glow ── */
 .cursor-glow{position:fixed;top:0;left:0;width:190px;height:190px;margin:-95px 0 0 -95px;border-radius:50%;pointer-events:none;z-index:2000;background:radial-gradient(circle,rgba(204,163,0,.14),transparent 70%);opacity:0;transition:opacity .3s ease,width .35s ease,height .35s ease,margin .35s ease;}
@@ -423,8 +445,10 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .cf-social a:hover{color:var(--gold-light);border-color:var(--gold-light);transform:translateY(-1px);}
 .cf-top{position:relative;z-index:2;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;max-width:1180px;width:100%;}
 .cf-brand{max-width:340px;}
-.cf-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:16px;}
-.cf-brand-logo{height:32px;}
+.cf-logo{display:flex;align-items:center;gap:.6rem;margin-bottom:6px;}
+.cf-brand-logo{height:32px;width:auto;flex-shrink:0;display:block;}
+.cf-brand-tagline{font-size:.6rem;font-weight:600;letter-spacing:.12em;color:var(--paper);opacity:.85;padding-top:2px;white-space:nowrap;}
+.cf-legal-name{font-size:.72rem;letter-spacing:.03em;color:var(--muted-on-ink);opacity:.75;margin:0 0 16px;}
 .cf-tag{font-size:.86rem;color:var(--muted-on-ink);line-height:1.7;}
 .cf-cols{display:flex;gap:56px;flex-wrap:wrap;}
 .cf-col h5{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-on-ink);margin-bottom:14px;font-weight:700;}
@@ -455,6 +479,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .process-card{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.6rem,4vw,2.6rem);}
 .process-card .path-step:last-of-type{border-bottom:none;}
 .sub-hero-lead{max-width:640px;}
+
 </style></head>
 <body class="has-announce">
 
@@ -470,28 +495,32 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 <nav class="site" id="siteNav">
   <div class="nav-inner">
     <a href="index.html" class="brand">
-      <img src="images/aiden-logo.png" alt="AIDEN" class="brand-logo" width="600" height="153">
+      <img src="images/aiden-logo.png" alt="AIDEN" class="brand-logo" width="562" height="133">
       <span class="brand-tagline">AIO – ALL IN ONE</span>
     </a>
     <div class="nav-links">
-      <a href="https://billing.stripe.com/p/login/bJe00k6UCaKA8rH6Ls9sk00" target="_blank" rel="noopener">Kundenportal</a>
+      <a href="kundenportal.html">Kundenportal</a>
       <a href="index.html#voice">Voice Agents</a>
       <a href="#top">Social Media Agent</a>
       <a href="index.html#stimmen">Referenzen</a>
     </div>
-    <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
-    </button>
-    <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold btn-phone">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg>
-      <span>Termin<br>buchen</span>
-    </a>
+    <div class="nav-right">
+      <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold btn-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg>
+        <span class="cta-full">Termin<br>buchen</span>
+        <span class="cta-short">Termin</span>
+      </a>
+      <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+      </button>
+    </div>
   </div>
   <div class="mobile-menu" id="mobileMenu">
-    <a href="https://billing.stripe.com/p/login/bJe00k6UCaKA8rH6Ls9sk00" target="_blank" rel="noopener">Kundenportal</a>
+    <a href="kundenportal.html">Kundenportal</a>
     <a href="index.html#voice">Voice Agents</a>
     <a href="#top">Social Media Agent</a>
     <a href="index.html#stimmen">Referenzen</a>
+    <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold mobile-menu-cta">Termin buchen</a>
   </div>
 </nav>
 
