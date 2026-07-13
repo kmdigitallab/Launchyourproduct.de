@@ -1245,7 +1245,22 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   // events, so a scene built with a "look at mouse" interaction reacts to the
   // cursor anywhere on the page — not only while hovering the small viewer area.
   const viewer = el.querySelector('spline-viewer');
-  if(!viewer || window.matchMedia('(pointer:coarse)').matches) return;
+  if(!viewer) return;
+
+  // Spline-Logo/Badge im Shadow DOM ausblenden, sobald es geladen ist —
+  // die Szene lädt asynchron, daher per MutationObserver statt festem Timeout.
+  function hideSplineBadge(){
+    if(!viewer.shadowRoot) return false;
+    const badge = viewer.shadowRoot.querySelector('#logo, a[href*="spline.design"]');
+    if(badge){ badge.style.display = 'none'; return true; }
+    return false;
+  }
+  if(!hideSplineBadge() && viewer.shadowRoot){
+    new MutationObserver((_, obs) => { if(hideSplineBadge()) obs.disconnect(); })
+      .observe(viewer.shadowRoot, { childList: true, subtree: true });
+  }
+
+  if(window.matchMedia('(pointer:coarse)').matches) return;
 
   function forward(type, e){
     const target = viewer.shadowRoot ? (viewer.shadowRoot.querySelector('canvas') || viewer) : viewer;
