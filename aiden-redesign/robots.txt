@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /checkout.html
+Disallow: /kundenportal.html
+
+Sitemap: https://aiden.ae/sitemap.xml
