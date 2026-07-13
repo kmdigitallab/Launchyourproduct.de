@@ -242,6 +242,15 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
 .hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
 @keyframes hubSpin{to{--a:360deg;}}
+@media(max-width:640px){
+  /* Kreis war auf schmalen Screens mit fixer Mindesthöhe (340px) unproportional
+     groß und wirkte leer — deutlich verkleinert. */
+  .beams-wrap{height:clamp(220px,64vw,300px);}
+  .node-label{width:40px;height:40px;}
+  .node-label svg{width:20px;height:20px;}
+  .hub-pill{width:100px;height:38px;}
+  .hub-pill span{font-size:.85rem;}
+}
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
