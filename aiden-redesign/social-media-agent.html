@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>AIDEN Social Media Agent — Content ohne täglichen Stress</title>
 <meta name="description" content="Der AIDEN Social Media Agent übernimmt Recherche, Planung, Texte, Bildideen und Veröffentlichung für Ihre Social-Media-Kanäle — regelmäßig sichtbar, ohne dass es im Tagesgeschäft untergeht. In der EU gehostet, DSGVO-konform.">
 <link rel="canonical" href="https://aiden.ae/aiden-social-media-agent">
@@ -101,18 +101,19 @@ em{font-style:italic;color:var(--gold-text);}
 .reveal.vis{opacity:1;transform:none;}
 
 /* ── announcement bar ── */
-.announce{position:fixed;top:0;left:0;right:0;z-index:310;display:flex;align-items:center;justify-content:center;gap:.6rem;height:40px;padding:0 44px 0 16px;background:#000000;border-bottom:1px solid rgba(255,218,71,.14);font-size:.78rem;font-weight:600;color:var(--gold-light);transition:transform .4s ease,opacity .4s ease;}
+.announce{position:fixed;top:0;left:0;right:0;z-index:310;display:flex;align-items:center;justify-content:center;gap:.6rem;height:40px;padding:0 calc(44px + env(safe-area-inset-right, 0px)) 0 calc(16px + env(safe-area-inset-left, 0px));background:#000000;border-bottom:1px solid rgba(255,218,71,.14);font-size:.78rem;font-weight:600;color:var(--gold-light);transition:transform .4s ease,opacity .4s ease;}
 .announce.hidden{transform:translateY(-100%);opacity:0;pointer-events:none;}
 .announce-dot{width:6px;height:6px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px rgba(74,222,128,.8);animation:announceDot 1.8s ease-in-out infinite;flex-shrink:0;}
 @keyframes announceDot{0%,100%{opacity:1;}50%{opacity:.4;}}
 .announce-link{flex-shrink:0;color:var(--gold-light);text-decoration:underline;text-underline-offset:2px;}
 .announce-close{position:absolute;right:12px;top:50%;transform:translateY(-50%);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);background:transparent;border:none;cursor:pointer;transition:color .2s,background .2s;}
+.announce-close::after{content:'';position:absolute;inset:-11px;}
 .announce-close:hover{color:#fff;background:rgba(255,255,255,.08);}
 body.has-announce nav.site{top:54px;}
 @media(max-width:640px){.announce{font-size:.7rem;padding:0 38px 0 12px;}.announce span.announce-text{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;}}
 
 /* ── nav ── */
-nav.site{position:fixed;top:14px;left:14px;right:14px;z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
+nav.site{position:fixed;top:14px;left:calc(14px + env(safe-area-inset-left, 0px));right:calc(14px + env(safe-area-inset-right, 0px));z-index:300;height:72px;display:flex;align-items:center;background:rgba(255,255,255,.55);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid transparent;border-radius:22px;box-shadow:0 8px 32px rgba(14,14,16,.08),inset 0 1px 0 rgba(255,255,255,.6);transition:background .3s,box-shadow .3s,border-color .3s,top .4s ease;}
 nav.site.scrolled{background:rgba(255,255,255,.75);box-shadow:0 12px 40px rgba(14,14,16,.12),inset 0 1px 0 rgba(255,255,255,.7);}
 nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;padding:1.5px;background:conic-gradient(from var(--na,0deg),rgba(204,163,0,.35),var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,rgba(204,163,0,.35) 100%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:navOrbit 4s linear infinite;pointer-events:none;}
 @keyframes navOrbit{to{--na:360deg;}}
@@ -134,7 +135,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .nav-links{display:flex;gap:2.1rem;order:2;}
 .nav-links a{font-size:.86rem;font-weight:700;color:var(--ink);opacity:.78;transition:color .2s,opacity .2s;}
 .nav-links a:hover{color:var(--gold-text);opacity:1;}
-.nav-burger{display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--ink);cursor:pointer;flex-shrink:0;}
+.nav-burger{position:relative;display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;border:none;background:transparent;color:var(--ink);cursor:pointer;flex-shrink:0;}
+.nav-burger::after{content:'';position:absolute;inset:-7px;}
 .nav-burger:hover{background:rgba(14,14,16,.06);}
 .cta-short{display:none;}
 @media(max-width:900px){
@@ -182,7 +184,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .btn-gold,.btn-outline{transition:transform .18s ease,box-shadow .25s ease,background .25s ease,border-color .25s ease;}
 
 /* ── WhatsApp bubble ── */
-.wa-bubble{position:fixed;right:22px;bottom:22px;z-index:400;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .25s ease;}
+.wa-bubble{position:fixed;right:calc(22px + env(safe-area-inset-right, 0px));bottom:calc(22px + env(safe-area-inset-bottom, 0px));z-index:400;width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.4);transition:transform .25s ease;}
 .wa-bubble:hover{transform:scale(1.03);}
 .wa-bubble::after{content:"";position:absolute;top:2px;right:2px;width:13px;height:13px;border-radius:50%;background:#e0333f;border:2px solid #fff;}
 .wa-bubble svg{width:30px;height:30px;}
@@ -442,7 +444,8 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 @keyframes cfParticleRise{to{transform:translateY(-520px);opacity:0;}}
 @media(prefers-reduced-motion:reduce){.cf-glow,.cf-particles span{animation:none;}}
 .cf-social{display:flex;gap:.6rem;margin-top:1.1rem;}
-.cf-social a{width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);transition:color .2s,border-color .2s,transform .2s;}
+.cf-social a{position:relative;width:34px;height:34px;border-radius:50%;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;color:var(--muted-on-ink);transition:color .2s,border-color .2s,transform .2s;}
+.cf-social a::after{content:'';position:absolute;inset:-5px;}
 .cf-social a:hover{color:var(--gold-light);border-color:var(--gold-light);transform:translateY(-1px);}
 .cf-top{position:relative;z-index:2;display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;max-width:1180px;width:100%;}
 .cf-brand{max-width:340px;}
