@@ -1,23 +1,15 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AIDEN Social Media Agent — Content ohne täglichen Stress</title>
-<meta name="description" content="Der AIDEN Social Media Agent übernimmt Recherche, Planung, Texte, Bildideen und Veröffentlichung für Ihre Social-Media-Kanäle — regelmäßig sichtbar, ohne dass es im Tagesgeschäft untergeht. In der EU gehostet, DSGVO-konform.">
-<link rel="canonical" href="https://aiden.ae/aiden-social-media-agent">
+<title>AGB — AIDEN</title>
+<meta name="description" content="Allgemeine Geschäftsbedingungen der AIDEN AIO Artificial Intelligence Developing Services L.L.C. — Voice Agents, Social Media Agents und individuelle KI-Automatisierung.">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://aiden.ae/aiden-agb">
 <link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="images/favicon-16.png" sizes="16x16" type="image/png">
 <link rel="apple-touch-icon" href="images/favicon-180.png">
-<meta property="og:type" content="website">
-<meta property="og:title" content="AIDEN Social Media Agent — Content ohne täglichen Stress">
-<meta property="og:description" content="Recherche, Texte, Bildideen und Veröffentlichung — automatisiert, markenkonform, in der EU gehostet.">
-<meta property="og:image" content="https://aiden.ae/images/aiden-logo.png">
-<meta property="og:locale" content="de_DE">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"AIDEN Social Media Agent","provider":{"@type":"Organization","name":"AIDEN","url":"https://aiden.ae"},"areaServed":"EU"}
-</script>
 <style>
 :root{
   --ink:#000000;
@@ -210,8 +202,20 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .hero-robot{position:absolute;right:2%;bottom:2%;width:54%;height:70%;z-index:0;opacity:0;transform:scale(1.7);transform-origin:bottom right;transition:opacity 1.3s ease,transform 1.8s cubic-bezier(.16,1,.3,1);pointer-events:auto;}
 .hero-robot.in{opacity:.68;transform:scale(1);}
 .hero-robot spline-viewer{width:100%;height:100%;display:block;}
-.hero-robot-cover{position:absolute;right:0;bottom:0;width:132px;height:38px;background:radial-gradient(ellipse at bottom right,var(--ink) 55%,transparent 100%);pointer-events:none;z-index:2;}
-@media(max-width:980px){.hero-robot{display:none;}}
+.hero-robot-cover{position:absolute;right:0;bottom:0;width:38%;height:16%;min-width:300px;min-height:100px;background:var(--ink);-webkit-mask-image:linear-gradient(to top left,#000 55%,transparent 100%);mask-image:linear-gradient(to top left,#000 55%,transparent 100%);pointer-events:none;z-index:5;}
+@media(max-width:980px){
+  /* Auf Mobile als dezentes Hintergrund-Element statt seitlich neben dem Text,
+     da der Hero-Grid dort auf eine Spalte umbricht. Geringere Deckkraft und
+     pointer-events:none, damit Touch-Scrollen und Lesbarkeit nicht leiden. */
+  .hero-robot{
+    display:block;right:50%;bottom:auto;top:2%;
+    width:110%;height:52%;
+    transform:translateX(50%) scale(1.5);
+    pointer-events:none;
+  }
+  .hero-robot.in{opacity:.22;transform:translateX(50%) scale(1);}
+  .hero-robot-cover{width:52%;height:15%;min-width:180px;min-height:56px;}
+}
 .hero-inner{position:relative;z-index:1;max-width:840px;}
 .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(1.5rem,4vw,3rem);align-items:center;}
 @media(max-width:980px){.hero-grid{grid-template-columns:1fr;}}
@@ -227,6 +231,15 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
 .hub-pill{position:absolute;left:52%;top:2%;right:auto;transform:translateX(-50%);width:128px;height:48px;border-radius:100px;background:#000000;border:1px solid var(--line-on-ink);display:flex;align-items:center;justify-content:center;box-shadow:0 20px 50px rgba(0,0,0,.4);}
 .hub-pill::before{content:'';position:absolute;inset:-1px;border-radius:100px;padding:1px;background:conic-gradient(from var(--a,0deg),transparent 0 60%,var(--gold-light),transparent 75%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;animation:hubSpin 4s linear infinite;}
 @keyframes hubSpin{to{--a:360deg;}}
+@media(max-width:640px){
+  /* Kreis war auf schmalen Screens mit fixer Mindesthöhe (340px) unproportional
+     groß und wirkte leer — deutlich verkleinert. */
+  .beams-wrap{height:clamp(220px,64vw,300px);}
+  .node-label{width:40px;height:40px;}
+  .node-label svg{width:20px;height:20px;}
+  .hub-pill{width:100px;height:38px;}
+  .hub-pill span{font-size:.85rem;}
+}
 @property --a{syntax:'<angle>';inherits:false;initial-value:0deg;}
 .hub-pill span{position:relative;font-family:"Iowan Old Style",Georgia,serif;font-style:italic;font-size:1rem;background:linear-gradient(90deg,#fff,var(--gold-light));-webkit-background-clip:text;background-clip:text;color:transparent;}
 .hero .lead{max-width:600px;margin:1.5rem 0 2.3rem;}
@@ -468,26 +481,30 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   .cine-footer{position:relative;height:auto;padding:44px 20px 26px;overflow:hidden;}
 }
 
-/* --- Social-Media-Agent-Unterseite: zusätzliche Komponenten --- */
-.hero-quotes{display:flex;flex-direction:column;gap:1.1rem;}
-.quote-card{background:rgba(255,255,255,.05);border:1px solid var(--line-on-ink);border-radius:var(--r);padding:1.6rem 1.7rem;backdrop-filter:blur(8px);transition:transform .4s cubic-bezier(.22,.9,.24,1);}
-.quote-card:hover{transform:translateY(-2px);}
-.quote-card p{margin:0 0 .9rem;font-size:.95rem;color:var(--paper);line-height:1.6;font-style:italic;}
-.quote-card span{font-size:.8rem;color:var(--gold-light);font-weight:600;}
-.ind-quote{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid var(--line-on-ink);}
-.ind-quote p{font-size:.86rem;color:var(--paper);font-style:italic;line-height:1.6;margin:0 0 .5rem;}
-.ind-quote span{font-size:.78rem;color:var(--gold-light);font-weight:600;}
-.process-card{max-width:760px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.6rem,4vw,2.6rem);}
-.process-card .path-step:last-of-type{border-bottom:none;}
-.sub-hero-lead{max-width:640px;}
-
-</style></head>
+/* --- Rechts-Seiten (Impressum/Datenschutz/AGB): eigene Komponenten --- */
+.legal-hero{background:var(--ink);color:var(--paper);padding:calc(78px + 3.5rem) 0 3rem;}
+.legal-hero .lead{margin-top:1rem;}
+.legal-meta{margin-top:1.2rem;font-size:.85rem;color:var(--muted-on-ink);}
+.legal-back{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.8rem;font-size:.85rem;font-weight:600;color:var(--gold-light);}
+.legal-back:hover{color:#fff;}
+.legal-wrap{max-width:760px;margin:0 auto;padding:0 32px;}
+@media(max-width:640px){.legal-wrap{padding:0 20px;}}
+.legal-body{padding:4rem 0 5rem;}
+.legal-body h2{font-family:"Iowan Old Style",Georgia,serif;font-size:1.5rem;font-weight:600;margin:2.6rem 0 1rem;letter-spacing:-.01em;}
+.legal-body h2:first-child{margin-top:0;}
+.legal-body p{font-size:.94rem;color:var(--muted);line-height:1.75;margin:0 0 1.1rem;}
+.legal-body ul{margin:0 0 1.1rem;padding-left:1.3rem;display:flex;flex-direction:column;gap:.4rem;}
+.legal-body li{font-size:.94rem;color:var(--muted);line-height:1.6;}
+.legal-body strong{color:var(--ink);font-weight:600;}
+.legal-address{background:var(--paper-2);border-radius:var(--r);padding:1.6rem 1.8rem;margin:0 0 1.6rem;font-size:.9rem;color:var(--ink);line-height:1.8;}
+.legal-address p{margin:0;color:var(--ink);}
+</style>
 <body class="has-announce">
 
 <div class="announce" id="announceBar">
   <span class="announce-dot"></span>
   <span class="announce-text">Aktuell nehmen wir neue Kunden auf &mdash; kostenloses Erstgespräch</span>
-  <a class="announce-link" href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener">jetzt sichern</a>
+  <a class="announce-link" href="https://calendar.app.google/LK3hdLKQ6pLztv4b8" target="_blank" rel="noopener">jetzt sichern</a>
   <button class="announce-close" id="announceClose" aria-label="Schließen">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
   </button>
@@ -502,14 +519,14 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
     <div class="nav-links">
       <a href="kundenportal.html">Kundenportal</a>
       <a href="index.html#voice">Voice Agents</a>
-      <a href="#top">Social Media Agent</a>
+      <a href="social-media-agent.html">Social Media Agent</a>
       <a href="index.html#stimmen">Referenzen</a>
     </div>
     <div class="nav-right">
-      <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold btn-phone">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M9.5 15.5l1.5 1.5 3-3"/></svg>
-        <span class="cta-full">Termin<br>buchen</span>
-        <span class="cta-short">Termin</span>
+      <a href="index.html#pricing" class="btn btn-gold btn-phone">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="cta-full">Voice Agent<br>testen</span>
+        <span class="cta-short">Voice Agent</span>
       </a>
       <button type="button" class="nav-burger" id="navBurger" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menü öffnen">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
@@ -519,246 +536,166 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
   <div class="mobile-menu" id="mobileMenu">
     <a href="kundenportal.html">Kundenportal</a>
     <a href="index.html#voice">Voice Agents</a>
-    <a href="#top">Social Media Agent</a>
+    <a href="social-media-agent.html">Social Media Agent</a>
     <a href="index.html#stimmen">Referenzen</a>
-    <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold mobile-menu-cta">Termin buchen</a>
+    <a href="index.html#pricing" class="btn btn-gold mobile-menu-cta">Voice Agent</a>
   </div>
 </nav>
+
 
 <div class="content" id="content">
   <svg class="flow-thread" id="flowThread" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0"></linearGradient></defs><path id="flowPath"/></svg>
 
-  <!-- HERO -->
-  <header class="hero on-ink" id="top">
-    <div class="hero-mesh"></div>
-    <div class="hero-aurora" aria-hidden="true"><span></span><span></span></div>
-    <div class="hero-noise" aria-hidden="true"></div>
-    <canvas class="hero-sparkles" id="heroSparkles" aria-hidden="true"></canvas>
-    <div class="wrap hero-grid">
-      <div class="hero-inner">
-        <div class="hero-rating reveal">
-          <a href="tel:+971561155278" style="display:flex;align-items:center;gap:.5rem;color:var(--muted-on-ink);font-size:.8rem;">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Sprich direkt mit Experten
-          </a>
-        </div>
-        <div class="eyebrow reveal">Social Media Agent</div>
-        <h1 class="h-xl serif reveal" style="transition-delay:.05s">Social Media war noch nie <em>so einfach</em>.</h1>
-        <p class="lead reveal sub-hero-lead" style="transition-delay:.1s">Der AIDEN Social Media Agent unterstützt bei <span class="hl">Recherche, Planung, Texten, Bildideen, Hashtags</span> und Veröffentlichungsvorbereitung — damit Ihr Unternehmen regelmäßig sichtbar bleibt, ohne dass Social Media im Tagesgeschäft untergeht.</p>
-        <div class="hero-cta reveal" style="transition-delay:.15s">
-          <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold">Info-Termin buchen</a>
-          <a href="index.html" class="btn btn-outline">Zurück zur Startseite</a>
-        </div>
-        <div class="badges reveal" style="transition-delay:.2s">
-          <div class="badge badge-gold">In der EU gehostet</div>
-          <div class="badge badge-gold">DSGVO-konform</div>
-          <div class="badge badge-gold">EU-AI-Act-konform</div>
-        </div>
-      </div>
-
-      <div class="hero-quotes reveal" style="transition-delay:.1s">
-        <div class="quote-card">
-          <p>"Es gibt ein Leben vor und nach dem Social Media Agent. Regelmäßiger Content und Posts sind jetzt selbstverständlich!"</p>
-          <span>Jochen Timme — Unternehmer</span>
-        </div>
-        <div class="quote-card">
-          <p>"Wir können uns nun professionelles Social Media leisten — zum hervorragenden Preis!"</p>
-          <span>Brüder Schwing — Limes Metzgerei</span>
-        </div>
-      </div>
+  <header class="legal-hero" id="top">
+    <div class="legal-wrap">
+      <div class="eyebrow reveal" style="color:var(--gold-light);">Rechtliche Informationen</div>
+      <h1 class="h-lg serif reveal">Allgemeine Geschäftsbedingungen</h1>
+      <p class="lead reveal" style="color:var(--muted-on-ink);">Diese Allgemeinen Geschäftsbedingungen gelten für die Nutzung der Website, der digitalen Angebote, Softwarelösungen, KI-Agenten und Dienstleistungen der Marke AIDEN.</p>
+      <p class="legal-meta reveal">Stand: 01.06.2026</p>
+      <a href="index.html" class="legal-back reveal">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        Zurück zur Startseite
+      </a>
     </div>
   </header>
 
-  <!-- OVERVIEW / FEATURES -->
-  <section id="funktionen" class="ov-section">
-    <div class="wrap">
-      <div class="ov-head">
-        <div class="eyebrow reveal">Social Media endlich mit Überblick</div>
-        <h2 class="h-lg serif reveal">Content, der wirklich passt — ohne täglichen Stress.</h2>
-        <p class="lead reveal" style="margin-top:1rem;">Der AIDEN Social Media Agent nimmt Ihnen die Arbeit ab: <span class="hl">regelmäßig hochwertige Inhalte</span>, die wirklich passen — ohne ständige Recherche, Planung und Veröffentlichung.</p>
-      </div>
-      <div class="ov-grid">
-        <div class="ov-card reveal">
-          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg></div>
-          <h3>Fundierte Themenrecherche</h3>
-          <p>Unser Agent findet relevante Themen, Trends und Inhalte, die perfekt zu Ihrer Zielgruppe und Branche passen. <span class="hl">Kein beliebiges Posten</span>, sondern echter Mehrwert.</p>
-        </div>
-        <div class="ov-card reveal" style="transition-delay:.05s">
-          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg></div>
-          <h3>Markenkonforme Inhalte</h3>
-          <p>Texte und Bildideen, die Ihre Marke widerspiegeln. <span class="hl">Professionell und natürlich</span> — passend zu Ihrer Tonalität, ohne nach KI zu wirken.</p>
-        </div>
-        <div class="ov-card reveal" style="transition-delay:.1s">
-          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.5c-1.6-1.1-4-1.6-6.5-1.1v13c2.5-.5 4.9 0 6.5 1.1 1.6-1.1 4-1.6 6.5-1.1v-13c-2.5-.5-4.9 0-6.5 1.1z"/><path d="M12 6.5v13"/></svg></div>
-          <h3>Personalisierte Wissensbasis</h3>
-          <p>Alle Infos über Ihr Unternehmen, Ihre Werte und Angebote sind hinterlegt. So entstehen Inhalte, die <span class="hl">wirklich zu Ihnen passen</span> und Ihre Expertise unterstreichen.</p>
-        </div>
-        <div class="ov-card reveal">
-          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
-          <h3>Zielgerichtete Strategie</h3>
-          <p>Ob Sichtbarkeit, Neukunden oder Expertenstatus — der Agent arbeitet <span class="hl">strategisch</span> und orientiert sich immer an Ihren definierten Zielen und Zielgruppen.</p>
-        </div>
-        <div class="ov-card reveal" style="transition-delay:.05s">
-          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="14" width="4" height="7" rx="1"/><rect x="10" y="9" width="4" height="12" rx="1"/><rect x="17" y="4" width="4" height="17" rx="1"/></svg></div>
-          <h3>Performance-Analyse</h3>
-          <p>Welche Beiträge funktionieren? Welche Themen erzielen Reaktionen? Unser Agent analysiert die Performance und liefert <span class="hl">wertvolle Einblicke</span> für Ihren Erfolg.</p>
-        </div>
-        <div class="ov-card reveal" style="transition-delay:.1s">
-          <div class="ov-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg></div>
-          <h3>Automatisierte Veröffentlichung</h3>
-          <p>Inhalte vorbereiten, planen und auf Wunsch <span class="hl">automatisch veröffentlichen</span> lassen. So sind Sie immer präsent, ohne selbst aktiv werden zu müssen.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <section class="legal-body">
+    <div class="legal-wrap">
 
-  <!-- INDUSTRIES -->
-  <section class="ind-section" id="branchen">
-    <div class="wrap">
-      <div class="eyebrow reveal">Für Dein Business gemacht</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin-bottom:2.6rem;">Egal ob Praxis, Handwerksbetrieb, Produktionsbetrieb oder Selfstorage-Anbieter.</h2>
+      <p class="reveal">AIDEN ist eine Marke der AIDEN AIO Artificial Intelligence Developing Services L.L.C., registriert in Dubai unter der Lizenznummer 1493367, mit Sitz in Dubai Branch Building, Al Mankhool Area, Bur Dubai, Makani No.: 28511194466, United Arab Emirates.</p>
+      <p class="reveal">Mit dem Zugriff auf unsere Website, der Registrierung, der Buchung eines Beratungsgesprächs, dem Abschluss eines Tarifs oder der Nutzung eines AIDEN KI-Agenten akzeptieren Sie diese Allgemeinen Geschäftsbedingungen.</p>
 
-      <div class="ind-tabs reveal">
-        <button class="ind-tab active" data-tab="craft-sma">Handwerksbetriebe</button>
-        <button class="ind-tab" data-tab="health-sma">Arztpraxen &amp; Gesundheit</button>
-        <button class="ind-tab" data-tab="production-sma">Produktionsbetrieb</button>
-        <button class="ind-tab" data-tab="storage-sma">Selfstorage-Anbieter</button>
+      <h2 class="reveal">1. Anbieter und Geltungsbereich</h2>
+      <p class="reveal">Diese AGB gelten für alle Leistungen von AIDEN gegenüber Kunden im DACH-Markt, also Deutschland, Österreich und der Schweiz, sowie gegenüber Kunden in den Vereinigten Arabischen Emiraten, insbesondere Dubai.</p>
+      <p class="reveal">Unsere Leistungen richten sich in erster Linie an Unternehmen, Selbstständige, Freiberufler, Praxen, Agenturen, Dienstleister, Organisationen und gewerbliche Kunden. Sofern Verbraucher unsere Leistungen nutzen, bleiben zwingende gesetzliche Verbraucherrechte des jeweiligen Landes unberührt.</p>
+      <p class="reveal">Abweichende Bedingungen des Kunden gelten nur, wenn AIDEN diesen ausdrücklich schriftlich zugestimmt hat.</p>
+
+      <h2 class="reveal">2. Leistungsbeschreibung</h2>
+      <p class="reveal">AIDEN entwickelt und betreibt KI-gestützte Lösungen für Unternehmen. Dazu gehören insbesondere: KI Voice Agents, KI Social Media Agents, individuelle KI-Automatisierungen, Telefonie- und Kommunikationslösungen, Termin- und Kalenderanbindungen, Leadqualifizierung, Kundenservice- und Supportprozesse, Content-Erstellung und Social-Media-Workflows, Kampagnenunterstützung, Wissensdatenbanken, Reporting, Analyse und Optimierung sowie technische Einrichtung und Onboarding.</p>
+      <p class="reveal">Der konkrete Leistungsumfang ergibt sich aus dem jeweiligen Angebot, Tarif, Vertrag, der Auftragsbestätigung oder der Leistungsbeschreibung auf der Website. Angaben auf der Website dienen der allgemeinen Beschreibung unserer Leistungen. Verbindlich ist ausschließlich der individuell vereinbarte Leistungsumfang.</p>
+
+      <h2 class="reveal">3. Vertragsschluss</h2>
+      <p class="reveal">Ein Vertrag mit AIDEN kommt zustande, wenn der Kunde ein Angebot annimmt, einen Tarif bucht, eine Bestellung bestätigt, ein Online-Formular absendet oder eine individuelle Beauftragung schriftlich, elektronisch oder über ein Buchungssystem bestätigt wird.</p>
+      <p class="reveal">AIDEN ist berechtigt, Anfragen oder Bestellungen abzulehnen, insbesondere wenn technische, rechtliche oder wirtschaftliche Gründe gegen die Leistungserbringung sprechen.</p>
+
+      <h2 class="reveal">4. Registrierung und Kundenkonto</h2>
+      <p class="reveal">Für bestimmte Leistungen kann eine Registrierung oder die Einrichtung eines Kundenkontos erforderlich sein. Der Kunde ist verpflichtet, vollständige und richtige Angaben zu machen und Änderungen unverzüglich mitzuteilen.</p>
+      <p class="reveal">Zugangsdaten, Passwörter und verbundene Drittanbieter-Konten sind vertraulich zu behandeln. Der Kunde ist für alle Aktivitäten verantwortlich, die über sein Konto erfolgen, sofern er nicht nachweist, dass ein Missbrauch ohne eigenes Verschulden erfolgt ist.</p>
+
+      <h2 class="reveal">5. Mitwirkungspflichten des Kunden</h2>
+      <p class="reveal">Der Kunde stellt AIDEN alle Informationen, Unterlagen und Zugänge zur Verfügung, die für die Einrichtung und Nutzung der Leistungen erforderlich sind, etwa Unternehmensinformationen, Markenunterlagen, Logos, Farben, Schriften und Corporate Design, Produkt- und Leistungsbeschreibungen, Preislisten, FAQs, Gesprächsleitfäden, Social-Media-Zugänge, Telefonie- und Kalenderzugänge, CRM- oder Softwarezugänge, rechtliche Hinweise und Pflichtinformationen sowie Freigaben und Ansprechpartner.</p>
+      <p class="reveal">Der Kunde ist dafür verantwortlich, dass bereitgestellte Inhalte, Daten und Informationen richtig, aktuell, rechtmäßig und zur Nutzung durch AIDEN geeignet sind. Verzögert sich die Leistungserbringung aufgrund fehlender Mitwirkung des Kunden, verlängern sich vereinbarte Umsetzungsfristen entsprechend.</p>
+
+      <h2 class="reveal">6. KI-generierte Inhalte und Ergebnisse</h2>
+      <p class="reveal">AIDEN nutzt künstliche Intelligenz zur Erstellung, Verarbeitung und Unterstützung von Texten, Gesprächsverläufen, Antworten, Workflows, Analysen und weiteren Inhalten.</p>
+      <p class="reveal">KI-generierte Inhalte können Fehler, Ungenauigkeiten, unvollständige Informationen oder unpassende Formulierungen enthalten. AIDEN übernimmt keine Garantie dafür, dass KI-generierte Inhalte jederzeit vollständig, fehlerfrei, rechtlich geprüft oder für jeden Einzelfall geeignet sind. Der Kunde ist verpflichtet, KI-generierte Inhalte vor externer Nutzung zu prüfen, insbesondere bei Werbung, medizinischen Aussagen, rechtlichen Aussagen, steuerlichen oder finanziellen Aussagen, regulierten Branchen, sensiblen Kundendaten, Preisangaben, Leistungsversprechen sowie Veröffentlichungen in sozialen Medien.</p>
+      <p class="reveal">AIDEN unterstützt Geschäftsprozesse, ersetzt aber keine individuelle rechtliche, steuerliche, medizinische, finanzielle oder fachliche Beratung. Endgültige geschäftliche Entscheidungen trifft ausschließlich der Kunde.</p>
+
+      <h2 class="reveal">7. Voice Agent Leistungen</h2>
+      <p class="reveal">Bei Nutzung eines AIDEN Voice Agents kann der KI-Agent Anrufe entgegennehmen, Anliegen erfassen, Fragen beantworten, Termine vorbereiten, Leads qualifizieren, Rückrufwünsche aufnehmen oder weitere definierte Aufgaben übernehmen.</p>
+      <p class="reveal">Der Kunde ist dafür verantwortlich, dass die Nutzung des Voice Agents rechtmäßig erfolgt. Dies betrifft insbesondere Information von Anrufern, Einwilligungen (soweit erforderlich), Datenschutz, Aufzeichnung von Gesprächen (soweit genutzt), Weitergabe von Gesprächsinhalten, branchenspezifische Pflichten sowie Notfall- oder Krisenkommunikation.</p>
+      <p class="reveal"><strong>AIDEN Voice Agents sind nicht für Notrufe, medizinische Notfallentscheidungen, sicherheitskritische Kommunikation oder lebenswichtige Entscheidungen bestimmt.</strong></p>
+
+      <h2 class="reveal">8. Social Media Agent Leistungen</h2>
+      <p class="reveal">Bei Nutzung eines AIDEN Social Media Agents kann der KI-Agent Inhalte planen, Texte erstellen, Bildideen entwickeln, Content-Kalender vorbereiten, Social-Media-Beiträge unterstützen oder Veröffentlichungsprozesse begleiten.</p>
+      <p class="reveal">Der Kunde ist verantwortlich für die Prüfung und Freigabe von Inhalten, sofern keine andere schriftliche Vereinbarung getroffen wurde. AIDEN übernimmt keine Garantie für bestimmte Reichweiten, Followerzahlen, Leads, Umsätze, Kampagnenergebnisse oder Plattformreaktionen. Der Kunde stellt sicher, dass verwendete Inhalte keine Rechte Dritter verletzen und den jeweiligen Plattformrichtlinien entsprechen.</p>
+
+      <h2 class="reveal">9. Drittanbieter und Integrationen</h2>
+      <p class="reveal">AIDEN kann zur Leistungserbringung Drittanbieter einsetzen oder mit Drittanbietern verbunden werden, etwa Telefonieanbieter, Messaging-Dienste, Kalenderdienste, CRM-Systeme, Social-Media-Plattformen, Zahlungsanbieter, Hostinganbieter, Analyse-Tools, KI-Infrastruktur und Automatisierungstools.</p>
+      <p class="reveal">Die Verfügbarkeit dieser Dienste richtet sich nach den jeweiligen Bedingungen, Richtlinien und technischen Möglichkeiten der Drittanbieter. AIDEN haftet nicht für Ausfälle, Einschränkungen, Preisänderungen, Kontosperrungen, API-Änderungen oder sonstige Störungen, die durch Drittanbieter verursacht werden.</p>
+
+      <h2 class="reveal">10. Preise, Abrechnung und Steuern</h2>
+      <p class="reveal">Die Preise ergeben sich aus dem jeweiligen Angebot, Tarif, Vertrag oder der Rechnung. Preise können je nach Markt in AED, EUR, USD oder einer anderen vereinbarten Währung ausgewiesen werden.</p>
+      <p class="reveal">Je nach gebuchter Leistung können anfallen: Einrichtungsgebühren, Onboarding-Gebühren, monatliche Grundgebühren, jährliche Gebühren, nutzungsbasierte Gebühren, Minutenpreise, Prepaid-Guthaben, Zusatzleistungen sowie individuelle Projektkosten. Sofern gesetzlich erforderlich, werden Steuern, insbesondere VAT, Umsatzsteuer oder vergleichbare Abgaben, zusätzlich berechnet oder gesondert ausgewiesen.</p>
+      <p class="reveal">Rechnungen sind innerhalb der angegebenen Zahlungsfrist zu bezahlen. Bei Zahlungsverzug ist AIDEN berechtigt, Leistungen vorübergehend zu sperren, Zugänge zu deaktivieren oder weitere Leistungen bis zum Zahlungsausgleich zurückzuhalten.</p>
+
+      <h2 class="reveal">11. Prepaid-Tarife, Abonnements und Testphasen</h2>
+      <p class="reveal">AIDEN kann Prepaid-Tarife, monatliche Tarife, Jahresverträge oder Testphasen anbieten. Bei Prepaid-Tarifen erfolgt die Nutzung auf Guthabenbasis. Nach Verbrauch des Guthabens kann eine weitere Nutzung eine Aufladung oder Tarifumstellung erfordern.</p>
+      <p class="reveal">Abonnements verlängern sich entsprechend der vereinbarten Laufzeit, sofern sie nicht fristgerecht gekündigt werden. Testphasen können zeitlich, funktional, technisch oder in Bezug auf Minuten, Nutzung oder Agentenanzahl begrenzt sein. AIDEN kann Testangebote ändern, beenden oder ablehnen, sofern kein verbindlicher Vertrag über eine bestimmte Testphase geschlossen wurde.</p>
+
+      <h2 class="reveal">12. Laufzeit und Kündigung</h2>
+      <p class="reveal">Die Laufzeit richtet sich nach dem gebuchten Tarif oder der individuellen Vereinbarung. Soweit nichts anderes vereinbart wurde, können monatliche Leistungen zum Ende des jeweiligen Abrechnungszeitraums gekündigt werden. Jahresverträge oder individuell vereinbarte Mindestlaufzeiten sind für die vereinbarte Dauer verbindlich.</p>
+      <p class="reveal">Bereits erbrachte Leistungen, Einrichtungsgebühren, Onboarding-Leistungen, individuell erstellte Konzepte, verbrauchtes Guthaben und genutzte Minuten sind grundsätzlich nicht erstattungsfähig, sofern nicht gesetzlich etwas anderes vorgeschrieben ist oder ausdrücklich etwas anderes vereinbart wurde. Das Recht zur außerordentlichen Kündigung aus wichtigem Grund bleibt unberührt.</p>
+
+      <h2 class="reveal">13. Widerrufsrecht für Verbraucher</h2>
+      <p class="reveal">Sofern ein Kunde als Verbraucher im Sinne der anwendbaren gesetzlichen Vorschriften handelt, können gesetzliche Widerrufsrechte bestehen. Bei digitalen Dienstleistungen, individuell eingerichteten KI-Agenten, sofort beginnenden Leistungen oder vollständig erbrachten Dienstleistungen kann ein Widerrufsrecht ganz oder teilweise ausgeschlossen sein oder vorzeitig erlöschen, soweit die gesetzlichen Voraussetzungen erfüllt sind.</p>
+      <p class="reveal">AIDEN richtet sich primär an Geschäftskunden. Verbraucher erhalten die gesetzlich erforderlichen Informationen zum Widerrufsrecht gesondert, sofern ein Verbrauchervertrag zustande kommt.</p>
+
+      <h2 class="reveal">14. Nutzungsrechte und geistiges Eigentum</h2>
+      <p class="reveal">Alle Rechte an der Marke AIDEN, der Website, Software, Systemlogik, Workflows, Agentenstrukturen, Prompts, Designs, Konzepten, Dokumentationen und technischen Lösungen verbleiben bei AIDEN oder den jeweiligen Rechteinhabern. Der Kunde erhält nur die zur Nutzung der gebuchten Leistung erforderlichen Rechte.</p>
+      <p class="reveal">Eine Weitergabe, Vervielfältigung, Nachprogrammierung, Dekompilierung, Unterlizenzierung, ein Weiterverkauf oder eine sonstige gewerbliche Verwertung von AIDEN-Systemen, Prompts, Workflows oder Konzepten ist ohne vorherige schriftliche Zustimmung untersagt.</p>
+      <p class="reveal">Der Kunde behält die Rechte an eigenen Markenunterlagen, Logos, Inhalten, Kundendaten und bereitgestellten Materialien. Soweit AIDEN individuelle Inhalte für den Kunden erstellt, erhält der Kunde nach vollständiger Zahlung ein einfaches Nutzungsrecht für eigene geschäftliche Zwecke, sofern nichts anderes vereinbart wurde.</p>
+
+      <h2 class="reveal">15. Datenschutz und Datenverarbeitung</h2>
+      <p class="reveal">AIDEN verarbeitet personenbezogene Daten nach Maßgabe der jeweils anwendbaren Datenschutzgesetze und der <a href="datenschutz.html">Datenschutzerklärung</a>. Für Kunden im DACH-Markt können insbesondere die DSGVO, nationale Datenschutzgesetze sowie für Schweizer Kunden das Schweizer Datenschutzgesetz relevant sein. Für Kunden in den Vereinigten Arabischen Emiraten können insbesondere die Datenschutzvorschriften der UAE Anwendung finden.</p>
+      <p class="reveal">Der Kunde ist dafür verantwortlich, dass personenbezogene Daten rechtmäßig erhoben, bereitgestellt und verarbeitet werden dürfen. Soweit AIDEN personenbezogene Daten im Auftrag des Kunden verarbeitet, kann eine separate Vereinbarung zur Auftragsverarbeitung oder eine vergleichbare Datenschutzvereinbarung erforderlich sein.</p>
+
+      <h2 class="reveal">16. Vertraulichkeit</h2>
+      <p class="reveal">AIDEN und der Kunde verpflichten sich, vertrauliche Informationen der jeweils anderen Partei vertraulich zu behandeln. Vertrauliche Informationen sind insbesondere Geschäftsgeheimnisse, Kundendaten, Zugangsdaten, technische Informationen, Strategien, Preise, interne Dokumente, nicht öffentliche Projektinformationen sowie Konzepte und Workflows.</p>
+      <p class="reveal">Diese Pflicht gilt nicht für Informationen, die öffentlich bekannt sind, rechtmäßig von Dritten erhalten wurden oder aufgrund gesetzlicher Verpflichtungen offengelegt werden müssen.</p>
+
+      <h2 class="reveal">17. Referenzen und Fallbeispiele</h2>
+      <p class="reveal">AIDEN darf Name, Logo oder Projekt des Kunden nur mit vorheriger Zustimmung als Referenz verwenden. Ausführliche Case Studies, Screenshots, Leistungsdaten, Kampagnenergebnisse oder konkrete Projektdetails werden nur nach gesonderter Freigabe veröffentlicht.</p>
+
+      <h2 class="reveal">18. Verbotene Nutzung</h2>
+      <p class="reveal">Der Kunde darf AIDEN nicht für rechtswidrige, missbräuchliche, schädliche oder irreführende Zwecke nutzen. Untersagt ist insbesondere die Nutzung für illegale Inhalte, Spam oder unerlaubte Werbung, Täuschung oder Identitätsmissbrauch, Verletzung von Rechten Dritter, diskriminierende oder beleidigende Inhalte, Betrug oder Manipulation, rechtswidrige Datenerhebung, sicherheitskritische oder lebenswichtige Entscheidungen, Notfallkommunikation, Umgehung technischer Schutzmaßnahmen sowie Angriffe auf Systeme oder Netzwerke.</p>
+      <p class="reveal">AIDEN ist berechtigt, Leistungen zu sperren oder zu beenden, wenn der Verdacht einer missbräuchlichen Nutzung besteht.</p>
+
+      <h2 class="reveal">19. Verfügbarkeit und Änderungen der Leistungen</h2>
+      <p class="reveal">AIDEN bemüht sich um eine zuverlässige Verfügbarkeit der Leistungen. Eine durchgehende, störungsfreie oder jederzeit fehlerfreie Nutzung kann jedoch nicht garantiert werden. Einschränkungen können entstehen durch Wartung, Updates, technische Störungen, Ausfälle von Drittanbietern, höhere Gewalt, Netzprobleme, API-Änderungen oder Sicherheitsmaßnahmen.</p>
+      <p class="reveal">AIDEN ist berechtigt, Leistungen weiterzuentwickeln, technisch anzupassen oder Funktionen zu ändern, sofern der Vertragszweck dadurch nicht wesentlich beeinträchtigt wird.</p>
+
+      <h2 class="reveal">20. Haftung</h2>
+      <p class="reveal">AIDEN haftet nach den jeweils anwendbaren gesetzlichen Vorschriften. AIDEN übernimmt keine Garantie für bestimmte wirtschaftliche Ergebnisse, Umsätze, Leads, Reichweiten, Conversion-Rates, Kosteneinsparungen oder sonstige Geschäftserfolge.</p>
+      <p class="reveal">Soweit gesetzlich zulässig, haftet AIDEN nicht für indirekte Schäden, entgangenen Gewinn, Datenverlust, Reputationsschäden, Betriebsunterbrechungen, Plattformänderungen oder Schäden durch Drittanbieter. Die Haftung für Vorsatz, grobe Fahrlässigkeit, Verletzung von Leben, Körper oder Gesundheit sowie zwingende gesetzliche Haftung bleibt unberührt.</p>
+
+      <h2 class="reveal">21. Freistellung</h2>
+      <p class="reveal">Der Kunde stellt AIDEN von Ansprüchen Dritter frei, die aus einer rechtswidrigen Nutzung der Leistungen, fehlerhaften Kundendaten, unzulässigen Inhalten, Verstößen gegen Plattformrichtlinien, Datenschutzverletzungen oder der Verletzung von Rechten Dritter entstehen. Dies umfasst auch angemessene Kosten der Rechtsverteidigung.</p>
+
+      <h2 class="reveal">22. Internationale Nutzung</h2>
+      <p class="reveal">AIDEN bietet Leistungen für Kunden im DACH-Markt und in den Vereinigten Arabischen Emiraten an. Der Kunde ist dafür verantwortlich, dass die Nutzung der Leistungen in seinem Land, seiner Branche und gegenüber seinen Kunden zulässig ist. Zwingende gesetzliche Vorschriften des jeweiligen Landes bleiben unberührt.</p>
+      <p class="reveal">Bei internationalen Sachverhalten können zusätzliche rechtliche Anforderungen gelten, insbesondere im Bereich Datenschutz, Verbraucherschutz, Telekommunikation, Werbung, Preisangaben und elektronische Kommunikation.</p>
+
+      <h2 class="reveal">23. Sprache</h2>
+      <p class="reveal">Diese AGB können in deutscher und englischer Sprache bereitgestellt werden. Bei Abweichungen zwischen Sprachversionen gilt diejenige Sprachfassung, die im jeweiligen Vertrag, Angebot oder Buchungsprozess als maßgeblich bezeichnet wurde. Fehlt eine solche Festlegung, gilt für Kunden im DACH-Markt die deutsche Fassung und für internationale Kunden die englische Fassung, soweit zwingendes Recht nichts anderes bestimmt.</p>
+
+      <h2 class="reveal">24. Änderungen dieser AGB</h2>
+      <p class="reveal">AIDEN kann diese AGB ändern, wenn dies aufgrund rechtlicher, technischer oder wirtschaftlicher Entwicklungen erforderlich ist. Die jeweils aktuelle Fassung wird auf der Website veröffentlicht. Wesentliche Änderungen werden Kunden in geeigneter Form mitgeteilt.</p>
+      <p class="reveal">Setzt der Kunde die Nutzung der Leistungen nach Inkrafttreten der Änderungen fort, gelten die geänderten Bedingungen als akzeptiert, soweit dies rechtlich zulässig ist.</p>
+
+      <h2 class="reveal">25. Anwendbares Recht und Gerichtsstand</h2>
+      <p class="reveal">Soweit gesetzlich zulässig, unterliegen diese AGB dem Recht der Vereinigten Arabischen Emirate. Für Geschäftskunden ist Gerichtsstand, soweit zulässig, Dubai.</p>
+      <p class="reveal">Zwingende Verbraucherrechte und zwingende gesetzliche Vorschriften des Landes, in dem der Kunde seinen gewöhnlichen Aufenthalt hat, bleiben unberührt. Für Kunden im DACH-Markt kann je nach Vertragsgestaltung, Sitz des Kunden, Sitz des Anbieters und Art der Leistung eine gesonderte Rechtswahl oder Gerichtsstandsregelung erforderlich sein.</p>
+
+      <h2 class="reveal">26. Schlussbestimmungen</h2>
+      <p class="reveal">Sollte eine Bestimmung dieser AGB ganz oder teilweise unwirksam sein oder werden, bleibt die Wirksamkeit der übrigen Bestimmungen unberührt. Anstelle der unwirksamen Bestimmung gilt eine Regelung, die dem wirtschaftlichen Zweck der ursprünglichen Bestimmung möglichst nahekommt, soweit dies gesetzlich zulässig ist.</p>
+      <p class="reveal">Änderungen, Ergänzungen und Nebenabreden bedürfen der Textform, soweit nicht gesetzlich eine strengere Form vorgeschrieben ist.</p>
+
+      <h2 class="reveal">27. Kontakt</h2>
+      <p class="reveal">Bei Fragen zu diesen Allgemeinen Geschäftsbedingungen wenden Sie sich bitte an:</p>
+      <div class="legal-address reveal">
+        <p><strong>AIDEN</strong><br>
+        Rechtlicher Firmenname: AIDEN AIO Artificial Intelligence Developing Services L.L.C.<br>
+        Lizenznummer: 1493367<br>
+        Sitz: Dubai Branch Building, Al Mankhool Area, Bur Dubai, Makani No.: 28511194466, United Arab Emirates<br>
+        E-Mail: <a href="mailto:info@aiden.ae">info@aiden.ae</a> · Telefon: <a href="tel:+971561155278">+971 56 115 5278</a></p>
       </div>
 
-      <div class="ind-panel active" id="craft-sma">
-        <div>
-          <h3 class="serif">Mehr Aufträge sichtbar machen — ohne mehr Marketingaufwand</h3>
-          <p>Mit dem Social Media Agent wird aus Baustellen, Projekten und Kundenarbeiten regelmäßig professioneller Content — <span class="hl">ohne dass der Betrieb selbst viel Zeit investieren muss.</span></p>
-          <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Sichtbarkeit für Leistungen und Referenzen</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Weniger Aufwand im Tagesgeschäft</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Besserer Vertrauensaufbau bei Neukunden</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Professioneller Auftritt auf Instagram, Facebook, LinkedIn &amp; Co</li>
-          </ul>
-        </div>
-        <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Mehr Sichtbarkeit</div>
-          <div class="ind-quote">
-            <p>"Wir gewinnen mehr Sichtbarkeit, zeigen unsere Arbeit professionell und müssen uns nicht ständig selbst um Social Media kümmern. Genau so muss es im Handwerk funktionieren."</p>
-            <span>Helmut K.</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ind-panel" id="health-sma">
-        <div>
-          <h3 class="serif">Vertrauen aufbauen, bevor der erste Termin gebucht wird</h3>
-          <p>Der Social Media Agent hilft Praxen, <span class="hl">regelmäßig verständliche, vertrauensvolle</span> und fachlich passende Inhalte zu veröffentlichen.</p>
-          <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Vertrauen bei Patientinnen und Patienten</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Weniger wiederkehrende Fragen &amp; professioneller Expertenstatus</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Entlastung des Teams, keine Beiträge in Eigenregie</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Planung ganzer Wochen oder Monate im Voraus</li>
-          </ul>
-        </div>
-        <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Mehr Vertrauen</div>
-          <div class="ind-quote">
-            <p>"Endlich regelmäßige Sichtbarkeit für unsere Praxis — ohne dass unser Team zusätzlich belastet wird."</p>
-            <span>Dr. Conrad</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ind-panel" id="production-sma">
-        <div>
-          <h3 class="serif">Wenn Produktion läuft, darf Kommunikation nicht stehen bleiben.</h3>
-          <p>In Produktionsbetrieben zählt jede Minute. Während Maschinen laufen, Projekte umgesetzt und Kunden betreut werden, bleiben <span class="hl">Social Media, Rückrufe und Bewerberfragen</span> oft liegen.</p>
-          <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Inhalte aus Projekten, Produkten und Einblicken</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Bessere Sichtbarkeit für Kunden, Partner und Bewerber</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Anrufannahme und Vorqualifizierung von Kundenanfragen</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Moderne Außendarstellung ohne eigene Marketingabteilung</li>
-          </ul>
-        </div>
-        <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Kommunikation läuft mit</div>
-          <div class="ind-quote">
-            <p>"Wir hatten nicht das Problem, dass wir zu wenig zu erzählen hatten. Wir hatten nur keine Zeit, es sichtbar zu machen. Mit AIDEN läuft Kommunikation jetzt mit — ohne die Produktion zu stören."</p>
-            <span>Geschäftsführer L. Erber</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ind-panel" id="storage-sma">
-        <div>
-          <h3 class="serif">Wenn Kunden Lagerraum suchen, zählt schnelle Reaktion.</h3>
-          <p>Welche Lagergröße brauche ich? Was kostet ein Abteil? Gibt es freie Flächen? Gleichzeitig müssen <span class="hl">Vertrauen, Sichtbarkeit und einfache Buchungswege</span> aufgebaut werden.</p>
-          <ul class="ind-list">
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Regelmäßige Inhalte aus Projekten, Produkten und Einblicken</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Einfache Content-Erstellung per WhatsApp oder Telegram</li>
-            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg>Mehr Kontinuität statt spontaner Einzelaktionen</li>
-          </ul>
-        </div>
-        <div class="ind-visual">
-          <div class="lbl">Ergebnis</div>
-          <div class="stat serif">Schnelle Orientierung</div>
-          <div class="ind-quote">
-            <p>"Unsere Kunden brauchen oft keine lange Beratung, sondern schnelle Orientierung. Der KI-Agent hilft genau dabei — sofort, freundlich und zuverlässig."</p>
-            <span>Geschäftsführer M. Berger</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROCESS -->
-  <section id="ablauf">
-    <div class="wrap">
-      <div class="eyebrow reveal" style="justify-content:center;text-align:center;display:flex;">Wie es funktioniert</div>
-      <h2 class="h-lg serif reveal" style="max-width:640px;margin:0 auto 1rem;text-align:center;">Der Einstieg mit Ihrem AIDEN Social Media Agent ist einfacher, als Sie denken.</h2>
-      <p class="lead reveal" style="max-width:560px;margin:0 auto 2.8rem;text-align:center;">Wir begleiten Sie Schritt für Schritt zu mehr Sichtbarkeit und Entlastung.</p>
-
-      <div class="process-card reveal">
-        <div class="path-step"><span class="n serif">1</span><div><h4>Kostenloser Termin</h4><p>30 Minuten für Ihr Social Media: Wir zeigen Ihnen, wie der Agent arbeitet, und finden gemeinsam heraus, ob er zu Ihrem Unternehmen passt. Uns ist <span class="hl">Transparenz</span> wichtig.</p></div></div>
-        <div class="path-step"><span class="n serif">2</span><div><h4>Onboarding-Termin vereinbaren</h4><p>Der Agent lernt Ihr Unternehmen kennen — Angebote, Sprache, Zielgruppen und Marke, wie ein <span class="hl">zusätzlicher Social-Media-Mitarbeiter</span>.</p></div></div>
-        <div class="path-step"><span class="n serif">3</span><div><h4>Individuelle Einrichtung</h4><p>Ihr Agent wird mit allen wichtigen Informationen ausgestattet — Unternehmensdaten, Leistungen, Tonalität, Bildsprache. Das passiert für Sie <span class="hl">im Hintergrund</span>.</p></div></div>
-        <div class="path-step"><span class="n serif">4</span><div><h4>Übergabe des Agents</h4><p>Ihr neuer Mitarbeiter ist da — von der Themenrecherche über Content-Ideen und Bilderstellung bis hin zu <span class="hl">Analyse und automatischem Posten</span>.</p></div></div>
-        <div class="path-step"><span class="n serif">5</span><div><h4>Und das war's schon!</h4><p>Sie gewinnen mehr Überblick, sparen Zeit und werden mit professionell recherchierten Inhalten sichtbar — <span class="hl">ohne jeden Beitrag selbst planen zu müssen</span>.</p></div></div>
-        <div class="path-payoff" style="text-align:center;padding-top:1.6rem;">
-          <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold" style="margin-top:.6rem;white-space:normal;text-align:center;">Jetzt kostenlosen Termin buchen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FINAL CTA -->
-  <section class="final-cta" id="kontakt">
-    <div class="wrap">
-      <div class="eyebrow" style="justify-content:center;color:var(--gold-light);">Endlich regelmäßig sichtbar</div>
-      <h2 class="h-lg serif">Mit Inhalten, die wirklich <em>zu Ihrer Marke</em> passen.</h2>
-      <p class="lead">Mehr Überblick, weniger Aufwand, professioneller Auftritt — Social Media, das im Tagesgeschäft nicht mehr untergeht.</p>
-      <div class="hero-cta" style="justify-content:center;">
-        <a href="https://calendar.app.google/2BvVXQzGPBfZ66F98" target="_blank" rel="noopener" class="btn btn-gold">Info-Termin buchen</a>
-        <a href="index.html#pricing" class="btn btn-outline">Voice Agent Preise ansehen</a>
-      </div>
-      <div class="final-list">
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Markenkonforme Inhalte</span></span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Fundierte Themenrecherche</span></span>
-        <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg><span>Automatisierte Veröffentlichung</span></span>
-      </div>
     </div>
   </section>
 
 </div><!-- /.content -->
 
-<!-- CINEMATIC FOOTER -->
 <footer class="cine-footer">
   <div class="cf-glow"></div>
   <div class="cf-particles" id="cfParticles" aria-hidden="true"></div>
   <div class="cf-top">
     <div class="cf-brand">
       <div class="cf-logo">
-        <img src="images/aiden-logo-white.png" alt="AIDEN" class="brand-logo cf-brand-logo" width="600" height="153">
+        <img src="images/aiden-logo-white.png" alt="AIDEN" class="cf-brand-logo" width="562" height="133">
+        <span class="cf-brand-tagline">AIO – ALL IN ONE</span>
       </div>
+      <p class="cf-legal-name">Artificial Intelligence Developing Services LLC</p>
       <p class="cf-tag">KI-Agenten, die Ihr Unternehmen wirklich entlasten — Voice Agent, Social Media Agent und individuelle KI-Automatisierung.</p>
       <div class="cf-social">
         <a href="#" aria-label="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1s2.49 1.12 2.49 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v1.98h.05c.53-1 1.84-2.06 3.79-2.06 4.06 0 4.81 2.67 4.81 6.14V23h-4v-6.6c0-1.57-.03-3.6-2.19-3.6-2.19 0-2.53 1.71-2.53 3.48V23h-4V8.5z"/></svg></a>
@@ -770,7 +707,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
       <div class="cf-col">
         <h5>Produkte</h5>
         <a href="index.html#voice">Voice Agent</a>
-        <a href="#top">Social Media Agent</a>
+        <a href="social-media-agent.html">Social Media Agent</a>
         <a href="index.html#pricing">Preise</a>
       </div>
       <div class="cf-col">
@@ -796,6 +733,7 @@ nav.site::before{content:'';position:absolute;inset:-1.5px;border-radius:23.5px;
     </div>
   </div>
 </footer>
+
 
 <a href="https://wa.me/971561155278" class="wa-bubble" aria-label="WhatsApp Kontakt" target="_blank" rel="noopener">
   <svg viewBox="0 0 32 32" fill="#fff"><path d="M16.004 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.64 6.22L3.2 28.8l6.76-1.6a12.74 12.74 0 0 0 6.04 1.53h.01c7.07 0 12.8-5.73 12.8-12.8s-5.73-12.73-12.8-12.73zm7.47 18.18c-.31.88-1.55 1.6-2.53 1.81-.68.14-1.56.26-4.53-.97-3.8-1.57-6.24-5.42-6.43-5.67-.19-.25-1.54-2.05-1.54-3.91s.97-2.78 1.31-3.16c.34-.38.75-.47 1-.47.25 0 .5.002.72.012.23.01.54-.09.84.64.31.75 1.05 2.6 1.14 2.79.09.19.15.41.03.66-.13.25-.19.4-.38.62-.19.22-.4.49-.57.66-.19.19-.39.4-.17.78.22.38.98 1.62 2.11 2.62 1.45 1.29 2.67 1.69 3.05 1.88.38.19.6.16.82-.1.22-.25.94-1.1 1.19-1.47.25-.38.5-.31.84-.19.34.13 2.17 1.02 2.54 1.21.38.19.63.28.72.44.09.16.09.94-.22 1.83z"/></svg>
@@ -827,17 +765,6 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 // Scroll reveal
 const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target);}}),{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-
-
-// Industry tabs
-document.querySelectorAll('.ind-tab').forEach(tab=>{
-  tab.addEventListener('click',()=>{
-    document.querySelectorAll('.ind-tab').forEach(t=>t.classList.remove('active'));
-    document.querySelectorAll('.ind-panel').forEach(p=>p.classList.remove('active'));
-    tab.classList.add('active');
-    document.getElementById(tab.dataset.tab).classList.add('active');
-  });
-});
 
 
 // Golden thread — eine durchgehende, sanft geschwungene Linie, die sich beim Scrollen zieht (wie bei LYP)
@@ -912,60 +839,84 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
   build();
 })();
 
-
-// Hero sparkles — ambient drifting particle field
+// Hero robot — zoom-in reveal shortly after load
 (function(){
-  const canvas = document.getElementById('heroSparkles');
-  if(!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const ctx = canvas.getContext('2d');
-  const hero = canvas.closest('.hero');
-  let w, h, dpr, particles;
+  const el = document.getElementById('heroRobot');
+  if(!el) return;
+  setTimeout(()=>el.classList.add('in'), 300);
 
-  function resize(){
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    w = hero.clientWidth; h = hero.clientHeight;
-    canvas.width = w * dpr; canvas.height = h * dpr;
-    canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    const count = Math.round((w * h) / 9000);
-    particles = Array.from({length: count}, makeParticle);
+  // The 3D scene streams from an external CDN (prod.spline.design). If the
+  // network blocks or fails to reach it (offline, restrictive proxy, ad
+  // blocker), the viewer's internal fetch rejects — swallow that specific,
+  // non-critical rejection so it never surfaces as an uncaught page error;
+  // the hero still works fine with just no robot rendered.
+  window.addEventListener('unhandledrejection', (e) => {
+    const msg = String((e.reason && e.reason.message) || e.reason || '');
+    const stack = String((e.reason && e.reason.stack) || '');
+    if(msg.includes('Failed to fetch') && (stack.includes('spline') || document.querySelector('spline-viewer'))){
+      e.preventDefault();
+    }
+  });
+
+  // Forward page-wide mouse position to the Spline canvas as synthetic pointer
+  // events, so a scene built with a "look at mouse" interaction reacts to the
+  // cursor anywhere on the page — not only while hovering the small viewer area.
+  const viewer = el.querySelector('spline-viewer');
+  if(!viewer) return;
+
+  // Spline-Logo/Badge im Shadow DOM ausblenden, sobald es geladen ist —
+  // die Szene lädt asynchron, daher per MutationObserver statt festem Timeout.
+  function hideSplineBadge(){
+    if(!viewer.shadowRoot) return false;
+    const badge = viewer.shadowRoot.querySelector('#logo, a[href*="spline.design"]');
+    if(badge){ badge.style.display = 'none'; return true; }
+    return false;
   }
-  function makeParticle(){
-    return {
-      x: Math.random() * w,
-      y: Math.random() * h,
-      r: Math.random() * 1.1 + 0.3,
-      baseA: Math.random() * 0.5 + 0.15,
-      phase: Math.random() * Math.PI * 2,
-      speed: Math.random() * 0.15 + 0.03,
-      vy: -(Math.random() * 0.12 + 0.03),
-      gold: Math.random() < 0.35
-    };
+  if(!hideSplineBadge() && viewer.shadowRoot){
+    new MutationObserver((_, obs) => { if(hideSplineBadge()) obs.disconnect(); })
+      .observe(viewer.shadowRoot, { childList: true, subtree: true });
   }
-  let t = 0;
-  let visible = true;
-  function tick(){
-    if(!visible) return;
-    t += 1;
-    ctx.clearRect(0,0,w,h);
-    particles.forEach(p=>{
-      p.y += p.vy;
-      if(p.y < -4){ p.y = h + 4; p.x = Math.random() * w; }
-      const tw = Math.sin(t * p.speed + p.phase) * 0.5 + 0.5;
-      const a = p.baseA * (0.4 + tw * 0.6);
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = p.gold ? `rgba(233,217,168,${a})` : `rgba(255,255,255,${a})`;
-      ctx.fill();
+
+  if(window.matchMedia('(pointer:coarse)').matches) return;
+
+  function forward(type, e){
+    const target = viewer.shadowRoot ? (viewer.shadowRoot.querySelector('canvas') || viewer) : viewer;
+    const evt = new PointerEvent(type, {
+      bubbles: false, cancelable: true, composed: false,
+      clientX: e.clientX, clientY: e.clientY,
+      pointerId: 1, pointerType: 'mouse'
     });
-    requestAnimationFrame(tick);
+    target.dispatchEvent(evt);
   }
-  resize();
-  window.addEventListener('resize', resize);
-  new IntersectionObserver(([entry])=>{
-    visible = entry.isIntersecting;
-    if(visible) requestAnimationFrame(tick);
-  }, { threshold: 0 }).observe(hero);
+  window.addEventListener('pointermove', (e) => { if(e.isTrusted) forward('pointermove', e); }, { passive: true });
+})();
+
+// Pricing cards — scroll-scrubbed reveal (progress tied directly to scroll position)
+(function(){
+  const grid = document.querySelector('.price-grid');
+  if(!grid) return;
+  const cards = [...grid.querySelectorAll('.price-scrub')];
+  const n = cards.length;
+  function update(){
+    const rect = grid.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const start = vh * 0.96;
+    const end = vh * 0.42;
+    const overall = Math.max(0, Math.min(1, (start - rect.top) / (start - end)));
+    cards.forEach((card, i)=>{
+      const s = i / n, e = (i + 1) / n;
+      let local = (overall - s) / (e - s);
+      local = Math.max(0, Math.min(1, local));
+      const eased = 1 - Math.pow(1 - local, 3);
+      card.style.setProperty('--op', eased.toFixed(3));
+      card.style.setProperty('--ty', ((1 - eased) * 46).toFixed(1) + 'px');
+      card.classList.toggle('vis', eased > 0.4);
+    });
+  }
+  let ticking = false;
+  window.addEventListener('scroll', ()=>{ if(!ticking){ requestAnimationFrame(()=>{ update(); ticking = false; }); ticking = true; } }, { passive: true });
+  window.addEventListener('resize', update);
+  update();
 })();
 
 
@@ -997,7 +948,10 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     btn.addEventListener('mousemove', e=>{
       const r = btn.getBoundingClientRect();
       const mx = e.clientX - r.left - r.width/2, my = e.clientY - r.top - r.height/2;
-      btn.style.transform = `translate(${mx*0.18}px,${my*0.28}px)`;
+      const max = 6;
+      const tx = Math.max(-max, Math.min(max, mx * 0.08));
+      const ty = Math.max(-max, Math.min(max, my * 0.12));
+      btn.style.transform = `translate(${tx}px,${ty}px)`;
     });
     btn.addEventListener('mouseleave', ()=>{ btn.style.transform = ''; });
   });
@@ -1054,6 +1008,7 @@ document.querySelectorAll('.ind-tab').forEach(tab=>{
     });
   });
 })();
+
 
 </script>
 </body>
