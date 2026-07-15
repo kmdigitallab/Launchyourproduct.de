@@ -76,6 +76,17 @@ h1 .g{color:var(--gl);}
   .hero-3d::after{display:none;}
 }
 
+/* ── TRUST BAR ── */
+.trust-bar{overflow:hidden;padding:20px 0;background:rgba(255,255,255,0.02);border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);}
+.trust-label{text-align:center;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--t3);margin-bottom:14px;}
+.trust-track{display:flex;width:max-content;animation:trustScroll 28s linear infinite;}
+.trust-logo{display:flex;align-items:center;padding:0 28px;}
+.trust-logo-inner{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:8px 18px;transition:all .2s;}
+.trust-logo-inner:hover{background:rgba(255,255,255,0.09);border-color:rgba(255,255,255,0.18);}
+.trust-logo-icon{font-size:15px;}
+.trust-logo-name{font-size:13px;font-weight:700;color:var(--t2);white-space:nowrap;}
+@keyframes trustScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
 /* ── TICKER ── */
 .ticker{border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;padding:14px 0;background:rgba(255,255,255,0.015);}
 .t-track{display:flex;animation:tick 30s linear infinite;width:max-content;}
@@ -84,6 +95,31 @@ h1 .g{color:var(--gl);}
 .t-item strong{color:var(--t1);}
 .t-sep{color:rgba(255,255,255,0.08);padding:0 4px;}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── TESTIMONIALS CAROUSEL ── */
+.testi-carousel{overflow:hidden;position:relative;padding:0 0 88px;}
+.testi-carousel::before,.testi-carousel::after{content:'';position:absolute;top:0;bottom:88px;width:100px;z-index:2;pointer-events:none;}
+.testi-carousel::before{left:0;background:linear-gradient(90deg,var(--bg),transparent);}
+.testi-carousel::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent);}
+.testi-track{display:flex;gap:14px;width:max-content;animation:testiScroll 42s linear infinite;}
+.testi-track:hover{animation-play-state:paused;}
+.tc{background:var(--card);border:1px solid var(--cb);border-radius:var(--r);padding:26px;transition:.2s;width:340px;flex-shrink:0;}
+.tc:hover{border-color:var(--cbh);box-shadow:0 0 24px rgba(22,163,74,0.06);}
+.tc-stars{color:var(--g);font-size:13px;letter-spacing:2px;margin-bottom:14px;}
+.tc-text{font-size:15px;color:var(--t1);line-height:1.7;font-weight:400;margin-bottom:18px;font-style:italic;}
+.tc-text strong{font-style:normal;color:var(--gl);font-weight:700;}
+.tc-person{display:flex;align-items:center;gap:10px;}
+.tc-av{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#fff;flex-shrink:0;}
+.tc-name{font-size:13px;font-weight:600;}
+.tc-role{font-size:11px;color:var(--t3);}
+.tc-result{display:inline-block;margin-top:12px;font-size:11px;font-weight:700;color:var(--g);background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);padding:3px 10px;border-radius:100px;letter-spacing:.5px;}
+@keyframes testiScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* ── LANG SWITCHER ── */
+.lang-switcher{display:flex;justify-content:center;gap:8px;margin-bottom:32px;}
+.lang-btn{font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:.5px;padding:6px 16px;border-radius:100px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:var(--t3);cursor:pointer;transition:all .2s;}
+.lang-btn.active{background:var(--g);color:#fff;border-color:var(--g);box-shadow:0 0 14px rgba(22,163,74,0.35);}
+.lang-btn:hover:not(.active){border-color:rgba(255,255,255,0.25);color:var(--t1);}
 
 /* ── SECTIONS ── */
 section{padding:88px 48px;}
@@ -311,6 +347,32 @@ h2 .g{color:var(--gl);}
   </div>
 </section>
 
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-label">Unsere Technologie-Partner</div>
+  <div class="trust-track">
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">💬</span><span class="trust-logo-name">WhatsApp</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🔵</span><span class="trust-logo-name">Meta</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🎙️</span><span class="trust-logo-name">ElevenLabs</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">✨</span><span class="trust-logo-name">Hygiene</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🔗</span><span class="trust-logo-name">NNN</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">📲</span><span class="trust-logo-name">WAPI</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">📊</span><span class="trust-logo-name">Triview</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🤖</span><span class="trust-logo-name">Claude AI</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🎬</span><span class="trust-logo-name">Higgsfield</span></div></div>
+    <!-- Duplikat für nahtlosen Loop -->
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">💬</span><span class="trust-logo-name">WhatsApp</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🔵</span><span class="trust-logo-name">Meta</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🎙️</span><span class="trust-logo-name">ElevenLabs</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">✨</span><span class="trust-logo-name">Hygiene</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🔗</span><span class="trust-logo-name">NNN</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">📲</span><span class="trust-logo-name">WAPI</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">📊</span><span class="trust-logo-name">Triview</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🤖</span><span class="trust-logo-name">Claude AI</span></div></div>
+    <div class="trust-logo"><div class="trust-logo-inner"><span class="trust-logo-icon">🎬</span><span class="trust-logo-name">Higgsfield</span></div></div>
+  </div>
+</div>
+
 <!-- TICKER -->
 <div class="ticker">
   <div class="t-track">
@@ -428,46 +490,21 @@ h2 .g{color:var(--gl);}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section style="padding-top:0;">
-  <div class="wrap">
-    <div class="testi-grid ru">
-      <div class="tc">
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">"Innerhalb von 3 Wochen hatte ich einen kompletten Online-Kurs – <strong>inklusive Funnel und Sales Page</strong>. Ich hätte das alleine nie in dieser Zeit geschafft."</p>
-        <div class="tc-person">
-          <div class="tc-av" style="background:linear-gradient(135deg,#16a34a,#166534);">M</div>
-          <div><div class="tc-name">Mia K.</div><div class="tc-role">Fitness Creator · 85K Followers</div></div>
-        </div>
-        <span class="tc-result">↑ €12.400 im ersten Monat</span>
-      </div>
-      <div class="tc">
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">"Die Motion Design Videos haben meine <strong>Click-Through-Rate auf Amazon um 340%</strong> erhöht. Meine Konkurrenten wundern sich bis heute."</p>
-        <div class="tc-person">
-          <div class="tc-av" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);">J</div>
-          <div><div class="tc-name">Jonas R.</div><div class="tc-role">Amazon Seller · Haushalt & Küche</div></div>
-        </div>
-        <span class="tc-result">↑ CTR +340% in 6 Wochen</span>
-      </div>
-      <div class="tc">
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">"Ich hatte schon Kurse versucht zu bauen – und aufgehört. Mit LYP war es das erste Mal, dass jemand <strong>wirklich die Arbeit übernommen hat</strong>."</p>
-        <div class="tc-person">
-          <div class="tc-av" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">S</div>
-          <div><div class="tc-name">Sarah L.</div><div class="tc-role">Business Coach · LinkedIn</div></div>
-        </div>
-        <span class="tc-result">↑ Erster €5K Launch</span>
-      </div>
-      <div class="tc">
-        <div class="tc-stars">★★★★★</div>
-        <p class="tc-text">"Als Amazon Seller dachte ich, gute Videos brauchen ein Kamera-Team. <strong>In 48 Stunden hatte ich 3 professionelle Produktvideos</strong> – KI-produziert, aber du merkst es nicht."</p>
-        <div class="tc-person">
-          <div class="tc-av" style="background:linear-gradient(135deg,#b45309,#78350f);">T</div>
-          <div><div class="tc-name">Thomas W.</div><div class="tc-role">Amazon Seller · Beauty</div></div>
-        </div>
-        <span class="tc-result">↑ ACoS -28% nach 4 Wochen</span>
-      </div>
+<!-- TESTIMONIALS CAROUSEL -->
+<section style="padding-top:0;padding-left:0;padding-right:0;">
+  <div class="testi-carousel">
+    <div class="testi-track">
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Innerhalb von 3 Wochen hatte ich einen kompletten Online-Kurs – <strong>inklusive Funnel und Sales Page</strong>. Ich hätte das alleine nie in dieser Zeit geschafft."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#16a34a,#166534);">M</div><div><div class="tc-name">Mia K.</div><div class="tc-role">Fitness Creator · 85K Followers</div></div></div><span class="tc-result">↑ €12.400 im ersten Monat</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Die Motion Design Videos haben meine <strong>Click-Through-Rate auf Amazon um 340%</strong> erhöht. Meine Konkurrenten wundern sich bis heute."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);">J</div><div><div class="tc-name">Jonas R.</div><div class="tc-role">Amazon Seller · Haushalt & Küche</div></div></div><span class="tc-result">↑ CTR +340% in 6 Wochen</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Ich hatte schon Kurse versucht zu bauen – und aufgehört. Mit LYP war es das erste Mal, dass jemand <strong>wirklich die Arbeit übernommen hat</strong>."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">S</div><div><div class="tc-name">Sarah L.</div><div class="tc-role">Business Coach · LinkedIn</div></div></div><span class="tc-result">↑ Erster €5K Launch</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Als Amazon Seller dachte ich, gute Videos brauchen ein Kamera-Team. <strong>In 48 Stunden hatte ich 3 professionelle Produktvideos</strong> – KI-produziert, aber du merkst es nicht."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#b45309,#78350f);">T</div><div><div class="tc-name">Thomas W.</div><div class="tc-role">Amazon Seller · Beauty</div></div></div><span class="tc-result">↑ ACoS -28% nach 4 Wochen</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Unser Social Media Agent läuft vollautomatisch. <strong>Wir posten täglich ohne einen Finger zu rühren</strong> – die Reichweite ist um 180% gestiegen."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#0891b2,#0e7490);">L</div><div><div class="tc-name">Laura M.</div><div class="tc-role">E-Commerce Brand · Fashion</div></div></div><span class="tc-result">↑ Reichweite +180% in 4 Wochen</span></div>
+      <!-- Duplikat -->
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Innerhalb von 3 Wochen hatte ich einen kompletten Online-Kurs – <strong>inklusive Funnel und Sales Page</strong>. Ich hätte das alleine nie in dieser Zeit geschafft."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#16a34a,#166534);">M</div><div><div class="tc-name">Mia K.</div><div class="tc-role">Fitness Creator · 85K Followers</div></div></div><span class="tc-result">↑ €12.400 im ersten Monat</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Die Motion Design Videos haben meine <strong>Click-Through-Rate auf Amazon um 340%</strong> erhöht. Meine Konkurrenten wundern sich bis heute."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#1d4ed8,#1e3a8a);">J</div><div><div class="tc-name">Jonas R.</div><div class="tc-role">Amazon Seller · Haushalt & Küche</div></div></div><span class="tc-result">↑ CTR +340% in 6 Wochen</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Ich hatte schon Kurse versucht zu bauen – und aufgehört. Mit LYP war es das erste Mal, dass jemand <strong>wirklich die Arbeit übernommen hat</strong>."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#7c3aed,#4c1d95);">S</div><div><div class="tc-name">Sarah L.</div><div class="tc-role">Business Coach · LinkedIn</div></div></div><span class="tc-result">↑ Erster €5K Launch</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Als Amazon Seller dachte ich, gute Videos brauchen ein Kamera-Team. <strong>In 48 Stunden hatte ich 3 professionelle Produktvideos</strong> – KI-produziert, aber du merkst es nicht."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#b45309,#78350f);">T</div><div><div class="tc-name">Thomas W.</div><div class="tc-role">Amazon Seller · Beauty</div></div></div><span class="tc-result">↑ ACoS -28% nach 4 Wochen</span></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Unser Social Media Agent läuft vollautomatisch. <strong>Wir posten täglich ohne einen Finger zu rühren</strong> – die Reichweite ist um 180% gestiegen."</p><div class="tc-person"><div class="tc-av" style="background:linear-gradient(135deg,#0891b2,#0e7490);">L</div><div><div class="tc-name">Laura M.</div><div class="tc-role">E-Commerce Brand · Fashion</div></div></div><span class="tc-result">↑ Reichweite +180% in 4 Wochen</span></div>
     </div>
   </div>
 </section>
@@ -475,35 +512,40 @@ h2 .g{color:var(--gl);}
 <!-- PROGRAMS -->
 <section id="programs" style="background:linear-gradient(180deg,transparent,rgba(22,163,74,0.03),transparent);">
   <div class="wrap">
-    <div class="ru" style="text-align:center;margin-bottom:48px;">
-      <span class="sl">Programme</span>
-      <h2>Wähle deinen<br><span class="g">Wachstumspfad</span></h2>
-      <p class="lead" style="max-width:480px;margin:0 auto 0;">Drei fokussierte Programme – je nachdem wo du stehst und wohin du willst.</p>
+    <div class="ru" style="text-align:center;margin-bottom:32px;">
+      <span class="sl" id="prog-label">Programme</span>
+      <h2 id="prog-title">Wähle deinen<br><span class="g">Wachstumspfad</span></h2>
+      <p class="lead" style="max-width:480px;margin:0 auto 16px;" id="prog-sub">Drei fokussierte Programme – je nachdem wo du stehst und wohin du willst.</p>
+    </div>
+    <div class="lang-switcher">
+      <button class="lang-btn active" onclick="setLang('de')">🇩🇪 DE</button>
+      <button class="lang-btn" onclick="setLang('en')">🇬🇧 EN</button>
+      <button class="lang-btn" onclick="setLang('ar')">🇸🇦 AR</button>
     </div>
     <div class="prog-grid ru">
       <div class="pc">
-        <div class="pc-for">Für Content Creator</div>
+        <div class="pc-for" data-de="Für Content Creator" data-en="For Content Creators" data-ar="لصانعي المحتوى">Für Content Creator</div>
         <h3>Monetise</h3>
-        <div class="outcome">→ Dein erstes digitales Produkt in 3 Wochen</div>
-        <p>Du hast die Audience. Wir bauen das Produkt. E-Book, Online-Kurs oder Video-Programm – vollständig produziert, gebrand und mit Funnel ausgestattet.</p>
-        <div class="pc-tags"><span class="pt">E-Books</span><span class="pt">Kurse</span><span class="pt">Sales Funnel</span></div>
-        <a href="#cta" class="pc-link">Mehr erfahren →</a>
+        <div class="outcome" data-de="→ Dein erstes digitales Produkt in 3 Wochen" data-en="→ Your first digital product in 3 weeks" data-ar="→ منتجك الرقمي الأول في 3 أسابيع">→ Dein erstes digitales Produkt in 3 Wochen</div>
+        <p data-de="Du hast die Audience. Wir bauen das Produkt. E-Book, Online-Kurs oder Video-Programm – vollständig produziert, gebrand und mit Funnel ausgestattet." data-en="You have the audience. We build the product. E-book, online course or video program – fully produced, branded and with funnel." data-ar="لديك الجمهور. نحن نبني المنتج. كتاب إلكتروني أو دورة أونلاين – منتج بالكامل مع قمع مبيعات.">Du hast die Audience. Wir bauen das Produkt. E-Book, Online-Kurs oder Video-Programm – vollständig produziert, gebrand und mit Funnel ausgestattet.</p>
+        <div class="pc-tags"><span class="pt">E-Books</span><span class="pt" data-de="Kurse" data-en="Courses" data-ar="دورات">Kurse</span><span class="pt">Sales Funnel</span></div>
+        <a href="#cta" class="pc-link" data-de="Mehr erfahren →" data-en="Learn more →" data-ar="اعرف أكثر →">Mehr erfahren →</a>
       </div>
       <div class="pc feat">
-        <div class="pc-for">Für skalierungsbereite Founders</div>
+        <div class="pc-for" data-de="Für skalierungsbereite Founders" data-en="For scaling-ready Founders" data-ar="للمؤسسين المستعدين للتوسع">Für skalierungsbereite Founders</div>
         <h3>UpLevel</h3>
-        <div class="outcome">→ Von Produkt zu systematischem Wachstum</div>
-        <p>Du hast ein Produkt, willst aber schneller skalieren. Wir bauen KI-Content-Pipelines, optimieren deinen Funnel und übernehmen die komplette Growth-Execution.</p>
-        <div class="pc-tags"><span class="pt">Growth Ops</span><span class="pt">KI-Pipeline</span><span class="pt">Scaling</span></div>
-        <a href="#cta" class="pc-link">Mehr erfahren →</a>
+        <div class="outcome" data-de="→ Von Produkt zu systematischem Wachstum" data-en="→ From product to systematic growth" data-ar="→ من المنتج إلى النمو المنهجي">→ Von Produkt zu systematischem Wachstum</div>
+        <p data-de="Du hast ein Produkt, willst aber schneller skalieren. Wir bauen KI-Content-Pipelines, optimieren deinen Funnel und übernehmen die komplette Growth-Execution." data-en="You have a product but want to scale faster. We build AI content pipelines and take over the complete growth execution." data-ar="لديك منتج لكنك تريد التوسع بشكل أسرع. نبني قنوات محتوى بالذكاء الاصطناعي ونتولى تنفيذ النمو الكامل.">Du hast ein Produkt, willst aber schneller skalieren. Wir bauen KI-Content-Pipelines, optimieren deinen Funnel und übernehmen die komplette Growth-Execution.</p>
+        <div class="pc-tags"><span class="pt">Growth Ops</span><span class="pt" data-de="KI-Pipeline" data-en="AI Pipeline" data-ar="خط أنابيب الذكاء الاصطناعي">KI-Pipeline</span><span class="pt">Scaling</span></div>
+        <a href="#cta" class="pc-link" data-de="Mehr erfahren →" data-en="Learn more →" data-ar="اعرف أكثر →">Mehr erfahren →</a>
       </div>
       <div class="pc">
-        <div class="pc-for">Für Amazon Seller</div>
+        <div class="pc-for" data-de="Für Amazon Seller" data-en="For Amazon Sellers" data-ar="لبائعي أمازون">Für Amazon Seller</div>
         <h3>Motion Ads</h3>
-        <div class="outcome">→ Videos, die in 48h geliefert werden</div>
-        <p>Professionelle Motion Design Videos ohne Shooting. UGC-Hooks, Showcase-Videos, Sponsored Brands Ads – produziert mit Higgsfield AI, geliefert in 48 Stunden.</p>
-        <div class="pc-tags"><span class="pt">Amazon</span><span class="pt">TikTok</span><span class="pt">48h Lieferung</span></div>
-        <a href="#cta" class="pc-link">Mehr erfahren →</a>
+        <div class="outcome" data-de="→ Videos, die in 48h geliefert werden" data-en="→ Videos delivered in 48h" data-ar="→ مقاطع فيديو تُسلَّم خلال 48 ساعة">→ Videos, die in 48h geliefert werden</div>
+        <p data-de="Professionelle Motion Design Videos ohne Shooting. UGC-Hooks, Showcase-Videos, Sponsored Brands Ads – produziert mit Higgsfield AI, geliefert in 48 Stunden." data-en="Professional motion design videos without shooting. UGC hooks, showcase videos – produced with Higgsfield AI, delivered in 48 hours." data-ar="مقاطع فيديو احترافية بدون تصوير. إنتاج بالذكاء الاصطناعي، تسليم في 48 ساعة.">Professionelle Motion Design Videos ohne Shooting. UGC-Hooks, Showcase-Videos, Sponsored Brands Ads – produziert mit Higgsfield AI, geliefert in 48 Stunden.</p>
+        <div class="pc-tags"><span class="pt">Amazon</span><span class="pt">TikTok</span><span class="pt" data-de="48h Lieferung" data-en="48h Delivery" data-ar="توصيل 48 ساعة">48h Lieferung</span></div>
+        <a href="#cta" class="pc-link" data-de="Mehr erfahren →" data-en="Learn more →" data-ar="اعرف أكثر →">Mehr erfahren →</a>
       </div>
     </div>
   </div>
@@ -765,6 +807,23 @@ document.querySelectorAll('.ru').forEach(el=>obs.observe(el));
 window.addEventListener('scroll',()=>{
   document.querySelector('nav').style.background=window.scrollY>50?'rgba(7,9,10,0.97)':'rgba(7,9,10,0.82)';
 });
+
+// Language switcher
+const i18n={
+  de:{label:'Programme',title:'Wähle deinen<br><span class="g">Wachstumspfad</span>',sub:'Drei fokussierte Programme – je nachdem wo du stehst und wohin du willst.',dir:'ltr'},
+  en:{label:'Programs',title:'Choose your<br><span class="g">growth path</span>',sub:'Three focused programs – depending on where you stand and where you want to go.',dir:'ltr'},
+  ar:{label:'البرامج',title:'اختر<br><span class="g">مسار نموك</span>',sub:'ثلاثة برامج مركزة – حسب وضعك الحالي وأهدافك المستقبلية.',dir:'rtl'}
+};
+function setLang(lang){
+  const t=i18n[lang];
+  document.getElementById('prog-label').textContent=t.label;
+  document.getElementById('prog-title').innerHTML=t.title;
+  document.getElementById('prog-sub').textContent=t.sub;
+  document.querySelectorAll('#programs [data-'+lang+']').forEach(el=>{el.textContent=el.dataset[lang];});
+  document.getElementById('programs').setAttribute('dir',t.dir);
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.lang-btn[onclick="setLang(\''+lang+'\')"]').classList.add('active');
+}
 
 // Revenue chart
 (function(){
