@@ -270,15 +270,7 @@ h2 .g{color:var(--gl);}
 
 @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}section{padding:64px 20px;}.hero{padding:82px 20px 48px;}footer{padding:24px 20px;flex-direction:column;text-align:center;}}
 </style>
-<script type="importmap">
-{
-  "imports": {
-    "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.webgpu.js",
-    "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.tsl.js",
-    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
-  }
-}
-</script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 </head>
 <body>
 
@@ -856,117 +848,199 @@ function setLang(lang){
 })();
 </script>
 
-<!-- Green Holographic Hero — Three.js WebGPU -->
-<script type="module">
-import * as THREE from 'three';
-import {
-  abs, blendScreen, float, mod, mx_cell_noise_float,
-  oneMinus, smoothstep, texture, uniform, uv, vec2, vec3, pass, mix, add
-} from 'three/tsl';
-import { bloom } from 'three/addons/tsl/display/BloomNode.js';
+<!-- Holographic Hero — Three.js WebGL -->
+<script>
+(function() {
+  const canvas = document.getElementById('holoCanvas');
+  if (!canvas || typeof THREE === 'undefined') return;
 
-const TEXTUREMAP = 'https://i.postimg.cc/XYwvXN8D/img-4.png';
-const DEPTHMAP   = 'https://i.postimg.cc/2SHKQh2q/raw-4.webp';
-const WIDTH = 300, HEIGHT = 300;
+  // ── Renderer ──────────────────────────────────────────────
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.setClearColor(0x000000, 0);
 
-const canvas = document.getElementById('holoCanvas');
-if (!canvas) throw new Error('No holoCanvas');
-
-// Check WebGPU support
-const hasWebGPU = !!navigator.gpu;
-if (!hasWebGPU) {
-  // Fallback: keep the CSS gradient background, just skip Three.js
-  console.info('WebGPU not supported — using CSS fallback.');
-} else {
-  const renderer = new THREE.WebGPURenderer({ canvas, antialias: false, alpha: true });
-  await renderer.init();
-
-  const scene = new THREE.Scene();
-  const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);
-  camera.position.z = 1;
+  const scene  = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 100);
+  camera.position.set(0, 0, 5.5);
 
   function resize() {
     const hero = document.getElementById('hero');
     const W = hero.clientWidth, H = hero.clientHeight;
     renderer.setSize(W, H);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    camera.aspect = W / H;
+    camera.updateProjectionMatrix();
   }
   resize();
   window.addEventListener('resize', resize);
 
-  // Load textures
-  const loader = new THREE.TextureLoader();
-  const [rawMap, depthMap] = await Promise.all([
-    loader.loadAsync(TEXTUREMAP),
-    loader.loadAsync(DEPTHMAP),
-  ]);
+  // ── Blob geometry (sphere with perlin-style displacement) ──
+  const geo = new THREE.SphereGeometry(1.6, 128, 128);
 
-  // Uniforms
-  const uPointer  = uniform(new THREE.Vector2(0));
-  const uProgress = uniform(0);
+  // Custom shader material — white wireframe-like contour lines on dark
+  const blobMat = new THREE.ShaderMaterial({
+    uniforms: {
+      uTime:    { value: 0 },
+      uMouse:   { value: new THREE.Vector2(0, 0) },
+    },
+    vertexShader: `
+      uniform float uTime;
+      uniform vec2  uMouse;
+      varying vec3  vNormal;
+      varying vec3  vPos;
 
-  const strength  = 0.012;
-  const tDepth    = texture(depthMap);
-  const tMap      = texture(rawMap, uv().add(tDepth.r.mul(uPointer).mul(strength)));
+      // Simplex-like hash noise
+      vec3 hash3(vec3 p) {
+        p = fract(p * vec3(443.897,441.423,437.195));
+        p += dot(p, p.yxz + 19.19);
+        return fract((p.xxy + p.yxx) * p.zyx);
+      }
+      float noise(vec3 p) {
+        vec3 i = floor(p);
+        vec3 f = fract(p);
+        f = f*f*(3.0-2.0*f);
+        return mix(
+          mix(mix(dot(hash3(i+vec3(0,0,0))-0.5, f-vec3(0,0,0)),
+                  dot(hash3(i+vec3(1,0,0))-0.5, f-vec3(1,0,0)), f.x),
+              mix(dot(hash3(i+vec3(0,1,0))-0.5, f-vec3(0,1,0)),
+                  dot(hash3(i+vec3(1,1,0))-0.5, f-vec3(1,1,0)), f.x), f.y),
+          mix(mix(dot(hash3(i+vec3(0,0,1))-0.5, f-vec3(0,0,1)),
+                  dot(hash3(i+vec3(1,0,1))-0.5, f-vec3(1,0,1)), f.x),
+              mix(dot(hash3(i+vec3(0,1,1))-0.5, f-vec3(0,1,1)),
+                  dot(hash3(i+vec3(1,1,1))-0.5, f-vec3(1,1,1)), f.x), f.y)
+        , f.z);
+      }
+      float fbm(vec3 p) {
+        float v = 0.0; float a = 0.5;
+        for(int i=0;i<4;i++){v+=a*noise(p);p*=2.0;a*=0.5;}
+        return v;
+      }
 
-  const aspect    = float(WIDTH).div(HEIGHT);
-  const tUv       = vec2(uv().x.mul(aspect), uv().y);
-  const tiling    = vec2(120.0);
-  const tiledUv   = mod(tUv.mul(tiling), 2.0).sub(1.0);
-  const brightness = mx_cell_noise_float(tUv.mul(tiling).div(2));
-  const dist       = float(tiledUv.length());
-  const dot        = float(smoothstep(0.5, 0.49, dist)).mul(brightness);
-  const flow       = oneMinus(smoothstep(0, 0.02, abs(tDepth.sub(uProgress))));
-  // GREEN mask: vec3(0, 10, 0) instead of red
-  const mask       = dot.mul(flow).mul(vec3(0, 10, 0));
-  const colorNode  = blendScreen(tMap, mask);
+      void main() {
+        vNormal = normal;
+        vec3 p = position;
+        float t = uTime * 0.22;
+        // Mouse tilt
+        float mx = uMouse.x * 0.3;
+        float my = uMouse.y * 0.3;
+        mat2 rotY = mat2(cos(mx), -sin(mx), sin(mx), cos(mx));
+        mat2 rotX = mat2(cos(my), -sin(my), sin(my), cos(my));
+        p.xz = rotY * p.xz;
+        p.yz = rotX * p.yz;
+        // Displacement
+        float disp = fbm(p * 1.2 + t) * 0.55
+                   + fbm(p * 2.4 - t * 0.7) * 0.22;
+        p += normal * disp;
+        vPos = p;
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+      }
+    `,
+    fragmentShader: `
+      uniform float uTime;
+      varying vec3 vNormal;
+      varying vec3 vPos;
 
-  const mat = new THREE.MeshBasicNodeMaterial({ colorNode, transparent: true, opacity: 0 });
-  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
+      void main() {
+        vec3 n = normalize(vNormal);
+        // Contour lines based on world-space Y position
+        float bands = sin(vPos.y * 14.0) * 0.5 + 0.5;
+        float thin  = smoothstep(0.42, 0.5, bands) * smoothstep(0.58, 0.5, bands);
+        float lines = pow(thin, 0.6);
 
-  // Scale to fill hero proportionally
-  const aspect2D = WIDTH / HEIGHT;
-  mesh.scale.set(aspect2D * 0.42, 0.42, 1);
-  scene.add(mesh);
+        // Edge darkening (fresnel-like)
+        vec3 viewDir = vec3(0.0, 0.0, 1.0);
+        float edge = abs(dot(n, viewDir));
+        float surface = smoothstep(0.0, 0.45, edge);
 
-  // Post processing with green scan line + bloom
-  const postProcessing = new THREE.PostProcessing(renderer);
-  const scenePass      = pass(scene, camera);
-  const sceneColor     = scenePass.getTextureNode('output');
-  const bloomPass      = bloom(sceneColor, 1.2, 0.5, 0.85);
+        float bright = mix(lines, 1.0, surface * 0.25);
+        bright = clamp(bright, 0.0, 1.0);
 
-  const uScan     = uniform(0);
-  const scanPos   = float(uScan);
-  const uvY       = uv().y;
-  const scanWidth = float(0.05);
-  const scanLine  = smoothstep(0, scanWidth, abs(uvY.sub(scanPos)));
-  // GREEN scan: vec3(0, 1, 0)
-  const greenLine = vec3(0, 1, 0).mul(oneMinus(scanLine)).mul(0.3);
-  const withScan  = mix(sceneColor, add(sceneColor, greenLine), smoothstep(0.9, 1.0, oneMinus(scanLine)));
-  postProcessing.outputNode = withScan.add(bloomPass);
-
-  // Mouse parallax
-  document.getElementById('hero').addEventListener('mousemove', e => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    uPointer.value.set(
-      (e.clientX - rect.left) / rect.width  * 2 - 1,
-      -((e.clientY - rect.top)  / rect.height * 2 - 1)
-    );
+        // White object on dark bg
+        vec3 col = vec3(bright);
+        float alpha = smoothstep(0.0, 0.08, bright);
+        gl_FragColor = vec4(col, alpha);
+      }
+    `,
+    transparent: true,
+    side: THREE.FrontSide,
   });
 
-  // Animate
+  const blob = new THREE.Mesh(geo, blobMat);
+  scene.add(blob);
+
+  // ── Green scan line (horizontal particle strip) ────────────
+  const scanCanvas = document.createElement('canvas');
+  scanCanvas.width  = 2048;
+  scanCanvas.height = 64;
+  const sc = scanCanvas.getContext('2d');
+
+  function buildScanTex() {
+    sc.clearRect(0, 0, 2048, 64);
+    const cols = 220;
+    const dotW = Math.floor(2048 / cols);
+    for (let i = 0; i < cols; i++) {
+      const x  = i * dotW;
+      // random density — sparse towards edges
+      const cx = (i / cols - 0.5) * 2;
+      const prob = Math.exp(-cx * cx * 1.4);
+      if (Math.random() > prob) continue;
+      const h  = 6 + Math.random() * 20;
+      const y  = (64 - h) / 2;
+      const g  = sc.createLinearGradient(0, y, 0, y + h);
+      g.addColorStop(0,   'rgba(74,222,128,0)');
+      g.addColorStop(0.3, 'rgba(74,222,128,0.85)');
+      g.addColorStop(0.7, 'rgba(74,222,128,0.85)');
+      g.addColorStop(1,   'rgba(74,222,128,0)');
+      sc.fillStyle = g;
+      sc.fillRect(x, y, dotW - 2, h);
+    }
+  }
+  buildScanTex();
+
+  const scanTex = new THREE.CanvasTexture(scanCanvas);
+  const scanGeo = new THREE.PlaneGeometry(6, 0.12);
+  const scanMat = new THREE.MeshBasicMaterial({
+    map: scanTex, transparent: true, opacity: 0.9, depthWrite: false,
+    blending: THREE.AdditiveBlending,
+  });
+  const scanMesh = new THREE.Mesh(scanGeo, scanMat);
+  scene.add(scanMesh);
+
+  // ── Mouse tracking ─────────────────────────────────────────
+  const mouse = new THREE.Vector2(0, 0);
+  document.getElementById('hero').addEventListener('mousemove', e => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    mouse.x =  ((e.clientX - rect.left)  / rect.width  - 0.5) * 2;
+    mouse.y = -((e.clientY - rect.top)   / rect.height - 0.5) * 2;
+  });
+
+  // ── Animate ────────────────────────────────────────────────
   let t = 0;
+  let scanRefresh = 0;
   function frame() {
     requestAnimationFrame(frame);
-    t += 0.008;
-    uProgress.value = Math.sin(t) * 0.5 + 0.5;
-    uScan.value     = Math.sin(t * 0.6) * 0.5 + 0.5;
-    // Fade in
-    if (mat.opacity < 1) mat.opacity = Math.min(mat.opacity + 0.015, 1);
-    postProcessing.renderAsync();
+    t += 0.016;
+
+    blobMat.uniforms.uTime.value  = t;
+    blobMat.uniforms.uMouse.value.lerp(mouse, 0.04);
+
+    blob.rotation.y += 0.003;
+    blob.rotation.x += 0.001;
+
+    // Scan line oscillates vertically
+    const scanY = Math.sin(t * 0.55) * 1.1;
+    scanMesh.position.y = scanY;
+
+    // Refresh dot texture occasionally
+    scanRefresh++;
+    if (scanRefresh % 4 === 0) {
+      buildScanTex();
+      scanTex.needsUpdate = true;
+    }
+
+    renderer.render(scene, camera);
   }
   frame();
-}
+})();
 </script>
 </body>
 </html>
