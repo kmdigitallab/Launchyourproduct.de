@@ -3,12 +3,12 @@ const PARTNERS = [
   { icon: '🎬', name: 'Higgsfield' },
   { icon: '✨', name: 'ChatGPT' },
   { icon: '🎨', name: 'Canva' },
-  { icon: '🎵', name: 'Suno AI' },
-  { icon: '📐', name: 'Adobe' },
 ];
 
 export default function TrustBar() {
-  const items = [...PARTNERS, ...PARTNERS];
+  // Tripled so the -33.333% translate always has a full, identical set
+  // waiting right behind the visible one — no gap, no visible restart.
+  const items = [...PARTNERS, ...PARTNERS, ...PARTNERS];
   return (
     <div className="overflow-hidden border-y border-black/[0.07] bg-white py-5">
       <div className="mb-3.5 text-center text-[10px] font-bold uppercase tracking-[2px] text-[#8aaa96]">

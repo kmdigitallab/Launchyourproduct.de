@@ -28,10 +28,14 @@ body {
 
 /* ── Trust bar scroll ── */
 @keyframes trustScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-33.3333%, 0, 0); }
 }
-.trust-track { animation: trustScroll 22s linear infinite; }
+.trust-track {
+  animation: trustScroll 18s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
 
 /* ── Ticker ── */
 @keyframes tickerScroll {
