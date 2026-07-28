@@ -37,39 +37,26 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 .nb-s{background:var(--g);color:#fff;padding:8px 18px;font-weight:600;box-shadow:0 4px 14px rgba(22,163,74,0.3);}
 .nb-s:hover{background:#15803d;box-shadow:0 6px 20px rgba(22,163,74,0.4);transform:translateY(-1px);}
 
-/* ── HERO (centered, motion design focus) ── */
-.hero{position:relative;min-height:88vh;display:flex;align-items:center;justify-content:center;padding:92px 48px 72px;overflow:hidden;text-align:center;}
-.hero-glow{position:absolute;width:1000px;height:600px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,163,74,0.10) 0%,transparent 70%);top:-10%;left:50%;transform:translateX(-50%);pointer-events:none;z-index:0;animation:glowPulse 7s ease-in-out infinite;}
-@keyframes glowPulse{0%,100%{opacity:.6;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.08);}}
-.spotlight{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(600px circle at var(--mx,50%) var(--my,40%),rgba(22,163,74,0.06),transparent 60%);transition:background .12s ease;}
-.hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.4;background-image:linear-gradient(rgba(0,0,0,0.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.04) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);}
+/* ── HERO – dark, WebGPU holographic canvas ── */
+.hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;padding:92px 48px 80px;overflow:hidden;text-align:center;background:#07090a;}
+#holoCanvas{position:absolute;inset:0;width:100%!important;height:100%!important;z-index:0;}
+.hero-veil{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(7,9,10,0.35) 0%,rgba(7,9,10,0.72) 100%);}
 .hero-inner{position:relative;z-index:2;max-width:760px;margin:0 auto;width:100%;display:flex;flex-direction:column;align-items:center;}
-.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);color:var(--g);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:28px;}
-.badge-dot{width:5px;height:5px;background:var(--g);border-radius:50%;animation:pulse 2s infinite;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.14);border:1px solid rgba(22,163,74,0.35);color:#4ade80;font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:28px;}
+.badge-dot{width:5px;height:5px;background:#4ade80;border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-h1{font-size:clamp(38px,5.5vw,72px);font-weight:900;letter-spacing:-3px;line-height:1.03;margin-bottom:20px;color:var(--t1);}
-h1 .g{color:var(--g);}
-.hero-sub{font-size:17px;color:var(--t2);max-width:500px;margin:0 auto 36px;font-weight:300;line-height:1.75;}
+h1{font-size:clamp(38px,5.5vw,72px);font-weight:900;letter-spacing:-3px;line-height:1.03;margin-bottom:20px;color:#f0f6f1;}
+h1 .g{color:#4ade80;text-shadow:0 0 40px rgba(74,222,128,0.4);}
+.hero-sub{font-size:17px;color:rgba(240,246,241,0.65);max-width:500px;margin:0 auto 36px;font-weight:300;line-height:1.75;}
 .hero-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:40px;}
-.btn-main{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;background:var(--g);border:none;padding:14px 32px;border-radius:10px;cursor:pointer;box-shadow:0 4px 20px rgba(22,163,74,0.35);transition:all .2s;text-decoration:none;}
-.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(22,163,74,0.5);}
-.btn-sec{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--t2);background:#fff;border:1px solid rgba(0,0,0,0.12);padding:13px 26px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;}
-.btn-sec:hover{border-color:var(--g);color:var(--g);}
-.proof-bar{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:16px 28px;background:#fff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-.pb-item{text-align:center;}
-.pb-num{font-size:22px;font-weight:800;letter-spacing:-1px;color:var(--t1);}
-.pb-lbl{font-size:10px;color:var(--t3);margin-top:2px;letter-spacing:.3px;}
-.pb-div{width:1px;height:28px;background:rgba(0,0,0,0.08);}
-.hero-motion-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:12px;}
-.hero-motion h2{font-size:clamp(38px,5.5vw,72px);font-weight:900;letter-spacing:-3px;line-height:1.03;margin-bottom:16px;color:var(--t1);}
-.hero-motion h2 .g{color:var(--g);}
-.hero-motion p{font-size:17px;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:28px;max-width:500px;}
+.btn-main{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;background:var(--g);border:none;padding:14px 32px;border-radius:10px;cursor:pointer;box-shadow:0 0 28px rgba(22,163,74,0.4);transition:all .2s;text-decoration:none;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 0 50px rgba(22,163,74,0.65);}
+.btn-sec{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(240,246,241,0.75);background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.14);padding:13px 26px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-sec:hover{border-color:rgba(74,222,128,0.5);color:#4ade80;background:rgba(22,163,74,0.08);}
 .platform-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px;justify-content:center;}
-.ptag{font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.22);color:var(--g);letter-spacing:.3px;}
-@media(max-width:860px){
-  .hero{padding:82px 20px 56px;}
-  .hero-motion p{font-size:15px;}
-}
+.ptag{font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px;background:rgba(22,163,74,0.1);border:1px solid rgba(22,163,74,0.28);color:#4ade80;letter-spacing:.3px;}
+.holo-fallback{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 120% 80% at 50% 50%,rgba(22,163,74,0.12) 0%,transparent 65%);}
+@media(max-width:860px){.hero{padding:82px 20px 60px;}}
 
 /* ── TRUST BAR ── */
 .trust-bar{overflow:hidden;padding:20px 0;background:#fff;border-top:1px solid rgba(0,0,0,0.07);border-bottom:1px solid rgba(0,0,0,0.07);}
@@ -283,6 +270,15 @@ h2 .g{color:var(--gl);}
 
 @media(max-width:768px){nav{padding:0 20px;}.nav-links{display:none;}section{padding:64px 20px;}.hero{padding:82px 20px 48px;}footer{padding:24px 20px;flex-direction:column;text-align:center;}}
 </style>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.webgpu.js",
+    "three/tsl": "https://cdn.jsdelivr.net/npm/three@0.168.0/build/three.tsl.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.168.0/examples/jsm/"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -309,10 +305,9 @@ h2 .g{color:var(--gl);}
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-glow"></div>
-  <div class="hero-grid"></div>
-  <div class="spotlight" id="spotlight"></div>
-
+  <canvas id="holoCanvas"></canvas>
+  <div class="holo-fallback"></div>
+  <div class="hero-veil"></div>
 
   <div class="hero-inner">
     <div class="badge"><span class="badge-dot"></span> Motion Design Videos for Amazon Sellers</div>
@@ -328,7 +323,6 @@ h2 .g{color:var(--gl);}
       <span class="ptag">Kickstarter</span>
       <span class="ptag">TikTok</span>
     </div>
-
   </div>
 </section>
 
@@ -860,6 +854,119 @@ function setLang(lang){
   io.observe(canvas);
   window.addEventListener('resize',()=>draw(1-Math.pow(1-prog,3)));
 })();
+</script>
+
+<!-- Green Holographic Hero — Three.js WebGPU -->
+<script type="module">
+import * as THREE from 'three';
+import {
+  abs, blendScreen, float, mod, mx_cell_noise_float,
+  oneMinus, smoothstep, texture, uniform, uv, vec2, vec3, pass, mix, add
+} from 'three/tsl';
+import { bloom } from 'three/addons/tsl/display/BloomNode.js';
+
+const TEXTUREMAP = 'https://i.postimg.cc/XYwvXN8D/img-4.png';
+const DEPTHMAP   = 'https://i.postimg.cc/2SHKQh2q/raw-4.webp';
+const WIDTH = 300, HEIGHT = 300;
+
+const canvas = document.getElementById('holoCanvas');
+if (!canvas) throw new Error('No holoCanvas');
+
+// Check WebGPU support
+const hasWebGPU = !!navigator.gpu;
+if (!hasWebGPU) {
+  // Fallback: keep the CSS gradient background, just skip Three.js
+  console.info('WebGPU not supported — using CSS fallback.');
+} else {
+  const renderer = new THREE.WebGPURenderer({ canvas, antialias: false, alpha: true });
+  await renderer.init();
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.OrthographicCamera(-0.5, 0.5, 0.5, -0.5, 0.01, 10);
+  camera.position.z = 1;
+
+  function resize() {
+    const hero = document.getElementById('hero');
+    const W = hero.clientWidth, H = hero.clientHeight;
+    renderer.setSize(W, H);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Load textures
+  const loader = new THREE.TextureLoader();
+  const [rawMap, depthMap] = await Promise.all([
+    loader.loadAsync(TEXTUREMAP),
+    loader.loadAsync(DEPTHMAP),
+  ]);
+
+  // Uniforms
+  const uPointer  = uniform(new THREE.Vector2(0));
+  const uProgress = uniform(0);
+
+  const strength  = 0.012;
+  const tDepth    = texture(depthMap);
+  const tMap      = texture(rawMap, uv().add(tDepth.r.mul(uPointer).mul(strength)));
+
+  const aspect    = float(WIDTH).div(HEIGHT);
+  const tUv       = vec2(uv().x.mul(aspect), uv().y);
+  const tiling    = vec2(120.0);
+  const tiledUv   = mod(tUv.mul(tiling), 2.0).sub(1.0);
+  const brightness = mx_cell_noise_float(tUv.mul(tiling).div(2));
+  const dist       = float(tiledUv.length());
+  const dot        = float(smoothstep(0.5, 0.49, dist)).mul(brightness);
+  const flow       = oneMinus(smoothstep(0, 0.02, abs(tDepth.sub(uProgress))));
+  // GREEN mask: vec3(0, 10, 0) instead of red
+  const mask       = dot.mul(flow).mul(vec3(0, 10, 0));
+  const colorNode  = blendScreen(tMap, mask);
+
+  const mat = new THREE.MeshBasicNodeMaterial({ colorNode, transparent: true, opacity: 0 });
+  const mesh = new THREE.Mesh(new THREE.PlaneGeometry(1, 1), mat);
+
+  // Scale to fill hero proportionally
+  const aspect2D = WIDTH / HEIGHT;
+  mesh.scale.set(aspect2D * 0.42, 0.42, 1);
+  scene.add(mesh);
+
+  // Post processing with green scan line + bloom
+  const postProcessing = new THREE.PostProcessing(renderer);
+  const scenePass      = pass(scene, camera);
+  const sceneColor     = scenePass.getTextureNode('output');
+  const bloomPass      = bloom(sceneColor, 1.2, 0.5, 0.85);
+
+  const uScan     = uniform(0);
+  const scanPos   = float(uScan);
+  const uvY       = uv().y;
+  const scanWidth = float(0.05);
+  const scanLine  = smoothstep(0, scanWidth, abs(uvY.sub(scanPos)));
+  // GREEN scan: vec3(0, 1, 0)
+  const greenLine = vec3(0, 1, 0).mul(oneMinus(scanLine)).mul(0.3);
+  const withScan  = mix(sceneColor, add(sceneColor, greenLine), smoothstep(0.9, 1.0, oneMinus(scanLine)));
+  postProcessing.outputNode = withScan.add(bloomPass);
+
+  // Mouse parallax
+  document.getElementById('hero').addEventListener('mousemove', e => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    uPointer.value.set(
+      (e.clientX - rect.left) / rect.width  * 2 - 1,
+      -((e.clientY - rect.top)  / rect.height * 2 - 1)
+    );
+  });
+
+  // Animate
+  let t = 0;
+  function frame() {
+    requestAnimationFrame(frame);
+    t += 0.008;
+    uProgress.value = Math.sin(t) * 0.5 + 0.5;
+    uScan.value     = Math.sin(t * 0.6) * 0.5 + 0.5;
+    // Fade in
+    if (mat.opacity < 1) mat.opacity = Math.min(mat.opacity + 0.015, 1);
+    postProcessing.renderAsync();
+  }
+  frame();
+}
 </script>
 </body>
 </html>
