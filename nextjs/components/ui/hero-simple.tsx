@@ -1,4 +1,4 @@
-import { Globe } from '@/components/ui/globe';
+import { GlobeCard } from '@/components/ui/globe-card';
 
 interface HeroSimpleProps {
   badge?: string;
@@ -66,10 +66,8 @@ export const HeroSimple = ({
           ))}
         </div>
 
-        {/* Contained decorative globe — dark card housing a rotating green dot-globe */}
-        <div className="relative aspect-square w-full max-w-[420px] overflow-hidden rounded-full bg-[#07090a] shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
-          <Globe className="!absolute !inset-0 !max-w-none" />
-        </div>
+        {/* Contained decorative globe, using the proven reference card layout */}
+        <GlobeCard />
       </div>
     </section>
   );
