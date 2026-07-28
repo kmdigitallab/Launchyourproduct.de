@@ -4,7 +4,6 @@ import { useRef } from 'react';
 import Nav from '@/components/nav';
 import HeroSimple from '@/components/ui/hero-simple';
 import TrustBar from '@/components/trust-bar';
-import Ticker from '@/components/ticker';
 import AmbientBackground from '@/components/ambient-background';
 import FlowThread from '@/components/flow-thread';
 import PainSection from '@/components/pain-section';
@@ -39,7 +38,6 @@ export default function Home() {
 
         <div className="ticker-marker">
           <TrustBar />
-          <Ticker />
         </div>
 
         <PainSection />

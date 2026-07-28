@@ -16,7 +16,7 @@ export default function TrustBar() {
       </div>
       <div className="trust-track flex w-max">
         {items.map((p, i) => (
-          <div key={i} className="flex items-center px-6">
+          <div key={i} className="flex items-center px-10">
             <div className="flex items-center gap-2 rounded-lg border border-black/[0.08] bg-[#f4f7f5] px-4.5 py-2 transition-all hover:border-green-600/30 hover:bg-[#eaf2ec]">
               <span className="text-[15px]">{p.icon}</span>
               <span className="whitespace-nowrap text-[13px] font-bold text-[#4b6358]">{p.name}</span>
