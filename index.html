@@ -327,22 +327,6 @@ h2 .g{color:var(--gl);}
   <div class="hero-grid"></div>
   <div class="spotlight" id="spotlight"></div>
 
-  <!-- Diagonal zigzag lightning bolt SVG divider -->
-  <svg class="hero-bolt-svg" viewBox="0 0 1000 600" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="boltGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="rgba(74,222,128,0)"/>
-        <stop offset="30%" stop-color="#4ade80"/>
-        <stop offset="70%" stop-color="#16a34a"/>
-        <stop offset="100%" stop-color="rgba(22,163,74,0)"/>
-      </linearGradient>
-      <filter id="glow">
-        <feGaussianBlur stdDeviation="4" result="blur"/>
-        <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
-      </filter>
-    </defs>
-    <path d="M 460 0  L 520 100  L 460 180  L 530 290  L 460 380  L 525 490  L 470 600" stroke="url(#boltGrad)" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)" opacity="0.9"/>
-  </svg>
 
   <div class="hero-inner">
     <!-- LEFT: Growth / Digital Products -->
