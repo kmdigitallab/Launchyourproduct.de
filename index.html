@@ -22,6 +22,7 @@ body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);overflo
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(7,9,10,0.82);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.06);}
 .logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+.logo-text{font-size:17px;font-weight:800;letter-spacing:-.5px;color:var(--gl);text-shadow:0 0 18px rgba(74,222,128,0.55),0 0 36px rgba(22,163,74,0.3);}
 .lm{width:28px;height:28px;background:var(--g);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#fff;box-shadow:0 0 14px rgba(22,163,74,0.5);}
 .ln{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.3px;}
 .ls{font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;}
@@ -35,45 +36,54 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;ali
 .nb-s{background:var(--g);color:#fff;padding:8px 18px;font-weight:600;box-shadow:0 0 16px rgba(22,163,74,0.3);}
 .nb-s:hover{background:#15803d;box-shadow:0 0 26px rgba(22,163,74,0.5);transform:translateY(-1px);}
 
-/* ── HERO (interaktiv, split mit 3D-Roboter) ── */
+/* ── HERO (split: Growth left | Lightning | Motion Ads right) ── */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;padding:92px 48px 56px;overflow:hidden;}
 .hero-glow{position:absolute;width:900px;height:500px;border-radius:50%;background:radial-gradient(ellipse,rgba(22,163,74,0.08) 0%,transparent 70%);top:-40px;left:12%;pointer-events:none;z-index:0;animation:glowPulse 7s ease-in-out infinite;}
 @keyframes glowPulse{0%,100%{opacity:.65;transform:scale(1);}50%{opacity:1;transform:scale(1.09);}}
-.spotlight{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(600px circle at var(--mx,70%) var(--my,35%),rgba(22,163,74,0.10),transparent 60%);transition:background .12s ease;}
+.spotlight{position:absolute;inset:0;pointer-events:none;z-index:0;background:radial-gradient(600px circle at var(--mx,50%) var(--my,35%),rgba(22,163,74,0.08),transparent 60%);transition:background .12s ease;}
 .hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);mask-image:radial-gradient(ellipse at 50% 40%,#000 30%,transparent 75%);}
-.hero-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1.05fr .95fr;gap:24px;align-items:center;}
-.hero-copy{max-width:560px;text-align:left;}
+.hero-inner{position:relative;z-index:1;max-width:1240px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 56px 1fr;gap:0;align-items:center;min-height:520px;}
+/* Left side */
+.hero-copy{padding-right:40px;}
 .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);color:var(--gl);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:28px;}
 .badge-dot{width:5px;height:5px;background:var(--g);border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-h1{font-size:clamp(38px,4.6vw,66px);font-weight:900;letter-spacing:-2.5px;line-height:1.04;margin-bottom:22px;}
+h1{font-size:clamp(32px,3.8vw,58px);font-weight:900;letter-spacing:-2px;line-height:1.06;margin-bottom:18px;}
 h1 .g{color:var(--gl);}
-.hero-sub{font-size:18px;color:var(--t2);max-width:480px;margin-bottom:36px;font-weight:300;line-height:1.7;}
-.hero-btns{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+.hero-sub{font-size:16px;color:var(--t2);max-width:440px;margin-bottom:32px;font-weight:300;line-height:1.7;}
+.hero-btns{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:36px;}
 .btn-main{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;background:var(--g);border:none;padding:14px 32px;border-radius:10px;cursor:pointer;box-shadow:0 0 28px rgba(22,163,74,0.4);transition:all .2s;text-decoration:none;}
 .btn-main:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(22,163,74,0.6);}
 .btn-sec{font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:var(--t2);background:transparent;border:1px solid rgba(255,255,255,0.12);padding:13px 26px;border-radius:10px;cursor:pointer;transition:all .2s;text-decoration:none;}
 .btn-sec:hover{border-color:rgba(255,255,255,0.25);color:var(--t1);}
-.proof-bar{display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding:18px 24px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:14px;max-width:560px;}
+.proof-bar{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:16px 20px;background:rgba(255,255,255,0.025);border:1px solid rgba(255,255,255,0.06);border-radius:14px;}
 .pb-item{text-align:left;}
-.pb-num{font-size:22px;font-weight:800;letter-spacing:-1px;color:#fff;}
-.pb-lbl{font-size:11px;color:var(--t3);margin-top:2px;letter-spacing:.3px;}
-.pb-div{width:1px;height:32px;background:rgba(255,255,255,0.07);}
-/* 3D robot column */
-.hero-3d{position:relative;height:560px;width:100%;}
-.hero-3d spline-viewer{width:100%;height:100%;display:block;}
-.hero-3d::after{content:'';position:absolute;bottom:0;right:0;width:150px;height:44px;background:var(--bg);z-index:2;pointer-events:none;}
-.hero-3d .loader{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;z-index:0;}
-.hero-3d .loader span{width:32px;height:32px;border:3px solid rgba(74,222,128,0.18);border-top-color:var(--gl);border-radius:50%;animation:spin .9s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}}
-@media(max-width:940px){
-  .hero-inner{grid-template-columns:1fr;text-align:center;}
-  .hero-copy{max-width:100%;margin:0 auto;text-align:center;}
-  .hero-sub{margin-left:auto;margin-right:auto;}
-  .hero-btns,.proof-bar{justify-content:center;}
-  .proof-bar{margin:0 auto;}
-  .hero-3d{height:360px;order:-1;margin-bottom:8px;}
-  .hero-3d::after{display:none;}
+.pb-num{font-size:20px;font-weight:800;letter-spacing:-1px;color:#fff;}
+.pb-lbl{font-size:10px;color:var(--t3);margin-top:2px;letter-spacing:.3px;}
+.pb-div{width:1px;height:28px;background:rgba(255,255,255,0.07);}
+/* Lightning divider */
+.hero-bolt{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;position:relative;}
+.hero-bolt::before{content:'';position:absolute;top:0;bottom:0;left:50%;width:1px;background:linear-gradient(180deg,transparent,rgba(74,222,128,0.5) 30%,rgba(74,222,128,0.5) 70%,transparent);transform:translateX(-50%);}
+.bolt-icon{font-size:28px;position:relative;z-index:1;filter:drop-shadow(0 0 14px rgba(74,222,128,0.9)) drop-shadow(0 0 30px rgba(22,163,74,0.6));animation:boltPulse 2.5s ease-in-out infinite;}
+@keyframes boltPulse{0%,100%{filter:drop-shadow(0 0 14px rgba(74,222,128,0.9)) drop-shadow(0 0 30px rgba(22,163,74,0.6));}50%{filter:drop-shadow(0 0 24px rgba(74,222,128,1)) drop-shadow(0 0 50px rgba(22,163,74,0.9));}}
+/* Right side – Motion Ads panel */
+.hero-motion{padding-left:40px;display:flex;flex-direction:column;gap:16px;}
+.hero-motion-label{font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:4px;}
+.hero-motion h2{font-size:clamp(24px,2.8vw,42px);font-weight:900;letter-spacing:-1.2px;line-height:1.08;margin-bottom:12px;}
+.hero-motion h2 .g{color:var(--gl);}
+.hero-motion p{font-size:14px;color:var(--t2);line-height:1.7;font-weight:300;margin-bottom:20px;max-width:420px;}
+.platform-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px;}
+.ptag{font-size:12px;font-weight:700;padding:6px 14px;border-radius:100px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.22);color:var(--gl);letter-spacing:.3px;}
+.video-preview{border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;gap:10px;font-size:13px;color:var(--t3);font-weight:500;}
+.play-btn{width:44px;height:44px;border-radius:50%;background:rgba(22,163,74,0.15);border:1px solid rgba(22,163,74,0.3);display:flex;align-items:center;justify-content:center;font-size:16px;}
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:32px;}
+  .hero-bolt{flex-direction:row;height:40px;}
+  .hero-bolt::before{top:50%;bottom:auto;left:0;right:0;width:auto;height:1px;transform:translateY(-50%);}
+  .hero-copy,.hero-motion{padding:0;text-align:center;}
+  .hero-copy .proof-bar,.hero-copy .hero-btns{justify-content:center;}
+  .platform-tags{justify-content:center;}
+  .hero-motion p,.hero-motion h2{margin-left:auto;margin-right:auto;}
 }
 
 /* ── TRUST BAR ── */
@@ -294,8 +304,7 @@ h2 .g{color:var(--gl);}
 <!-- NAV -->
 <nav>
   <a href="#" class="logo">
-    <div class="lm">⚡</div>
-    <div><div class="ln">LaunchYourProduct</div></div>
+    <div class="logo-text">LaunchYourProduct</div>
   </a>
   <div class="nav-links">
     <a href="#how">How it works</a>
@@ -315,20 +324,20 @@ h2 .g{color:var(--gl);}
   <div class="ambient"><span></span><span></span><span></span></div>
   <svg class="flow-thread" id="flowThread" preserveAspectRatio="none"><defs><linearGradient id="flowGrad" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="0"></linearGradient></defs><path id="flowPath"/></svg>
 
-<!-- HERO (interaktiv, 3D-Roboter folgt der Maus) -->
+<!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
   <div class="hero-grid"></div>
   <div class="spotlight" id="spotlight"></div>
 
   <div class="hero-inner">
-    <!-- LINKS: Copy -->
+    <!-- LEFT: Growth / Digital Products -->
     <div class="hero-copy">
       <div class="badge"><span class="badge-dot"></span> 500+ Creators & Amazon Sellers scaled</div>
       <h1>You have an audience.<br>You need a <span class="g">product that sells.</span></h1>
-      <p class="hero-sub">We build your digital product or video ads entirely for you – in 3 weeks, at AI speed, without you investing hours.</p>
+      <p class="hero-sub">We build your digital product entirely for you – online courses, e-books, funnels – in 3 weeks, at AI speed.</p>
       <div class="hero-btns">
-        <a href="#cta" class="btn-main">Free Monetization Audit →</a>
+        <a href="#cta" class="btn-main">Free Audit →</a>
         <a href="#how" class="btn-sec">How it works</a>
       </div>
       <div class="proof-bar">
@@ -340,10 +349,23 @@ h2 .g{color:var(--gl);}
       </div>
     </div>
 
-    <!-- RECHTS: interaktiver 3D-Roboter -->
-    <div class="hero-3d">
-      <div class="loader"><span></span></div>
-      <spline-viewer url="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"></spline-viewer>
+    <!-- CENTER: Lightning bolt divider -->
+    <div class="hero-bolt">
+      <span class="bolt-icon">⚡</span>
+    </div>
+
+    <!-- RIGHT: Motion Design Videos -->
+    <div class="hero-motion">
+      <div class="hero-motion-label">Motion Design Videos</div>
+      <h2>We create your<br><span class="g">product video.</span></h2>
+      <p>Professional motion design ads for your products – AI-produced, scroll-stopping, delivered in 48h. No camera crew needed.</p>
+      <div class="platform-tags">
+        <span class="ptag">Amazon</span>
+        <span class="ptag">Shopify</span>
+        <span class="ptag">Kickstarter</span>
+        <span class="ptag">TikTok</span>
+      </div>
+      <a href="/portfolio" class="btn-main" style="font-size:13px;padding:12px 24px;align-self:flex-start;">View Portfolio →</a>
     </div>
   </div>
 </section>
