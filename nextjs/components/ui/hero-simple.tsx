@@ -1,5 +1,3 @@
-import { GlobeCard } from '@/components/ui/globe-card';
-
 interface HeroSimpleProps {
   badge?: string;
   titleLine1?: string;
@@ -65,9 +63,6 @@ export const HeroSimple = ({
             </span>
           ))}
         </div>
-
-        {/* Contained decorative globe, using the proven reference card layout */}
-        <GlobeCard />
       </div>
     </section>
   );
