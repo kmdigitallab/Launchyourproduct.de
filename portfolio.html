@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio – LaunchYourProduct</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+:root{
+  --g:#16a34a;--gl:#4ade80;
+  --bg:#07090a;--bg2:#0d1117;
+  --card:rgba(255,255,255,0.04);--cb:rgba(255,255,255,0.08);
+  --t1:#f0f6f1;--t2:#8fa898;--t3:#4a6652;
+  --r:16px;
+}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t1);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;height:60px;display:flex;align-items:center;justify-content:space-between;padding:0 48px;background:rgba(7,9,10,0.88);backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid rgba(255,255,255,0.06);}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+.lm{width:28px;height:28px;background:var(--g);border-radius:7px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:13px;color:#fff;box-shadow:0 0 14px rgba(22,163,74,0.5);}
+.ln{font-size:13px;font-weight:700;color:#fff;letter-spacing:-.3px;}
+.ls{font-size:9px;color:var(--t3);letter-spacing:1.5px;text-transform:uppercase;}
+.nav-r{display:flex;align-items:center;gap:8px;}
+.nb{font-family:'Inter',sans-serif;font-size:13px;cursor:pointer;border:none;text-decoration:none;display:inline-flex;align-items:center;gap:5px;transition:all .18s;border-radius:8px;font-weight:500;}
+.nb-g{background:none;color:var(--t3);padding:7px 12px;}
+.nb-g:hover{color:var(--t1);background:rgba(255,255,255,0.05);}
+.nb-s{background:var(--g);color:#fff;padding:8px 18px;font-weight:600;box-shadow:0 0 16px rgba(22,163,74,0.3);}
+.nb-s:hover{background:#15803d;box-shadow:0 0 26px rgba(22,163,74,0.5);transform:translateY(-1px);}
+
+/* AMBIENT */
+.ambient-bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;}
+.ambient-bg span{position:absolute;border-radius:50%;filter:blur(100px);opacity:.35;}
+.ambient-bg span:nth-child(1){width:600px;height:600px;background:radial-gradient(circle,rgba(22,163,74,.18),transparent 70%);top:-10%;left:-10%;animation:drift1 22s ease-in-out infinite alternate;}
+.ambient-bg span:nth-child(2){width:500px;height:500px;background:radial-gradient(circle,rgba(74,222,128,.10),transparent 70%);bottom:-10%;right:-10%;animation:drift2 27s ease-in-out infinite alternate;}
+@keyframes drift1{to{transform:translate(80px,60px) scale(1.12);}}
+@keyframes drift2{to{transform:translate(-60px,-80px) scale(1.08);}}
+
+/* HERO HEADER */
+.page-header{position:relative;z-index:1;padding:130px 48px 60px;text-align:center;}
+.badge{display:inline-flex;align-items:center;gap:6px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.2);color:var(--gl);font-size:11px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:24px;}
+.badge-dot{width:5px;height:5px;background:var(--g);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+.page-header h1{font-size:clamp(36px,5vw,64px);font-weight:900;letter-spacing:-2.5px;line-height:1.05;margin-bottom:18px;}
+.page-header h1 .g{color:var(--gl);}
+.page-header p{font-size:17px;color:var(--t2);max-width:480px;margin:0 auto;font-weight:300;line-height:1.7;}
+
+/* DIVIDER */
+.divider{width:60px;height:2px;background:linear-gradient(90deg,transparent,var(--g),transparent);margin:48px auto;}
+
+/* VIDEO SECTION */
+.portfolio-wrap{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:0 24px 120px;}
+
+.video-entry{margin-bottom:80px;opacity:0;transform:translateY(40px);transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1);}
+.video-entry.vis{opacity:1;transform:translateY(0);}
+
+.video-meta{text-align:center;margin-bottom:24px;}
+.video-num{display:inline-block;font-size:10px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--g);margin-bottom:10px;border-left:2px solid rgba(22,163,74,0.3);padding-left:9px;}
+.video-title{font-size:clamp(22px,3vw,34px);font-weight:800;letter-spacing:-1px;line-height:1.1;margin-bottom:10px;}
+.video-title .g{color:var(--gl);}
+.video-desc{font-size:14px;color:var(--t2);font-weight:300;max-width:560px;margin:0 auto;}
+
+.video-frame{position:relative;border-radius:var(--r);overflow:hidden;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);box-shadow:0 24px 80px rgba(0,0,0,0.5);aspect-ratio:16/9;}
+.video-frame iframe{width:100%;height:100%;display:block;border:none;}
+.video-frame .placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,rgba(22,163,74,0.05),rgba(74,222,128,0.02));}
+.play-icon{width:64px;height:64px;border-radius:50%;background:rgba(22,163,74,0.15);border:1px solid rgba(22,163,74,0.3);display:flex;align-items:center;justify-content:center;font-size:24px;}
+.placeholder p{font-size:13px;color:var(--t3);font-weight:500;}
+
+.video-tags{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:16px;}
+.vtag{font-size:11px;font-weight:600;letter-spacing:.5px;padding:4px 10px;border-radius:100px;background:rgba(22,163,74,0.08);border:1px solid rgba(22,163,74,0.18);color:var(--gl);}
+
+/* CTA */
+.portfolio-cta{position:relative;z-index:1;text-align:center;padding:0 24px 100px;}
+.cta-box{max-width:600px;margin:0 auto;background:linear-gradient(135deg,rgba(22,163,74,0.08),rgba(74,222,128,0.02));border:1px solid rgba(22,163,74,0.2);border-radius:20px;padding:56px 40px;}
+.cta-box h2{font-size:clamp(24px,3vw,36px);font-weight:800;letter-spacing:-1px;margin-bottom:14px;}
+.cta-box h2 .g{color:var(--gl);}
+.cta-box p{font-size:15px;color:var(--t2);margin-bottom:28px;font-weight:300;line-height:1.7;}
+.btn-main{font-family:'Inter',sans-serif;font-size:15px;font-weight:700;color:#fff;background:var(--g);border:none;padding:14px 32px;border-radius:10px;cursor:pointer;box-shadow:0 0 28px rgba(22,163,74,0.4);transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(22,163,74,0.6);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .page-header{padding:100px 20px 48px;}
+  .portfolio-wrap{padding:0 16px 80px;}
+  .cta-box{padding:36px 24px;}
+}
+</style>
+</head>
+<body>
+
+<div class="ambient-bg"><span></span><span></span></div>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="logo">
+    <div class="lm">⚡</div>
+    <div><div class="ln">LaunchYourProduct</div><div class="ls">Growth Operator</div></div>
+  </a>
+  <div class="nav-r">
+    <a href="/" class="nb nb-g">← Zurück zur Website</a>
+    <a href="/#cta" class="nb nb-s">Kostenloses Audit →</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="badge"><span class="badge-dot"></span> Unsere Arbeit</div>
+  <h1>Unsere <span class="g">besten Projekte</span><br>für dich.</h1>
+  <p>Echte Ergebnisse für echte Kunden – von Motion Design Videos bis zu kompletten Produkt-Launches.</p>
+</div>
+
+<div class="divider"></div>
+
+<!-- VIDEOS -->
+<div class="portfolio-wrap">
+
+  <!-- VIDEO 1 -->
+  <div class="video-entry">
+    <div class="video-meta">
+      <div class="video-num">Projekt 01</div>
+      <h2 class="video-title">Motion Design Ad –<br><span class="g">Amazon Produktvideo</span></h2>
+      <p class="video-desc">UGC-Hook + Showcase für einen Amazon Seller im Bereich Küche & Haushalt. Geliefert in 48 Stunden.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://player.vimeo.com/video/1213564603?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-tags">
+      <span class="vtag">Amazon</span>
+      <span class="vtag">Motion Design</span>
+      <span class="vtag">48h Lieferung</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 2 -->
+  <div class="video-entry">
+    <div class="video-meta">
+      <div class="video-num">Projekt 02</div>
+      <h2 class="video-title">Online-Kurs Launch –<br><span class="g">Fitness Creator</span></h2>
+      <p class="video-desc">Kompletter Funnel, Sales Page und Promo-Video für einen Fitness Creator mit 85K Followern.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://player.vimeo.com/video/1213564068?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-tags">
+      <span class="vtag">Online-Kurs</span>
+      <span class="vtag">Sales Funnel</span>
+      <span class="vtag">Creator</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 3 -->
+  <div class="video-entry">
+    <div class="video-meta">
+      <div class="video-num">Projekt 03</div>
+      <h2 class="video-title">TikTok Ads –<br><span class="g">E-Commerce Brand</span></h2>
+      <p class="video-desc">KI-produzierte TikTok Ad-Creatives für eine E-Commerce Brand – skalierbar und performant.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://player.vimeo.com/video/1213564029?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-tags">
+      <span class="vtag">TikTok</span>
+      <span class="vtag">Ad Creative</span>
+      <span class="vtag">E-Commerce</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 4 -->
+  <div class="video-entry">
+    <div class="video-meta">
+      <div class="video-num">Projekt 04</div>
+      <h2 class="video-title">Sponsored Brands Ad –<br><span class="g">Beauty Seller</span></h2>
+      <p class="video-desc">Hochwertige Sponsored Brands Video Ad für einen Amazon Beauty Seller. ACoS -28% nach 4 Wochen.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://player.vimeo.com/video/1213563594?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-tags">
+      <span class="vtag">Amazon Ads</span>
+      <span class="vtag">Beauty</span>
+      <span class="vtag">Sponsored Brands</span>
+    </div>
+  </div>
+
+  <!-- VIDEO 5 -->
+  <div class="video-entry">
+    <div class="video-meta">
+      <div class="video-num">Projekt 05</div>
+      <h2 class="video-title">KI Content Pipeline –<br><span class="g">Business Coach</span></h2>
+      <p class="video-desc">Vollautomatisierte Content-Pipeline für einen Business Coach auf LinkedIn – täglich neuer Content ohne Aufwand.</p>
+    </div>
+    <div class="video-frame">
+      <iframe src="https://player.vimeo.com/video/1213563562?badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" allowfullscreen></iframe>
+    </div>
+    <div class="video-tags">
+      <span class="vtag">LinkedIn</span>
+      <span class="vtag">KI-Pipeline</span>
+      <span class="vtag">Automation</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- CTA -->
+<div class="portfolio-cta">
+  <div class="cta-box">
+    <h2>Dein Projekt ist<br><span class="g">das nächste.</span></h2>
+    <p>Buche ein kostenloses 30-Minuten-Audit und wir zeigen dir, was wir für dich umsetzen können.</p>
+    <a href="/#cta" class="btn-main">Kostenloses Audit buchen →</a>
+  </div>
+</div>
+
+<script>
+// Scroll reveal
+const obs = new IntersectionObserver(e => {
+  e.forEach(x => x.target.classList.toggle('vis', x.isIntersecting));
+}, {threshold: 0.1});
+document.querySelectorAll('.video-entry').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
