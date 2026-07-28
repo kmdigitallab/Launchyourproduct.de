@@ -1,8 +1,8 @@
 'use client';
 
 import { useRef } from 'react';
-import dynamic from 'next/dynamic';
 import Nav from '@/components/nav';
+import HeroSimple from '@/components/ui/hero-simple';
 import TrustBar from '@/components/trust-bar';
 import Ticker from '@/components/ticker';
 import AmbientBackground from '@/components/ambient-background';
@@ -17,13 +17,6 @@ import FoundersSection from '@/components/founders-section';
 import FaqSection from '@/components/faq-section';
 import CtaSection from '@/components/cta-section';
 import CinematicFooter from '@/components/cinematic-footer';
-
-// three/webgpu touches browser-only globals (e.g. `self`) at module-eval time,
-// so this must never run during SSR/prerendering.
-const HeroFuturistic = dynamic(() => import('@/components/ui/hero-futuristic'), {
-  ssr: false,
-  loading: () => <div className="min-h-[100svh] bg-[#07090a]" />,
-});
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null!);
@@ -41,7 +34,7 @@ export default function Home() {
         <FlowThread contentRef={contentRef} />
 
         <div className="hero-inner-marker">
-          <HeroFuturistic />
+          <HeroSimple />
         </div>
 
         <div className="ticker-marker">
