@@ -1,5 +1,3 @@
-import { cn } from '@/lib/utils';
-
 interface IlluminatedHeroProps {
   badge?: string;
   titleLine1?: string;
@@ -52,13 +50,11 @@ export function IlluminatedHero({
           {titleLine1}
           <br />
           <span
-            className={cn(
-              'relative inline-block',
-              'before:absolute before:animate-[onloadopacity_1s_ease-out_forwards] before:opacity-0 before:content-[attr(data-text)]',
-              'before:bg-[linear-gradient(0deg,#16a34a_0%,#4ade80_50%)] before:bg-clip-text before:text-[#4ade80]',
-              '[filter:url(#glow-green)]'
-            )}
-            data-text={titleGlow}
+            className="text-green-500"
+            style={{
+              textShadow:
+                '0 0 6px rgba(74,222,128,0.85), 0 0 16px rgba(34,197,94,0.6), 0 0 32px rgba(34,197,94,0.35)',
+            }}
           >
             {titleGlow}
           </span>
@@ -95,106 +91,6 @@ export function IlluminatedHero({
         </div>
       </div>
 
-      {/* Original glow filter (glow-4), recolored green instead of gold */}
-      <svg className="absolute -z-10 h-0 w-0" width="1440" height="300" viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <filter id="glow-green" colorInterpolationFilters="sRGB" x="-50%" y="-200%" width="200%" height="500%">
-            <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur4" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="19" result="blur19" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur9" />
-            <feGaussianBlur in="SourceGraphic" stdDeviation="30" result="blur30" />
-
-            <feColorMatrix
-              in="blur4"
-              result="color-0-blur"
-              type="matrix"
-              values="0.08 0 0 0 0
-                      0 0.64 0 0 0
-                      0 0 0.29 0 0
-                      0 0 0 0.8 0"
-            />
-            <feOffset in="color-0-blur" result="layer-0-offsetted" dx="0" dy="0" />
-
-            <feColorMatrix
-              in="blur19"
-              result="color-1-blur"
-              type="matrix"
-              values="0.06 0 0 0 0
-                      0 0.49 0 0 0
-                      0 0 0.26 0 0
-                      0 0 0 1 0"
-            />
-            <feOffset in="color-1-blur" result="layer-1-offsetted" dx="0" dy="2" />
-
-            <feColorMatrix
-              in="blur9"
-              result="color-2-blur"
-              type="matrix"
-              values="0.09 0 0 0 0
-                      0 0.67 0 0 0
-                      0 0 0.36 0 0
-                      0 0 0 0.65 0"
-            />
-            <feOffset in="color-2-blur" result="layer-2-offsetted" dx="0" dy="2" />
-
-            <feColorMatrix
-              in="blur30"
-              result="color-3-blur"
-              type="matrix"
-              values="0.09 0 0 0 0
-                      0 0.61 0 0 0
-                      0 0 0.39 0 0
-                      0 0 0 1 0"
-            />
-            <feOffset in="color-3-blur" result="layer-3-offsetted" dx="0" dy="2" />
-
-            <feColorMatrix
-              in="blur30"
-              result="color-4-blur"
-              type="matrix"
-              values="0.06 0 0 0 0
-                      0 0.35 0 0 0
-                      0 0 0.16 0 0
-                      0 0 0 1 0"
-            />
-            <feOffset in="color-4-blur" result="layer-4-offsetted" dx="0" dy="16" />
-
-            <feColorMatrix
-              in="blur30"
-              result="color-5-blur"
-              type="matrix"
-              values="0.05 0 0 0 0
-                      0 0.29 0 0 0
-                      0 0 0.13 0 0
-                      0 0 0 1 0"
-            />
-            <feOffset in="color-5-blur" result="layer-5-offsetted" dx="0" dy="64" />
-
-            <feColorMatrix
-              in="blur30"
-              result="color-6-blur"
-              type="matrix"
-              values="0.03 0 0 0 0
-                      0 0.16 0 0 0
-                      0 0 0.07 0 0
-                      0 0 0 1 0"
-            />
-            <feOffset in="color-6-blur" result="layer-6-offsetted" dx="0" dy="64" />
-
-            <feMerge>
-              <feMergeNode in="layer-0-offsetted" />
-              <feMergeNode in="layer-1-offsetted" />
-              <feMergeNode in="layer-2-offsetted" />
-              <feMergeNode in="layer-3-offsetted" />
-              <feMergeNode in="layer-4-offsetted" />
-              <feMergeNode in="layer-5-offsetted" />
-              <feMergeNode in="layer-6-offsetted" />
-              <feMergeNode in="layer-0-offsetted" />
-              <feMergeNode in="SourceGraphic" />
-            </feMerge>
-          </filter>
-        </defs>
-      </svg>
     </section>
   );
 }
