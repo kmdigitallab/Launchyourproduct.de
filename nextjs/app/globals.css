@@ -24,10 +24,13 @@ body {
   animation: fadeInUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
-/* ── Illuminated hero glow: left-to-right wipe reveal ── */
+/* ── Illuminated hero glow: left-to-right wipe reveal ──
+   Negative top/bottom/left insets give the text-shadow blur room to
+   breathe so it isn't sliced off in a hard rectangle; only the right
+   edge sweeps from fully closed to fully open. */
 @keyframes glowWipe {
-  from { clip-path: inset(0 100% 0 0); }
-  to   { clip-path: inset(0 0% 0 0); }
+  from { clip-path: inset(-40px 100% -40px -40px); }
+  to   { clip-path: inset(-40px 0% -40px -40px); }
 }
 
 /* ── Trust bar scroll ── */
