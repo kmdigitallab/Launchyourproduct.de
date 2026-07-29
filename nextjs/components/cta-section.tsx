@@ -1,4 +1,5 @@
 import Reveal from './reveal';
+import MagneticButton from './magnetic-button';
 
 export default function CtaSection() {
   return (
@@ -21,12 +22,12 @@ export default function CtaSection() {
                 how fast we can deliver it.
               </p>
               <div className="flex flex-wrap justify-center gap-2.5">
-                <a
+                <MagneticButton
                   href="mailto:info@launchyourproduct.de"
-                  className="rounded-[10px] bg-green-600 px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_4px_20px_rgba(22,163,74,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(22,163,74,0.5)]"
+                  className="rounded-[10px] bg-green-600 px-8 py-3.5 text-[15px] font-bold text-white shadow-[0_4px_20px_rgba(22,163,74,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(22,163,74,0.5)]"
                 >
                   Book your free audit →
-                </a>
+                </MagneticButton>
                 <a
                   href="mailto:info@launchyourproduct.de"
                   className="rounded-[10px] border border-black/[0.12] bg-white px-[26px] py-3.5 text-sm font-medium text-[#4b6358] transition-all hover:border-green-600 hover:text-green-600"

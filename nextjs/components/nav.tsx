@@ -28,7 +28,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="fixed left-0 right-0 top-0 z-[200] flex h-[60px] items-center justify-between border-b border-black/[0.08] px-6 backdrop-blur-2xl backdrop-saturate-150 transition-colors md:px-12"
+      className="fixed left-0 right-0 top-[34px] z-[200] flex h-[60px] items-center justify-between border-b border-black/[0.08] px-6 backdrop-blur-2xl backdrop-saturate-150 transition-colors md:px-12"
       style={{ background: scrolled ? 'rgba(247,249,247,0.99)' : 'rgba(247,249,247,0.92)' }}
     >
       <a href="/" className="no-underline">

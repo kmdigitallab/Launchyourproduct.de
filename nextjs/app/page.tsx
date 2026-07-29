@@ -2,12 +2,12 @@
 
 import { useRef } from 'react';
 import Nav from '@/components/nav';
+import AnnouncementBar from '@/components/announcement-bar';
 import IlluminatedHero from '@/components/ui/illuminated-hero';
 import TrustBar from '@/components/trust-bar';
 import AmbientBackground from '@/components/ambient-background';
 import FlowThread from '@/components/flow-thread';
 import PainSection from '@/components/pain-section';
-import JourneySection from '@/components/journey-section';
 import ResultsSection from '@/components/results-section';
 import TestimonialsCarousel from '@/components/testimonials-carousel';
 import ProgramsSection from '@/components/programs-section';
@@ -23,6 +23,9 @@ export default function Home() {
 
   return (
     <>
+      <div className="fixed inset-x-0 top-0 z-[210]">
+        <AnnouncementBar />
+      </div>
       <Nav />
 
       {/* Content lifts up over the fixed cinematic footer as you scroll */}
@@ -42,7 +45,6 @@ export default function Home() {
         </div>
 
         <PainSection />
-        <JourneySection />
         <ResultsSection />
         <TestimonialsCarousel />
         <ProgramsSection />

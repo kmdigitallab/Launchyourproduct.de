@@ -1,5 +1,6 @@
 import Reveal from './reveal';
 import SectionLabel from './section-label';
+import MagneticButton from './magnetic-button';
 
 const STEPS = [
   { n: '01', title: 'Free Audit', body: 'We analyze your listings or your idea and show you <strong>exactly what to fix or build first</strong>.' },
@@ -10,25 +11,25 @@ const STEPS = [
 
 export default function ProcessSection() {
   return (
-    <section id="how2" className="px-6 py-[88px] md:px-12">
+    <section id="how" className="px-6 py-[88px] md:px-12">
       <div className="mx-auto max-w-[1040px]">
         <div className="grid grid-cols-1 items-start gap-9 md:grid-cols-2 md:gap-16">
           <Reveal>
             <SectionLabel>How it works</SectionLabel>
             <h2 className="mb-4 text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
-              Simply explained.
+              From &quot;I should someday...&quot;
               <br />
-              <span className="text-green-600">Quickly executed.</span>
+              <span className="text-green-600">to &quot;my video is live.&quot;</span>
             </h2>
             <p className="mb-11 max-w-[520px] text-base font-light leading-[1.75] text-[#4b6358]">
               No long onboarding. No endless back-and-forth. We start immediately.
             </p>
-            <a
+            <MagneticButton
               href="#cta"
-              className="inline-block rounded-[10px] bg-green-600 px-[26px] py-3 text-sm font-bold text-white shadow-[0_4px_20px_rgba(22,163,74,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(22,163,74,0.5)]"
+              className="inline-block rounded-[10px] bg-green-600 px-[26px] py-3 text-sm font-bold text-white shadow-[0_4px_20px_rgba(22,163,74,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(22,163,74,0.5)]"
             >
-              Get started →
-            </a>
+              Start your project →
+            </MagneticButton>
           </Reveal>
 
           <Reveal className="flex flex-col">
