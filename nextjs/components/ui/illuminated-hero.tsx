@@ -32,7 +32,7 @@ export function IlluminatedHero({
           {titleLine1}
           <br />
           <span
-            className="text-green-500"
+            className="inline-block animate-[onloadopacity_1s_ease-out_forwards] text-green-500 opacity-0"
             style={{
               textShadow:
                 '0 0 6px rgba(74,222,128,0.85), 0 0 16px rgba(34,197,94,0.6), 0 0 32px rgba(34,197,94,0.35)',
