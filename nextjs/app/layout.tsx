@@ -1,13 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk } from 'next/font/google';
 import './globals.css';
-
-const spaceGrotesk = Space_Grotesk({
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-space-grotesk',
-  display: 'swap',
-});
 
 export const metadata: Metadata = {
   title: 'LaunchYourProduct – Motion Design Videos for Amazon Sellers',
@@ -27,7 +19,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={spaceGrotesk.variable}>
+    <html lang="en">
       <body className="bg-[#f7f9f7] text-[#0d1f12]">{children}</body>
     </html>
   );

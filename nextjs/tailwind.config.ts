@@ -18,7 +18,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', 'sans-serif'],
+        sans: ['Times New Roman', 'Times', 'serif'],
       },
     },
   },
