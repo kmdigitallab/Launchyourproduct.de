@@ -31,14 +31,14 @@ export default function Nav() {
       style={{ background: scrolled ? 'rgba(0,0,0,0.92)' : 'rgba(0,0,0,0.7)' }}
     >
       <a href="/" className="no-underline">
-        <span className="text-[17px] font-extrabold tracking-normal text-violet-400 [text-shadow:0_0_12px_rgba(167,139,250,0.35)]">
+        <span className="text-[17px] font-extrabold tracking-normal text-[#c084fc] [text-shadow:0_0_12px_rgba(167,139,250,0.35)]">
           LaunchYourProduct
         </span>
       </a>
 
       <div className="hidden gap-6 md:flex">
         {LINKS.map((l) => (
-          <a key={l.href} href={l.href} className="text-[13px] text-white/70 transition-colors hover:text-violet-400">
+          <a key={l.href} href={l.href} className="text-[13px] text-white/70 transition-colors hover:text-[#c084fc]">
             {l.label}
           </a>
         ))}
@@ -47,7 +47,7 @@ export default function Nav() {
       <div className="flex items-center gap-2">
         <a
           href="mailto:info@launchyourproduct.de"
-          className="hidden rounded-lg bg-violet-400 px-[18px] py-2 text-[13px] font-semibold text-black shadow-[0_4px_14px_rgba(167,139,250,0.3)] transition-all hover:-translate-y-px hover:bg-violet-400 hover:shadow-[0_6px_20px_rgba(167,139,250,0.45)] md:inline-block"
+          className="hidden rounded-lg bg-[#7c3aed] px-[18px] py-2 text-[13px] font-semibold text-black shadow-[0_4px_14px_rgba(167,139,250,0.3)] transition-all hover:-translate-y-px hover:bg-[#8b5cf6] hover:shadow-[0_6px_20px_rgba(167,139,250,0.45)] md:inline-block"
         >
           Free Audit →
         </a>
@@ -81,7 +81,7 @@ export default function Nav() {
             key={l.href}
             href={l.href}
             onClick={() => setMenuOpen(false)}
-            className="rounded-lg px-2 py-3 text-[15px] font-medium text-white transition-colors hover:bg-violet-400/[0.1] hover:text-violet-400"
+            className="rounded-lg px-2 py-3 text-[15px] font-medium text-white transition-colors hover:bg-[#8b5cf6]/[0.1] hover:text-[#c084fc]"
           >
             {l.label}
           </a>
@@ -89,7 +89,7 @@ export default function Nav() {
         <a
           href="mailto:info@launchyourproduct.de"
           onClick={() => setMenuOpen(false)}
-          className="mt-2 rounded-lg bg-violet-400 px-4 py-3 text-center text-[15px] font-semibold text-black"
+          className="mt-2 rounded-lg bg-[#7c3aed] px-4 py-3 text-center text-[15px] font-semibold text-black"
         >
           Free Audit →
         </a>

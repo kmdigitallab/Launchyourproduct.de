@@ -36,7 +36,7 @@ export default function PrivacyPolicyPage() {
             <br />
             <br />
             Email:{' '}
-            <a href="mailto:kmdigitallab@gmail.com" className="text-violet-300 hover:underline">
+            <a href="mailto:kmdigitallab@gmail.com" className="text-[#c084fc] hover:underline">
               kmdigitallab@gmail.com
             </a>
           </p>
@@ -119,7 +119,7 @@ export default function PrivacyPolicyPage() {
           <p className="leading-[1.8] text-white/60">We reserve the right to update this Privacy Policy at any time.</p>
         </section>
 
-        <a href="/" className="text-sm font-bold text-violet-300 hover:underline">
+        <a href="/" className="text-sm font-bold text-[#c084fc] hover:underline">
           ← Back to Website
         </a>
       </main>

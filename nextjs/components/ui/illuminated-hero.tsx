@@ -26,14 +26,14 @@ export function IlluminatedHero({
     >
       {/* Violet streak lines — subtle diagonal light trails, pure CSS gradients */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <span className="absolute left-[-10%] top-[28%] h-px w-[55%] -rotate-[6deg] bg-gradient-to-r from-transparent via-violet-400/40 to-transparent" />
-        <span className="absolute left-[-10%] top-[33%] h-px w-[42%] -rotate-[6deg] bg-gradient-to-r from-transparent via-violet-300/25 to-transparent" />
-        <span className="absolute right-[-10%] top-[62%] h-px w-[50%] rotate-[5deg] bg-gradient-to-l from-transparent via-violet-400/30 to-transparent" />
+        <span className="absolute left-[-10%] top-[28%] h-px w-[55%] -rotate-[6deg] bg-gradient-to-r from-transparent via-[#7c3aed]/40 to-transparent" />
+        <span className="absolute left-[-10%] top-[33%] h-px w-[42%] -rotate-[6deg] bg-gradient-to-r from-transparent via-[#c084fc]/25 to-transparent" />
+        <span className="absolute right-[-10%] top-[62%] h-px w-[50%] rotate-[5deg] bg-gradient-to-l from-transparent via-[#7c3aed]/30 to-transparent" />
       </div>
 
       <div className="relative z-[2] mx-auto flex w-full max-w-[760px] flex-col items-center">
-        <div className="mb-7 inline-flex items-center gap-1.5 rounded-full border border-violet-400/25 bg-violet-400/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-violet-300">
-          <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-violet-400" />
+        <div className="mb-7 inline-flex items-center gap-1.5 rounded-full border border-[#7c3aed]/25 bg-[#7c3aed]/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#c084fc]">
+          <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-[#7c3aed]" />
           {badge}
         </div>
 
@@ -41,7 +41,7 @@ export function IlluminatedHero({
           {titleLine1}
           <br />
           <span
-            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-violet-300"
+            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#c084fc]"
             style={{
               textShadow:
                 '0 0 6px rgba(196,181,253,0.85), 0 0 16px rgba(167,139,250,0.6), 0 0 32px rgba(139,92,246,0.35)',
@@ -56,13 +56,13 @@ export function IlluminatedHero({
         <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
           <MagneticButton
             href={primaryCta.href}
-            className="rounded-[10px] bg-violet-400 px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
+            className="rounded-[10px] bg-[#7c3aed] px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
           >
             {primaryCta.label}
           </MagneticButton>
           <a
             href={secondaryCta.href}
-            className="rounded-[10px] border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium text-white/80 transition-all hover:border-violet-400/50 hover:text-violet-300"
+            className="rounded-[10px] border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium text-white/80 transition-all hover:border-[#7c3aed]/50 hover:text-[#c084fc]"
           >
             {secondaryCta.label}
           </a>
@@ -72,7 +72,7 @@ export function IlluminatedHero({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-violet-400/[0.25] bg-violet-400/[0.08] px-3.5 py-1.5 text-xs font-bold tracking-[.3px] text-violet-300"
+              className="rounded-full border border-[#7c3aed]/[0.25] bg-[#7c3aed]/[0.08] px-3.5 py-1.5 text-xs font-bold tracking-[.3px] text-[#c084fc]"
             >
               {tag}
             </span>

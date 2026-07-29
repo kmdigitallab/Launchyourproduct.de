@@ -47,7 +47,7 @@ export default function ImprintPage() {
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">Contact</h2>
           <p className="leading-[1.8] text-white/60">
             Email:{' '}
-            <a href="mailto:kmdigitallab@gmail.com" className="text-violet-300 hover:underline">
+            <a href="mailto:kmdigitallab@gmail.com" className="text-[#c084fc] hover:underline">
               kmdigitallab@gmail.com
             </a>
           </p>
@@ -74,7 +74,7 @@ export default function ImprintPage() {
               href="https://ec.europa.eu/consumers/odr/"
               target="_blank"
               rel="noreferrer"
-              className="text-violet-300 hover:underline"
+              className="text-[#c084fc] hover:underline"
             >
               https://ec.europa.eu/consumers/odr/
             </a>
@@ -112,7 +112,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <a href="/" className="text-sm font-bold text-violet-300 hover:underline">
+        <a href="/" className="text-sm font-bold text-[#c084fc] hover:underline">
           ← Back to Website
         </a>
       </main>

@@ -113,7 +113,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <a href="/" className="text-sm font-bold text-violet-300 hover:underline">
+        <a href="/" className="text-sm font-bold text-[#c084fc] hover:underline">
           ← Back to Website
         </a>
       </main>

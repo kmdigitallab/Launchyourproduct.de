@@ -12,7 +12,7 @@ export default function WhatWeDoSection() {
       <div className="mx-auto max-w-[860px] text-center">
         <Reveal>
           <h2 className="mb-5 text-[clamp(26px,3.2vw,42px)] font-extrabold leading-[1.15] tracking-normal text-white">
-            We create motion design ads for <span className="text-violet-300">Amazon &amp; e-commerce sellers</span>.
+            We create motion design ads for <span className="text-[#c084fc]">Amazon &amp; e-commerce sellers</span>.
           </h2>
           <p className="mx-auto mb-14 max-w-[560px] text-[17px] font-light leading-[1.75] text-white/60">
             Scroll-stopping product videos — UGC-style hooks, showcase videos, and Sponsored Brands ads — produced
@@ -23,7 +23,7 @@ export default function WhatWeDoSection() {
         <Reveal className="grid grid-cols-1 gap-8 text-left sm:grid-cols-3 sm:gap-6">
           {STEPS.map((s) => (
             <div key={s.n} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
-              <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full border border-violet-400/25 bg-violet-400/[0.08] text-xs font-extrabold text-violet-300">
+              <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full border border-[#7c3aed]/25 bg-[#7c3aed]/[0.08] text-xs font-extrabold text-[#c084fc]">
                 {s.n}
               </div>
               <h3 className="mb-1.5 text-[15px] font-bold tracking-normal text-white">{s.title}</h3>
