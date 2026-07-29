@@ -15,7 +15,7 @@ export function IlluminatedHero({
   titleLine1 = 'We turn your product into',
   titleGlow = 'a buying decision.',
   subtitle = 'Scroll-stopping motion design ads for Amazon, Shopify & Kickstarter – delivered fast. No camera crew, no studio.',
-  primaryCta = { label: 'Get your free audit →', href: 'mailto:info@launchyourproduct.de' },
+  primaryCta = { label: 'Get in touch →', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de' },
   secondaryCta = { label: 'View Portfolio', href: '#portfolio' },
   tags = ['Amazon', 'Shopify', 'Kickstarter', 'TikTok'],
 }: IlluminatedHeroProps) {
@@ -56,6 +56,8 @@ export function IlluminatedHero({
         <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
           <MagneticButton
             href={primaryCta.href}
+            target="_blank"
+            rel="noreferrer"
             className="rounded-[10px] bg-[#7c3aed] px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
           >
             {primaryCta.label}

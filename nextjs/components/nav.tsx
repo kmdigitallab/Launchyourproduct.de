@@ -28,7 +28,7 @@ export default function Nav() {
   return (
     <div className="fixed inset-x-0 top-[44px] z-[200] flex justify-center px-4">
       <nav
-        className="relative flex w-full max-w-[1100px] items-center justify-between gap-4 rounded-[28px] border px-5 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-all"
+        className="nav-glow-border relative flex w-full max-w-[1100px] items-center justify-between gap-4 rounded-[28px] border px-5 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-all"
         style={{
           background: scrolled ? 'rgba(20,14,28,0.8)' : 'rgba(20,14,28,0.5)',
           borderColor: 'rgba(167,139,250,0.35)',
@@ -57,10 +57,12 @@ export default function Nav() {
 
         <div className="flex items-center gap-2">
           <a
-            href="mailto:info@launchyourproduct.de"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
+            target="_blank"
+            rel="noreferrer"
             className="hidden rounded-full bg-[#7c3aed] px-[18px] py-2 text-[13px] font-semibold text-black shadow-[0_4px_14px_rgba(167,139,250,0.35)] transition-all hover:-translate-y-px hover:bg-[#8b5cf6] hover:shadow-[0_6px_20px_rgba(167,139,250,0.5)] md:inline-block"
           >
-            Free Audit →
+            Get in touch →
           </a>
 
           {/* Mobile hamburger */}
@@ -98,11 +100,13 @@ export default function Nav() {
             </a>
           ))}
           <a
-            href="mailto:info@launchyourproduct.de"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
+            target="_blank"
+            rel="noreferrer"
             onClick={() => setMenuOpen(false)}
             className="mt-1 rounded-xl bg-[#7c3aed] px-4 py-3 text-center text-[15px] font-semibold text-black"
           >
-            Free Audit →
+            Get in touch →
           </a>
         </div>
       </nav>
