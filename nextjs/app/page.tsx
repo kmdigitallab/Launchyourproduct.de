@@ -2,7 +2,7 @@
 
 import { useRef } from 'react';
 import Nav from '@/components/nav';
-import IlluminatedHero from '@/components/ui/illuminated-hero';
+import NebulaHero from '@/components/ui/nebula-hero';
 import TrustBar from '@/components/trust-bar';
 import AmbientBackground from '@/components/ambient-background';
 import FlowThread from '@/components/flow-thread';
@@ -33,7 +33,7 @@ export default function Home() {
         <FlowThread contentRef={contentRef} />
 
         <div className="hero-inner-marker">
-          <IlluminatedHero />
+          <NebulaHero />
         </div>
 
         <div className="ticker-marker">
