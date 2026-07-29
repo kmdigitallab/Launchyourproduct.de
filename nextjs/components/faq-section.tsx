@@ -6,24 +6,24 @@ import SectionLabel from './section-label';
 
 const FAQS = [
   {
-    q: 'Do I need a large audience?',
-    a: 'No. <strong>Size is not the criterion.</strong> What matters is whether your audience is engaged and has a problem you can solve. We\'ve made creators with 5,000 followers more successful than those with 200,000.',
-  },
-  {
-    q: 'How much time do I need to invest?',
-    a: '<strong>Very little.</strong> You give us your knowledge and inputs – we handle production. Expect 2–3 hours per week for feedback and alignment. We do the rest.',
-  },
-  {
-    q: 'I already have a product – can we still work together?',
-    a: 'Yes. Our <strong>UpLevel program</strong> is made exactly for this: we scale what you already have. Better funnel, AI content pipelines, growth systems – everything you need to break through a plateau.',
-  },
-  {
     q: 'What does a motion design video do for my Amazon listing?',
     a: 'Listings with videos have up to <strong>3x higher conversion rates</strong>. Our motion design videos are delivered in 48h, no camera shoot needed, optimized for Amazon Sponsored Brands – that\'s the difference between a click and a purchase.',
   },
   {
     q: 'Why AI – will quality suffer?',
     a: 'AI is our accelerator, not our replacement. <strong>Every result is curated, refined and finalized by us.</strong> The difference: we need days, not months. And you get the same result at a fraction of the cost.',
+  },
+  {
+    q: 'I don\'t sell on Amazon – can you still help?',
+    a: 'Yes. If you\'re a content creator instead, our <strong>Monetise program</strong> builds your first digital product for you – e-book, course, or video program, fully produced and with a working funnel.',
+  },
+  {
+    q: 'I already have a product – can we still work together?',
+    a: 'Yes. Our <strong>UpLevel program</strong> is made exactly for this: we scale what you already have. Better funnel, AI content pipelines, growth systems – everything you need to break through a plateau.',
+  },
+  {
+    q: 'How much time do I need to invest?',
+    a: '<strong>Very little.</strong> You give us your inputs – we handle production. Expect 2–3 hours per week for feedback and alignment. We do the rest.',
   },
 ];
 

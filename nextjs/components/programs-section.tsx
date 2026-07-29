@@ -3,28 +3,28 @@ import SectionLabel from './section-label';
 
 const PROGRAMS = [
   {
+    featured: true,
+    forWhom: 'For Amazon & E-Commerce Sellers',
+    title: 'Motion Ads',
+    outcome: '→ Scroll-stopping videos, delivered in 48h',
+    body: 'Professional motion design videos – no camera, no studio, no waiting weeks. UGC-style hooks, showcase videos, Sponsored Brands ads. AI-produced, hand-finished by us.',
+    tags: ['Amazon', 'TikTok', '48h Delivery'],
+  },
+  {
     featured: false,
     forWhom: 'For Content Creators',
     title: 'Monetise',
-    outcome: '→ Your first digital product in 3 weeks',
-    body: 'You have the audience. We build the product. E-book, online course or video program – fully produced, branded and with funnel.',
+    outcome: '→ Your own digital product, built for you',
+    body: 'You have the audience. We build the product – e-book, online course, or video program, fully produced, branded and with a working sales funnel.',
     tags: ['E-Books', 'Courses', 'Sales Funnel'],
   },
   {
-    featured: true,
+    featured: false,
     forWhom: 'For scaling-ready Founders',
     title: 'UpLevel',
     outcome: '→ From product to systematic growth',
-    body: 'You have a product but want to scale faster. We build AI content pipelines, optimize your funnel and take over the complete growth execution.',
+    body: 'You already have a product but want to scale faster. We build AI content pipelines, optimize your funnel, and run the growth execution.',
     tags: ['Growth Ops', 'AI Pipeline', 'Scaling'],
-  },
-  {
-    featured: false,
-    forWhom: 'For Amazon Sellers',
-    title: 'Motion Ads',
-    outcome: '→ Videos delivered in 48h',
-    body: 'Professional motion design videos without shooting. UGC hooks, showcase videos, Sponsored Brands Ads – produced with Higgsfield AI, delivered in 48 hours.',
-    tags: ['Amazon', 'TikTok', '48h Delivery'],
   },
 ];
 
@@ -37,14 +37,15 @@ export default function ProgramsSection() {
     >
       <div className="mx-auto max-w-[1040px]">
         <Reveal className="mb-8 text-center">
-          <SectionLabel>Programs</SectionLabel>
+          <SectionLabel>What We Do</SectionLabel>
           <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
-            Choose your
+            Two ways we get
             <br />
-            <span className="text-green-600">growth path</span>
+            <span className="text-green-600">you selling more.</span>
           </h2>
           <p className="mx-auto mb-4 mt-4 max-w-[480px] text-base font-light leading-[1.75] text-[#4b6358]">
-            Three focused programs – depending on where you stand and where you want to go.
+            Mainly motion design ads for Amazon &amp; e-commerce sellers – plus done-for-you digital products for
+            creators who want to monetize their audience.
           </p>
         </Reveal>
 

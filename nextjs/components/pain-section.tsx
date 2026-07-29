@@ -3,24 +3,24 @@ import SectionLabel from './section-label';
 
 const PAINS = [
   {
-    icon: '⏳',
-    title: 'No Time for Production',
-    body: "You know you need a product – but between content, community, and daily life there's no time left to build it.",
-  },
-  {
-    icon: '🌀',
-    title: 'Overwhelmed by the Process',
-    body: 'Course platform, funnel, payment processing, marketing – the effort feels bigger than the potential reward.',
-  },
-  {
     icon: '📉',
-    title: 'Videos Without Impact',
-    body: 'Your Amazon listings have generic images. Your competitors have professional motion design videos – and more clicks.',
+    title: 'Static Images, Static Sales',
+    body: 'Your listing looks like every other listing – because it is. Same white-background photos, same generic bullets. Shoppers scroll straight past.',
   },
   {
-    icon: '🤷',
-    title: 'Wrong Focus',
-    body: "You invest hours in production instead of audience-building. That's backwards – production is our job.",
+    icon: '⚡',
+    title: 'Your Competitors Already Moved',
+    body: 'The sellers outranking you already switched to motion design ads. Every week you wait, the gap gets harder to close.',
+  },
+  {
+    icon: '🎥',
+    title: 'No Studio, No Time',
+    body: "Real video production means camera crews, studios, weeks of editing. You don't have that time – and you don't need it.",
+  },
+  {
+    icon: '💸',
+    title: 'Wasted Ad Spend',
+    body: "You're paying for clicks that don't convert, because the creative isn't doing its job. Fix the video, fix the funnel.",
   },
 ];
 
@@ -31,9 +31,9 @@ export default function PainSection() {
         <Reveal className="mb-12 text-center">
           <SectionLabel>The Problem</SectionLabel>
           <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
-            Why most creators never
+            Why your listing isn&apos;t
             <br />
-            <span className="text-green-600">truly monetize</span>
+            <span className="text-green-600">converting yet.</span>
           </h2>
         </Reveal>
 
