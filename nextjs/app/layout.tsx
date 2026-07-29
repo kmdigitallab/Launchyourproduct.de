@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Poppins } from 'next/font/google';
+import SplashScreen from '@/components/splash-screen';
 import './globals.css';
 
 const poppins = Poppins({
@@ -28,7 +29,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={poppins.variable}>
-      <body className="bg-[#f7f9f7] text-[#0d1f12]">{children}</body>
+      <body className="bg-[#f7f9f7] text-[#0d1f12]">
+        <SplashScreen />
+        {children}
+      </body>
     </html>
   );
 }
