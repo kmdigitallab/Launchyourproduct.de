@@ -44,7 +44,7 @@ export function IlluminatedHero({
             className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#c084fc]"
             style={{
               textShadow:
-                '0 0 6px rgba(196,181,253,0.85), 0 0 16px rgba(167,139,250,0.6), 0 0 32px rgba(139,92,246,0.35)',
+                '0 0 1px rgba(255,255,255,0.9), 0 0 4px rgba(196,181,253,0.7), 0 0 10px rgba(139,92,246,0.4)',
             }}
           >
             {titleGlow}
