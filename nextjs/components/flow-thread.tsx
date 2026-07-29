@@ -59,7 +59,7 @@ export default function FlowThread({ contentRef }: { contentRef: React.RefObject
         .sort((x, y) => x[0] - y[0]);
 
       grad!.innerHTML = stops
-        .map(([o, a]) => `<stop offset="${(o * 100).toFixed(2)}%" stop-color="#4ade80" stop-opacity="${a}"/>`)
+        .map(([o, a]) => `<stop offset="${(o * 100).toFixed(2)}%" stop-color="#c4b5fd" stop-opacity="${a}"/>`)
         .join('');
 
       lenRef.current = path!.getTotalLength();
@@ -115,7 +115,7 @@ export default function FlowThread({ contentRef }: { contentRef: React.RefObject
         strokeLinecap="round"
         strokeLinejoin="round"
         style={{
-          filter: 'drop-shadow(0 0 6px rgba(74,222,128,.55)) drop-shadow(0 0 18px rgba(22,163,74,.4))',
+          filter: 'drop-shadow(0 0 6px rgba(196,181,253,.55)) drop-shadow(0 0 18px rgba(139,92,246,.4))',
         }}
       />
     </svg>

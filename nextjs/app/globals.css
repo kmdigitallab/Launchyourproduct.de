@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --g: #16a34a;
-  --gl: #4ade80;
+  --g: #8b5cf6;
+  --gl: #c4b5fd;
 }
 
 html { scroll-behavior: smooth; }
@@ -13,6 +13,8 @@ body {
   font-family: var(--font-poppins), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  background: #000;
+  color: #fff;
 }
 
 /* ── Hero word fade-in ── */

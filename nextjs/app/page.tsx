@@ -4,15 +4,10 @@ import { useRef } from 'react';
 import Nav from '@/components/nav';
 import AnnouncementBar from '@/components/announcement-bar';
 import IlluminatedHero from '@/components/ui/illuminated-hero';
-import TrustBar from '@/components/trust-bar';
-import AmbientBackground from '@/components/ambient-background';
 import FlowThread from '@/components/flow-thread';
-import PainSection from '@/components/pain-section';
-import ProgramsSection from '@/components/programs-section';
-import ProcessSection from '@/components/process-section';
-import FoundersSection from '@/components/founders-section';
-import FaqSection from '@/components/faq-section';
-import CtaSection from '@/components/cta-section';
+import WhatWeDoSection from '@/components/what-we-do-section';
+import PortfolioSection from '@/components/portfolio-section';
+import AboutSection from '@/components/about-section';
 import CinematicFooter from '@/components/cinematic-footer';
 import ScrollToTop from '@/components/scroll-to-top';
 
@@ -29,25 +24,17 @@ export default function Home() {
       {/* Content lifts up over the fixed cinematic footer as you scroll */}
       <div
         ref={contentRef}
-        className="relative z-10 mb-[460px] overflow-hidden rounded-b-[32px] border-b border-white/10 bg-[#f7f9f7] shadow-[0_40px_90px_rgba(0,0,0,0.55)] md:mb-[460px]"
+        className="relative z-10 mb-[460px] overflow-hidden rounded-b-[32px] border-b border-white/10 bg-black shadow-[0_40px_90px_rgba(0,0,0,0.55)] md:mb-[460px]"
       >
-        <AmbientBackground />
         <FlowThread contentRef={contentRef} />
 
         <div className="hero-inner-marker">
           <IlluminatedHero />
         </div>
 
-        <div className="ticker-marker">
-          <TrustBar />
-        </div>
-
-        <PainSection />
-        <ProgramsSection />
-        <ProcessSection />
-        <FoundersSection />
-        <FaqSection />
-        <CtaSection />
+        <WhatWeDoSection />
+        <PortfolioSection />
+        <AboutSection />
       </div>
 
       <CinematicFooter />
