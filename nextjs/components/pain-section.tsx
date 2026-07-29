@@ -30,7 +30,7 @@ export default function PainSection() {
       <div className="mx-auto max-w-[1040px]">
         <Reveal className="mb-12 text-center">
           <SectionLabel>The Problem</SectionLabel>
-          <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
+          <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
             Why your listing isn&apos;t
             <br />
             <span className="text-green-600">converting yet.</span>

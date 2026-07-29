@@ -15,7 +15,7 @@ export default function ResultsSection() {
       <div className="mx-auto max-w-[1040px]">
         <Reveal className="mb-11">
           <SectionLabel>Real Results</SectionLabel>
-          <h2 className="mb-4 text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
+          <h2 className="mb-4 text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
             The numbers
             <br />
             <span className="text-green-600">don&apos;t lie.</span>

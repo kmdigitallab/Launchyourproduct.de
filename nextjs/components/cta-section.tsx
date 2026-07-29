@@ -11,7 +11,7 @@ export default function CtaSection() {
               <span className="mb-3.5 block border-l-2 border-green-600/30 pl-2.5 text-[10px] font-bold uppercase tracking-[2px] text-green-600">
                 Next Step
               </span>
-              <h2 className="mx-auto mb-3.5 max-w-[560px] text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
+              <h2 className="mx-auto mb-3.5 max-w-[560px] text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
                 Your free
                 <br />
                 <span className="text-green-600">Monetization Audit</span>

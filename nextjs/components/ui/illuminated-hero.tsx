@@ -28,7 +28,7 @@ export function IlluminatedHero({
           {badge}
         </div>
 
-        <h1 className="mb-5 text-[clamp(34px,5.5vw,68px)] font-black leading-[1.08] tracking-[-2.5px] text-[#0d1f12]">
+        <h1 className="mb-5 text-[clamp(34px,5.5vw,68px)] font-black leading-[1.08] tracking-[-1px] text-[#0d1f12]">
           {titleLine1}
           <br />
           <span

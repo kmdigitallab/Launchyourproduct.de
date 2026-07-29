@@ -45,7 +45,7 @@ export default function CinematicFooter() {
       </div>
 
       <div
-        className="relative z-[1] select-none text-center font-black leading-[0.8] tracking-[-2px] text-green-400 opacity-90"
+        className="relative z-[1] select-none text-center font-black leading-[0.8] tracking-[-0.5px] text-green-400 opacity-90"
         style={{
           fontSize: 'clamp(32px,8vw,110px)',
           textShadow: '0 0 40px rgba(74,222,128,0.4), 0 0 80px rgba(22,163,74,0.2)',

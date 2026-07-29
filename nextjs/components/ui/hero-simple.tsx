@@ -28,7 +28,7 @@ export const HeroSimple = ({
           {badge}
         </div>
 
-        <h1 className="mb-5 text-[clamp(38px,5.5vw,72px)] font-black leading-[1.03] tracking-[-3px] text-[#0d1f12]">
+        <h1 className="mb-5 text-[clamp(38px,5.5vw,72px)] font-black leading-[1.03] tracking-[-1px] text-[#0d1f12]">
           {titleLine1}
           <br />
           <span className="text-green-600">{titleLine2}</span>

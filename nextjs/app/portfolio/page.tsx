@@ -77,7 +77,7 @@ export default function PortfolioPage() {
         <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-green-600/20 bg-green-600/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-green-600">
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-green-600" /> Our Work
         </div>
-        <h1 className="mb-4 text-[clamp(36px,5vw,64px)] font-black leading-[1.05] tracking-[-2.5px]">
+        <h1 className="mb-4 text-[clamp(36px,5vw,64px)] font-black leading-[1.05] tracking-[-1px]">
           Our <span className="text-green-600">best projects</span>
           <br />
           for you.

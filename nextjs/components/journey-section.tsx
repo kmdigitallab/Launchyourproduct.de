@@ -18,7 +18,7 @@ export default function JourneySection() {
       <div className="mx-auto max-w-[1040px]">
         <Reveal className="mb-14 text-center">
           <SectionLabel>Your Transformation</SectionLabel>
-          <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
+          <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
             From &quot;I should someday...&quot; to
             <br />
             <span className="text-green-600">&quot;My product is live.&quot;</span>

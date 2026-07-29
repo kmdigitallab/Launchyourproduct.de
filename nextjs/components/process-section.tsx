@@ -15,7 +15,7 @@ export default function ProcessSection() {
         <div className="grid grid-cols-1 items-start gap-9 md:grid-cols-2 md:gap-16">
           <Reveal>
             <SectionLabel>How it works</SectionLabel>
-            <h2 className="mb-4 text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-1.2px]">
+            <h2 className="mb-4 text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
               Simply explained.
               <br />
               <span className="text-green-600">Quickly executed.</span>
