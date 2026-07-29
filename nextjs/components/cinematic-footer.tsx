@@ -39,6 +39,7 @@ export default function CinematicFooter() {
             <h5 className="mb-3.5 text-[11px] font-bold uppercase tracking-[1.5px] text-[#8aaa96]">Legal</h5>
             <a href="/imprint" className="mb-2.5 block text-sm text-[#4b6358] transition-colors hover:text-green-400">Imprint</a>
             <a href="/privacy-policy" className="mb-2.5 block text-sm text-[#4b6358] transition-colors hover:text-green-400">Privacy Policy</a>
+            <a href="/terms" className="mb-2.5 block text-sm text-[#4b6358] transition-colors hover:text-green-400">Terms &amp; Conditions</a>
           </div>
         </div>
       </div>
