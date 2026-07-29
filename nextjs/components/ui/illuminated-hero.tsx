@@ -22,24 +22,6 @@ export function IlluminatedHero({
       id="hero"
       className="relative flex min-h-[100svh] w-full flex-wrap items-center justify-center overflow-hidden bg-[#f7f9f7] px-6 py-24 text-center"
     >
-      {/* Two "planet" glow shapes — same shape/animation as the reference, recolored green for a light bg */}
-      <div className="pointer-events-none absolute h-full w-full max-w-[44em]">
-        <div
-          className="absolute size-full origin-center translate-y-[-70%] scale-[1.2] animate-[onloadbgt_1s_ease-in-out_forwards] rounded-[100em] opacity-70"
-          style={{
-            background:
-              'radial-gradient(circle,rgba(22,163,74,0.22) 0%,rgba(22,163,74,0.08) 45%,transparent 70%)',
-          }}
-        />
-        <div
-          className="absolute size-full origin-center translate-y-[70%] scale-[1.2] animate-[onloadbgb_1s_ease-in-out_forwards] rounded-[100em] opacity-70"
-          style={{
-            background:
-              'radial-gradient(circle,rgba(22,163,74,0.22) 0%,rgba(22,163,74,0.08) 45%,transparent 70%)',
-          }}
-        />
-      </div>
-
       <div className="relative z-[2] mx-auto flex w-full max-w-[760px] flex-col items-center">
         <div className="mb-7 inline-flex items-center gap-1.5 rounded-full border border-green-600/20 bg-green-600/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-green-600">
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-green-600" />
