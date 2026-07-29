@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Reveal from '@/components/reveal';
+import ScrollToTop from '@/components/scroll-to-top';
 
 export const metadata: Metadata = {
   title: 'Portfolio – LaunchYourProduct',
@@ -159,6 +160,8 @@ export default function PortfolioPage() {
           </a>
         </div>
       </div>
+
+      <ScrollToTop />
     </div>
   );
 }

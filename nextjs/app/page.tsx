@@ -16,6 +16,7 @@ import FoundersSection from '@/components/founders-section';
 import FaqSection from '@/components/faq-section';
 import CtaSection from '@/components/cta-section';
 import CinematicFooter from '@/components/cinematic-footer';
+import ScrollToTop from '@/components/scroll-to-top';
 
 export default function Home() {
   const contentRef = useRef<HTMLDivElement>(null!);
@@ -52,6 +53,7 @@ export default function Home() {
       </div>
 
       <CinematicFooter />
+      <ScrollToTop />
     </>
   );
 }
