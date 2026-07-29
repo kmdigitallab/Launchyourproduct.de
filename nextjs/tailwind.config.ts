@@ -18,7 +18,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Times New Roman', 'Times', 'serif'],
+        sans: ['var(--font-poppins)', 'sans-serif'],
       },
     },
   },

@@ -38,8 +38,8 @@ export default function FlowThread({ contentRef }: { contentRef: React.RefObject
 
       grad!.setAttribute('y2', String(h));
       const HI = 0.85;
-      const LO = 0.04;
-      const feather = 34;
+      const LO = 0.06;
+      const feather = 100;
       const cTop = content!.getBoundingClientRect().top + window.scrollY;
       const blocks = [...content!.querySelectorAll('.hero-inner-marker, section, .ticker-marker')]
         .map((el) => {

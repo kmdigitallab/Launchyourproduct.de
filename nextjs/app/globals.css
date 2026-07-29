@@ -10,7 +10,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Times New Roman', Times, serif;
+  font-family: var(--font-poppins), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
