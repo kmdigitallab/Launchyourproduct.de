@@ -2,19 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 :root {
-  --g: #16a34a;
-  --gl: #4ade80;
+  --g: #8b5cf6;
+  --gl: #c4b5fd;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-poppins), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  background: #000;
+  color: #fff;
 }
 
 /* ── Hero word fade-in ── */
@@ -26,12 +26,25 @@ body {
   animation: fadeInUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
+/* ── Illuminated hero glow: left-to-right wipe reveal ──
+   Negative top/bottom/left insets give the text-shadow blur room to
+   breathe so it isn't sliced off in a hard rectangle; only the right
+   edge sweeps from fully closed to fully open. */
+@keyframes glowWipe {
+  from { clip-path: inset(-40px 100% -40px -40px); }
+  to   { clip-path: inset(-40px 0% -40px -40px); }
+}
+
 /* ── Trust bar scroll ── */
 @keyframes trustScroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  from { transform: translate3d(0, 0, 0); }
+  to   { transform: translate3d(-33.3333%, 0, 0); }
 }
-.trust-track { animation: trustScroll 22s linear infinite; }
+.trust-track {
+  animation: trustScroll 24s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+}
 
 /* ── Ticker ── */
 @keyframes tickerScroll {

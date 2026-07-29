@@ -6,12 +6,10 @@ interface MagneticButtonProps {
   href: string;
   className?: string;
   children: ReactNode;
-  target?: string;
-  rel?: string;
 }
 
 /** Subtle magnetic hover — button drifts toward the cursor within its bounds. */
-export default function MagneticButton({ href, className, children, target, rel }: MagneticButtonProps) {
+export default function MagneticButton({ href, className, children }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
 
   const onMouseMove = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -32,8 +30,6 @@ export default function MagneticButton({ href, className, children, target, rel 
     <a
       ref={ref}
       href={href}
-      target={target}
-      rel={rel}
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
       className={className}

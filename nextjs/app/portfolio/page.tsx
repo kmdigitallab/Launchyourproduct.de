@@ -61,9 +61,7 @@ export default function PortfolioPage() {
             Book a free 30-minute audit and we&apos;ll show you what we can build for you.
           </p>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
-            target="_blank"
-            rel="noreferrer"
+            href="mailto:info@launchyourproduct.de"
             className="inline-block rounded-[10px] bg-[#7c3aed] px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
           >
             Get in touch →

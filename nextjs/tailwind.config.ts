@@ -18,7 +18,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['var(--font-poppins)', 'sans-serif'],
       },
     },
   },

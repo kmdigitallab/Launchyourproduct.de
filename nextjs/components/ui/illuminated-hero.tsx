@@ -15,7 +15,7 @@ export function IlluminatedHero({
   titleLine1 = 'We turn your product into',
   titleGlow = 'a buying decision.',
   subtitle = 'Scroll-stopping motion design ads for Amazon, Shopify & Kickstarter – delivered fast. No camera crew, no studio.',
-  primaryCta = { label: 'Get in touch →', href: 'https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de' },
+  primaryCta = { label: 'Get your free audit →', href: 'mailto:info@launchyourproduct.de' },
   secondaryCta = { label: 'View Portfolio', href: '#portfolio' },
   tags = ['Amazon', 'Shopify', 'Kickstarter', 'TikTok'],
 }: IlluminatedHeroProps) {
@@ -41,10 +41,10 @@ export function IlluminatedHero({
           {titleLine1}
           <br />
           <span
-            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#a855f7]"
+            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#c084fc]"
             style={{
               textShadow:
-                '0 0 1px rgba(255,255,255,0.5), 0 0 2px rgba(216,180,254,0.9), 0 0 9px rgba(168,85,247,0.95), 0 0 20px rgba(124,58,237,0.75), 0 0 38px rgba(88,28,135,0.55)',
+                '0 0 1px rgba(255,255,255,0.9), 0 0 4px rgba(196,181,253,0.7), 0 0 10px rgba(139,92,246,0.4)',
             }}
           >
             {titleGlow}
@@ -56,8 +56,6 @@ export function IlluminatedHero({
         <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
           <MagneticButton
             href={primaryCta.href}
-            target="_blank"
-            rel="noreferrer"
             className="rounded-[10px] bg-[#7c3aed] px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
           >
             {primaryCta.label}

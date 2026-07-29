@@ -38,8 +38,8 @@ export default function FlowThread({ contentRef }: { contentRef: React.RefObject
 
       grad!.setAttribute('y2', String(h));
       const HI = 0.85;
-      const LO = 0.04;
-      const feather = 34;
+      const LO = 0.06;
+      const feather = 100;
       const cTop = content!.getBoundingClientRect().top + window.scrollY;
       const blocks = [...content!.querySelectorAll('.hero-inner-marker, section, .ticker-marker')]
         .map((el) => {
@@ -59,7 +59,7 @@ export default function FlowThread({ contentRef }: { contentRef: React.RefObject
         .sort((x, y) => x[0] - y[0]);
 
       grad!.innerHTML = stops
-        .map(([o, a]) => `<stop offset="${(o * 100).toFixed(2)}%" stop-color="#4ade80" stop-opacity="${a}"/>`)
+        .map(([o, a]) => `<stop offset="${(o * 100).toFixed(2)}%" stop-color="#ffffff" stop-opacity="${a}"/>`)
         .join('');
 
       lenRef.current = path!.getTotalLength();
@@ -115,7 +115,7 @@ export default function FlowThread({ contentRef }: { contentRef: React.RefObject
         strokeLinecap="round"
         strokeLinejoin="round"
         style={{
-          filter: 'drop-shadow(0 0 6px rgba(74,222,128,.55)) drop-shadow(0 0 18px rgba(22,163,74,.4))',
+          filter: 'drop-shadow(0 0 4px rgba(255,255,255,.6)) drop-shadow(0 0 10px rgba(167,139,250,.65)) drop-shadow(0 0 20px rgba(124,58,237,.4))',
         }}
       />
     </svg>

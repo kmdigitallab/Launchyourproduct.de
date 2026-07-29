@@ -14,9 +14,7 @@ export default function CinematicFooter() {
             Scroll-stopping motion design videos for Amazon sellers – delivered fast, no camera crew needed.
           </p>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
-            target="_blank"
-            rel="noreferrer"
+            href="mailto:info@launchyourproduct.de"
             className="mt-[22px] inline-block rounded-[10px] bg-[#7c3aed] px-6 py-3 text-sm font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)]"
           >
             Get in touch →
