@@ -6,9 +6,9 @@ const PROGRAMS = [
     featured: true,
     forWhom: 'For Amazon & E-Commerce Sellers',
     title: 'Motion Ads',
-    outcome: '→ Scroll-stopping videos, delivered in 48h',
+    outcome: '→ Scroll-stopping videos, delivered fast',
     body: 'Professional motion design videos – no camera, no studio, no waiting weeks. UGC-style hooks, showcase videos, Sponsored Brands ads. AI-produced, hand-finished by us.',
-    tags: ['Amazon', 'TikTok', '48h Delivery'],
+    tags: ['Amazon', 'TikTok', 'Fast Delivery'],
   },
   {
     featured: false,

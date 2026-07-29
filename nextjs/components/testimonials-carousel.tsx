@@ -24,7 +24,7 @@ const TESTIMONIALS = [
     result: '↑ First €5K launch',
   },
   {
-    text: 'As an Amazon seller I thought great videos needed a camera crew. <strong>Within 48 hours I had 3 professional product videos</strong> – AI-produced, but you can&apos;t tell.',
+    text: 'As an Amazon seller I thought great videos needed a camera crew. <strong>Within days I had 3 professional product videos</strong> – AI-produced, but you can&apos;t tell.',
     name: 'Thomas W.',
     role: 'Amazon Seller · Beauty',
     avatar: 'T',

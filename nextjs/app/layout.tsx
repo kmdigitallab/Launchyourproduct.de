@@ -12,7 +12,7 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: 'LaunchYourProduct – Motion Design Videos for Amazon Sellers',
   description:
-    'Scroll-stopping motion design ads for Amazon, Shopify & Kickstarter – delivered in 48h. No camera crew, no studio.',
+    'Scroll-stopping motion design ads for Amazon, Shopify & Kickstarter – delivered fast. No camera crew, no studio.',
   icons: {
     icon: [
       { url: '/favicon.png', type: 'image/png' },

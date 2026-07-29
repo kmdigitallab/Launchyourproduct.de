@@ -69,10 +69,10 @@ export default function TermsPage() {
         <section className="mb-9">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-[#8aaa96]">6. Delivery Timeline</h2>
           <p className="leading-[1.8] text-[#4b6358]">
-            Delivery timelines communicated on this website (e.g. "48h") are typical turnaround estimates for
-            standard-scope projects and depend on timely feedback and material delivery from the client. They do
-            not constitute a guaranteed, contractually binding deadline unless explicitly confirmed in writing for a
-            specific project.
+            Delivery timelines communicated on this website are typical turnaround estimates for standard-scope
+            projects and depend on timely feedback and material delivery from the client. They do not constitute a
+            guaranteed, contractually binding deadline unless explicitly confirmed in writing for a specific
+            project.
           </p>
         </section>
 

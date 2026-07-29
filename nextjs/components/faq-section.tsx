@@ -7,7 +7,7 @@ import SectionLabel from './section-label';
 const FAQS = [
   {
     q: 'What does a motion design video do for my Amazon listing?',
-    a: 'Listings with videos have up to <strong>3x higher conversion rates</strong>. Our motion design videos are delivered in 48h, no camera shoot needed, optimized for Amazon Sponsored Brands – that\'s the difference between a click and a purchase.',
+    a: 'Listings with videos have up to <strong>3x higher conversion rates</strong>. Our motion design videos are delivered fast, no camera shoot needed, optimized for Amazon Sponsored Brands – that\'s the difference between a click and a purchase.',
   },
   {
     q: 'Why AI – will quality suffer?',

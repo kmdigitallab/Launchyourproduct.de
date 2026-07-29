@@ -11,7 +11,7 @@ export default function CinematicFooter() {
             </div>
           </div>
           <p className="text-sm font-light leading-[1.7] text-[#4b6358]">
-            Scroll-stopping motion design videos for Amazon sellers – delivered in 48h, no camera crew needed.
+            Scroll-stopping motion design videos for Amazon sellers – delivered fast, no camera crew needed.
           </p>
           <a
             href="#cta"
