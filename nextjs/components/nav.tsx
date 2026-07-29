@@ -26,74 +26,85 @@ export default function Nav() {
   }, [menuOpen]);
 
   return (
-    <nav
-      className="fixed left-0 right-0 top-[34px] z-[200] flex h-[60px] items-center justify-between border-b border-white/[0.08] px-6 backdrop-blur-2xl backdrop-saturate-150 transition-colors md:px-12"
-      style={{ background: scrolled ? 'rgba(0,0,0,0.92)' : 'rgba(0,0,0,0.7)' }}
-    >
-      <a href="/" className="no-underline">
-        <span className="text-[17px] font-extrabold tracking-normal text-[#c084fc] [text-shadow:0_0_12px_rgba(167,139,250,0.35)]">
-          LaunchYourProduct
-        </span>
-      </a>
-
-      <div className="hidden gap-6 md:flex">
-        {LINKS.map((l) => (
-          <a key={l.href} href={l.href} className="text-[13px] text-white/70 transition-colors hover:text-[#c084fc]">
-            {l.label}
-          </a>
-        ))}
-      </div>
-
-      <div className="flex items-center gap-2">
-        <a
-          href="mailto:info@launchyourproduct.de"
-          className="hidden rounded-lg bg-[#7c3aed] px-[18px] py-2 text-[13px] font-semibold text-black shadow-[0_4px_14px_rgba(167,139,250,0.3)] transition-all hover:-translate-y-px hover:bg-[#8b5cf6] hover:shadow-[0_6px_20px_rgba(167,139,250,0.45)] md:inline-block"
-        >
-          Free Audit →
-        </a>
-
-        {/* Mobile hamburger */}
-        <button
-          type="button"
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((v) => !v)}
-          className="flex h-9 w-9 flex-col items-center justify-center gap-[5px] rounded-lg md:hidden"
-        >
-          <span
-            className={`h-[2px] w-5 rounded-full bg-white transition-transform ${menuOpen ? 'translate-y-[7px] rotate-45' : ''}`}
-          />
-          <span className={`h-[2px] w-5 rounded-full bg-white transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
-          <span
-            className={`h-[2px] w-5 rounded-full bg-white transition-transform ${menuOpen ? '-translate-y-[7px] -rotate-45' : ''}`}
-          />
-        </button>
-      </div>
-
-      {/* Mobile menu panel */}
-      <div
-        className={`absolute left-0 right-0 top-[60px] flex flex-col gap-1 border-b border-white/[0.08] bg-black px-6 py-4 shadow-[0_16px_40px_rgba(0,0,0,0.5)] transition-all duration-200 md:hidden ${
-          menuOpen ? 'visible opacity-100' : 'invisible -translate-y-2 opacity-0'
-        }`}
+    <div className="fixed inset-x-0 top-[44px] z-[200] flex justify-center px-4">
+      <nav
+        className="relative flex w-full max-w-[880px] items-center justify-between gap-4 rounded-full border border-white/10 px-5 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-all"
+        style={{
+          background: scrolled ? 'rgba(20,14,28,0.75)' : 'rgba(20,14,28,0.45)',
+          boxShadow: scrolled
+            ? '0 8px 30px rgba(0,0,0,0.45), 0 0 0 1px rgba(124,58,237,0.08)'
+            : '0 8px 30px rgba(0,0,0,0.3)',
+        }}
       >
-        {LINKS.map((l) => (
-          <a
-            key={l.href}
-            href={l.href}
-            onClick={() => setMenuOpen(false)}
-            className="rounded-lg px-2 py-3 text-[15px] font-medium text-white transition-colors hover:bg-[#8b5cf6]/[0.1] hover:text-[#c084fc]"
-          >
-            {l.label}
-          </a>
-        ))}
-        <a
-          href="mailto:info@launchyourproduct.de"
-          onClick={() => setMenuOpen(false)}
-          className="mt-2 rounded-lg bg-[#7c3aed] px-4 py-3 text-center text-[15px] font-semibold text-black"
-        >
-          Free Audit →
+        <a href="/" className="whitespace-nowrap no-underline">
+          <span className="text-[15px] font-extrabold tracking-normal text-[#c084fc] [text-shadow:0_0_12px_rgba(167,139,250,0.35)]">
+            LaunchYourProduct
+          </span>
         </a>
-      </div>
-    </nav>
+
+        <div className="hidden gap-6 md:flex">
+          {LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              className="text-[13px] text-white/70 transition-colors hover:text-[#c084fc]"
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+
+        <div className="flex items-center gap-2">
+          <a
+            href="mailto:info@launchyourproduct.de"
+            className="hidden rounded-full bg-[#7c3aed] px-[18px] py-2 text-[13px] font-semibold text-black shadow-[0_4px_14px_rgba(167,139,250,0.35)] transition-all hover:-translate-y-px hover:bg-[#8b5cf6] hover:shadow-[0_6px_20px_rgba(167,139,250,0.5)] md:inline-block"
+          >
+            Free Audit →
+          </a>
+
+          {/* Mobile hamburger */}
+          <button
+            type="button"
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="flex h-8 w-8 flex-col items-center justify-center gap-[5px] rounded-full md:hidden"
+          >
+            <span
+              className={`h-[2px] w-4 rounded-full bg-white transition-transform ${menuOpen ? 'translate-y-[6px] rotate-45' : ''}`}
+            />
+            <span className={`h-[2px] w-4 rounded-full bg-white transition-opacity ${menuOpen ? 'opacity-0' : ''}`} />
+            <span
+              className={`h-[2px] w-4 rounded-full bg-white transition-transform ${menuOpen ? '-translate-y-[6px] -rotate-45' : ''}`}
+            />
+          </button>
+        </div>
+
+        {/* Mobile menu panel — floating card, matches the pill style */}
+        <div
+          className={`absolute left-0 right-0 top-[calc(100%+10px)] flex flex-col gap-1 rounded-2xl border border-white/10 bg-[#14101c]/95 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-200 md:hidden ${
+            menuOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
+          }`}
+        >
+          {LINKS.map((l) => (
+            <a
+              key={l.href}
+              href={l.href}
+              onClick={() => setMenuOpen(false)}
+              className="rounded-xl px-3 py-3 text-[15px] font-medium text-white transition-colors hover:bg-[#7c3aed]/[0.12] hover:text-[#c084fc]"
+            >
+              {l.label}
+            </a>
+          ))}
+          <a
+            href="mailto:info@launchyourproduct.de"
+            onClick={() => setMenuOpen(false)}
+            className="mt-1 rounded-xl bg-[#7c3aed] px-4 py-3 text-center text-[15px] font-semibold text-black"
+          >
+            Free Audit →
+          </a>
+        </div>
+      </nav>
+    </div>
   );
 }
