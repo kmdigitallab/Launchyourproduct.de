@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
-
 :root {
   --g: #16a34a;
   --gl: #4ade80;
@@ -12,7 +10,7 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Space Grotesk', sans-serif;
+  font-family: var(--font-space-grotesk), sans-serif;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
@@ -26,18 +24,10 @@ body {
   animation: fadeInUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
-/* ── Illuminated hero glow-in ── */
-@keyframes onloadopacity {
-  24% { opacity: 0; }
-  100% { opacity: 1; }
-}
-@keyframes onloadbgt {
-  0%   { translate: 0 -70%; opacity: 0.3; }
-  100% { translate: 0 -64%; opacity: 0.8; }
-}
-@keyframes onloadbgb {
-  0%   { translate: 0 70%; opacity: 0.3; }
-  100% { translate: 0 64%; opacity: 0.8; }
+/* ── Illuminated hero glow: left-to-right wipe reveal ── */
+@keyframes glowWipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
 }
 
 /* ── Trust bar scroll ── */
