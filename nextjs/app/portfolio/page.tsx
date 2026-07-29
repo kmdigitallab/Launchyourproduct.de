@@ -15,31 +15,31 @@ const VIDEOS = [
   },
   {
     num: 'Project 02',
+    title: ['Motion Design Ad –', 'Tropical Fruit Ice'],
+    desc: 'Vibrant motion design product video for a tropical fruit ice brand – scroll-stopping creative for Amazon & social.',
+    vimeoId: '1213563562',
+    tags: ['Motion Design', 'Amazon', 'Food & Beverage'],
+  },
+  {
+    num: 'Project 03',
     title: ['Motion Design Ad –', 'Stainless Steel Water Bottle'],
     desc: 'High-quality motion design product video for a stainless steel water bottle – clean, clear, conversion-focused.',
     vimeoId: '1213564068',
     tags: ['Motion Design', 'Amazon', 'E-Commerce'],
   },
   {
-    num: 'Project 03',
+    num: 'Project 04',
     title: ['Motion Design Ad –', 'Gaming Keyboard'],
     desc: 'Motion design ad creative for a gaming keyboard brand – scroll-stopping and high-performing on TikTok & more.',
     vimeoId: '1213564029',
     tags: ['Motion Design', 'Ad Creative', 'TikTok', 'E-Commerce'],
   },
   {
-    num: 'Project 04',
+    num: 'Project 05',
     title: ['Sponsored Brands Ad –', 'Beauty Serum'],
     desc: 'High-quality Sponsored Brands video ad for an Amazon beauty serum. ACoS -28% after 4 weeks.',
     vimeoId: '1213563594',
     tags: ['Amazon Ads', 'Beauty', 'Sponsored Brands'],
-  },
-  {
-    num: 'Project 05',
-    title: ['Motion Design Ad –', 'Tropical Fruit Ice'],
-    desc: 'Vibrant motion design product video for a tropical fruit ice brand – scroll-stopping creative for Amazon & social.',
-    vimeoId: '1213563562',
-    tags: ['Motion Design', 'Amazon', 'Food & Beverage'],
   },
 ];
 
