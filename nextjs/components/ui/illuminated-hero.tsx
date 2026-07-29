@@ -24,12 +24,15 @@ export function IlluminatedHero({
       id="hero"
       className="relative flex min-h-[100svh] w-full flex-wrap items-center justify-center overflow-hidden bg-black px-6 py-24 text-center"
     >
-      {/* Violet streak lines — subtle diagonal light trails, pure CSS gradients */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <span className="absolute left-[-10%] top-[28%] h-px w-[55%] -rotate-[6deg] bg-gradient-to-r from-transparent via-[#7c3aed]/40 to-transparent" />
-        <span className="absolute left-[-10%] top-[33%] h-px w-[42%] -rotate-[6deg] bg-gradient-to-r from-transparent via-[#c084fc]/25 to-transparent" />
-        <span className="absolute right-[-10%] top-[62%] h-px w-[50%] rotate-[5deg] bg-gradient-to-l from-transparent via-[#7c3aed]/30 to-transparent" />
-      </div>
+      {/* Ambient looping glow — drifting violet streaks + sweeping spotlight, seamless loop */}
+      <video
+        className="pointer-events-none absolute inset-0 h-full w-full object-cover opacity-90"
+        src="/video/hero-loop.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
 
       <div className="relative z-[2] mx-auto flex w-full max-w-[760px] flex-col items-center">
         <div className="mb-7 inline-flex items-center gap-1.5 rounded-full border border-[#7c3aed]/25 bg-[#7c3aed]/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#c084fc]">
