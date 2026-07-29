@@ -2,9 +2,9 @@ import Reveal from './reveal';
 import SectionLabel from './section-label';
 
 const STEPS = [
-  { icon: '📞', title: 'Free Audit', body: '30 min. We look at your listing or your idea and show you exactly what would move the needle.' },
-  { icon: '🎬', title: 'We Produce', body: 'Motion design videos, or your full digital product – scripted, built and finished by us.' },
-  { icon: '🚀', title: 'You Launch', body: 'Live on Amazon, TikTok or your own funnel – usually in days, not months.' },
+  { icon: '📞', title: 'Free Audit', body: '30 min. We look at your listing and show you exactly what would move the needle.' },
+  { icon: '🎬', title: 'We Produce', body: 'Motion design videos – scripted, built and finished by us.' },
+  { icon: '🚀', title: 'You Launch', body: 'Live on Amazon, TikTok or Shopify – usually in days, not months.' },
   { icon: '📈', title: 'We Optimize', body: 'We track performance and keep refining – you focus on running your business.' },
 ];
 
@@ -21,7 +21,7 @@ export default function JourneySection() {
           <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
             From &quot;I should someday...&quot; to
             <br />
-            <span className="text-green-600">&quot;My product is live.&quot;</span>
+            <span className="text-green-600">&quot;My video is live.&quot;</span>
           </h2>
         </Reveal>
 

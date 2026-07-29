@@ -1,27 +1,11 @@
 const TESTIMONIALS = [
   {
-    text: 'Within 3 weeks I had a complete online course – <strong>including funnel and sales page</strong>. I never could have done that alone in that time.',
-    name: 'Mia K.',
-    role: 'Fitness Creator · 85K Followers',
-    avatar: 'M',
-    avatarBg: 'linear-gradient(135deg,#16a34a,#166534)',
-    result: '↑ €12,400 in the first month',
-  },
-  {
     text: 'The motion design videos increased my <strong>Amazon click-through rate by 340%</strong>. My competitors are still wondering how.',
     name: 'Jonas R.',
     role: 'Amazon Seller · Home & Kitchen',
     avatar: 'J',
     avatarBg: 'linear-gradient(135deg,#1d4ed8,#1e3a8a)',
     result: '↑ CTR +340% in 6 weeks',
-  },
-  {
-    text: 'I had tried building courses before – and quit. With LYP it was the first time someone <strong>truly took over the work</strong>.',
-    name: 'Sarah L.',
-    role: 'Business Coach · LinkedIn',
-    avatar: 'S',
-    avatarBg: 'linear-gradient(135deg,#7c3aed,#4c1d95)',
-    result: '↑ First €5K launch',
   },
   {
     text: 'As an Amazon seller I thought great videos needed a camera crew. <strong>Within days I had 3 professional product videos</strong> – AI-produced, but you can&apos;t tell.',
@@ -32,12 +16,12 @@ const TESTIMONIALS = [
     result: '↑ ACoS -28% after 4 weeks',
   },
   {
-    text: 'Our social media agent runs fully automated. <strong>We post daily without lifting a finger</strong> – reach has grown by 180%.',
+    text: 'We swapped our static Shopify product photos for motion design videos. <strong>Add-to-cart rate went up almost immediately</strong>.',
     name: 'Laura M.',
-    role: 'E-Commerce Brand · Fashion',
+    role: 'Shopify Store · Fashion',
     avatar: 'L',
     avatarBg: 'linear-gradient(135deg,#0891b2,#0e7490)',
-    result: '↑ Reach +180% in 4 weeks',
+    result: '↑ Add-to-cart +62%',
   },
 ];
 

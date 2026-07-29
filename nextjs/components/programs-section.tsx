@@ -4,27 +4,27 @@ import SectionLabel from './section-label';
 const PROGRAMS = [
   {
     featured: true,
-    forWhom: 'For Amazon & E-Commerce Sellers',
-    title: 'Motion Ads',
-    outcome: '→ Scroll-stopping videos, delivered fast',
-    body: 'Professional motion design videos – no camera, no studio, no waiting weeks. UGC-style hooks, showcase videos, Sponsored Brands ads. AI-produced, hand-finished by us.',
-    tags: ['Amazon', 'TikTok', 'Fast Delivery'],
+    forWhom: 'For TikTok & Instagram',
+    title: 'UGC-Style Hooks',
+    outcome: '→ Scroll-stopping opening shots',
+    body: 'Short, punchy hooks built to stop the scroll in the first second – styled like organic content, produced without a camera crew.',
+    tags: ['TikTok', 'Reels', 'Hooks'],
   },
   {
     featured: false,
-    forWhom: 'For Content Creators',
-    title: 'Monetise',
-    outcome: '→ Your own digital product, built for you',
-    body: 'You have the audience. We build the product – e-book, online course, or video program, fully produced, branded and with a working sales funnel.',
-    tags: ['E-Books', 'Courses', 'Sales Funnel'],
+    forWhom: 'For Amazon & Shopify Listings',
+    title: 'Showcase Videos',
+    outcome: '→ Product videos that convert',
+    body: 'Clean, professional motion design product videos for your listing or product page – built to turn browsers into buyers.',
+    tags: ['Amazon', 'Shopify', 'Listings'],
   },
   {
     featured: false,
-    forWhom: 'For scaling-ready Founders',
-    title: 'UpLevel',
-    outcome: '→ From product to systematic growth',
-    body: 'You already have a product but want to scale faster. We build AI content pipelines, optimize your funnel, and run the growth execution.',
-    tags: ['Growth Ops', 'AI Pipeline', 'Scaling'],
+    forWhom: 'For Amazon Sellers',
+    title: 'Sponsored Brands Ads',
+    outcome: '→ Higher CTR on paid placements',
+    body: 'Motion design video ads optimized specifically for Amazon Sponsored Brands – built to earn the click and the sale.',
+    tags: ['Amazon Ads', 'Sponsored Brands', 'CTR'],
   },
 ];
 
@@ -39,13 +39,12 @@ export default function ProgramsSection() {
         <Reveal className="mb-8 text-center">
           <SectionLabel>What We Do</SectionLabel>
           <h2 className="text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
-            Two ways we get
+            Motion design ads that
             <br />
-            <span className="text-green-600">you selling more.</span>
+            <span className="text-green-600">get you selling more.</span>
           </h2>
           <p className="mx-auto mb-4 mt-4 max-w-[480px] text-base font-light leading-[1.75] text-[#4b6358]">
-            Mainly motion design ads for Amazon &amp; e-commerce sellers – plus done-for-you digital products for
-            creators who want to monetize their audience.
+            Three formats, one focus: scroll-stopping motion design videos for Amazon, Shopify &amp; TikTok sellers.
           </p>
         </Reveal>
 

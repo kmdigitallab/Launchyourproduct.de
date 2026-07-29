@@ -15,9 +15,9 @@ export default function TermsPage() {
           General Terms &amp; Conditions
         </h1>
         <p className="mb-10 leading-[1.8] text-[#4b6358]">
-          These terms apply to all business services provided by Kabisch &amp; Miller GbR ("we", "us") — including
-          motion design video production for Amazon/e-commerce sellers and digital product development. Our
-          services are offered exclusively to businesses (B2B), not to consumers.
+          These terms apply to all business services provided by Kabisch &amp; Miller GbR ("we", "us") — motion
+          design video production for Amazon, Shopify and e-commerce sellers. Our services are offered exclusively
+          to businesses (B2B), not to consumers.
         </p>
 
         <section className="mb-9">

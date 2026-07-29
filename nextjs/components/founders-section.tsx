@@ -27,10 +27,10 @@ export default function FoundersSection() {
               C
             </div>
             <h4 className="mb-0.5 text-base font-bold tracking-[-.3px]">Cedric</h4>
-            <div className="mb-3 text-xs text-[#8aaa96]">Co-Founder · Strategy &amp; Product Development</div>
+            <div className="mb-3 text-xs text-[#8aaa96]">Co-Founder · Strategy &amp; Creative Direction</div>
             <p className="text-[13px] font-light leading-[1.7] text-[#4b6358]">
-              Cedric built digital products before helping others do it. He knows every step – and every mistake you
-              can make along the way. His focus: the fastest route from idea to sellable product.
+              Cedric leads strategy and creative direction on every project. He knows what makes a listing convert –
+              and every mistake sellers make along the way. His focus: the fastest route from brief to a video that sells.
             </p>
           </div>
           <div className="rounded-xl border border-black/[0.08] bg-white/90 p-7 transition-colors hover:border-black/[0.16]">
@@ -52,9 +52,9 @@ export default function FoundersSection() {
         <Reveal className="mx-auto mt-5 max-w-[640px] rounded-xl border border-black/[0.08] bg-white/90 p-7">
           <p className="text-center text-[15px] font-light leading-[1.8] text-[#4b6358]">
             <strong className="font-bold text-[#0d1f12]">We&apos;re 21, studied business</strong> and founded LYP
-            because we saw how much potential creators leave on the table – not out of laziness, but because they
-            lack the right systems.{' '}
-            <span className="text-green-500">We build those systems for you.</span>
+            because we saw how many Amazon &amp; e-commerce sellers leave sales on the table with static, generic
+            product images.{' '}
+            <span className="text-green-500">We build the motion design videos that fix that.</span>
           </p>
         </Reveal>
       </div>

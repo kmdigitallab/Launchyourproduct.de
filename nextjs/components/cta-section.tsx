@@ -14,11 +14,11 @@ export default function CtaSection() {
               <h2 className="mx-auto mb-3.5 max-w-[560px] text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-[-0.5px]">
                 Your free
                 <br />
-                <span className="text-green-600">Monetization Audit</span>
+                <span className="text-green-600">Motion Design Audit</span>
               </h2>
               <p className="mx-auto mb-8 max-w-[440px] text-base font-light leading-[1.7] text-[#4b6358]">
-                30 minutes. No pitch. We analyze your situation and show you exactly which product to build – and how
-                fast we can do it.
+                30 minutes. No pitch. We analyze your listing and show you exactly which video to start with – and
+                how fast we can deliver it.
               </p>
               <div className="flex flex-wrap justify-center gap-2.5">
                 <a

@@ -4,8 +4,8 @@ import RevenueChart from './revenue-chart';
 import CountUp from './count-up';
 
 const STATS = [
-  { num: '120+', label: 'Digital products launched', growth: '↑ Done-for-you' },
-  { num: '3 wks', label: 'Average launch time', growth: '↑ AI-accelerated' },
+  { num: '120+', label: 'Motion design videos produced', growth: '↑ Done-for-you' },
+  { num: '3 days', label: 'Average turnaround time', growth: '↑ AI-accelerated' },
   { num: '340%', label: 'Avg. CTR uplift for Motion Ads', growth: '↑ Client average' },
 ];
 

@@ -5,7 +5,7 @@ const STEPS = [
   { n: '01', title: 'Free Audit', body: 'We analyze your listings or your idea and show you <strong>exactly what to fix or build first</strong>.' },
   { n: '02', title: 'Strategy & Build', body: 'We structure concept, pricing and positioning – <strong>you give feedback, we build</strong>.' },
   { n: '03', title: 'AI Production', body: 'Claude AI + Higgsfield accelerate scripts, copy and videos to <strong>a fraction of normal time</strong>.' },
-  { n: '04', title: 'Launch & Optimize', body: 'Your product goes live. We measure, optimize and scale – <strong>continuously</strong>.' },
+  { n: '04', title: 'Launch & Optimize', body: 'Your video goes live. We measure performance and refine – <strong>continuously</strong>.' },
 ];
 
 export default function ProcessSection() {

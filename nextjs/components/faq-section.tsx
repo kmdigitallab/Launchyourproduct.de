@@ -15,11 +15,11 @@ const FAQS = [
   },
   {
     q: 'I don\'t sell on Amazon – can you still help?',
-    a: 'Yes. If you\'re a content creator instead, our <strong>Monetise program</strong> builds your first digital product for you – e-book, course, or video program, fully produced and with a working funnel.',
+    a: 'Yes. We produce the same style of motion design videos for <strong>Shopify product pages, Kickstarter campaigns, and TikTok/Instagram ads</strong> – not just Amazon listings.',
   },
   {
-    q: 'I already have a product – can we still work together?',
-    a: 'Yes. Our <strong>UpLevel program</strong> is made exactly for this: we scale what you already have. Better funnel, AI content pipelines, growth systems – everything you need to break through a plateau.',
+    q: 'Can I get more than one video?',
+    a: 'Yes. Many sellers order a <strong>set of videos</strong> – different hooks, different platforms, different angles – instead of relying on a single creative.',
   },
   {
     q: 'How much time do I need to invest?',
