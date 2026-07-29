@@ -60,8 +60,8 @@ export default function CinematicFooter() {
           <a href="https://www.instagram.com/launchyourproduct.de" target="_blank" rel="noreferrer" className="text-xs text-[#8aaa96] transition-colors hover:text-[#0d1f12]">
             Instagram
           </a>
-          <a href="mailto:hello@launchyourproduct.de" className="text-xs text-[#8aaa96] transition-colors hover:text-[#0d1f12]">
-            hello@launchyourproduct.de
+          <a href="mailto:info@launchyourproduct.de" className="text-xs text-[#8aaa96] transition-colors hover:text-[#0d1f12]">
+            info@launchyourproduct.de
           </a>
         </div>
       </div>
