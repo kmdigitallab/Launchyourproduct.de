@@ -17,7 +17,7 @@ export default function Nav() {
       style={{ background: scrolled ? 'rgba(247,249,247,0.99)' : 'rgba(247,249,247,0.92)' }}
     >
       <a href="/" className="no-underline">
-        <span className="text-[17px] font-extrabold tracking-[-.5px] text-green-600 [text-shadow:0_0_12px_rgba(22,163,74,0.25)]">
+        <span className="text-[17px] font-extrabold tracking-normal text-green-600 [text-shadow:0_0_12px_rgba(22,163,74,0.25)]">
           LaunchYourProduct
         </span>
       </a>

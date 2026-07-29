@@ -6,7 +6,7 @@ export default function CinematicFooter() {
       <div className="relative z-[2] flex w-full max-w-[1240px] flex-wrap justify-between gap-10">
         <div className="max-w-[340px]">
           <div className="mb-4 flex items-center gap-2">
-            <div className="text-[17px] font-extrabold tracking-[-.5px] text-green-400 [text-shadow:0_0_18px_rgba(74,222,128,0.55),0_0_36px_rgba(22,163,74,0.3)]">
+            <div className="text-[17px] font-extrabold tracking-normal text-green-400 [text-shadow:0_0_18px_rgba(74,222,128,0.55),0_0_36px_rgba(22,163,74,0.3)]">
               LaunchYourProduct
             </div>
           </div>

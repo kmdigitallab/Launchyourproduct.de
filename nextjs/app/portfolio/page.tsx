@@ -55,7 +55,7 @@ export default function PortfolioPage() {
       {/* Nav */}
       <nav className="fixed left-0 right-0 top-0 z-[200] flex h-[60px] items-center justify-between border-b border-black/[0.08] bg-[#f7f9f7]/[0.92] px-6 backdrop-blur-2xl backdrop-saturate-150 md:px-12">
         <a href="/" className="no-underline">
-          <div className="text-[17px] font-extrabold tracking-[-.5px] text-green-600 [text-shadow:0_0_12px_rgba(22,163,74,0.25)]">
+          <div className="text-[17px] font-extrabold tracking-normal text-green-600 [text-shadow:0_0_12px_rgba(22,163,74,0.25)]">
             LaunchYourProduct
           </div>
         </a>
