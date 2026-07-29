@@ -26,6 +26,20 @@ body {
   animation: fadeInUp 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both;
 }
 
+/* ── Illuminated hero glow-in ── */
+@keyframes onloadopacity {
+  24% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes onloadbgt {
+  0%   { translate: 0 -70%; opacity: 0.3; }
+  100% { translate: 0 -64%; opacity: 0.8; }
+}
+@keyframes onloadbgb {
+  0%   { translate: 0 70%; opacity: 0.3; }
+  100% { translate: 0 64%; opacity: 0.8; }
+}
+
 /* ── Trust bar scroll ── */
 @keyframes trustScroll {
   from { transform: translate3d(0, 0, 0); }
