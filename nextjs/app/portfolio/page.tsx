@@ -85,6 +85,18 @@ export default function PortfolioPage() {
         <p className="mx-auto max-w-[480px] text-[17px] font-light leading-[1.7] text-[#4b6358]">
           Real motion design videos for real products – scroll through our work.
         </p>
+
+        <div className="mx-auto mt-9 max-w-[600px] rounded-2xl border border-green-600/20 bg-green-600/[0.05] px-6 py-5">
+          <p className="text-[15px] font-medium leading-[1.6] text-[#2f4a38]">
+            Shoppers who watch a product video are{' '}
+            <span className="font-extrabold text-green-600">1.81× more likely to purchase</span>, and adding a video
+            to a product page lifts add-to-cart rate by up to{' '}
+            <span className="font-extrabold text-green-600">144%</span> compared to static images alone.
+          </p>
+          <p className="mt-2 text-[11px] uppercase tracking-[.5px] text-[#8aaa96]">
+            Source: Invesp / Kissmetrics e-commerce video conversion research
+          </p>
+        </div>
       </div>
 
       <div className="relative z-[1] mx-auto my-12 h-0.5 w-[60px] bg-gradient-to-r from-transparent via-green-600 to-transparent" />
