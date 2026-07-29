@@ -28,12 +28,13 @@ export default function Nav() {
   return (
     <div className="fixed inset-x-0 top-[44px] z-[200] flex justify-center px-4">
       <nav
-        className="relative flex w-full max-w-[880px] items-center justify-between gap-4 rounded-full border border-white/10 px-5 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-all"
+        className="relative flex w-full max-w-[1100px] items-center justify-between gap-4 rounded-[28px] border px-5 py-2.5 backdrop-blur-2xl backdrop-saturate-150 transition-all"
         style={{
-          background: scrolled ? 'rgba(20,14,28,0.75)' : 'rgba(20,14,28,0.45)',
+          background: scrolled ? 'rgba(20,14,28,0.8)' : 'rgba(20,14,28,0.5)',
+          borderColor: 'rgba(167,139,250,0.35)',
           boxShadow: scrolled
-            ? '0 8px 30px rgba(0,0,0,0.45), 0 0 0 1px rgba(124,58,237,0.08)'
-            : '0 8px 30px rgba(0,0,0,0.3)',
+            ? '0 8px 30px rgba(0,0,0,0.5), 0 0 16px rgba(139,92,246,0.35), inset 0 0 0 1px rgba(167,139,250,0.12)'
+            : '0 8px 30px rgba(0,0,0,0.35), 0 0 20px rgba(139,92,246,0.3), inset 0 0 0 1px rgba(167,139,250,0.1)',
         }}
       >
         <a href="/" className="whitespace-nowrap no-underline">
@@ -82,7 +83,7 @@ export default function Nav() {
 
         {/* Mobile menu panel — floating card, matches the pill style */}
         <div
-          className={`absolute left-0 right-0 top-[calc(100%+10px)] flex flex-col gap-1 rounded-2xl border border-white/10 bg-[#14101c]/95 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.5)] backdrop-blur-2xl transition-all duration-200 md:hidden ${
+          className={`absolute left-0 right-0 top-[calc(100%+10px)] flex flex-col gap-1 rounded-[24px] border border-[#a78bfa]/30 bg-[#14101c]/95 p-3 shadow-[0_16px_40px_rgba(0,0,0,0.5),0_0_16px_rgba(139,92,246,0.3)] backdrop-blur-2xl transition-all duration-200 md:hidden ${
             menuOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
           }`}
         >
