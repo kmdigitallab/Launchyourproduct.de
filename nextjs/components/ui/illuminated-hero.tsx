@@ -22,10 +22,10 @@ export function IlluminatedHero({
       id="hero"
       className="relative flex min-h-[100svh] w-full flex-col items-center justify-center overflow-hidden bg-[#f7f9f7] px-6 py-24 text-center"
     >
-      {/* Two green "planet" glow orbs, like the reference lens-flare, tuned for a light background */}
-      <div className="pointer-events-none absolute left-1/2 top-1/2 h-[900px] w-[900px] -translate-x-1/2 -translate-y-1/2">
-        <span className="absolute left-1/2 top-0 h-[560px] w-[560px] -translate-x-1/2 -translate-y-[58%] rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.16)_0%,rgba(22,163,74,0.05)_55%,transparent_75%)] blur-2xl" />
-        <span className="absolute bottom-0 left-1/2 h-[560px] w-[560px] -translate-x-1/2 translate-y-[58%] rounded-full bg-[radial-gradient(circle,rgba(22,163,74,0.16)_0%,rgba(22,163,74,0.05)_55%,transparent_75%)] blur-2xl" />
+      {/* Two overlapping "planet" rings, like the reference lens-flare, recolored green for a light background */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="absolute left-1/2 top-[-300px] h-[700px] w-[700px] -translate-x-1/2 rounded-full border-[3px] border-green-500/30 shadow-[0_0_100px_30px_rgba(34,197,94,0.18)]" />
+        <span className="absolute bottom-[-300px] left-1/2 h-[700px] w-[700px] -translate-x-1/2 rounded-full border-[3px] border-green-500/30 shadow-[0_0_100px_30px_rgba(34,197,94,0.18)]" />
       </div>
 
       <div className="relative z-[2] mx-auto flex w-full max-w-[760px] flex-col items-center">
