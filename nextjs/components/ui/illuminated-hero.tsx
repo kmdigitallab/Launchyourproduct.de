@@ -41,10 +41,10 @@ export function IlluminatedHero({
           {titleLine1}
           <br />
           <span
-            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#c084fc]"
+            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#a855f7]"
             style={{
               textShadow:
-                '0 0 1px rgba(255,255,255,0.9), 0 0 4px rgba(196,181,253,0.7), 0 0 10px rgba(139,92,246,0.4)',
+                '0 0 1px rgba(255,255,255,0.5), 0 0 2px rgba(216,180,254,0.9), 0 0 9px rgba(168,85,247,0.95), 0 0 20px rgba(124,58,237,0.75), 0 0 38px rgba(88,28,135,0.55)',
             }}
           >
             {titleGlow}
