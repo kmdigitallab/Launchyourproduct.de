@@ -32,9 +32,9 @@ export default function TermsPage() {
         <section className="mb-9">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-[#8aaa96]">2. Payment</h2>
           <p className="leading-[1.8] text-[#4b6358]">
-            Unless otherwise agreed in writing, payment is due as follows: 50% deposit before production starts,
-            remaining 50% due upon delivery/approval of the final deliverable. Invoices are payable within 14 days
-            unless a different term is stated on the invoice.
+            Unless otherwise agreed in writing, no payment is due upfront. We invoice only after the final
+            deliverable has been delivered and approved by the client. Invoices are payable within 14 days of
+            delivery unless a different term is stated on the invoice.
           </p>
         </section>
 
@@ -79,8 +79,8 @@ export default function TermsPage() {
         <section className="mb-9">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-[#8aaa96]">7. Cancellation</h2>
           <p className="leading-[1.8] text-[#4b6358]">
-            Either party may cancel an ongoing project in writing. Work already completed up to the cancellation
-            date will be invoiced pro rata; any deposit paid for uncompleted work will be refunded accordingly.
+            Either party may cancel an ongoing project in writing. Since payment is only due after delivery, no
+            refund is necessary; work already completed up to the cancellation date will be invoiced pro rata.
           </p>
         </section>
 
