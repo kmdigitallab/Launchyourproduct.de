@@ -22,6 +22,13 @@ export function IlluminatedHero({
       id="hero"
       className="relative flex min-h-[100svh] w-full flex-wrap items-center justify-center overflow-hidden bg-[#f7f9f7] px-6 py-24 text-center"
     >
+      {/* Green streak lines — subtle diagonal light trails, pure CSS gradients */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="absolute left-[-10%] top-[28%] h-px w-[55%] -rotate-[6deg] bg-gradient-to-r from-transparent via-green-500/45 to-transparent" />
+        <span className="absolute left-[-10%] top-[33%] h-px w-[42%] -rotate-[6deg] bg-gradient-to-r from-transparent via-green-400/30 to-transparent" />
+        <span className="absolute right-[-10%] top-[62%] h-px w-[50%] rotate-[5deg] bg-gradient-to-l from-transparent via-green-500/35 to-transparent" />
+      </div>
+
       <div className="relative z-[2] mx-auto flex w-full max-w-[760px] flex-col items-center">
         <div className="mb-7 inline-flex items-center gap-1.5 rounded-full border border-green-600/20 bg-green-600/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-green-600">
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-green-600" />
