@@ -8,8 +8,6 @@ import TrustBar from '@/components/trust-bar';
 import AmbientBackground from '@/components/ambient-background';
 import FlowThread from '@/components/flow-thread';
 import PainSection from '@/components/pain-section';
-import ResultsSection from '@/components/results-section';
-import TestimonialsCarousel from '@/components/testimonials-carousel';
 import ProgramsSection from '@/components/programs-section';
 import ProcessSection from '@/components/process-section';
 import FoundersSection from '@/components/founders-section';
@@ -45,8 +43,6 @@ export default function Home() {
         </div>
 
         <PainSection />
-        <ResultsSection />
-        <TestimonialsCarousel />
         <ProgramsSection />
         <ProcessSection />
         <FoundersSection />

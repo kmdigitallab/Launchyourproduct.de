@@ -32,7 +32,6 @@ export default function CinematicFooter() {
             <h5 className="mb-3.5 text-[11px] font-bold uppercase tracking-[1.5px] text-[#8aaa96]">Company</h5>
             <a href="#founders" className="mb-2.5 block text-sm text-[#4b6358] transition-colors hover:text-green-400">About</a>
             <a href="/portfolio" className="mb-2.5 block text-sm font-bold text-green-400">→ Portfolio</a>
-            <a href="#results" className="mb-2.5 block text-sm text-[#4b6358] transition-colors hover:text-green-400">Results</a>
             <a href="#how" className="mb-2.5 block text-sm text-[#4b6358] transition-colors hover:text-green-400">How it works</a>
           </div>
           <div>
