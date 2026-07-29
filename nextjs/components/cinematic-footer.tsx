@@ -58,9 +58,6 @@ export default function CinematicFooter() {
       <div className="relative z-[2] flex w-full max-w-[1240px] flex-wrap justify-between gap-3.5 border-t border-white/[0.08] pt-5">
         <p className="text-xs text-white/35">© 2025 LaunchYourProduct.de – All rights reserved.</p>
         <div className="flex gap-[18px]">
-          <a href="https://www.instagram.com/launchyourproduct.de" target="_blank" rel="noreferrer" className="text-xs text-white/35 transition-colors hover:text-white">
-            Instagram
-          </a>
           <a href="mailto:info@launchyourproduct.de" className="text-xs text-white/35 transition-colors hover:text-white">
             info@launchyourproduct.de
           </a>
