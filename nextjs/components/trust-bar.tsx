@@ -3,6 +3,9 @@ const PARTNERS = [
   { icon: '🎬', name: 'Higgsfield' },
   { icon: '✨', name: 'ChatGPT' },
   { icon: '🎨', name: 'Canva' },
+  { icon: '📹', name: 'Vimeo' },
+  { icon: '⚡', name: '21st.dev' },
+  { icon: '▲', name: 'Vercel' },
 ];
 
 export default function TrustBar() {
