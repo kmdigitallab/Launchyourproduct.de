@@ -1,16 +1,23 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 
 const LINKS = [
-  { href: '#how', label: 'How it works' },
-  { href: '#portfolio', label: 'Portfolio' },
-  { href: '#about', label: 'About' },
+  { hash: '#how', label: 'How it works' },
+  { hash: '#portfolio', label: 'Portfolio' },
+  { hash: '#about', label: 'About' },
 ];
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  // Section anchors only exist on the homepage — from any other route the link
+  // has to navigate home first, otherwise it silently does nothing.
+  const isHome = pathname === '/';
+  const links = LINKS.map((l) => ({ ...l, href: isHome ? l.hash : `/${l.hash}` }));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
@@ -44,7 +51,7 @@ export default function Nav() {
         </a>
 
         <div className="hidden gap-6 md:flex">
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
@@ -89,7 +96,7 @@ export default function Nav() {
             menuOpen ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-2 opacity-0'
           }`}
         >
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
