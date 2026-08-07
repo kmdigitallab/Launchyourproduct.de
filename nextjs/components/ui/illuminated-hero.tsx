@@ -1,4 +1,4 @@
-import MagneticButton from '@/components/magnetic-button';
+import LiquidGlassButton from '@/components/liquid-glass-button';
 
 interface IlluminatedHeroProps {
   badge?: string;
@@ -54,14 +54,9 @@ export function IlluminatedHero({
         <p className="mx-auto mb-9 max-w-[500px] text-[17px] font-light leading-[1.75] text-white/60">{subtitle}</p>
 
         <div className="mb-10 flex flex-wrap items-center justify-center gap-3">
-          <MagneticButton
-            href={primaryCta.href}
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-[10px] bg-[#7c3aed] px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-shadow hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
-          >
+          <LiquidGlassButton href={primaryCta.href} target="_blank" rel="noreferrer">
             {primaryCta.label}
-          </MagneticButton>
+          </LiquidGlassButton>
           <a
             href={secondaryCta.href}
             className="rounded-[10px] border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium text-white/80 transition-all hover:border-[#7c3aed]/50 hover:text-[#c084fc]"
