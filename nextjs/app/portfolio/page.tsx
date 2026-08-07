@@ -19,7 +19,7 @@ export default function PortfolioPage() {
 
       {/* Header */}
       <div className="relative z-[1] px-6 pb-[60px] pt-[130px] text-center md:px-12">
-        <div className="mb-6 inline-flex items-center gap-1.5 rounded-full border border-[#7c3aed]/25 bg-[#7c3aed]/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#c084fc]">
+        <div className="glass-chip mb-6 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#c084fc]">
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-[#7c3aed]" /> Our Work
         </div>
         <h1 className="mb-4 text-[clamp(36px,5vw,64px)] font-black leading-[1.05] tracking-normal text-white">
@@ -31,7 +31,7 @@ export default function PortfolioPage() {
           Real motion design videos for real products – scroll through our work.
         </p>
 
-        <div className="mx-auto mt-9 max-w-[600px] rounded-2xl border border-[#7c3aed]/20 bg-[#7c3aed]/[0.05] px-6 py-5">
+        <div className="glass-card glass-card--static mx-auto mt-9 max-w-[600px] px-6 py-5">
           <p className="text-[15px] font-medium leading-[1.6] text-white/75">
             Shoppers who watch a product video are{' '}
             <span className="font-extrabold text-[#c084fc]">1.81× more likely to purchase</span>, and adding a
@@ -52,7 +52,7 @@ export default function PortfolioPage() {
 
       {/* CTA */}
       <div className="relative z-[1] px-6 pb-[100px] text-center md:px-6">
-        <div className="mx-auto max-w-[600px] rounded-[20px] border border-[#7c3aed]/20 bg-gradient-to-br from-[#7c3aed]/[0.06] to-[#7c3aed]/[0.02] px-6 py-14 md:px-10">
+        <div className="glass-card glass-card--static mx-auto max-w-[600px] rounded-[20px] px-6 py-14 md:px-10">
           <h2 className="mb-3.5 text-[clamp(24px,3vw,36px)] font-extrabold tracking-normal text-white">
             Your project is
             <br />

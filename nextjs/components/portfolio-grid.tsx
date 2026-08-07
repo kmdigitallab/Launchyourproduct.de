@@ -18,7 +18,7 @@ export default function PortfolioGrid() {
             <p className="mx-auto max-w-[560px] text-sm font-light text-white/55">{v.desc}</p>
           </div>
 
-          <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
+          <div className="glass-card glass-card--static relative aspect-video overflow-hidden rounded-2xl">
             <iframe
               src={`https://player.vimeo.com/video/${v.vimeoId}?badge=0&autopause=0&player_id=0&app_id=58479`}
               className="absolute inset-0 h-full w-full border-0"
@@ -32,7 +32,7 @@ export default function PortfolioGrid() {
             {v.tags.map((t) => (
               <span
                 key={t}
-                className="rounded-full border border-[#7c3aed]/[0.25] bg-[#7c3aed]/[0.08] px-2.5 py-1 text-[11px] font-semibold tracking-[.5px] text-[#c084fc]"
+                className="glass-chip px-2.5 py-1 text-[11px] font-semibold tracking-[.5px] text-[#c084fc]"
               >
                 {t}
               </span>

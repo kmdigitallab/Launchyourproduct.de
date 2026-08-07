@@ -32,7 +32,7 @@ export function IlluminatedHero({
       </div>
 
       <div className="relative z-[2] mx-auto flex w-full max-w-[760px] flex-col items-center">
-        <div className="mb-7 inline-flex items-center gap-1.5 rounded-full border border-[#7c3aed]/25 bg-[#7c3aed]/[0.08] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#c084fc]">
+        <div className="glass-chip mb-7 inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[1.2px] text-[#c084fc]">
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-[#7c3aed]" />
           {badge}
         </div>
@@ -69,7 +69,7 @@ export function IlluminatedHero({
           {tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-[#7c3aed]/[0.25] bg-[#7c3aed]/[0.08] px-3.5 py-1.5 text-xs font-bold tracking-[.3px] text-[#c084fc]"
+              className="glass-chip px-3.5 py-1.5 text-xs font-bold tracking-[.3px] text-[#c084fc]"
             >
               {tag}
             </span>

@@ -22,8 +22,8 @@ export default function WhatWeDoSection() {
 
         <Reveal className="grid grid-cols-1 gap-8 text-left sm:grid-cols-3 sm:gap-6">
           {STEPS.map((s) => (
-            <div key={s.n} className="rounded-xl border border-white/10 bg-white/[0.03] p-6">
-              <div className="mb-4 flex h-9 w-9 items-center justify-center rounded-full border border-[#7c3aed]/25 bg-[#7c3aed]/[0.08] text-xs font-extrabold text-[#c084fc]">
+            <div key={s.n} className="glass-card p-6">
+              <div className="glass-medallion mb-4 flex h-9 w-9 items-center justify-center text-xs font-extrabold text-[#c084fc]">
                 {s.n}
               </div>
               <h3 className="mb-1.5 text-[15px] font-bold tracking-normal text-white">{s.title}</h3>
