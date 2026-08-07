@@ -41,7 +41,7 @@ export function IlluminatedHero({
           {titleLine1.split(' ').map((word, i) => (
             <span
               key={`${word}-${i}`}
-              className="fade-in-word inline-block"
+              className="metal-text fade-in-word inline-block"
               style={{ animationDelay: `${i * 0.07}s` }}
             >
               {word}
