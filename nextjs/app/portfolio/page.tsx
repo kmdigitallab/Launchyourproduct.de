@@ -3,6 +3,7 @@ import Nav from '@/components/nav';
 import AnnouncementBar from '@/components/announcement-bar';
 import PortfolioGrid from '@/components/portfolio-grid';
 import ScrollToTop from '@/components/scroll-to-top';
+import LiquidGlassButton from '@/components/liquid-glass-button';
 
 export const metadata: Metadata = {
   title: 'Portfolio – LaunchYourProduct',
@@ -60,14 +61,13 @@ export default function PortfolioPage() {
           <p className="mb-7 text-[15px] font-light leading-[1.7] text-white/55">
             Book a free 30-minute audit and we&apos;ll show you what we can build for you.
           </p>
-          <a
+          <LiquidGlassButton
             href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
             target="_blank"
             rel="noreferrer"
-            className="inline-block rounded-[10px] bg-[#7c3aed] px-8 py-3.5 text-[15px] font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)] transition-all hover:-translate-y-0.5 hover:shadow-[0_8px_30px_rgba(167,139,250,0.5)]"
           >
             Get in touch →
-          </a>
+          </LiquidGlassButton>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import { useId, type ReactNode } from 'react';
 
 interface LiquidGlassButtonProps {
   href: string;
@@ -9,6 +9,10 @@ interface LiquidGlassButtonProps {
   rel?: string;
   /** Show the 3D chrome orb on the left */
   orb?: boolean;
+  /** 'md' matches the hero/footer CTAs, 'sm' matches the nav bar */
+  size?: 'sm' | 'md';
+  onClick?: () => void;
+  className?: string;
 }
 
 /**
@@ -21,9 +25,22 @@ export default function LiquidGlassButton({
   target,
   rel,
   orb = true,
+  size = 'md',
+  onClick,
+  className,
 }: LiquidGlassButtonProps) {
+  // Several of these can live on one page — a shared gradient id would break
+  // whichever instance renders after a display:none one.
+  const gradientId = `lgSpark-${useId().replace(/:/g, '')}`;
+
   return (
-    <a href={href} target={target} rel={rel} className="lg-btn group">
+    <a
+      href={href}
+      target={target}
+      rel={rel}
+      onClick={onClick}
+      className={`lg-btn${size === 'sm' ? ' lg-btn--sm' : ''}${className ? ` ${className}` : ''}`}
+    >
       {/* chromatic rim — sits under the glass, bleeds a faint rainbow at the edges */}
       <span aria-hidden className="lg-rim" />
       {/* specular sheen that sweeps across on hover */}
@@ -35,10 +52,10 @@ export default function LiquidGlassButton({
             <svg viewBox="0 0 24 24" className="lg-orb-spark">
               <path
                 d="M12 2.6l1.9 5.6a4 4 0 002.5 2.5l5.6 1.9-5.6 1.9a4 4 0 00-2.5 2.5L12 22.7l-1.9-5.7a4 4 0 00-2.5-2.5L2 12.6l5.6-1.9a4 4 0 002.5-2.5L12 2.6z"
-                fill="url(#lgSpark)"
+                fill={`url(#${gradientId})`}
               />
               <defs>
-                <linearGradient id="lgSpark" x1="0" y1="0" x2="1" y2="1">
+                <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="1">
                   <stop offset="0%" stopColor="#f5e9ff" />
                   <stop offset="45%" stopColor="#c084fc" />
                   <stop offset="100%" stopColor="#7c3aed" />

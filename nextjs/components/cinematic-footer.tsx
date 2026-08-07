@@ -1,3 +1,5 @@
+import LiquidGlassButton from '@/components/liquid-glass-button';
+
 export default function CinematicFooter() {
   return (
     <footer className="fixed bottom-0 left-0 z-0 flex h-[460px] w-full flex-col items-center justify-between overflow-hidden bg-gradient-to-b from-[#0b0b0f] to-[#050506] px-6 pb-[26px] pt-[60px] md:h-[460px] md:px-12">
@@ -13,14 +15,14 @@ export default function CinematicFooter() {
           <p className="text-sm font-light leading-[1.7] text-white/50">
             Scroll-stopping motion design videos for Amazon sellers – delivered fast, no camera crew needed.
           </p>
-          <a
+          <LiquidGlassButton
             href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
             target="_blank"
             rel="noreferrer"
-            className="mt-[22px] inline-block rounded-[10px] bg-[#7c3aed] px-6 py-3 text-sm font-bold text-black shadow-[0_4px_20px_rgba(167,139,250,0.35)]"
+            className="mt-[22px]"
           >
             Get in touch →
-          </a>
+          </LiquidGlassButton>
         </div>
 
         <div className="flex flex-wrap gap-14">

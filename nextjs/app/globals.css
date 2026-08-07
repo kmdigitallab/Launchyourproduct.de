@@ -186,14 +186,14 @@ body {
   z-index: 3;
   display: inline-flex;
   align-items: center;
-  gap: 14px;
-  padding: 10px 26px 10px 10px;
+  gap: 10px;
+  padding: 6px 20px 6px 6px;
   border-radius: inherit;
 }
-.lg-btn:not(:has(.lg-orb)) .lg-inner { padding-left: 26px; }
+.lg-btn:not(:has(.lg-orb)) .lg-inner { padding: 9px 20px; }
 
 .lg-label {
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: 0.1px;
   color: #fff;
@@ -201,13 +201,21 @@ body {
   white-space: nowrap;
 }
 
+/* compact variant — sized to sit inside the nav bar */
+.lg-btn--sm { padding: 2px; }
+.lg-btn--sm .lg-inner { gap: 8px; padding: 4px 15px 4px 4px; }
+.lg-btn--sm:not(:has(.lg-orb)) .lg-inner { padding: 7px 16px; }
+.lg-btn--sm .lg-label { font-size: 13px; }
+.lg-btn--sm .lg-orb { width: 25px; height: 25px; }
+.lg-btn--sm .lg-orb-spark { width: 13px; height: 13px; }
+
 /* 3D chrome/glass orb */
 .lg-orb {
   position: relative;
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 31px;
+  height: 31px;
   border-radius: 50%;
   background:
     radial-gradient(circle at 32% 26%, rgba(255, 255, 255, 0.95) 0%, rgba(226, 205, 255, 0.35) 14%, rgba(0, 0, 0, 0) 42%),
@@ -234,7 +242,7 @@ body {
   pointer-events: none;
 }
 .lg-orb-spark {
-  width: 19px;
-  height: 19px;
+  width: 15px;
+  height: 15px;
   filter: drop-shadow(0 0 5px rgba(192, 132, 252, 0.9));
 }

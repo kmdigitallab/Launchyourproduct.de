@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
+import LiquidGlassButton from '@/components/liquid-glass-button';
 
 const LINKS = [
   { hash: '#how', label: 'How it works' },
@@ -63,14 +64,16 @@ export default function Nav() {
         </div>
 
         <div className="flex items-center gap-2">
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
-            target="_blank"
-            rel="noreferrer"
-            className="hidden rounded-full bg-[#7c3aed] px-[18px] py-2 text-[13px] font-semibold text-black shadow-[0_4px_14px_rgba(167,139,250,0.35)] transition-all hover:-translate-y-px hover:bg-[#8b5cf6] hover:shadow-[0_6px_20px_rgba(167,139,250,0.5)] md:inline-block"
-          >
-            Get in touch →
-          </a>
+          <span className="hidden md:inline-flex">
+            <LiquidGlassButton
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
+              target="_blank"
+              rel="noreferrer"
+              size="sm"
+            >
+              Get in touch →
+            </LiquidGlassButton>
+          </span>
 
           {/* Mobile hamburger */}
           <button
@@ -106,15 +109,15 @@ export default function Nav() {
               {l.label}
             </a>
           ))}
-          <a
+          <LiquidGlassButton
             href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
             target="_blank"
             rel="noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="mt-1 rounded-xl bg-[#7c3aed] px-4 py-3 text-center text-[15px] font-semibold text-black"
+            className="mt-1 justify-center"
           >
             Get in touch →
-          </a>
+          </LiquidGlassButton>
         </div>
       </nav>
     </div>
