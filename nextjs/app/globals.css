@@ -430,25 +430,17 @@ body {
   .fade-in-only { animation-duration: 0.01ms; }
 }
 
-/* ── Brushed silver type ───────────────────────────────────────────────
-   Metal reads as metal because of banding, not because it is grey: a bright
-   specular top, a darker band where the "horizon" reflects, then an abrupt
-   flip back to near-white for the bounce light. The hard step around the
-   middle is what separates chrome from a plain grey gradient.
-   Tinted slightly cool/violet so it sits in the site's palette. */
+/* ── Silver type ───────────────────────────────────────────────────────
+   A plain soft fade, same overhead light model as everything else: bright at
+   the top of the glyph, grey at its base. No banding — hard light/dark steps
+   read as chrome and fight the headline for attention. */
 .metal-text {
   background-image: linear-gradient(
-    177deg,
+    180deg,
     #ffffff 0%,
-    #eceaf6 14%,
-    #c3c2d6 30%,
-    #9392ad 44%,
-    #8b8aa6 47%,
-    #fbfaff 52%,
-    #e2e0ef 64%,
-    #aeadc6 80%,
-    #d6d5e6 92%,
-    #b6b5cc 100%
+    #f2f2f6 38%,
+    #cfcfda 72%,
+    #a8a8b8 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
