@@ -190,7 +190,8 @@ body {
   padding: 6px 20px 6px 6px;
   border-radius: inherit;
 }
-.lg-btn:not(:has(.lg-orb)) .lg-inner { padding: 9px 20px; }
+/* no-orb variant — vertical padding keeps the same pill height as the orb version */
+.lg-btn--plain .lg-inner { padding: 13px 24px; }
 
 .lg-label {
   font-size: 14px;
@@ -204,7 +205,7 @@ body {
 /* compact variant — sized to sit inside the nav bar */
 .lg-btn--sm { padding: 2px; }
 .lg-btn--sm .lg-inner { gap: 8px; padding: 4px 15px 4px 4px; }
-.lg-btn--sm:not(:has(.lg-orb)) .lg-inner { padding: 7px 16px; }
+.lg-btn--sm.lg-btn--plain .lg-inner { padding: 8px 17px; }
 .lg-btn--sm .lg-label { font-size: 13px; }
 .lg-btn--sm .lg-orb { width: 25px; height: 25px; }
 .lg-btn--sm .lg-orb-spark { width: 13px; height: 13px; }

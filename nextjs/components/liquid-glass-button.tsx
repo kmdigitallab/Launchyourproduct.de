@@ -39,7 +39,7 @@ export default function LiquidGlassButton({
       target={target}
       rel={rel}
       onClick={onClick}
-      className={`lg-btn${size === 'sm' ? ' lg-btn--sm' : ''}${className ? ` ${className}` : ''}`}
+      className={`lg-btn${size === 'sm' ? ' lg-btn--sm' : ''}${orb ? '' : ' lg-btn--plain'}${className ? ` ${className}` : ''}`}
     >
       {/* chromatic rim — sits under the glass, bleeds a faint rainbow at the edges */}
       <span aria-hidden className="lg-rim" />

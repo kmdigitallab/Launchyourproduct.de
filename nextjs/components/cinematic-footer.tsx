@@ -19,6 +19,7 @@ export default function CinematicFooter() {
             href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
             target="_blank"
             rel="noreferrer"
+            orb={false}
             className="mt-[22px]"
           >
             Get in touch →

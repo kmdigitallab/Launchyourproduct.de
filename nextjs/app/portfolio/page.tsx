@@ -65,6 +65,7 @@ export default function PortfolioPage() {
             href="https://mail.google.com/mail/?view=cm&fs=1&to=info@launchyourproduct.de"
             target="_blank"
             rel="noreferrer"
+            orb={false}
           >
             Get in touch →
           </LiquidGlassButton>

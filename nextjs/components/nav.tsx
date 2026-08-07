@@ -70,6 +70,7 @@ export default function Nav() {
               target="_blank"
               rel="noreferrer"
               size="sm"
+              orb={false}
             >
               Get in touch →
             </LiquidGlassButton>
@@ -114,6 +115,7 @@ export default function Nav() {
             target="_blank"
             rel="noreferrer"
             onClick={() => setMenuOpen(false)}
+            orb={false}
             className="mt-1 justify-center"
           >
             Get in touch →
