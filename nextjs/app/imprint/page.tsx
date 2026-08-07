@@ -17,7 +17,7 @@ export default function ImprintPage() {
       <main className="mx-auto max-w-[720px] px-6 pb-24 pt-32 md:px-12">
         <h1 className="mb-8 text-[clamp(28px,4vw,42px)] font-black tracking-[-1px]">Legal Notice (Impressum)</h1>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">
             Information according to § 5 DDG (German Digital Services Act)
           </h2>
@@ -34,7 +34,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">Represented by the partners</h2>
           <p className="leading-[1.8] text-white/60">
             Tobias Miller
@@ -43,7 +43,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">Contact</h2>
           <p className="leading-[1.8] text-white/60">
             Email:{' '}
@@ -53,7 +53,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">
             Responsible for content according to § 18 Abs. 2 MStV
           </h2>
@@ -66,7 +66,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">EU Dispute Resolution</h2>
           <p className="leading-[1.8] text-white/60">
             The European Commission provides a platform for online dispute resolution (ODR):{' '}
@@ -85,7 +85,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-3 text-[22px] font-extrabold tracking-[-.5px]">Disclaimer</h2>
 
           <h3 className="mb-1.5 mt-5 text-sm font-bold uppercase tracking-[1px] text-white/40">
@@ -112,7 +112,7 @@ export default function ImprintPage() {
           </p>
         </section>
 
-        <a href="/" className="text-sm font-bold text-[#c084fc] hover:underline">
+        <a href="/" className="glass-ghost inline-block px-5 py-2.5 text-sm font-bold text-[#c084fc]">
           ← Back to Website
         </a>
       </main>

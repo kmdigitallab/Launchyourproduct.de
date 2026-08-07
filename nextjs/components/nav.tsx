@@ -41,8 +41,8 @@ export default function Nav() {
           background: scrolled ? 'rgba(20,14,28,0.8)' : 'rgba(20,14,28,0.5)',
           borderColor: 'rgba(167,139,250,0.35)',
           boxShadow: scrolled
-            ? '0 8px 30px rgba(0,0,0,0.5), 0 0 16px rgba(139,92,246,0.35), inset 0 0 0 1px rgba(167,139,250,0.12)'
-            : '0 8px 30px rgba(0,0,0,0.35), 0 0 20px rgba(139,92,246,0.3), inset 0 0 0 1px rgba(167,139,250,0.1)',
+            ? '0 8px 30px rgba(0,0,0,0.5), 0 0 16px rgba(139,92,246,0.35), inset 0 0 0 1px rgba(167,139,250,0.12), inset 0 1px 0 rgba(255,255,255,0.16)'
+            : '0 8px 30px rgba(0,0,0,0.35), 0 0 20px rgba(139,92,246,0.3), inset 0 0 0 1px rgba(167,139,250,0.1), inset 0 1px 0 rgba(255,255,255,0.14)',
         }}
       >
         <a href="/" className="whitespace-nowrap no-underline">

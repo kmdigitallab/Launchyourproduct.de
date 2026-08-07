@@ -59,7 +59,7 @@ export function IlluminatedHero({
           </LiquidGlassButton>
           <a
             href={secondaryCta.href}
-            className="rounded-[10px] border border-white/15 bg-white/[0.04] px-6 py-3.5 text-sm font-medium text-white/80 transition-all hover:border-[#7c3aed]/50 hover:text-[#c084fc]"
+            className="glass-ghost px-6 py-3.5 text-sm font-medium text-white/80 hover:text-[#c084fc]"
           >
             {secondaryCta.label}
           </a>

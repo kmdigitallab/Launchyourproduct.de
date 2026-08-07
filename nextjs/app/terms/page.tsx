@@ -24,7 +24,7 @@ export default function TermsPage() {
           to businesses (B2B), not to consumers.
         </p>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">1. Scope of Services</h2>
           <p className="leading-[1.8] text-white/60">
             The exact scope, deliverables, timeline, and price of each project are agreed individually per client,
@@ -33,7 +33,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">2. Payment</h2>
           <p className="leading-[1.8] text-white/60">
             Unless otherwise agreed in writing, no payment is due upfront. We invoice only after the final
@@ -42,7 +42,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">3. Revisions</h2>
           <p className="leading-[1.8] text-white/60">
             Each project includes up to two (2) rounds of revisions within the originally agreed scope. Additional
@@ -51,7 +51,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">4. Usage Rights</h2>
           <p className="leading-[1.8] text-white/60">
             Upon full payment, the client receives a non-exclusive, unlimited usage right to the final delivered
@@ -61,7 +61,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">5. Client Materials</h2>
           <p className="leading-[1.8] text-white/60">
             The client is responsible for ensuring that any product images, footage, logos, or other materials they
@@ -70,7 +70,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">6. Delivery Timeline</h2>
           <p className="leading-[1.8] text-white/60">
             Delivery timelines communicated on this website are typical turnaround estimates for standard-scope
@@ -80,7 +80,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">7. Cancellation</h2>
           <p className="leading-[1.8] text-white/60">
             Either party may cancel an ongoing project in writing. Since payment is only due after delivery, no
@@ -88,7 +88,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">8. Liability</h2>
           <p className="leading-[1.8] text-white/60">
             We are liable without limitation for damages caused by intent or gross negligence, and for injury to
@@ -97,7 +97,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">9. Governing Law</h2>
           <p className="leading-[1.8] text-white/60">
             These terms are governed by German law. As these terms apply exclusively to business clients (B2B), the
@@ -105,7 +105,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">10. Changes to These Terms</h2>
           <p className="leading-[1.8] text-white/60">
             We reserve the right to update these terms at any time. The version in effect at the time a project is
@@ -113,7 +113,7 @@ export default function TermsPage() {
           </p>
         </section>
 
-        <a href="/" className="text-sm font-bold text-[#c084fc] hover:underline">
+        <a href="/" className="glass-ghost inline-block px-5 py-2.5 text-sm font-bold text-[#c084fc]">
           ← Back to Website
         </a>
       </main>

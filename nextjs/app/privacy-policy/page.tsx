@@ -21,7 +21,7 @@ export default function PrivacyPolicyPage() {
           use, and protect your information when you visit our website.
         </p>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">1. Responsible Entity</h2>
           <p className="leading-[1.8] text-white/60">
             Kabisch &amp; Miller GbR
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">
             2. Data Collection on Our Website
           </h2>
@@ -62,7 +62,7 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">
             3. Legal Basis for Processing
           </h2>
@@ -74,7 +74,7 @@ export default function PrivacyPolicyPage() {
           </ul>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">4. Hosting (Vercel)</h2>
           <p className="leading-[1.8] text-white/60">
             Our website is hosted by Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA. Vercel processes
@@ -83,14 +83,14 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">5. Data Retention</h2>
           <p className="leading-[1.8] text-white/60">
             We only store your personal data as long as necessary for the purposes stated or as required by law.
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">6. Your Rights</h2>
           <p className="leading-[1.8] text-white/60">You have the right to:</p>
           <ul className="mt-3 list-disc space-y-1 pl-5 leading-[1.8] text-white/60">
@@ -105,21 +105,21 @@ export default function PrivacyPolicyPage() {
           </p>
         </section>
 
-        <section className="mb-9">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">7. SSL Encryption</h2>
           <p className="leading-[1.8] text-white/60">
             This website uses SSL encryption to protect the transmission of confidential content.
           </p>
         </section>
 
-        <section className="mb-10">
+        <section className="glass-card glass-card--static mb-6 px-6 py-6">
           <h2 className="mb-2 text-sm font-bold uppercase tracking-[1px] text-white/40">
             8. Changes to This Policy
           </h2>
           <p className="leading-[1.8] text-white/60">We reserve the right to update this Privacy Policy at any time.</p>
         </section>
 
-        <a href="/" className="text-sm font-bold text-[#c084fc] hover:underline">
+        <a href="/" className="glass-ghost inline-block px-5 py-2.5 text-sm font-bold text-[#c084fc]">
           ← Back to Website
         </a>
       </main>

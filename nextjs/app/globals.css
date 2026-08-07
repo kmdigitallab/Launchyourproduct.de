@@ -319,7 +319,6 @@ body {
 }
 
 .glass-medallion {
-  position: relative;
   border-radius: 50%;
   background:
     radial-gradient(circle at 34% 26%, rgba(255, 255, 255, 0.35) 0%, rgba(255, 255, 255, 0) 46%),
@@ -328,4 +327,37 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.45),
     inset 0 -2px 5px rgba(124, 58, 237, 0.35),
     0 3px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* secondary / ghost surface — same light model, no violet fill.
+   Reads as the same material family but clearly subordinate to the CTA. */
+.glass-ghost {
+  border-radius: 10px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.09) 0%, rgba(255, 255, 255, 0.03) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -1px 0 rgba(124, 58, 237, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 6px 18px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1),
+    box-shadow 0.35s ease,
+    color 0.35s ease;
+}
+.glass-ghost:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -1px 0 rgba(124, 58, 237, 0.28),
+    inset 0 0 0 1px rgba(167, 139, 250, 0.28),
+    0 10px 26px rgba(0, 0, 0, 0.42),
+    0 0 22px rgba(139, 92, 246, 0.2);
+}
+
+/* announcement strip — lit hairline along its lower edge */
+.glass-strip {
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.16) 0%, rgba(10, 7, 20, 0.98) 70%);
+  box-shadow:
+    inset 0 -1px 0 rgba(167, 139, 250, 0.22),
+    0 2px 14px rgba(0, 0, 0, 0.5);
 }
