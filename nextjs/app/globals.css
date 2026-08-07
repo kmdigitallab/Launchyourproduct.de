@@ -380,10 +380,8 @@ body {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  filter:
-    drop-shadow(0 0 2px rgba(216, 180, 254, 0.75))
-    drop-shadow(0 0 12px rgba(168, 85, 247, 0.6))
-    drop-shadow(0 0 30px rgba(124, 58, 237, 0.45));
+  /* No bloom: a drop-shadow spreads light into the surrounding space and reads
+     as a haze around the words. The gradient fill alone carries the effect. */
   animation: litSheen 7s ease-in-out 1.3s infinite;
 }
 
@@ -416,7 +414,8 @@ body {
   background-clip: text;
   color: transparent;
   -webkit-text-fill-color: transparent;
-  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.28));
+  /* Same reason as .lit-text: with a clipped background the browser bases the
+     drop-shadow on the element box, not the glyphs, leaving a visible rectangle. */
 }
 
 /* fade without vertical motion — for text whose fill is a vertical gradient */

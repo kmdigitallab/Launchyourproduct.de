@@ -46,7 +46,7 @@ export default function Nav() {
         }}
       >
         <a href="/" className="whitespace-nowrap no-underline">
-          <span className="text-[15px] font-extrabold tracking-normal text-[#c084fc] [text-shadow:0_0_12px_rgba(167,139,250,0.35)]">
+          <span className="lit-text--soft text-[19px] font-black tracking-[-0.2px] md:text-[20px]">
             LaunchYourProduct
           </span>
         </a>
