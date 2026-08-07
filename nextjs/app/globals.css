@@ -368,14 +368,14 @@ body {
    text-shadow because background-clip:text makes the fill transparent — a
    text-shadow would show *through* the letters instead of behind them. */
 .lit-text {
-  background: linear-gradient(
-    180deg,
-    #faf5ff 0%,
-    #e9d5ff 26%,
-    #c084fc 58%,
-    #8b5cf6 88%,
-    #6d28d9 100%
-  );
+  /* two stacked fills, both clipped to the glyphs:
+     [0] a specular band that sweeps across, [1] the static overhead gradient */
+  background-image:
+    linear-gradient(100deg, rgba(255, 255, 255, 0) 42%, rgba(255, 255, 255, 0.9) 50%, rgba(255, 255, 255, 0) 58%),
+    linear-gradient(180deg, #faf5ff 0%, #e9d5ff 26%, #c084fc 58%, #8b5cf6 88%, #6d28d9 100%);
+  background-size: 250% 100%, 100% 100%;
+  background-position: 250% 0, 0 0;
+  background-repeat: no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -384,6 +384,29 @@ body {
     drop-shadow(0 0 2px rgba(216, 180, 254, 0.75))
     drop-shadow(0 0 12px rgba(168, 85, 247, 0.6))
     drop-shadow(0 0 30px rgba(124, 58, 237, 0.45));
+  animation: litSheen 7s ease-in-out 1.3s infinite;
+}
+
+/* Per-word variant. The gradient fill and the opacity animation MUST live on
+   the same element: a child that animates opacity gets its own compositing
+   layer, where the parent's background-clip:text no longer paints — the words
+   would simply render transparent. Both animation delays are set inline so the
+   entrance staggers and the sheen then travels word by word. */
+.lit-word {
+  animation:
+    fadeInOnly 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both,
+    litSheen 7s ease-in-out infinite;
+}
+
+/* The band travels through during the first third, then parks off-canvas —
+   both end positions sit outside the glyphs, so the loop reset is invisible. */
+@keyframes litSheen {
+  0%        { background-position: 250% 0, 0 0; }
+  32%, 100% { background-position: -150% 0, 0 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lit-text { animation: none; }
 }
 
 /* quieter version for section headings — gradient without the heavy bloom */
@@ -394,4 +417,16 @@ body {
   color: transparent;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.28));
+}
+
+/* fade without vertical motion — for text whose fill is a vertical gradient */
+@keyframes fadeInOnly {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.fade-in-only { animation: fadeInOnly 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) both; }
+
+@media (prefers-reduced-motion: reduce) {
+  .fade-in-word,
+  .fade-in-only { animation-duration: 0.01ms; }
 }

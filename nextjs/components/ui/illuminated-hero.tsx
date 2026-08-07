@@ -38,11 +38,29 @@ export function IlluminatedHero({
         </div>
 
         <h1 className="mb-5 text-[clamp(34px,5.5vw,68px)] font-black leading-[1.08] tracking-normal text-white">
-          {titleLine1}
+          {titleLine1.split(' ').map((word, i) => (
+            <span
+              key={`${word}-${i}`}
+              className="fade-in-word inline-block"
+              style={{ animationDelay: `${i * 0.07}s` }}
+            >
+              {word}
+              {' '}
+            </span>
+          ))}
           <br />
-          <span className="inline-block animate-[glowWipe_1.1s_ease-out_forwards]">
-            <span className="lit-text inline-block">{titleGlow}</span>
-          </span>
+          {/* Fades without rising: the fill is a vertical gradient, so vertical
+              motion would drag the colours across the glyphs. */}
+          {titleGlow.split(' ').map((word, i) => (
+            <span
+              key={`${word}-${i}`}
+              className="lit-text lit-word inline-block"
+              style={{ animationDelay: `${0.38 + i * 0.07}s, ${1.3 + i * 0.1}s` }}
+            >
+              {word}
+              {'\u00A0'}
+            </span>
+          ))}
         </h1>
 
         <p className="mx-auto mb-9 max-w-[500px] text-[17px] font-light leading-[1.75] text-white/60">{subtitle}</p>
