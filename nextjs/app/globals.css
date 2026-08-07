@@ -361,3 +361,37 @@ body {
     inset 0 -1px 0 rgba(167, 139, 250, 0.22),
     0 2px 14px rgba(0, 0, 0, 0.5);
 }
+
+/* ── Lit type ──────────────────────────────────────────────────────────
+   The same overhead light source, applied to text: bright at the top of the
+   glyph, deep violet at its base. The glow uses drop-shadow rather than
+   text-shadow because background-clip:text makes the fill transparent — a
+   text-shadow would show *through* the letters instead of behind them. */
+.lit-text {
+  background: linear-gradient(
+    180deg,
+    #faf5ff 0%,
+    #e9d5ff 26%,
+    #c084fc 58%,
+    #8b5cf6 88%,
+    #6d28d9 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter:
+    drop-shadow(0 0 2px rgba(216, 180, 254, 0.75))
+    drop-shadow(0 0 12px rgba(168, 85, 247, 0.6))
+    drop-shadow(0 0 30px rgba(124, 58, 237, 0.45));
+}
+
+/* quieter version for section headings — gradient without the heavy bloom */
+.lit-text--soft {
+  background: linear-gradient(180deg, #f5edff 0%, #c084fc 62%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.28));
+}

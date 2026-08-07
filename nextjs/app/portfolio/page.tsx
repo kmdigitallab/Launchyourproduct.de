@@ -23,7 +23,7 @@ export default function PortfolioPage() {
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-[#7c3aed]" /> Our Work
         </div>
         <h1 className="mb-4 text-[clamp(36px,5vw,64px)] font-black leading-[1.05] tracking-normal text-white">
-          Our <span className="text-[#c084fc]">best projects</span>
+          Our <span className="lit-text--soft">best projects</span>
           <br />
           for you.
         </h1>
@@ -56,7 +56,7 @@ export default function PortfolioPage() {
           <h2 className="mb-3.5 text-[clamp(24px,3vw,36px)] font-extrabold tracking-normal text-white">
             Your project is
             <br />
-            <span className="text-[#c084fc]">next.</span>
+            <span className="lit-text--soft">next.</span>
           </h2>
           <p className="mb-7 text-[15px] font-light leading-[1.7] text-white/55">
             Book a free 30-minute audit and we&apos;ll show you what we can build for you.

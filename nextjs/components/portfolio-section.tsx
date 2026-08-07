@@ -9,7 +9,7 @@ export default function PortfolioSection() {
           <span className="h-[5px] w-[5px] animate-pulse rounded-full bg-[#7c3aed]" /> Our Work
         </div>
         <h2 className="mb-4 text-[clamp(28px,4vw,48px)] font-extrabold leading-[1.1] tracking-normal text-white">
-          Real motion design videos, <span className="text-[#c084fc]">real products.</span>
+          Real motion design videos, <span className="lit-text--soft">real products.</span>
         </h2>
 
         <div className="glass-card glass-card--static mx-auto mt-9 max-w-[600px] px-6 py-5">

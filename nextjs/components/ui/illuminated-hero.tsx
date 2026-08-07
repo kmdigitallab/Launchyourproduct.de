@@ -40,14 +40,8 @@ export function IlluminatedHero({
         <h1 className="mb-5 text-[clamp(34px,5.5vw,68px)] font-black leading-[1.08] tracking-normal text-white">
           {titleLine1}
           <br />
-          <span
-            className="inline-block animate-[glowWipe_1.1s_ease-out_forwards] text-[#c084fc]"
-            style={{
-              textShadow:
-                '0 0 1px rgba(255,255,255,0.9), 0 0 4px rgba(196,181,253,0.7), 0 0 10px rgba(139,92,246,0.4)',
-            }}
-          >
-            {titleGlow}
+          <span className="inline-block animate-[glowWipe_1.1s_ease-out_forwards]">
+            <span className="lit-text inline-block">{titleGlow}</span>
           </span>
         </h1>
 

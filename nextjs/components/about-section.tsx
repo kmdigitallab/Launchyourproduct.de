@@ -6,7 +6,7 @@ export default function AboutSection() {
       <div className="mx-auto max-w-[860px]">
         <Reveal className="mb-14 text-center">
           <h2 className="mb-4 text-[clamp(26px,3.2vw,44px)] font-extrabold leading-[1.1] tracking-normal text-white">
-            About <span className="text-[#c084fc]">us.</span>
+            About <span className="lit-text--soft">us.</span>
           </h2>
           <p className="mx-auto max-w-[520px] text-base font-light leading-[1.75] text-white/60">
             LaunchYourProduct is run by Kabisch &amp; Miller GbR — Tobias Miller and Cedric Leon Kabisch.

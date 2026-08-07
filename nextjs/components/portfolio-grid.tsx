@@ -13,7 +13,7 @@ export default function PortfolioGrid() {
             <h3 className="mb-2.5 text-[clamp(22px,3vw,34px)] font-extrabold leading-[1.1] tracking-normal text-white">
               {v.title[0]}
               <br />
-              <span className="text-[#c084fc]">{v.title[1]}</span>
+              <span className="lit-text--soft">{v.title[1]}</span>
             </h3>
             <p className="mx-auto max-w-[560px] text-sm font-light text-white/55">{v.desc}</p>
           </div>

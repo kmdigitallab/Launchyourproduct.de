@@ -12,7 +12,7 @@ export default function WhatWeDoSection() {
       <div className="mx-auto max-w-[860px] text-center">
         <Reveal>
           <h2 className="mb-5 text-[clamp(26px,3.2vw,42px)] font-extrabold leading-[1.15] tracking-normal text-white">
-            We create motion design ads for <span className="text-[#c084fc]">Amazon &amp; e-commerce sellers</span>.
+            We create motion design ads for <span className="lit-text--soft">Amazon &amp; e-commerce sellers</span>.
           </h2>
           <p className="mx-auto mb-14 max-w-[560px] text-[17px] font-light leading-[1.75] text-white/60">
             Scroll-stopping product videos — UGC-style hooks, showcase videos, and Sponsored Brands ads — produced
