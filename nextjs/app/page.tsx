@@ -3,7 +3,7 @@
 import { useRef } from 'react';
 import Nav from '@/components/nav';
 import AnnouncementBar from '@/components/announcement-bar';
-import IlluminatedHero from '@/components/ui/illuminated-hero';
+import CinematicHero from '@/components/ui/cinematic-hero';
 import FlowThread from '@/components/flow-thread';
 import WhatWeDoSection from '@/components/what-we-do-section';
 import PortfolioSection from '@/components/portfolio-section';
@@ -29,7 +29,7 @@ export default function Home() {
         <FlowThread contentRef={contentRef} />
 
         <div className="hero-inner-marker">
-          <IlluminatedHero />
+          <CinematicHero />
         </div>
 
         <WhatWeDoSection />

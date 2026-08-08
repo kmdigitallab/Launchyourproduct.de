@@ -447,3 +447,232 @@ body {
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
+
+/* ══ Cinematic hero ═══════════════════════════════════════════════════════
+   Seven stacked layers, each on its own plane. The stage runs off three CSS
+   custom properties written once per frame from a single RAF loop (--asm,
+   --rx, --ry) so the browser interpolates instead of us touching many nodes.
+   ───────────────────────────────────────────────────────────────────────── */
+.chero {
+  position: relative;
+  display: flex;
+  min-height: 100svh;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: clamp(48px, 9vh, 110px);
+  overflow: hidden;
+  background: #000;
+  /* frame assembly 0 → 1, stage rotation, scroll progress.
+     Defaults are the END state: with JS off the hero still renders assembled. */
+  --asm: 1;
+  --vis: 1;
+  --rx: 0deg;
+  --ry: 0deg;
+  --scroll: 0;
+}
+
+/* L1 — background atmosphere: two slow, offset breaths so it never pulses */
+.chero-atmos {
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(48% 42% at 50% 44%, rgba(88, 42, 168, 0.28) 0%, transparent 68%),
+    radial-gradient(38% 34% at 28% 62%, rgba(60, 30, 130, 0.2) 0%, transparent 70%),
+    radial-gradient(42% 36% at 74% 34%, rgba(120, 70, 220, 0.14) 0%, transparent 72%);
+  animation: cheroAtmos 24s ease-in-out infinite alternate;
+}
+@keyframes cheroAtmos {
+  from { transform: scale(1) translate3d(0, 0, 0); opacity: 0.85; }
+  to   { transform: scale(1.09) translate3d(1.5%, -1.5%, 0); opacity: 1; }
+}
+
+/* L2 — volumetric light: wide, very soft shafts raking down through the frame */
+.chero-shafts { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.chero-shaft {
+  position: absolute;
+  top: -40%;
+  height: 180%;
+  filter: blur(46px);
+  opacity: 0;
+  animation: cheroShaft 18s ease-in-out infinite;
+  transform-origin: top center;
+}
+@keyframes cheroShaft {
+  0%, 100% { opacity: 0.16; transform: rotate(var(--a)) translateX(0) scaleY(1); }
+  50%      { opacity: 0.42; transform: rotate(var(--a)) translateX(3%) scaleY(1.06); }
+}
+
+/* L3 — particle field (canvas) */
+.chero-particles { position: absolute; inset: 0; pointer-events: none; }
+
+/* L4 — the product: a motion-design frame assembling out of its own layers */
+.chero-stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 52svh;
+  padding-top: clamp(96px, 13svh, 150px);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  perspective: 1500px;
+  perspective-origin: 50% 50%;
+}
+.chero-frame {
+  position: relative;
+  width: min(25vw, 280px);
+  aspect-ratio: 16 / 10;
+  transform-style: preserve-3d;
+  transform:
+    translateY(calc(var(--scroll) * -60px))
+    rotateX(var(--rx))
+    rotateY(var(--ry));
+}
+.chero-layer {
+  position: absolute;
+  inset: 0;
+  border-radius: 14px;
+  transform-style: preserve-3d;
+  /* spread apart while --asm is 0, converge to the base plane at 1 */
+  transform: translateZ(calc((var(--zb) + var(--zs) * (1 - var(--asm))) * 1px))
+             scale(calc(1 + (1 - var(--asm)) * var(--ss)));
+  opacity: calc(var(--vis) * (0.34 + 0.66 * var(--asm)));
+  /* every plane keeps the site's overhead light model */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(124, 58, 237, 0.22),
+    0 24px 70px rgba(0, 0, 0, 0.55);
+}
+
+/* the individual planes of a shot */
+.chero-plate {
+  background:
+    radial-gradient(70% 90% at 50% 0%, rgba(167, 139, 250, 0.16) 0%, transparent 70%),
+    linear-gradient(180deg, #171226 0%, #0b0814 100%);
+}
+.chero-subject { display: grid; place-items: center; background: transparent; box-shadow: none; }
+.chero-subject-form {
+  width: 26%;
+  height: 62%;
+  border-radius: 999px 999px 18px 18px / 90px 90px 18px 18px;
+  background:
+    radial-gradient(60% 40% at 34% 16%, rgba(255, 255, 255, 0.55) 0%, transparent 60%),
+    linear-gradient(165deg, #d9d3ec 0%, #8f86b8 34%, #3b3160 72%, #201a38 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.7),
+    inset 0 -8px 18px rgba(124, 58, 237, 0.4),
+    0 18px 40px rgba(0, 0, 0, 0.6);
+}
+.chero-type { background: transparent; box-shadow: none; padding: 12% 16%; }
+.chero-bar {
+  height: 7px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.65), rgba(192, 132, 252, 0.25));
+  box-shadow: 0 0 14px rgba(167, 139, 250, 0.3);
+}
+.chero-glass {
+  background: linear-gradient(118deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 42%, rgba(124, 58, 237, 0.12) 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 0 -1px 0 rgba(124, 58, 237, 0.3);
+}
+
+/* L5 — glow bed beneath the frame */
+.chero-bed {
+  position: absolute;
+  left: 50%;
+  top: 24svh;
+  width: min(52vw, 560px);
+  height: min(34vw, 360px);
+  translate: -50% -50%;
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(139, 92, 246, 0.3) 0%, transparent 72%);
+  filter: blur(28px);
+  opacity: calc(0.25 + var(--asm) * 0.75);
+}
+
+/* L7 — light that follows the cursor */
+.chero-cursor {
+  position: absolute;
+  width: 620px;
+  height: 620px;
+  left: 0;
+  top: 0;
+  translate: calc(var(--cx, 50vw) - 310px) calc(var(--cy, 50vh) - 310px);
+  pointer-events: none;
+  background: radial-gradient(closest-side, rgba(167, 139, 250, 0.13) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.chero.is-pointing .chero-cursor { opacity: 1; }
+
+/* L6 — editorial copy, revealed only after the frame has assembled */
+.chero-copy {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 24px;
+  margin-top: 46svh;
+  transform: scale(calc(1 - var(--scroll) * 0.06));
+}
+.chero-eyebrow {
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.42);
+  margin-bottom: clamp(14px, 2vw, 22px);
+}
+.chero-h1 { margin: 0; line-height: 0.86; }
+.chero-l1 {
+  display: block;
+  font-size: clamp(20px, 2.6vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: clamp(6px, 0.8vw, 12px);
+}
+.chero-l2 {
+  display: block;
+  font-size: clamp(42px, 6.4vw, 92px);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+}
+.chero-l3 {
+  display: block;
+  font-size: clamp(56px, 8.8vw, 126px);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+}
+.chero-sub {
+  max-width: 440px;
+  margin: clamp(22px, 3vw, 34px) auto 0;
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 300;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.5);
+}
+.chero-cta { margin-top: clamp(26px, 3.2vw, 40px); display: flex; gap: 14px; align-items: center; flex-wrap: wrap; justify-content: center; }
+
+/* progressive reveal — nothing arrives at the same moment */
+.chero-rise { opacity: 0; animation: cheroRise 1.1s cubic-bezier(0.16, 0.84, 0.28, 1) both; }
+@keyframes cheroRise {
+  from { opacity: 0; transform: translateY(22px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+@media (max-width: 720px) {
+  .chero-frame { width: min(58vw, 260px); }
+  .chero-stage { height: 40svh; padding-top: 132px; }
+  .chero-copy { margin-top: 34svh; }
+  .chero-bed { width: 90vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chero-atmos, .chero-shaft { animation: none; }
+  .chero-rise { animation-duration: 0.01ms; }
+}
