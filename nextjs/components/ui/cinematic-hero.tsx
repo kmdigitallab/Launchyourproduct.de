@@ -28,12 +28,16 @@ const CUE = {
 };
 const RUNTIME = CUE.cta + 1100;
 
-/** Planes of a motion-design shot: base z, how far they drift apart, scale-up. */
+/**
+ * Planes of a motion-design shot. zb/zs = resting depth and how far they drift
+ * apart; o0/o1 = opacity while spread vs. assembled. The abstract scaffolding
+ * (subject, type) dissolves on assembly so the finished ad is what remains.
+ */
 const PLANES = [
-  { key: 'plate', zb: -60, zs: -190, ss: 0.1 },
-  { key: 'subject', zb: 10, zs: -40, ss: 0.04 },
-  { key: 'type', zb: 46, zs: 150, ss: 0.07 },
-  { key: 'glass', zb: 78, zs: 300, ss: 0.13 },
+  { key: 'plate', zb: -60, zs: -190, ss: 0.1, o0: 0.22, o1: 1 },
+  { key: 'subject', zb: 10, zs: -40, ss: 0.04, o0: 0.95, o1: 0 },
+  { key: 'type', zb: 46, zs: 150, ss: 0.07, o0: 0.9, o1: 0 },
+  { key: 'glass', zb: 78, zs: 300, ss: 0.13, o0: 0.5, o1: 0.5 },
 ] as const;
 
 const SHAFTS = [
@@ -270,8 +274,13 @@ export default function CinematicHero({
             <div
               key={p.key}
               className={`chero-layer chero-${p.key}`}
-              style={{ '--zb': p.zb, '--zs': p.zs, '--ss': p.ss } as React.CSSProperties}
+              style={
+                { '--zb': p.zb, '--zs': p.zs, '--ss': p.ss, '--o0': p.o0, '--o1': p.o1 } as React.CSSProperties
+              }
             >
+              {p.key === 'plate' && (
+                <img className="chero-shot" src="/hero/shot.jpg" alt="" width={880} height={495} />
+              )}
               {p.key === 'subject' && <div className="chero-subject-form" />}
               {p.key === 'type' && (
                 <div className="flex h-full flex-col justify-end gap-[9px]">

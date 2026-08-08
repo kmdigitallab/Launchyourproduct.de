@@ -539,7 +539,7 @@ body {
   /* spread apart while --asm is 0, converge to the base plane at 1 */
   transform: translateZ(calc((var(--zb) + var(--zs) * (1 - var(--asm))) * 1px))
              scale(calc(1 + (1 - var(--asm)) * var(--ss)));
-  opacity: calc(var(--vis) * (0.34 + 0.66 * var(--asm)));
+  opacity: calc(var(--vis) * (var(--o0) + (var(--o1) - var(--o0)) * var(--asm)));
   /* every plane keeps the site's overhead light model */
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.22),
@@ -549,9 +549,28 @@ body {
 
 /* the individual planes of a shot */
 .chero-plate {
+  overflow: hidden;
+  background: linear-gradient(180deg, #171226 0%, #0b0814 100%);
+}
+/* the delivered ad — what the scaffolding resolves into */
+.chero-shot {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+/* keeps the warm footage sitting inside the cold room instead of on top of it */
+.chero-plate::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
   background:
-    radial-gradient(70% 90% at 50% 0%, rgba(167, 139, 250, 0.16) 0%, transparent 70%),
-    linear-gradient(180deg, #171226 0%, #0b0814 100%);
+    radial-gradient(80% 70% at 50% 0%, rgba(167, 139, 250, 0.2) 0%, transparent 72%),
+    linear-gradient(180deg, rgba(20, 12, 40, 0.1) 0%, rgba(12, 8, 24, 0.42) 100%);
+  pointer-events: none;
 }
 .chero-subject { display: grid; place-items: center; background: transparent; box-shadow: none; }
 .chero-subject-form {
