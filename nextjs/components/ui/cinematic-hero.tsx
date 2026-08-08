@@ -60,6 +60,7 @@ export default function CinematicHero({
 }: CinematicHeroProps) {
   const rootRef = useRef<HTMLElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     const root = rootRef.current;
@@ -75,6 +76,16 @@ export default function CinematicHero({
       root.style.setProperty('--asm', '0');
       root.style.setProperty('--vis', '0');
     }
+
+    // Hold the reel until the planes have converged, so the reveal lands on
+    // motion rather than on a clip already halfway through.
+    const video = videoRef.current;
+    const startVideo = () => {
+      video?.play().catch(() => {
+        /* autoplay refused (some power-saving modes) — the poster stands in */
+      });
+    };
+    const videoTimer = window.setTimeout(startVideo, skipIntro ? 0 : CUE.assemble + 400);
 
     const ctx = canvas.getContext('2d');
     let dpr = 1;
@@ -214,9 +225,11 @@ export default function CinematicHero({
       if (document.hidden) {
         running = false;
         cancelAnimationFrame(raf);
+        video?.pause();
       } else if (!running) {
         running = true;
         raf = requestAnimationFrame(frame);
+        startVideo();
       }
     };
 
@@ -229,6 +242,7 @@ export default function CinematicHero({
     return () => {
       running = false;
       cancelAnimationFrame(raf);
+      window.clearTimeout(videoTimer);
       window.removeEventListener('resize', resize);
       window.removeEventListener('scroll', onScroll);
       root.removeEventListener('pointermove', onPointer);
@@ -264,11 +278,10 @@ export default function CinematicHero({
       {/* L3 — particles */}
       <canvas ref={canvasRef} className="chero-particles" aria-hidden />
 
-      {/* L5 — glow bed (behind the frame) */}
-      <div className="chero-bed" aria-hidden />
-
-      {/* L4 — the product: a shot assembling out of its own planes */}
+      {/* L4 — the product: a shot assembling out of its own planes.
+          L5 (the glow bed) lives inside the stage so it tracks the object. */}
       <div className="chero-stage" aria-hidden>
+        <div className="chero-bed" />
         <div className="chero-frame">
           {PLANES.map((p) => (
             <div
@@ -279,7 +292,19 @@ export default function CinematicHero({
               }
             >
               {p.key === 'plate' && (
-                <img className="chero-shot" src="/hero/shot.jpg" alt="" width={880} height={495} />
+                <video
+                  ref={videoRef}
+                  className="chero-shot"
+                  poster="/hero/poster.jpg"
+                  muted
+                  loop
+                  playsInline
+                  preload="metadata"
+                >
+                  {/* WebM first: some Linux Chromium/Firefox builds ship without H.264 */}
+                  <source src="/hero/prototyp.webm" type="video/webm" />
+                  <source src="/hero/prototyp.mp4" type="video/mp4" />
+                </video>
               )}
               {p.key === 'subject' && <div className="chero-subject-form" />}
               {p.key === 'type' && (
